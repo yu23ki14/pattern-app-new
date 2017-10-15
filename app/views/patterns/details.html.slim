@@ -1,0 +1,22 @@
+.details-head
+  - if user_signed_in?
+    #favorite_icon
+      - if @favorite != nil
+        = check_box_tag 'fav', '', @favorite.fav, {:user_id => current_user.id, :lg_code => @language.uid, :pattern_no => @pattern.pattern_no}
+      - else
+        = check_box_tag 'fav', '', false, {:user_id => current_user.id, :lg_code => @language.uid, :pattern_no => @pattern.pattern_no}
+  .row
+    = image_tag "pattern_img/#{@language.lg_code}/01.png", class: "col-7"
+  #text-area
+    p.small #{@language.lg_name} No.#{@pattern.pattern_no}
+    h2.m-t-5 #{@pattern.pattern_name}
+    p #{@pattern.summary}
+.page-container.row-space-8
+  .col-10.col-center.row-space-8.p-b-30
+    p.row-space-top-3 #{@pattern.context}
+    h5.text-center ▼ その状況で
+    p #{@pattern.b_problem}
+    h5.text-center ▼ そこで
+    p #{@pattern.b_solution}
+    h5.text-center ▼ そうすると
+    p #{@pattern.consequence}

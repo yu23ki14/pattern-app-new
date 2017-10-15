@@ -1,0 +1,39 @@
+h1 Listing patterns
+
+table
+  thead
+    tr
+      th Lg code
+      th Cat code
+      th Pattern no
+      th Pattern name
+      th Summary
+      th Context
+      th B problem
+      th Problem
+      th B solution
+      th Solution
+      th Consequence
+      th
+      th
+      th
+
+  tbody
+    - @patterns.each do |pattern|
+      tr
+        td = pattern.lg_code
+        td = pattern.cat_code
+        td = pattern.pattern_no
+        td = pattern.pattern_name
+        td = pattern.summary
+        td = pattern.context
+        td = pattern.b_problem
+        td = pattern.problem
+        td = pattern.b_solution
+        td = pattern.solution
+        td = pattern.consequence
+        td = link_to 'Show', pattern
+        td = link_to 'Edit', edit_pattern_path(pattern)
+        td = link_to 'Destroy', pattern, data: { confirm: 'Are you sure?' }, method: :delete
+
+br

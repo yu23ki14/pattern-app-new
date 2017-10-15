@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Cat name:
+  = @category.cat_name
+p
+  strong Cat code:
+  = @category.cat_code
+
+= link_to 'Edit', edit_category_path(@category)
+'  |
+= link_to 'Back', categories_path

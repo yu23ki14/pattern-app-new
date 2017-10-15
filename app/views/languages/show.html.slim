@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Lg name:
+  = @language.lg_name
+p
+  strong Lg code:
+  = @language.lg_code
+
+= link_to 'Edit', edit_language_path(@language)
+'  |
+= link_to 'Back', languages_path

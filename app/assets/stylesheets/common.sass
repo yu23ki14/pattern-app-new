@@ -1,0 +1,599 @@
+/* text ================================================== */
+
+body
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif
+  line-height: 1.44
+  color: $brand-dark-gray
+  background: $brand-contrast
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  @media (min-width: 767px)
+    display: none
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
+  line-height: 1.1
+  
+h1, h2, h3, h4, h5, h6
+  margin-top: 25px
+  margin-bottom: 15px
+  font-weight: 700
+  
+a
+  color: $brand-theme
+  text-decoration: none
+  &:hover, &:focus
+    color: $brand-theme-hover
+    text-decoration: underline
+
+p
+  word-break: break-word
+
+hr
+  border-top: 1px solid $brand-gray
+  
+label
+  display: block
+  padding-top: 9px
+  padding-bottom: 8px
+  margin-bottom: auto
+  font-weight: 400
+  
+.strong
+  font-weight: 700
+
+.normal
+  font-weight: 400
+  
+.text-center
+  text-align: center
+  
+.text-y-center
+  vertical-align: middle
+  
+.text-primary
+  color: $brand-theme
+
+.text-sub
+  color: $brand-light-gray
+  
+.text-contrast
+  color: white
+  
+@media (max-width: 767px)
+  h1, .h1
+    font-size: 45px
+  h2, .h2
+    font-size: 30px
+  h3, .h3
+    font-size: 25px
+  h4, .h4
+    font-size: 20px
+  h5, .h5
+    font-size: 18px
+  p
+    font-size: 15px
+    &.small
+      font-size: 11px
+  
+/* input ================================================== */
+
+input[type="radio"], input[type="checkbox"], .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]
+  position: relative
+  -webkit-appearance: none
+  height: 1.5em
+  width: 1.5em
+  margin: 0 5px -0.5em 0
+  vertical-align: top
+
+input[type="checkbox"]:checked
+  border-color: $brand-theme
+  &:before
+    content: "\f00c"
+    font-family: 'FontAwesome'
+    position: absolute
+    font-size: 1em
+    top: 2px
+    left: 1px
+    text-align: center
+    width: 1.25em
+    color: $brand-theme
+
+input[type="radio"]:checked
+  border-color: $brand-theme
+  &:before
+    content: "\f00c"
+    font-family: 'FontAwesome'
+    position: absolute
+    font-size: 1em
+    top: 2px
+    left: 1px
+    text-align: center
+    width: 1.25em
+    color: $brand-theme
+    
+.selectbox
+  position: relative
+  display: inline-block
+  vertical-align: bottom
+  select
+    padding-top: 6px !important
+    padding-bottom: 6px !important
+    padding-right: 2em
+    border-radius: 0
+  &:after
+    content: '\f107'
+    position: absolute
+    top: 0
+    right: 10px
+    line-height: 32px
+    color: $brand-light-gray
+    font-size: 22px
+    font-family: 'fontAwesome'
+    pointer-events: none
+    
+/* border ================================================== */
+    
+.top-bordered
+  border-top: 1px solid $brand-gray
+  &.dashed
+    border-top: 1px dashed $brand-gray
+  &.darker
+    border-top-color: $brand-dark-gray
+  &.base
+    border-top-color: $brand-theme
+  &.thick
+    border-width: 3px
+.bottom-bordered
+  border-bottom: 1px solid $brand-gray
+  &.dashed
+    border-bottom: 1px dashed $brand-gray
+  &.darker
+    border-bottom-color: $brand-dark-gray
+  &.base
+    border-bottom-color: $brand-theme
+    
+/* nav ================================================== */
+
+.nav
+  li
+    position: absolute
+    &:nth-child(1)
+      top: 40px
+      left: 150px
+    &:nth-child(2)
+      top: 100px
+      left: 75px
+    &:nth-child(3)
+      top: 165px
+      left: 50px
+#nav-container
+  width: 1000px
+  height: 500px
+  position: fixed
+  bottom: -500px
+  right: -1000px
+  background-color: $brand-theme-hover
+  border-radius: 230px
+  transition-duration: 0.5s
+  z-index: 2999
+.nav-btn
+  width: 80px
+  height: 80px
+  font-size: 50px
+  font-weight: bold
+  position: fixed
+  bottom: 20px
+  right: 20px
+  background-color: $brand-theme
+  border-radius: 100%
+  z-index: 3000
+  i
+    line-height: 80px
+#nav-close-btn
+  display: none
+.nav-open
+  .nav
+    display: block
+  #nav-container
+    transform: translateX(-300px) translateY(-220px)
+  #nav-open-btn
+    display: none
+  #nav-close-btn
+    display: block
+.sessions, .registeration, .passwords
+  #nav-open-btn, #nav-close-btn
+    display: none
+
+    
+
+/* button ================================================== */
+
+.button
+  display: inline-block
+  line-height: 24px
+  padding: 5px 22px
+  color: $brand-gray
+  font-size: 18px
+  background-color: white
+  border-radius: 20px
+  border: 1px solid $brand-light-gray
+  transition: background-color .2s
+  cursor: pointer
+  &:hover
+    text-decoration: none
+    background-color: $brand-light-gray
+  &.button-fixed
+    position: fixed
+    bottom: 30px
+
+.button-outline
+  color: $brand-light-gray
+  border-color: $brand-light-gray
+  &:hover
+    color: $brand-light-gray
+
+.button-primary
+  color: $brand-contrast
+  border-color: $brand-theme
+  background-color: $brand-theme
+  &:hover
+    background-color: $brand-theme-hover
+
+.button-primary-outline
+  color: $brand-theme
+  border-color: $brand-theme
+  &:hover
+    color: $brand-contrast
+    background-color: $brand-theme
+    
+/* spacing ================================================== */
+
+.m-t-0
+  margin-top: 0 !important
+.m-b-0
+  margin-bottom: 0 !important
+.m-l-0
+  margin-left: 0 !important
+.m-r-0
+  margin-right: 0 !important
+.m-t-5
+  margin-top: 5px !important
+.m-b-5
+  margin-bottom: 5px !important
+.m-l-5
+  margin-left: 5px !important
+.m-r-5
+  margin-right: 5px !important
+.m-x-5
+  margin-left: 5px !important
+  margin-right: 5px !important
+.m-t-10
+  margin-top: 10px !important
+.m-l-10
+  margin-left: 10px !important
+.m-r-10
+  margin-right: 10px !important
+.m-x-10
+  margin-left: 10px !important
+  margin-right: 10px !important
+.p-t-0
+  padding-top: 0 !important
+.p-b-0
+  padding-bottom: 0 !important
+.p-l-0
+  padding-left: 0 !important
+.p-r-0
+  padding-right: 0 !important
+.p-x-0
+  padding-left: 0px !important
+  padding-right: 0px !important
+.p-y-0
+  padding-top: 0px !important
+  padding-bottom: 0px !important
+.p-t-5
+  padding-top: 5px !important
+.p-b-5
+  padding-bottom: 5px !important
+.p-l-5
+  padding-left: 5px !important
+.p-r-5
+  padding-right: 5px !important
+.p-x-5
+  padding-left: 5px !important
+  padding-right: 5px !important
+.p-y-5
+  padding-top: 5px !important
+  padding-bottom: 5px !important
+.p-t-10
+  padding-top: 10px !important
+.p-b-10
+  padding-bottom: 10px !important
+.p-l-10
+  padding-left: 10px !important
+.p-r-10
+  padding-right: 10px !important
+.p-x-10
+  padding-left: 10px !important
+  padding-right: 10px !important
+.p-y-10
+  padding-top: 10px !important
+  padding-bottom: 10px !important
+.p-t-15
+  padding-top: 15px !important
+.p-b-15
+  padding-bottom: 15px !important
+.p-l-15
+  padding-left: 15px !important
+.p-r-15
+  padding-right: 15px !important
+.p-x-15
+  padding-left: 15px !important
+  padding-right: 15px !important
+.p-y-15
+  padding-top: 15px !important
+  padding-bottom: 15px !important
+.p-t-20
+  padding-top: 20px !important
+.p-b-20
+  padding-bottom: 20px !important
+.p-l-20
+  padding-left: 20px !important
+.p-r-20
+  padding-right: 20px !important
+.p-x-20
+  padding-left: 20px !important
+  padding-right: 20px !important
+.p-y-20
+  padding-top: 20px !important
+  padding-bottom: 20px !important
+.p-t-30
+  padding-top: 30px !important
+.p-b-30
+  padding-bottom: 30px !important
+.p-l-30
+  padding-left: 30px !important
+.p-r-30
+  padding-right: 30px !important
+.p-x-30
+  padding-left: 30px !important
+  padding-right: 30px !important
+.p-y-30
+  padding-top: 30px !important
+  padding-bottom: 30px !important
+.row-space-1
+  margin-bottom: 6.25px
+.row-space-top-1
+  margin-top: 6.25px
+.row-space-2
+  margin-bottom: 12.5px
+.row-space-top-2
+  margin-top: 12.5px
+.row-space-3
+  margin-bottom: 18.75px
+.row-space-top-3
+  margin-top: 18.75px
+.row-space-4
+  margin-bottom: 25px
+.row-space-top-4
+  margin-top: 25px
+.row-space-5
+  margin-bottom: 31.25px
+.row-space-top-5
+  margin-top: 31.25px
+.row-space-6
+  margin-bottom: 37.5px
+.row-space-top-6
+  margin-top: 37.5px
+.row-space-7
+  margin-bottom: 43.75px
+.row-space-top-7
+  margin-top: 43.75px
+.row-space-8
+  margin-bottom: 50px
+.row-space-top-8
+  margin-top: 50px
+  
+/* row ================================================== */
+
+.row
+  margin: 0
+
+.row:before,.row:after
+  content: " "
+  display: table
+
+.row:after
+  clear: both
+  
+/* col ================================================== */
+
+.col-1,.col-sm-1,.col-md-1,.col-lg-1,.col-2,.col-sm-2,.col-md-2,.col-lg-2,.col-3,.col-sm-3,.col-md-3,.col-lg-3,.col-4,.col-sm-4,.col-md-4,.col-lg-4,.col-5,.col-sm-5,.col-md-5,.col-lg-5,.col-6,.col-sm-6,.col-md-6,.col-lg-6,.col-7,.col-sm-7,.col-md-7,.col-lg-7,.col-8,.col-sm-8,.col-md-8,.col-lg-8,.col-9,.col-sm-9,.col-md-9,.col-lg-9,.col-10,.col-sm-10,.col-md-10,.col-lg-10,.col-11,.col-sm-11,.col-md-11,.col-lg-11,.col-12,.col-sm-12,.col-md-12,.col-lg-12
+  position: relative
+  min-height: 1px
+  padding: 5px
+  box-sizing: border-box
+.col-offset-0
+  margin-left: auto
+.col-push-0
+  left: auto
+.col-pull-0
+  right: auto
+.col-1
+  width: 8.33333%
+  float: left
+.col-offset-1
+  margin-left: 8.33333%
+.col-push-1
+  left: 8.33333%
+.col-pull-1
+  right: 8.33333%
+.col-2
+  width: 16.66667%
+  float: left
+.col-offset-2
+  margin-left: 16.66667%
+.col-push-2
+  left: 16.66667%
+.col-pull-2
+  right: 16.66667%
+.col-3
+  width: 25%
+  float: left
+.col-offset-3
+  margin-left: 25%
+.col-push-3
+  left: 25%
+.col-pull-3
+  right: 25%
+.col-4
+  width: 33.33333%
+  float: left
+.col-offset-4
+  margin-left: 33.33333%
+.col-push-4
+  left: 33.33333%
+.col-pull-4
+  right: 33.33333%
+.col-5
+  width: 41.66667%
+  float: left
+.col-offset-5
+  margin-left: 41.66667%
+.col-push-5
+  left: 41.66667%
+.col-pull-5
+  right: 41.66667%
+.col-6
+  width: 50%
+  float: left
+.col-offset-6
+  margin-left: 50%
+.col-push-6
+  left: 50%
+.col-pull-6
+  right: 50%
+.col-7
+  width: 58.33333%
+  float: left
+.col-offset-7
+  margin-left: 58.33333%
+.col-push-7
+  left: 58.33333%
+.col-pull-7
+  right: 58.33333%
+.col-8
+  width: 66.66667%
+  float: left
+.col-offset-8
+  margin-left: 66.66667%
+.col-push-8
+  left: 66.66667%
+.col-pull-8
+  right: 66.66667%
+.col-9
+  width: 75%
+  float: left
+.col-offset-9
+  margin-left: 75%
+.col-push-9
+  left: 75%
+.col-pull-9
+  right: 75%
+.col-10
+  width: 83.33333%
+  float: left
+.col-offset-10
+  margin-left: 83.33333%
+.col-push-10
+  left: 83.33333%
+.col-pull-10
+  right: 83.33333%
+.col-11
+  width: 91.66667%
+  float: left
+.col-offset-11
+  margin-left: 91.66667%
+.col-push-11
+  left: 91.66667%
+.col-pull-11
+  right: 91.66667%
+.col-12
+  width: 100%
+  float: left
+.col-offset-12
+  margin-left: 100%
+.col-push-12
+  left: 100%
+.col-pull-12
+  right: 100%
+.col-center
+  float: none
+  margin-left: auto
+  margin-right: auto
+  
+/* page-container ================================================== */
+
+.page-container
+  width: auto
+  margin-left: auto
+  margin-right: auto
+  padding-left: 10px
+  padding-right: 10px
+  &:before, &:after
+    content: ''
+    display: table
+  &:after
+    clear: both
+    
+/* avatar ================================================== */
+
+.avatar-image
+  display: inline-block
+  vertical-align: middle
+  border-radius: 100%
+  border: 3px solid $brand-theme
+.avatar-image-lg
+  width: 64px
+  height: 64px
+.avatar-image-md
+  width: 50px
+  height: 50px
+.avatar-image-sm
+  width: 28px
+  height: 28px
+.avatar-image-xs
+  width: 24px
+  height: 24px
+.avatar-image-cover
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  
+/* flexcontainer ================================================== */
+  
+.flex-container
+  display: flex
+  align-items: center
+  &.flex-end
+    justify-content: flex-end
+  &.flex-center
+    justify-content: center
+  &.flex-space
+    justify-content: space-between
+  &.flex-a-start
+    align-items: flex-start
+  &.flex-a-stretch
+    align-items: stretch
+  &.flex-full
+    width: 100%
+
+/* flexcontainer ================================================== */
+
+.box-shadow-primary
+  box-shadow: 0px 0px 3px 1px $brand-light-gray
+
+/* card ================================================== */
+
+.card1
+  border-radius: 20px
+  background: linear-gradient(to right, #fb884e, #f1d44c)

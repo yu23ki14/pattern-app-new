@@ -12,7 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
 
 //modules
 //= require welcome
+//= require add_class
+//= require patterns
+//= require fix_css

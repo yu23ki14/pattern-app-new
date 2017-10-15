@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  
+  devise_for :users
+  #patterns route
+  resources :patterns, only: [:index] do
+    collection do
+      get ':lg_code' => 'patterns#show'
+      get ':lg_code/:pattern_no' => 'patterns#details'
+      post ':lg_code/:pattern_no/:user_id/fav' => 'patterns#fav'
+    end
+  end
+  
+  #languages route
+  resources :languages, only: [:index, :show]
+  
+  #categories route
+  resources :categories, only: [:index]
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

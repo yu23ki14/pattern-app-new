@@ -2,8 +2,10 @@ doctype html
 html
   head
     = render partial: 'layouts/meta_tags'
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-
-  = yield
+    link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
+  = render partial: 'render/header_nav'
+  body(class="#{controller.controller_name}")
+    = yield
