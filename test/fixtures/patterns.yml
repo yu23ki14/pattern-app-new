@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lg_code: MyString
+  cat_code: MyString
+  pattern_no: 1
+  pattern_name: MyString
+  summary: MyString
+  context: MyText
+  b_problem: MyString
+  problem: MyText
+  b_solution: MyString
+  solution: MyText
+  consequence: MyText
+
+two:
+  lg_code: MyString
+  cat_code: MyString
+  pattern_no: 1
+  pattern_name: MyString
+  summary: MyString
+  context: MyText
+  b_problem: MyString
+  problem: MyText
+  b_solution: MyString
+  solution: MyText
+  consequence: MyText
