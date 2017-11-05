@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171015153553) do
+ActiveRecord::Schema.define(version: 20171102111113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,15 +23,13 @@ ActiveRecord::Schema.define(version: 20171015153553) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id_id", null: false
-    t.bigint "lg_code_id", null: false
-    t.bigint "pattern_no_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "language_id", null: false
+    t.integer "pattern_no", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "fav", default: true
-    t.index ["lg_code_id"], name: "index_favorites_on_lg_code_id"
-    t.index ["pattern_no_id"], name: "index_favorites_on_pattern_no_id"
-    t.index ["user_id_id"], name: "index_favorites_on_user_id_id"
+    t.index ["language_id"], name: "index_favorites_on_language_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -39,12 +37,12 @@ ActiveRecord::Schema.define(version: 20171015153553) do
     t.string "lg_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "uid"
   end
 
   create_table "patterns", force: :cascade do |t|
-    t.string "lg_code"
+    t.bigint "language_id"
     t.string "cat_code"
+    t.string "cat_code_24"
     t.integer "pattern_no"
     t.string "pattern_name"
     t.string "summary"
@@ -56,6 +54,23 @@ ActiveRecord::Schema.define(version: 20171015153553) do
     t.text "consequence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_patterns_on_language_id"
+  end
+
+  create_table "practices", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "language_id", null: false
+    t.integer "pattern_no", null: false
+    t.integer "did", default: 0
+    t.string "comment"
+    t.boolean "done"
+    t.integer "limit", null: false
+    t.string "frequency"
+    t.datetime "enddate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_practices_on_language_id"
+    t.index ["user_id"], name: "index_practices_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

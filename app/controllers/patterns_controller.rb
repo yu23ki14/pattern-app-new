@@ -1,5 +1,7 @@
 class PatternsController < ApplicationController
   before_action :set_pattern, only: [:edit, :update, :destroy]
+  before_action :set_favorites, only: [:show, :details, :fav]
+  before_action :set_practices, only: [:details]
 
   # GET /patterns
   # GET /patterns.json
@@ -8,23 +10,28 @@ class PatternsController < ApplicationController
   end
 
   def show
-    @patterns = Pattern.where(lg_code: params[:lg_code])
-    @language = Language.find_by(lg_code: params[:lg_code])
+    @language = Language.find(params[:language_id])
+    @patterns = @language.patterns
   end
   
   def details
-    @language = Language.find_by(lg_code: params[:lg_code])
-    @pattern = Pattern.where(lg_code: params[:lg_code]).find_by(pattern_no: params[:pattern_no])
-    @favorite = Favorite.where(user_id_id: params[:user_id]).where(lg_code_id: params[:lg_code]).find_by(pattern_no_id: params[:pattern_no])
+    @language = Language.find(params[:language_id])
+    @pattern = @language.patterns.find_by(pattern_no: params[:pattern_no])
+    if user_signed_in?
+      @favorite = @favorites.find_by(pattern_no: params[:pattern_no])
+      @practice = @practices.find_by(pattern_no: params[:pattern_no])
+      @practice_form = Practice.new
+    end
   end
   
   def fav
-    @fav_serch = Favorite.where(user_id_id: params[:user_id]).where(lg_code_id: params[:lg_code]).find_by(pattern_no_id: params[:pattern_no])
-    if @fav_serch == nil
-      @favorite = Favorite.create(user_id_id: params[:user_id], lg_code_id: params[:lg_code], pattern_no_id: params[:pattern_no])
-    else
-      @fav_serch.fav = !@fav_serch.fav
-      @fav_serch.save
+    if user_signed_in?
+      @favorite = @favorites.find_by(pattern_no: params[:pattern_no])
+      if @favorite == nil
+        @favorite = Favorite.create(user_id: current_user.id, language_id: params[:language_id], pattern_no: params[:pattern_no])
+      else
+        @favorite.destroy
+      end
     end
   end
 
@@ -32,5 +39,19 @@ class PatternsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_pattern
       @pattern = Pattern.find(params[:id])
+    end
+    
+    def set_favorites
+      if user_signed_in?
+        @favorites = @user.favorites
+        @favorites = @favorites.where(language_id: params[:language_id])
+      end
+    end
+    
+    def set_practices
+      if user_signed_in?
+        @practices = @user.practices
+        @practices = @practices.where(language_id: params[:language_id])
+      end
     end
 end

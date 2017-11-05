@@ -1,0 +1,22 @@
+.practice-nav.row-space-3.row-space-top-1
+  ul.row.text-center
+    - if controller.action_name == "index"
+      li.col-6.active
+        = link_to practices_path
+          .text-lead-lg
+            |実践リスト
+    - else
+      li.col-6
+        = link_to practices_path
+          .text-lead-lg
+            |実践リスト
+    - if controller.action_name == "complete"
+      li.col-6.active
+        = link_to complete_practices_path
+          .text-lead-lg
+            |終了リスト
+    - else
+      li.col-6
+        = link_to complete_practices_path
+          .text-lead-lg
+            |終了リスト #{end_num}

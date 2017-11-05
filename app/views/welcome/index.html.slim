@@ -1,1 +1,8 @@
-h1 Wel
+h1 Welcome
+
+- if user_signed_in?
+  = link_to "/users/sign_out"
+    | Sign out
+- else
+  = link_to "/users/sign_in"
+    | Sign in

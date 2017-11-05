@@ -1,8 +1,9 @@
 class CreatePatterns < ActiveRecord::Migration[5.1]
   def change
     create_table :patterns do |t|
-      t.string :lg_code
+      t.references :language
       t.string :cat_code
+      t.string :cat_code_24
       t.integer :pattern_no
       t.string :pattern_name
       t.string :summary

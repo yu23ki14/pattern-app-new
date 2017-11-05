@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :timeoutable, :trackable, :validatable
   has_many :favorites
-  has_many :patterns
+  has_many :practices
 end

@@ -1,0 +1,16 @@
+#add-practice.modal
+  .modal-container.col-11.col-center.p-y-30
+    .close-modal
+      i.fa.fa-times
+    .row-space-top-4
+      = form_for @practice_form do |f|
+        = f.hidden_field :user_id, :value => current_user.id
+        = f.hidden_field :language_id, :value => language_id
+        = f.hidden_field :pattern_no, :value => pattern_no
+        .row.selectbox
+          .col-10.col-center
+            p 期間は必須です。
+            = f.select :limit, [["７日間", 7], ["３０日間", 30], ["６０日間", 60], ["９０日間", 90], ["１２０日間", 120]], :prompt => "▼　期間を選ぶ"
+            = f.select :frequency, [["毎日", "day"], ["毎週", "week"], ["毎月", "month"]], :prompt => "▼　頻度を選ぶ"
+          .col-12.col-center.text-center
+            = f.submit "追加する", class: "button button-primary "

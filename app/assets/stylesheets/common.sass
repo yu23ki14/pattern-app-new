@@ -14,8 +14,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   line-height: 1.1
   
 h1, h2, h3, h4, h5, h6
-  margin-top: 25px
-  margin-bottom: 15px
+  margin-top: 10px
+  margin-bottom: 10px
   font-weight: 700
   
 a
@@ -59,21 +59,27 @@ label
 .text-contrast
   color: white
   
+.text-pdp
+  color: white
+  
 @media (max-width: 767px)
   h1, .h1
-    font-size: 45px
+    font-size: 45px !important
   h2, .h2
-    font-size: 30px
+    font-size: 30px !important
   h3, .h3
-    font-size: 25px
+    font-size: 25px !important
   h4, .h4
-    font-size: 20px
+    font-size: 20px !important
   h5, .h5
-    font-size: 18px
+    font-size: 18px !important
   p
-    font-size: 15px
+    font-size: 15px !important
     &.small
-      font-size: 11px
+      font-size: 11px !important
+
+label
+  transition-duration: .3s
   
 /* input ================================================== */
 
@@ -113,15 +119,22 @@ input[type="radio"]:checked
     
 .selectbox
   position: relative
-  display: inline-block
+  display: block
   vertical-align: bottom
   select
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    width: 100%
+    margin-bottom: 10px
+    font-size: 17px
     padding-top: 6px !important
     padding-bottom: 6px !important
+    padding-left: 10px
     padding-right: 2em
     border-radius: 0
-  &:after
-    content: '\f107'
+  select:after
+    content: 'a'
     position: absolute
     top: 0
     right: 10px
@@ -200,10 +213,16 @@ input[type="radio"]:checked
     display: none
   #nav-close-btn
     display: block
-.sessions, .registeration, .passwords
+.sessions, .registeration, .passwords, .patterns.details
   #nav-open-btn, #nav-close-btn
     display: none
 
+.practice-nav
+  a
+    color: $brand-dark-gray
+    text-decoration: none
+  li.active
+    border-bottom: 3px $brand-theme solid
     
 
 /* button ================================================== */
@@ -211,11 +230,11 @@ input[type="radio"]:checked
 .button
   display: inline-block
   line-height: 24px
-  padding: 5px 22px
+  padding: 10px 22px
   color: $brand-gray
   font-size: 18px
   background-color: white
-  border-radius: 20px
+  border-radius: 2px
   border: 1px solid $brand-light-gray
   transition: background-color .2s
   cursor: pointer
@@ -226,6 +245,9 @@ input[type="radio"]:checked
     position: fixed
     bottom: 30px
 
+.button-lg
+  min-width: 200px
+
 .button-outline
   color: $brand-light-gray
   border-color: $brand-light-gray
@@ -234,10 +256,10 @@ input[type="radio"]:checked
 
 .button-primary
   color: $brand-contrast
-  border-color: $brand-theme
-  background-color: $brand-theme
+  border-color: #FA8072
+  background-color: #FF5A5F
   &:hover
-    background-color: $brand-theme-hover
+    background-color: #FF5A54
 
 .button-primary-outline
   color: $brand-theme
@@ -544,6 +566,8 @@ input[type="radio"]:checked
     display: table
   &:after
     clear: both
+.required-container
+  position: relative
     
 /* avatar ================================================== */
 
@@ -597,3 +621,73 @@ input[type="radio"]:checked
 .card1
   border-radius: 20px
   background: linear-gradient(to right, #fb884e, #f1d44c)
+
+/* fav-heart-icon ================================================*/
+i
+  &.card
+    position: absolute
+    right: -15px
+    color: $pastel-red
+    
+/* modal ==========================*/
+.modal
+  display: none
+  height: 100%
+  width: 100%
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+.modal-backdrop
+  height: 100%
+  width: 100%
+  background-color: rgba(0, 0, 0, .6)
+.modal-container
+  position: relative
+  background-color: $brand-contrast
+  top: -50%
+  bottom: 50%
+  transform: translateY(-50%)
+body.modal-open
+  overflow: hidden
+  height: 100%
+  .modal
+    display: block
+.close-modal
+  display: block
+  position: fixed
+  top: 10px
+  right: 10px
+  width: 24px
+  height: 24px
+  font-size: 24px
+  &:hover
+    opacity: .75
+    
+/* alert =====================*/
+.alert
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  padding: 40px 20px
+  min-width: 200px
+  border-radius: 10px
+  z-index: 9999999
+  text-align: center
+.alert-notice
+  background-color: rgba(0, 0, 0, 0.6)
+  color: white
+.alert-alert
+  background-color: rgba(250, 0, 0, 0.8)
+  color: white
+
+/* patterns color =======================*/
+#lp-color
+  background: linear-gradient(#8FC31F, #13AE67)
+#cp-color
+  background: linear-gradient(#F39800, #F8B62D)
+#pdp-color
+  background: linear-gradient(#B5B5B6, #231815)
+#pp-color
+  background: linear-gradient(#2EA7E0, #00A0E9)  

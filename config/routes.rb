@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
   
   devise_for :users
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   #patterns route
   resources :patterns, only: [:index] do
     collection do
-      get ':lg_code' => 'patterns#show'
-      get ':lg_code/:pattern_no' => 'patterns#details'
-      post ':lg_code/:pattern_no/:user_id/fav' => 'patterns#fav'
+      get ':language_id' => 'patterns#show'
+      get ':language_id/:pattern_no' => 'patterns#details'
+      post ':language_id/:pattern_no/fav' => 'patterns#fav'
+    end
+  end
+  
+  resources :practices, only: [:index, :create] do
+    collection do
+      get '/complete' => 'practices#complete'
     end
   end
   

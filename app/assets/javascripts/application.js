@@ -16,7 +16,10 @@
 //= require turbolinks
 
 //modules
+//= require common
 //= require welcome
 //= require add_class
 //= require patterns
 //= require fix_css
+//= require plugin
+//= require practices

@@ -1,7 +1,7 @@
 .page-container
   h1.p-l-5 パターン
   - @languages.each do |l|
-    = link_to "patterns/#{l[:lg_code]}"
+    = link_to "patterns/#{l[:id]}"
       .col-6
-        .card1.box-shadow-primary.flex-container
+        .card1.box-shadow-primary.flex-container{id = "#{l[:lg_code]}-color"}
           h6.p-x-10.text-center.text-contrast #{l[:lg_name]}
