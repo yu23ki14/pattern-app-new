@@ -2,11 +2,23 @@
 .page-container
   -if user_signed_in?
     - @now_practices.each do |p|
-      .card.col-12.col-center.p-x-20.p-b-20.row-space-2.required-container{class = "limit-#{p[:limit]}-color"}
+      .card.col-12.col-center.p-x-20.p-b-20.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
         p.small.date
-          | ～#{(p[:created_at] + p[:limit]*86400).strftime("%Y年%m月%d日")}
-        h3.row-space-top-3 #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name]}
-        p
+          | 前回 #{(p.lastdate).strftime("%Y/%m/%d")}
+        h3.row-space-top-4.required-container
+          span.text-contrast.p-r-5.h3.inline.check-icon
+            .inline
+              - if p.lastdate + 43200 > Time.now
+                = check_box_tag 'did'+p.id.to_s, '', true
+                label.text-contrast.inline[for="did#{p.id}"]
+                  i.fa.fa-check
+              - else
+                = check_box_tag 'did'+p.id.to_s, '', false, {:practice_id => p.id, :class => "did"}
+                label.text-contrast.inline[for="did#{p.id}"]
+                  i.fa.fa-check
+          span.p-l-40
+            |#{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name]}
+        p.p-l-40
           | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
   -else
     p ユーザー登録してください。

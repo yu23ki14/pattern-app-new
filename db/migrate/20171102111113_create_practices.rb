@@ -8,7 +8,8 @@ class CreatePractices < ActiveRecord::Migration[5.1]
       t.string :comment
       t.boolean :done
       t.integer :limit, null: false
-      t.string :frequency
+      t.integer :priority
+      t.datetime :lastdate
       t.datetime :enddate
       t.timestamps
     end

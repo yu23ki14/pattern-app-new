@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :practices, only: [:index, :create] do
     collection do
       get '/complete' => 'practices#complete'
+      post '/:id/did' => 'practices#did'
     end
   end
   

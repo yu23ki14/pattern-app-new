@@ -65,7 +65,8 @@ ActiveRecord::Schema.define(version: 20171102111113) do
     t.string "comment"
     t.boolean "done"
     t.integer "limit", null: false
-    t.string "frequency"
+    t.integer "priority"
+    t.datetime "lastdate"
     t.datetime "enddate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
