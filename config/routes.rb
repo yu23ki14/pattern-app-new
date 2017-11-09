@@ -13,9 +13,11 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :practices, only: [:index, :create] do
+  resources :practices, only: [:index, :create, :update] do
     collection do
       get '/complete' => 'practices#complete'
+      get '/:id/addcomment' => 'practices#addcomment'
+      get '/archive' => 'practices#archive'
       post '/:id/did' => 'practices#did'
     end
   end

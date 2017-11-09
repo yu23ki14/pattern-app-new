@@ -1,24 +1,53 @@
-.practice-nav.row-space-3.row-space-top-1
+.practice-nav.row-space-3.p-t-20.page-container
   ul.row.text-center
-    - if controller.action_name == "index"
-      li.col-6.active
-        = link_to practices_path
-          .text-lead-lg
-            |実践リスト
-    - else
-      li.col-6
-        = link_to practices_path
-          .text-lead-lg
-            |実践リスト
-    - if controller.action_name == "complete"
-      li.col-6.active
-        = link_to complete_practices_path
-          .text-lead-lg
-            |終了リスト
-    - else
-      li.col-6
-        = link_to complete_practices_path
-          .text-lead-lg
-            |終了リスト 
-            span.notice-deco
-              |#{end_num}
+    li.col-4#active-list.active
+      = link_to practices_path, remote: true
+        .text-lead-en
+          |実践リスト
+    
+    li.col-4#complete-list
+      = link_to complete_practices_path, remote: true
+        .text-lead-en
+          |終了リスト
+      
+    li.col-4#archive-list
+      = link_to archive_practices_path, remote: true
+        .text-lead-en
+          |アーカイブ
+
+    // oldone
+      - if controller.action_name == "index"
+        li.col-4.active
+          = link_to practices_path, remote: true
+            .text-lead-en
+              |実践リスト
+      - else
+        li.col-4
+          = link_to practices_path, remote: true
+            .text-lead-en
+              |実践リスト
+      - if controller.action_name == "complete"
+        li.col-4.active
+          = link_to complete_practices_path
+            .text-lead-en
+              |終了リスト
+      - else
+        li.col-4.required-container
+          = link_to complete_practices_path, remote: true
+            .text-lead-en
+              |終了リスト 
+            - if end_num != 0
+              .notice-deco
+                |#{end_num}
+      
+      - if controller.action_name == "archive"
+        li.col-4.active
+          //= link_to archive_practices_path
+          = link_to archive_practices_path, remote: true
+            .text-lead-en
+              |アーカイブ
+      - else
+        li.col-4
+          = link_to archive_practices_path, remote: true
+            .text-lead-en
+              |アーカイブ

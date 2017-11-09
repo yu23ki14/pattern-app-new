@@ -9,7 +9,11 @@ class PracticesController < ApplicationController
   end
   
   def complete
-    @practices = @practices.before(Date.today, field: :enddate)
+    respond_to do |format|
+      @practices = @practices.before(Date.today, field: :enddate).where(done: nil)
+      @practice = Practice.new
+      format.js
+    end
   end
   
   def create
@@ -27,21 +31,27 @@ class PracticesController < ApplicationController
     end
   end
   
+  def archive
+    respond_to do |format|
+      @practices = @practices.where(done: true)
+      @practice = Practice.new
+      format.js
+    end
+  end
+  
   def did
     @practice = Practice.find(params[:id])
     didcount = @practice[:did] + 1
     @practice.update(did: didcount, lastdate: Time.now)
   end
   
-  def fav
-    if user_signed_in?
-      @favorite = @favorites.find_by(pattern_no: params[:pattern_no])
-      if @favorite == nil
-        @favorite = Favorite.create(user_id: current_user.id, language_id: params[:language_id], pattern_no: params[:pattern_no])
-      else
-        @favorite.destroy
-      end
-    end
+  def addcomment
+    @practice = Practice.find(params[:id])
+  end
+  
+  def update
+    @practice = Practice.find(params[:id])
+    @practice.update(practice_done_params)
   end
   
   private
@@ -52,5 +62,8 @@ class PracticesController < ApplicationController
     end
     def practice_params
       params.require(:practice).permit(:user_id, :language_id, :pattern_no, :limit, :priority)
+    end
+    def practice_done_params
+      params.require(:practice).permit(:done, :comment)
     end
 end

@@ -1,4 +1,6 @@
 body.practices
+  #practicecontent
+    opacity: 1
   .card
     border-radius: 10px
     min-height: 115px
@@ -15,10 +17,15 @@ body.practices
   .pri-4-color
     background-color: #F96863
   .notice-deco
+    right: 0px
+    top: 0
+    position: absolute
+    display: inline-block
     background-color: red
     border-radius: 20px
-    padding: 4px 7px
+    padding: 0px 4.5px
     color: white
+    font-size: 12px
   input[type="checkbox"]
     display: none
     &:checked + label
@@ -27,4 +34,9 @@ body.practices
     padding: 0
   .check-icon
     position: absolute
-    
+  #add_comment
+    textarea
+      width: 100%
+      height: 150px
+      padding: 10px
+      font-size: 16px
