@@ -1,4 +1,4 @@
-.details-head{id = "#{@language[:lg_code]}-color"}
+.details-head
   - if user_signed_in?
     #favorite_icon
       - if @favorite != nil
@@ -11,7 +11,7 @@
           i.fa.fa-heart.h1.p-l-10
             
   .row
-    = image_tag "pattern_img/#{@language[:lg_code]}/01.png", class: "col-7"
+    = image_tag "pattern_img/#{@language[:lg_code]}/#{@pattern.pattern_no}.png", class: "col-6"
   #text-area{class = "text-#{@language[:lg_code]}"}
     p.small #{@language.lg_name} No.#{@pattern.pattern_no}
     h2.m-t-5 #{@pattern.pattern_name}

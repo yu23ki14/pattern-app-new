@@ -4,3 +4,5 @@ $(document).on 'turbolinks:load', ->
     $('.modal').modal('hide')
   $('#practicecontent').on 'click', '.close-modal', ->
     $('.modal').modal('hide')
+  $('#pattern-detail-container').on 'click', '.close-modal', ->
+    $('.modal').modal('hide')

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     collection do
       get '/complete' => 'practices#complete'
       get '/:id/addcomment' => 'practices#addcomment'
+      get '/:language_id/:pattern_no/detail' => 'practices#patterndetail'
       get '/archive' => 'practices#archive'
       post '/:id/did' => 'practices#did'
     end
@@ -25,6 +26,16 @@ Rails.application.routes.draw do
   #languages route
   resources :languages, only: [:index, :show]
   
+  #recommends route
+  resources :recommends, only: [:index, :update] do
+    collection do
+      post '/:phase_1_value/new' => 'recommends#recommend'
+      get '/:phase_1_id/gophase2' => 'recommends#phase2'
+      get '/:phase_2_id/gophase3' => 'recommends#phase3'
+      get '/:phase_3_id/gophase4' => 'recommends#phase4'
+      get '/:phase_4_id/gorecommend' => 'recommends#recommend'
+    end
+  end
   #categories route
   resources :categories, only: [:index]
   root 'welcome#index'

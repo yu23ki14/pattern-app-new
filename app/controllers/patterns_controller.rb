@@ -19,7 +19,7 @@ class PatternsController < ApplicationController
     @pattern = @language.patterns.find_by(pattern_no: params[:pattern_no])
     if user_signed_in?
       @favorite = @favorites.find_by(pattern_no: params[:pattern_no])
-      @practice = @practices.find_by(pattern_no: params[:pattern_no])
+      @practice = @practices.where(done: nil).find_by(pattern_no: params[:pattern_no])
       @practice_form = Practice.new
     end
   end

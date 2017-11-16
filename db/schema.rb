@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102111113) do
+ActiveRecord::Schema.define(version: 20171114224556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,46 @@ ActiveRecord::Schema.define(version: 20171102111113) do
     t.index ["language_id"], name: "index_patterns_on_language_id"
   end
 
+  create_table "phase1s", force: :cascade do |t|
+    t.string "choices"
+    t.string "response"
+    t.string "nextquestion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "phase2s", force: :cascade do |t|
+    t.string "choices"
+    t.string "response"
+    t.string "nextquestion"
+    t.bigint "phase1_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["phase1_id"], name: "index_phase2s_on_phase1_id"
+  end
+
+  create_table "phase3s", force: :cascade do |t|
+    t.string "choices"
+    t.string "response"
+    t.string "nextquestion"
+    t.bigint "phase2_id"
+    t.integer "context_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["phase2_id"], name: "index_phase3s_on_phase2_id"
+  end
+
+  create_table "phase4s", force: :cascade do |t|
+    t.string "choices"
+    t.string "response"
+    t.string "nextquestion"
+    t.bigint "phase3_id"
+    t.integer "context_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["phase3_id"], name: "index_phase4s_on_phase3_id"
+  end
+
   create_table "practices", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "language_id", null: false
@@ -72,6 +112,17 @@ ActiveRecord::Schema.define(version: 20171102111113) do
     t.datetime "updated_at", null: false
     t.index ["language_id"], name: "index_practices_on_language_id"
     t.index ["user_id"], name: "index_practices_on_user_id"
+  end
+
+  create_table "recommends", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "phase_1"
+    t.integer "phase_2"
+    t.integer "phase_3"
+    t.integer "phase_4"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_recommends_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

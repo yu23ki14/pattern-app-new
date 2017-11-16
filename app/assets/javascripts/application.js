@@ -23,3 +23,4 @@
 //= require fix_css
 //= require plugin
 //= require practices
+//= require recommends

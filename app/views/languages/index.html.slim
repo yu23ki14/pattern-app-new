@@ -1,7 +1,10 @@
-.page-container
+.page-container{data-turbolinks="false"}
   h1.p-l-5 パターン
   - @languages.each do |l|
-    = link_to "patterns/#{l[:id]}"
+    = link_to "patterns/#{l[:id]}", class: "language-card"
       .col-6
-        .card1.box-shadow-primary.flex-container{id = "#{l[:lg_code]}-color"}
-          h6.p-x-10.text-center.text-contrast #{l[:lg_name]}
+        .card1.box-shadow-primary{id = "#{l[:lg_code]}-color"}
+          h6.p-x-15.text-contrast.p-t-10
+            = simple_format(l[:lg_name])
+          .col-8.col-center
+            = image_tag "pattern_img/#{l.lg_code}/01.png", class: "col-12 col-center"

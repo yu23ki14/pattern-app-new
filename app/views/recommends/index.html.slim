@@ -1,0 +1,24 @@
+.page-container.row-space-8
+  .row-space-8
+    #phase-1
+      .question-container.row-space-top-3.required-container
+        = image_tag "icons/icon-manabu", class: "avatar-image-md avatar-image no-border manabu-icon"
+        .text-box.inline.box-shadow-primary
+          h5.normal こんにちは。<br>僕はまなぶ！あなたにピッタリなパターンを探すお手伝いをするよ。
+        .text-box.inline.box-shadow-primary
+          h5.normal いくつか質問をするから答えてね。
+        .text-box.inline.box-shadow-primary
+          h5.normal 最近の気分はどう？
+      .choices-container.col-11.col-center.row-space-top-2
+        = form_for Recommend.new do |f|
+          ul
+            - @phase1.each do |p|
+              li.h5
+                = f.radio_button :phase_1, p.id, class: "submit"
+                label[for="recommend_phase_1_#{p.id.to_s}"]
+                  | #{p.choices}
+    #phase-2
+    #phase-3
+    #phase-4
+    #recommend
+    #bottom

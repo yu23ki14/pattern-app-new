@@ -3,7 +3,7 @@ class PracticesController < ApplicationController
   
   def index
     if user_signed_in?
-      @now_practices = @practices.after(Date.today, field: :enddate)
+      @now_practices = @practices.after(Date.today, field: :enddate).order("enddate")
       @ended_practices = @practices.before(Date.today, field: :enddate)
     end
   end
@@ -33,7 +33,7 @@ class PracticesController < ApplicationController
   
   def archive
     respond_to do |format|
-      @practices = @practices.where(done: true)
+      @practices = @practices.where(done: true).order("updated_at")
       @practice = Practice.new
       format.js
     end
@@ -47,6 +47,11 @@ class PracticesController < ApplicationController
   
   def addcomment
     @practice = Practice.find(params[:id])
+  end
+  
+  def patterndetail
+    @language = Language.find(params[:language_id])
+    @pattern = @language.patterns.find_by(pattern_no: params[:pattern_no])
   end
   
   def update

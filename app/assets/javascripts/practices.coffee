@@ -26,6 +26,13 @@ $(document).on 'turbolinks:load', ->
             url: 'practices/complete'
       return false
       
+    $('#practicecontent').on 'click', '.js-trigger-pattern-detail', ->
+      $.ajax(
+        type: 'GET',
+        url: 'practices/' + $(this).attr('language_id') + '/'+$(this).attr('pattern_no') + '/detail'
+      ).done ->
+        $('#pattern_detail').modal()
+      
     $('#active-list').click ->
       $("li").removeClass("active")
       $(this).addClass("active")

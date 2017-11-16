@@ -1,0 +1,26 @@
+.question-container.row-space-top-3.required-container
+  = image_tag "icons/icon-manabu", class: "avatar-image-md avatar-image no-border manabu-icon"
+  .text-box.inline.box-shadow-primary
+    h5.normal #{@phase_pre.response}
+  .text-box.inline.box-shadow-primary
+    h5.normal #{@phase_pre.nextquestion}
+.choices-container.col-11.col-center.row-space-top-2
+  = form_for Recommend.new do |f|
+    ul
+      - if controller.action_name == "phase4" || controller.action_name == "recommend"
+        - if @phase_pre.context_id != nil
+          - @phase.each do |p|
+            h1 #{p.pattern_name}
+        - else
+          - @phase.each do |p|
+            li.h5
+              = f.radio_button :phase_2, p.id, class: "submit"
+              label[for="recommend_phase_2_#{p.id.to_s}"]
+                | #{p.choices}
+      - else
+        
+        - @phase.each do |p|
+          li.h5
+            = f.radio_button :phase_2, p.id, class: "submit"
+            label[for="recommend_phase_2_#{p.id.to_s}"]
+              | #{p.choices}

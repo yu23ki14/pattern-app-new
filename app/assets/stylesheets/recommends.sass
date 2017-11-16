@@ -1,0 +1,31 @@
+.recommends
+  .question-container
+    padding-left: 50px
+    .manabu-icon
+      position: absolute
+      left: 0
+    .text-box
+      background-color: white
+      border: 1px solid gray
+      border-radius: 0px 5px 5px 5px
+      padding: 0 10px
+      max-width: 80%
+      margin: 8px 0 0 10px
+      &:first-of-type
+        margin: 28px 0 0 10px
+  .choices-container
+    ul
+      background-color: $pri-2-color
+      border-radius: 5px
+      padding: 5px
+      li
+        margin-bottom: 4px
+        &:last-of-type
+          margin-bottom: 0px
+      label
+        padding: 10px 10px
+        border: 1px $pri-1-color solid
+      input[type="radio"]
+        display: none
+        &:checked + label
+          background-color: $pri-1-color

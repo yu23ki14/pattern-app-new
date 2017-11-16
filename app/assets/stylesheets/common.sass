@@ -20,11 +20,14 @@ h1, h2, h3, h4, h5, h6
   font-weight: 700
   
 a
-  color: $brand-theme
+  color: $brand-dark-gray
   text-decoration: none
   &:hover, &:focus
-    color: $brand-theme-hover
+    color: $brand-gray
     text-decoration: underline
+  &.underline
+    border-bottom: 1px solid $brand-gray
+    padding-bottom: 3px
 
 p
   word-break: break-word
@@ -175,43 +178,45 @@ input[type="radio"]:checked
   li
     position: absolute
     &:nth-child(1)
-      top: 40px
-      left: 150px
+      top: 50px
+      left: 125px
     &:nth-child(2)
       top: 100px
       left: 75px
     &:nth-child(3)
-      top: 165px
+      top: 160px
       left: 50px
+    a
+      color: $brand-contrast
 #nav-container
   width: 1000px
   height: 500px
   position: fixed
   bottom: -500px
   right: -1000px
-  background-color: $brand-theme-hover
+  background-color: $pink-light
   border-radius: 230px
   transition-duration: 0.5s
   z-index: 2999
   
 .nav-btn
-  width: 80px
-  height: 80px
-  font-size: 50px
+  width: 50px
+  height: 50px
+  font-size: 30px
   font-weight: bold
   position: fixed
   bottom: 20px
   right: 20px
-  background-color: $brand-theme
+  background-color: $pink-base
   border-radius: 100%
   z-index: 3000
   i
-    line-height: 80px
+    line-height: 50px
 #nav-close-btn
   display: none
 .nav-open
   #nav-container
-    transform: translateX(-300px) translateY(-220px)
+    transform: translateX(-215px) translateY(-190px)
   #nav-open-btn
     display: none
   #nav-close-btn
@@ -257,7 +262,7 @@ input[type="radio"]:checked
   color: $brand-light-gray
   border-color: $brand-light-gray
   &:hover
-    color: $brand-light-gray
+    color: $brand-contrast
 
 .button-primary
   color: $brand-contrast
@@ -595,6 +600,8 @@ input[type="radio"]:checked
   vertical-align: middle
   border-radius: 100%
   border: 3px solid $brand-theme
+  &.no-border
+    border: 0px
 .avatar-image-lg
   width: 64px
   height: 64px
@@ -633,13 +640,19 @@ input[type="radio"]:checked
 /* flexcontainer ================================================== */
 
 .box-shadow-primary
-  box-shadow: 0px 0px 3px 1px $brand-light-gray
+  box-shadow: 0px 0px 4px .5px $brand-light-gray
 
 /* card ================================================== */
 
 .card1
   border-radius: 20px
-  background: linear-gradient(to right, #fb884e, #f1d44c)
+  background: white
+  border: black solid 1px
+  
+body.languages
+  .card1
+    border: none
+
 
 /* fav-heart-icon ================================================*/
 i
@@ -657,6 +670,7 @@ i
   top: 50%
   left: 50%
   transform: translate(-50%, -50%)
+  z-index: 100
 .modal-backdrop
   height: 100%
   width: 100%
@@ -710,3 +724,7 @@ body.modal-open
   background: linear-gradient(#B5B5B6, #231815)
 #pp-color
   background: linear-gradient(#2EA7E0, #00A0E9)  
+  
+/* cannot click =========================*/
+.disable
+  pointer-events: none
