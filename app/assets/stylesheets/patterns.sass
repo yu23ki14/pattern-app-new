@@ -1,19 +1,32 @@
 .patterns
-  .details-head
-    height: 450px
-    position: relative
-    img
-      position: absolute
-      top: 20px
-      right: 20px
-    #text-area
-      position: absolute
-      bottom: 20px
-      left: 10px
-      width: 90%
   input[type="checkbox"]
     display: none
     &:checked + label
       color: $pastel-red
-  .pattern-title-container
-    height: 35px
+  .pattern_img
+    position: absolute
+    top: 0
+    right: 25px
+  #text-area
+    margin-top: 150px
+  .border-lp
+    border-bottom: $lp-color solid 2px
+    height: 1px
+  .border-pdp
+    border-bottom: $pdp-color solid 2px
+    height: 1px
+  .border-cp
+    border-bottom: $lp-color solid 2px
+    height: 1px
+  .border-pp
+    border-bottom: $lp-color solid 2px
+    height: 1px
+    
+.patterns.show
+  .lg-title
+    position: fixed
+    top: 0
+    width: 100%
+    z-index: 1
+  .page-container
+    margin-top: 70px

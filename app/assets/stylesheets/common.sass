@@ -51,6 +51,9 @@ label
 .text-center
   text-align: center
   
+.text-left
+  text-align: left
+  
 .text-y-center
   vertical-align: middle
   
@@ -59,6 +62,9 @@ label
 
 .text-sub
   color: $brand-light-gray
+  
+.text-light
+  color: $brand-very-light-gray
   
 .text-contrast
   color: white
@@ -87,6 +93,13 @@ label
   
 .inline
   display: inline-block
+  
+/* bg =============================================*/
+.bg-lp
+  background-color: $lp-color
+.bg-pdp
+  background-color: $pdp-color
+  color: $brand-contrast
   
 /* input ================================================== */
 
@@ -171,68 +184,6 @@ input[type="radio"]:checked
     border-bottom-color: $brand-dark-gray
   &.base
     border-bottom-color: $brand-theme
-    
-/* nav ================================================== */
-
-.nav
-  li
-    position: absolute
-    &:nth-child(1)
-      top: 50px
-      left: 125px
-    &:nth-child(2)
-      top: 100px
-      left: 75px
-    &:nth-child(3)
-      top: 160px
-      left: 50px
-    a
-      color: $brand-contrast
-#nav-container
-  width: 1000px
-  height: 500px
-  position: fixed
-  bottom: -500px
-  right: -1000px
-  background-color: $pink-light
-  border-radius: 230px
-  transition-duration: 0.5s
-  z-index: 2999
-  
-.nav-btn
-  width: 50px
-  height: 50px
-  font-size: 30px
-  font-weight: bold
-  position: fixed
-  bottom: 20px
-  right: 20px
-  background-color: $pink-base
-  border-radius: 100%
-  z-index: 3000
-  i
-    line-height: 50px
-#nav-close-btn
-  display: none
-.nav-open
-  #nav-container
-    transform: translateX(-215px) translateY(-190px)
-  #nav-open-btn
-    display: none
-  #nav-close-btn
-    display: block
-.sessions, .registeration, .passwords, .patterns.details
-  #nav-open-btn, #nav-close-btn
-    display: none
-
-.practice-nav
-  a
-    color: $brand-dark-gray
-    text-decoration: none
-  li
-    padding-bottom: 15px
-  li.active
-    border-bottom: 2px $brand-gray solid
     
 
 /* button ================================================== */
@@ -645,7 +596,7 @@ input[type="radio"]:checked
 /* card ================================================== */
 
 .card1
-  border-radius: 20px
+  border-radius: 10px
   background: white
   border: black solid 1px
   
@@ -728,3 +679,64 @@ body.modal-open
 /* cannot click =========================*/
 .disable
   pointer-events: none
+  
+/* nav ================================================== */
+  
+.nav-btn
+  width: 55px
+  height: 55px
+  font-size: 25px
+  font-weight: bold
+  position: fixed
+  bottom: 20px
+  right: 20px
+  background-color: $orange-base
+  border-radius: 100%
+  z-index: 3000
+  i
+    line-height: 55px
+  a
+    color: $brand-contrast
+.nav
+  li
+    transition-duration: .3s
+    bottom: 20px
+    right: 20px
+    position: fixed
+#nav-close-btn
+  display: none
+  background-color: $brand-gray
+.nav-open
+  .nav
+    li
+      box-shadow: 0px 0px 4px .5px $brand-light-gray
+      &:nth-child(1)
+        transform: translateY(-290px)
+      &:nth-child(2)
+        transform: translateY(-220px)
+      &:nth-child(3)
+        transform: translateY(-150px)
+      &:nth-child(4)
+        transform: translateY(-80px)
+      
+  #nav-open-btn
+    display: none
+  #nav-close-btn
+    display: block
+.sessions, .registeration, .passwords, .patterns.details, .welcome
+  #nav-container
+    display: none
+
+.practice-nav
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 2
+  background-color: $brand-contrast
+  a
+    color: $brand-dark-gray
+    text-decoration: none
+  li
+    padding-bottom: 10px
+  li.active
+    border-bottom: 4px $brand-gray solid

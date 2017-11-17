@@ -1,29 +1,33 @@
-.details-head
+.details-head.required-container
   - if user_signed_in?
     #favorite_icon
       - if @favorite != nil
         = check_box_tag 'fav', '', true, {:user_id => current_user.id, :language_id => params[:language_id], :pattern_no => params[:pattern_no]}
-        label.text-contrast.fav-icon-lg[for="fav"]
+        label.text-light.fav-icon-lg.inline[for="fav"]
           i.fa.fa-heart.h1.p-l-10
       - else
         = check_box_tag 'fav', '', false, {:user_id => current_user.id, :language_id => params[:language_id], :pattern_no => params[:pattern_no]}
-        label.text-contrast.fav-icon-lg[for="fav"]
+        label.text-light.fav-icon-lg.inline[for="fav"]
           i.fa.fa-heart.h1.p-l-10
             
-  .row
-    = image_tag "pattern_img/#{@language[:lg_code]}/#{@pattern.pattern_no}.png", class: "col-6"
-  #text-area{class = "text-#{@language[:lg_code]}"}
-    p.small #{@language.lg_name} No.#{@pattern.pattern_no}
-    h2.m-t-5 #{@pattern.pattern_name}
-    p.col-11.p-l-0 #{@pattern.summary}
+  .pattern_img.col-7
+    = image_tag "pattern_img/#{@language[:lg_code]}/#{@pattern.pattern_no}.png", class: "col-12"
+.page-container
+  .col-12.col-center
+    #text-area{class = "text-#{@language[:lg_code]}"}
+      p.small #{@language.lg_name} No.#{@pattern.pattern_no}
+      h2.m-t-5 #{@pattern.pattern_name}
+      p.col-11.p-l-0.row-space-2 #{@pattern.summary}
+.row
+  .col-10{class = "border-#{@language[:lg_code]}"}
 .page-container.row-space-4
   .col-10.col-center
     p.row-space-top-3 #{@pattern.context}
-    h5.text-center ▼ その状況で
+    h5.text-center.p-y-20 ▼ その状況で
     p #{@pattern.b_problem}
-    h5.text-center ▼ そこで
+    h5.text-center.p-y-20 ▼ そこで
     p #{@pattern.b_solution}
-    h5.text-center ▼ そうすると
+    h5.text-center.p-y-20 ▼ そうすると
     p #{@pattern.consequence}
 -if @practice == nil
   -if user_signed_in?

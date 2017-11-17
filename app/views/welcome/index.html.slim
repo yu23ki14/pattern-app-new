@@ -1,8 +1,23 @@
-h1 Welcome
-
-- if user_signed_in?
-  = link_to "/users/sign_out"
-    | Sign out
-- else
-  = link_to "/users/sign_in"
-    | Sign in
+.page-container
+  .welcome-container
+    .col-6.col-center
+      = image_tag "icons/icon-manabu.png", class: "col-12 col-center"
+    
+    .row-space-8
+      .text-center.row-space-8
+        h4.inline
+          |パターン・ランゲージを
+          br
+          |もっと身近に。
+    - if !user_signed_in?
+      .text-center.row-space-top-4
+        = link_to "/users/sign_in", class: "button button-outline button-lg button-primary"
+          | Sign in
+      .text-center.row-space-top-4
+        = link_to "/users/sign_up", class: "button button-outline button-lg"
+          | Sign up
+    
+    - if user_signed_in?
+      .text-center.row-space-top-4
+        = link_to "/practices", class: "button button-outline button-lg button-primary"
+          | Get Started

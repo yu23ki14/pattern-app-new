@@ -1,5 +1,7 @@
+h4.p-l-5.p-y-20.m-t-0.m-b-0.lg-title(class = "bg-#{@language.lg_code}")
+  .p-l-10
+    | #{@language.lg_name}
 .page-container
-  h2.p-l-5 #{@language.lg_name}
   - @patterns.each do |p|
     = link_to "/patterns/#{p.language_id}/#{p.pattern_no}", class: "read-pattern",  lg: "#{p[:lg_code]}", no: "#{p[:pattern_no]}"
       .col-6

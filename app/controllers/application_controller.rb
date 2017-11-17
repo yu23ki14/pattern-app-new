@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   before_action :set_user
   before_action :backhome
   
+  def after_sign_in_path_for(resource)
+    practices_path
+  end
+
+  
   private
     def backhome
       if controller_name == "practices" || controller_name == "recommends"

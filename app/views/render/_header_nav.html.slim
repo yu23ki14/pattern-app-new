@@ -1,18 +1,23 @@
-.text-contrast#nav-container.box-shadow-primary
-  .nav
-    ul.strong
-      li
-        = link_to languages_path
-          .h4 pattern
-      li
-        = link_to practices_path
-          .h4 list
-      li
-        = link_to root_path
-          .h4 home
-.text-contrast.nav-btn#nav-open-btn.box-shadow-primary
-  .text-center
-    i.fa.fa-circle-o
-.text-contrast.nav-btn#nav-close-btn.box-shadow-primary
-  .text-center
-    i.fa.fa-times
+#nav-container
+  .text-contrast#nav-container.box-shadow-primary
+    .nav
+      ul.strong.text-center
+        li.nav-btn
+          = link_to destroy_user_session_path
+            i.fa.fa-sign-out
+        li.nav-btn
+          = link_to recommends_path
+            i.fa.fa-comments-o
+        li.nav-btn
+          = link_to languages_path
+            i.fa.fa-file-text-o
+        li.nav-btn
+          = link_to practices_path
+            i.fa.fa-check
+  .text-contrast.nav-btn#nav-open-btn.box-shadow-primary
+    .text-center
+      i.fa.fa-bars
+  .text-contrast.nav-btn#nav-close-btn.box-shadow-primary
+    .text-center
+      i.fa.fa-times
+    
