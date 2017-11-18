@@ -9,7 +9,7 @@
           p
             | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
     - else
-      h5 実践期間が終わったパターンはまだないよ
+      h5 実践期間が終わったパターンはまだありません。
   -else
     p ユーザー登録してください。
   #addcommentform

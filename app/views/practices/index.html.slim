@@ -2,7 +2,7 @@
 #practicecontent
   .page-container
     -if user_signed_in?
-      -if @practices != nil
+      -if false
         - @now_practices.each do |p|
           .card.col-12.col-center.p-x-20.p-b-20.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
             p.small.date
@@ -25,7 +25,34 @@
             p.p-l-40
               | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
       - else
-        h4 実践したいパターンをパターン一覧から探して登録してね。
+        h4 実践リストは空です。
+        br
+        .col-11.col-center
+          h4.text-center 使い方
+          h5 step1
+          p
+            |メニューの
+            i.fa.fa-file-text-o.p-x-5
+            |からパターン一覧ページに入れます。そこで自分の実践したい、またはお気に入りのパターンを探してください。
+            br
+            i.fa.fa-comments-o.p-x-5
+            |ではまなぶくんが今のあなたに適したパターンを提案してくれます。ぜひご利用ください。
+            
+          h5.row-space-top-3 step2
+          p
+            |実践したいパターンが見つかったらパターン詳細ページにある
+            span.bg-theme.text-contrast.p-x-5 実践する
+            |ボタンを押します。
+            br
+            |意識的に実践する期間、実践する優先度の入力をすると実践リストに追加されます。
+          h5.row-space-top-3 step3
+          p
+            |実践期間中、実践した、または意識できたと思ったら
+            i.fa.fa-check
+            |を押します。
+            br
+            |期間終了後、終了リストに入ったパターンに振り返りのコメントを残してアーカイブしましょう。
+        
     -else
       p ユーザー登録してください。
 #pattern-detail-container

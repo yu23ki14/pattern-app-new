@@ -11,6 +11,7 @@ csv.each_with_index do |phase4, i|
   nextquestion = phase4[3]
   phase3_id = phase4[4]
   context_id = phase4[5]
+  phase = phase4[6]
 
   Phase4.seed do |s|
     s.id   = i
@@ -19,5 +20,6 @@ csv.each_with_index do |phase4, i|
     s.nextquestion = nextquestion
     s.phase3_id = phase3_id
     s.context_id = context_id
+    s.phase = phase
   end
 end

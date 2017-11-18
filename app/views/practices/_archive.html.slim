@@ -9,6 +9,6 @@
           p #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
           p #{p[:comment]}
     - else
-      h5 アーカイブにはまだ保存されていないよ
+      h5 アーカイブされたパターンはありません。
   -else
     p ユーザー登録してください。

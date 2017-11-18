@@ -8,7 +8,7 @@ body
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   -webkit-tap-highlight-color: rgba(0,0,0,0)
-  @media (min-width: 767px)
+  @media (min-width: 770px)
     display: none
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
@@ -56,6 +56,10 @@ label
   
 .text-y-center
   vertical-align: middle
+
+.text-justify
+  text-align: justify
+  text-justify: inter-ideograph
   
 .text-primary
   color: $brand-theme
@@ -84,7 +88,7 @@ label
   h5, .h5
     font-size: 18px !important
   p
-    font-size: 15px !important
+    font-size: 17px !important
     &.small
       font-size: 11px !important
 
@@ -94,12 +98,18 @@ label
 .inline
   display: inline-block
   
+/* footer =============================================*/
+footer
+  height: 100px
+  
 /* bg =============================================*/
 .bg-lp
   background-color: $lp-color
 .bg-pdp
   background-color: $pdp-color
   color: $brand-contrast
+.bg-theme
+  background-color: $brand-theme
   
 /* input ================================================== */
 
@@ -210,7 +220,7 @@ input[type="radio"]:checked
   min-width: 200px
 
 .button-outline
-  color: $brand-light-gray
+  color: $brand-gray
   border-color: $brand-light-gray
   &:hover
     color: $brand-contrast
@@ -690,7 +700,7 @@ body.modal-open
   position: fixed
   bottom: 20px
   right: 20px
-  background-color: $orange-base
+  background-color: $nav-base
   border-radius: 100%
   z-index: 3000
   i
@@ -723,7 +733,7 @@ body.modal-open
     display: none
   #nav-close-btn
     display: block
-.sessions, .registeration, .passwords, .patterns.details, .welcome
+.sessions, .registrations, .passwords, .welcome
   #nav-container
     display: none
 

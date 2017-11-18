@@ -36,6 +36,16 @@ Rails.application.routes.draw do
       get '/:phase_4_id/gorecommend' => 'recommends#recommend'
     end
   end
+  
+  #static_pages route
+  resources :static_pages, only: [:index] do
+    collection do
+      get '/privacy_policy' => 'static_pages#privacy_policy'
+      get '/service_agreement' => 'static_pages#service_agreement'
+      get '/vision' => 'static_pages#vision'
+    end
+  end
+  
   #categories route
   resources :categories, only: [:index]
   root 'welcome#index'

@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20171114224556) do
     t.string "response"
     t.string "nextquestion"
     t.bigint "phase1_id"
+    t.string "phase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phase1_id"], name: "index_phase2s_on_phase1_id"
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 20171114224556) do
     t.string "nextquestion"
     t.bigint "phase2_id"
     t.integer "context_id"
+    t.string "phase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phase2_id"], name: "index_phase3s_on_phase2_id"
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 20171114224556) do
     t.string "nextquestion"
     t.bigint "phase3_id"
     t.integer "context_id"
+    t.string "phase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phase3_id"], name: "index_phase4s_on_phase3_id"

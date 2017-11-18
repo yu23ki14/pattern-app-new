@@ -6,6 +6,7 @@ class CreatePhase3s < ActiveRecord::Migration[5.1]
       t.string :nextquestion
       t.references :phase2
       t.integer :context_id
+      t.string :phase
       t.timestamps
     end
   end

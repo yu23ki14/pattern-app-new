@@ -14,13 +14,14 @@
         - else
           - @phase.each do |p|
             li.h5
-              = f.radio_button :phase_2, p.id, class: "submit"
-              label[for="recommend_phase_2_#{p.id.to_s}"]
+              = f.radio_button :phase_p[:phase].to_s, p.id, class: "submit"
+              label[for="recommend_phase_#{p.phase}_#{p.id.to_s}"]
                 | #{p.choices}
       - else
         
-        - @phase.each do |p|
+        - @phase.each.with_index do |p,index|
           li.h5
-            = f.radio_button :phase_2, p.id, class: "submit"
-            label[for="recommend_phase_2_#{p.id.to_s}"]
+            //= f.radio_button phase_#{p.phase}, p.id, class: "submit"
+            input.submit[type="radio" value="#{index + 1}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{index + 1}"]
+            label[for="recommend_phase_#{p.phase}_#{p.id.to_s}"]
               | #{p.choices}

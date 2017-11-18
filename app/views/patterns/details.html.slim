@@ -24,11 +24,11 @@
   .col-10.col-center
     p.row-space-top-3 #{@pattern.context}
     h5.text-center.p-y-20 ▼ その状況で
-    p #{@pattern.b_problem}
+    p.text-justify #{@pattern.b_problem}
     h5.text-center.p-y-20 ▼ そこで
-    p #{@pattern.b_solution}
+    p.text-justify #{@pattern.b_solution}
     h5.text-center.p-y-20 ▼ そうすると
-    p #{@pattern.consequence}
+    p.text-justify #{@pattern.consequence}
 -if @practice == nil
   -if user_signed_in?
     .text-center.p-b-30
