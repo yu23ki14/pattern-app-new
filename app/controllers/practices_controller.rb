@@ -18,14 +18,18 @@ class PracticesController < ApplicationController
   
   def create
     if user_signed_in?
-      if practice_params[:limit] != "" && practice_params[:priority] != ""
-        @practice_form = Practice.new(practice_params)
-        @practice_form.save
-        #@practice = Practice.create(practice_params)
-        redirect_to "/patterns/" + practice_params[:language_id], notice: '追加しました！'
+      if @practices.where(language_id: practice_params[:language_id]).where(pattern_no: practice_params[:pattern_no]).find_by(done: nil) != nil
+        redirect_to "/patterns/" + practice_params[:language_id] + "/" + practice_params[:pattern_no], alert: 'すでに登録されています。'
       else
-        redirect_to "/patterns/" + practice_params[:language_id] + "/" + practice_params[:pattern_no], alert: '期限と優先度は必須です。'
-      end  
+        if practice_params[:limit] != "" && practice_params[:priority] != ""
+          @practice_form = Practice.new(practice_params)
+          @practice_form.save
+          #@practice = Practice.create(practice_params)
+          redirect_to "/patterns/" + practice_params[:language_id], notice: '追加しました！'
+        else
+          redirect_to "/patterns/" + practice_params[:language_id] + "/" + practice_params[:pattern_no], alert: '期限と優先度は必須です。'
+        end  
+      end
     else
       redirect_to root_path
     end

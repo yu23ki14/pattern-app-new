@@ -1,5 +1,5 @@
 class RecommendsController < ApplicationController
-  before_action :set_recommend, only: [:index, :phase2, :phase3, :phase4, :create, :update, :recommend]
+  before_action :set_recommend, only: [:index, :phase2, :phase3, :phase4, :create, :update, :recommend, :cat_code]
   before_action :set_result, only: [:index]
   
   def index
@@ -44,6 +44,10 @@ class RecommendsController < ApplicationController
     @phase = Pattern.where(cat_code: @phase_pre.context_id)
   end
   
+  def cat_code
+    @recommend.update(cat_code: params[:cat_code])
+  end
+  
   private
     def recommend_params
       params.require(:recommend).permit(:user_id, :phase_1, :phase_2, :phase_3, :phase_4, :cat_code, :drop)
@@ -54,7 +58,7 @@ class RecommendsController < ApplicationController
     end
     
     def set_result
-      if @recommend != nil
+      if @recommend.cat_code != nil
         @result = Pattern.where(cat_code: @recommend.cat_code)
       end
     end

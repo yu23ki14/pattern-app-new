@@ -26,8 +26,7 @@
           - @phase.each.with_index do |p,index|
             li.h5
               = f.hidden_field :user_id, :value => current_user.id
-              = f.hidden_field :cat_code, :value => p.context_id
-              input.submit[type="radio" value="#{p.id}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}"]
+              input.submit[type="radio" value="#{p.id}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}" cat_code="#{p.context_id}"]
               label[for="recommend_phase_#{p.phase}_#{p.id.to_s}"]
                 | #{p.choices}
     - else
@@ -35,7 +34,6 @@
         - @phase.each.with_index do |p,index|
           li.h5
             = f.hidden_field :user_id, :value => current_user.id
-            = f.hidden_field :cat_code, :value => p.context_id
-            input.submit[type="radio" value="#{p.id}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}"]
+            input.submit[type="radio" value="#{p.id}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}" cat_code="#{p.context_id}"]
             label[for="recommend_phase_#{p.phase}_#{p.id.to_s}"]
               | #{p.choices}

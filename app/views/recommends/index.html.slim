@@ -1,5 +1,5 @@
 .page-container
-  - if @recommend.blank?
+  - if @result.blank?
     #phase-1
       .question-container.row-space-top-3.required-container
         = image_tag "icons/icon-manabu", class: "avatar-image-md avatar-image no-border manabu-icon"
@@ -22,7 +22,7 @@
     .question-container.row-space-top-3.required-container.row-space-3
       = image_tag "icons/icon-manabu", class: "avatar-image-md avatar-image no-border manabu-icon"
       .text-box.inline.box-shadow-primary
-        h5.normal 前回探してきたパターンだよ。違うパターンを探すならページ一番下のボタンを押してね。
+        h5.normal 前回探したパターンだよ。違うパターンを探すならページ一番下のボタンを押してね。
     .col-11.col-center
       - @result.each do |p|
         = link_to "/patterns/#{p.language_id}/#{p.pattern_no}"

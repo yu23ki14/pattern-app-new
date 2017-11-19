@@ -2,11 +2,13 @@
   .modal-container.col-11.col-center.p-y-30
     .close-modal
       i.fa.fa-times
+    
     .row-space-top-2
       = form_for @practice do |f|
         .row.selectbox
           .col-10.col-center
-            h5.row-space-3 コメントを入れてください。
+            h5 期間中#{@practice.did}回実践出来ました！
+            h5.row-space-3 振り返りができるようにコメントを入力してください。
             = f.hidden_field :done, :value => true
             = f.text_area :comment, placeholder: "コメントは必須です。", class: "col-12 col-center"
           .col-12.col-center.text-center

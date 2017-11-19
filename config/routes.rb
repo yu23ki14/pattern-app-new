@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get '/:phase_2_id/gophase3' => 'recommends#phase3'
       get '/:phase_3_id/gophase4' => 'recommends#phase4'
       get '/:phase_4_id/gorecommend' => 'recommends#recommend'
+      post '/:cat_code/cat_code' => 'recommends#cat_code'
     end
   end
   
