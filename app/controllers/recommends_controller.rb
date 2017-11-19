@@ -6,11 +6,17 @@ class RecommendsController < ApplicationController
   end
   
   def create
-    @recommend = Recommend.create(recommend_params)
+    respond_to do |format|
+      @recommend = Recommend.create(recommend_params)
+      format.js
+    end
   end
   
   def update
-    @recommend = @recommend.update(recommend_params)
+    respond_to do |format|
+      @recommend = @recommend.update(recommend_params)
+      format.js
+    end
   end
   
   def phase2

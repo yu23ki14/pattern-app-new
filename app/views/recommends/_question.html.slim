@@ -5,17 +5,17 @@
   .text-box.inline.box-shadow-primary
     h5.normal #{@phase_pre.nextquestion}
 .choices-container.col-11.col-center.row-space-top-2
-  = form_for @recommend do |f|
+  = form_for @recommend, remote: true do |f|
     ul
       - if controller.action_name == "phase4" || controller.action_name == "recommend"
         - if @phase_pre.context_id != nil
           - @phase.each do |p|
             h1 #{p.pattern_name}
         - else
-          - @phase.each do |p|
+          - @phase.each.with_index do |p,index|
             li.h5
               = f.hidden_field :user_id, :value => current_user.id
-              = f.radio_button :phase_p[:phase].to_s, p.id, class: "submit"
+              input.submit[type="radio" value="#{p.id}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}"]
               label[for="recommend_phase_#{p.phase}_#{p.id.to_s}"]
                 | #{p.choices}
       - else
@@ -24,6 +24,6 @@
           li.h5
             //= f.radio_button phase_#{p.phase}, p.id, class: "submit"
             = f.hidden_field :user_id, :value => current_user.id
-            input.submit[type="radio" value="#{index + 1}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}"]
+            input.submit[type="radio" value="#{p.id}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}"]
             label[for="recommend_phase_#{p.phase}_#{p.id.to_s}"]
               | #{p.choices}

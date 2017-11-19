@@ -10,7 +10,7 @@
         .text-box.inline.box-shadow-primary
           h5.normal 最近の気分はどう？
       .choices-container.col-11.col-center.row-space-top-2
-        = form_for Recommend.new do |f|
+        = form_for Recommend.new, remote: true do |f|
           ul
             - @phase1.each do |p|
               li.h5
