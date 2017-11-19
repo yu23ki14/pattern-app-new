@@ -4,7 +4,7 @@ class CreatePhase1s < ActiveRecord::Migration[5.1]
       t.string :choices
       t.string :response
       t.string :nextquestion
-      
+      t.integer :context_id
       t.timestamps
     end
   end

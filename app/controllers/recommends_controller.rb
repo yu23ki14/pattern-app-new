@@ -50,7 +50,7 @@ class RecommendsController < ApplicationController
     end
     
     def set_recommend
-      @recommend = @user.recommends.where(drop: nil).last
+      @recommend = @user.recommends.where(drop: false).last
     end
     
     def set_result

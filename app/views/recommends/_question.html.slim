@@ -34,10 +34,8 @@
       ul
         - @phase.each.with_index do |p,index|
           li.h5
-            //= f.radio_button phase_#{p.phase}, p.id, class: "submit"
             = f.hidden_field :user_id, :value => current_user.id
-            - if p.phase == "3"
-              = f.hidden_field :cat_code, :value => p.context_id
+            = f.hidden_field :cat_code, :value => p.context_id
             input.submit[type="radio" value="#{p.id}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}"]
             label[for="recommend_phase_#{p.phase}_#{p.id.to_s}"]
               | #{p.choices}
