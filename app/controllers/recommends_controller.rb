@@ -58,8 +58,10 @@ class RecommendsController < ApplicationController
     end
     
     def set_result
-      if @recommend.cat_code != nil
-        @result = Pattern.where(cat_code: @recommend.cat_code)
+      if @recommend != nil
+        if @recommend.cat_code != nil
+          @result = Pattern.where(cat_code: @recommend.cat_code)
+        end
       end
     end
     
