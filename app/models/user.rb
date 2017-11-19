@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :timeoutable, :trackable, :validatable
   has_many :favorites
   has_many :practices
+  has_many :recommends
 end

@@ -108,6 +108,11 @@ footer
 .bg-pdp
   background-color: $pdp-color
   color: $brand-contrast
+.bg-cp
+  background-color: $cp-color
+.bg-pp
+  background-color: $pp-color
+  color: $brand-contrast
 .bg-theme
   background-color: $brand-theme
   
@@ -703,6 +708,7 @@ body.modal-open
   background-color: $nav-base
   border-radius: 100%
   z-index: 3000
+  
   i
     line-height: 55px
   a
@@ -713,13 +719,16 @@ body.modal-open
     bottom: 20px
     right: 20px
     position: fixed
+#nav-open-btn
+  box-shadow: 0px 2px 4px 1.5px $brand-light-gray
 #nav-close-btn
   display: none
   background-color: $brand-gray
+  box-shadow: 0px 2px 8px 1.5px $brand-light-gray
 .nav-open
   .nav
     li
-      box-shadow: 0px 0px 4px .5px $brand-light-gray
+      box-shadow: 0px 2px 8px 1.5px $brand-light-gray
       &:nth-child(1)
         transform: translateY(-290px)
       &:nth-child(2)

@@ -1,13 +1,16 @@
 class RecommendsController < ApplicationController
+  before_action :set_recommend, only: [:phase2, :phase3, :phase4, :create, :update, :recommend]
+  
   def index
     @phase1 = Phase1.all
   end
   
-  def recommend
-    @recommend = Recommend.create(user_id: current_user.id, phase_1: params[:phase_1_value])
+  def create
+    @recommend = Recommend.create(recommend_params)
   end
   
   def update
+    @recommend = @recommend.update(recommend_params)
   end
   
   def phase2
@@ -24,18 +27,22 @@ class RecommendsController < ApplicationController
     @phase_pre = Phase3.find(params[:phase_3_id])
     @phase = @phase_pre.phase4s
     if @phase_pre.context_id != nil
-      @phase = Pattern.where(cat_code_24: 2)
+      @phase = Pattern.where(cat_code: @phase_pre.context_id)
     end
   end
   
   def recommend
     @phase_pre = Phase4.find(params[:phase_4_id])
-    @phase = Pattern.where(cat_code_24: 2)
+    @phase = Pattern.where(cat_code: @phase_pre.context_id)
   end
   
   private
     def recommend_params
-      params.require(:recommend).permit(:phase_1)
+      params.require(:recommend).permit(:user_id, :phase_1, :phase_2, :phase_3, :phase_4)
+    end
+    
+    def set_recommend
+      @recommend = @user.recommends.last
     end
   
 end

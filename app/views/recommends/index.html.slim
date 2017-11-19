@@ -14,6 +14,7 @@
           ul
             - @phase1.each do |p|
               li.h5
+                = f.hidden_field :user_id, :value => current_user.id
                 = f.radio_button :phase_1, p.id, class: "submit"
                 label[for="recommend_phase_1_#{p.id.to_s}"]
                   | #{p.choices}

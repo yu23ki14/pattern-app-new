@@ -7,6 +7,7 @@ $(document).on "turbolinks:load", ->
 
   $("#phase-1").on "click", ".submit", ->
     #$.post "/recommends/" + $(this).attr("value") + "/new"
+    $('.new_recommend').submit()
     $.ajax(
       type: "GET",
       url: "recommends/" + $(this).attr("value") + "/gophase2"
@@ -19,6 +20,7 @@ $(document).on "turbolinks:load", ->
       $("html,body").delay(2000).animate({scrollTop:$("#bottom").offset().top})
       
   $("#phase-2").on "click", ".submit", ->
+    $('.edit_recommend').submit()
     $.ajax(
       type: "GET",
       url: "recommends/" + $(this).attr("value") + "/gophase3"
@@ -31,6 +33,7 @@ $(document).on "turbolinks:load", ->
       $("html,body").delay(2000).animate({scrollTop:$("#bottom").offset().top})
       
   $("#phase-3").on "click", ".submit", ->
+    $('.edit_recommend').submit()
     $.ajax(
       type: "GET",
       url: "recommends/" + $(this).attr("value") + "/gophase4"
@@ -43,6 +46,7 @@ $(document).on "turbolinks:load", ->
       $("html,body").delay(2000).animate({scrollTop:$("#bottom").offset().top})
       
   $("#phase-4").on "click", ".submit", ->
+    $('.edit_recommend').submit()
     $.ajax(
       type: "GET",
       url: "recommends/" + $(this).attr("value") + "/gorecommend"

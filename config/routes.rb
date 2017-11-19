@@ -27,9 +27,8 @@ Rails.application.routes.draw do
   resources :languages, only: [:index, :show]
   
   #recommends route
-  resources :recommends, only: [:index, :update] do
+  resources :recommends, only: [:index, :create, :update] do
     collection do
-      post '/:phase_1_value/new' => 'recommends#recommend'
       get '/:phase_1_id/gophase2' => 'recommends#phase2'
       get '/:phase_2_id/gophase3' => 'recommends#phase3'
       get '/:phase_3_id/gophase4' => 'recommends#phase4'
