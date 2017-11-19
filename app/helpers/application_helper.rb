@@ -3,7 +3,7 @@ module ApplicationHelper
     {
       #site: Settings.site.name,
       #reverse: true,    # タイトルタグ内の表記順をページタイトル|サイトタイトルの順にする
-      title: "Patron",    #デフォルトページタイトル
+      title: "Pattern App",    #デフォルトページタイトル
       # description: ,    デフォルトページディスクリプション
       # keywords:         デフォルトページキーワード
       #canonical: request.original_url,

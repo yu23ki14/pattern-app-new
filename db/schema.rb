@@ -123,6 +123,8 @@ ActiveRecord::Schema.define(version: 20171114224556) do
     t.integer "phase_2"
     t.integer "phase_3"
     t.integer "phase_4"
+    t.integer "cat_code"
+    t.boolean "drop"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_recommends_on_user_id"

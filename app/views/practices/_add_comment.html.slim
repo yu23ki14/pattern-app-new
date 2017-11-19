@@ -11,3 +11,7 @@
             = f.text_area :comment, placeholder: "コメントは必須です。", class: "col-12 col-center"
           .col-12.col-center.text-center
             = f.submit "アーカイブ", class: "button button-primary"
+      = form_for @practice do |f|
+        = f.hidden_field :done, :value => true
+        .text-center.row-space-top-1
+          = f.submit "アーカイブせずに終了", class: "p-y-5 p-x-10 "

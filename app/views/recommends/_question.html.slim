@@ -6,24 +6,38 @@
     h5.normal #{@phase_pre.nextquestion}
 .choices-container.col-11.col-center.row-space-top-2
   = form_for @recommend, remote: true do |f|
-    ul
-      - if controller.action_name == "phase4" || controller.action_name == "recommend"
-        - if @phase_pre.context_id != nil
-          - @phase.each do |p|
-            h1 #{p.pattern_name}
-        - else
+    
+    - if controller.action_name == "phase4" || controller.action_name == "recommend"
+      - if @phase_pre.context_id != nil
+        - @phase.each do |p|
+          = link_to "/patterns/#{p.language_id}/#{p.pattern_no}"
+            .col-12.col-center.recommended-pattern.row-space-4(class="#{Language.find_by(id: p.language_id)[:lg_code]}-border")
+              p.small
+                |#{Language.find_by(id: p.language_id)[:lg_name]} No.#{p.pattern_no}
+              h3 
+                |#{p.pattern_name}
+              p #{p.context}
+              h4.text-center ▼この状況で
+              p #{p.b_problem}
+              h4.text-center ▼そこで
+              p #{p.b_solution}
+      - else
+        ul
           - @phase.each.with_index do |p,index|
             li.h5
               = f.hidden_field :user_id, :value => current_user.id
+              = f.hidden_field :cat_code, :value => p.context_id
               input.submit[type="radio" value="#{p.id}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}"]
               label[for="recommend_phase_#{p.phase}_#{p.id.to_s}"]
                 | #{p.choices}
-      - else
-        
+    - else
+      ul
         - @phase.each.with_index do |p,index|
           li.h5
             //= f.radio_button phase_#{p.phase}, p.id, class: "submit"
             = f.hidden_field :user_id, :value => current_user.id
+            - if p.phase == "3"
+              = f.hidden_field :cat_code, :value => p.context_id
             input.submit[type="radio" value="#{p.id}" name="recommend[phase_#{p.phase}]" id="recommend_phase_#{p.phase}_#{p.id.to_s}"]
             label[for="recommend_phase_#{p.phase}_#{p.id.to_s}"]
               | #{p.choices}

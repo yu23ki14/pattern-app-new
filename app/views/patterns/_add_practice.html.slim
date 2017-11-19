@@ -9,7 +9,7 @@
         = f.hidden_field :pattern_no, :value => pattern_no
         .row.selectbox
           .col-10.col-center
-            p 期間は必須です。
+            p   期間と優先度は必須です。
             = f.select :limit, [["７日間", 7], ["３０日間", 30], ["６０日間", 60], ["９０日間", 90], ["１２０日間", 120]], :prompt => "▼　期間を選ぶ"
             = f.select :priority, [["★", "1"], ["★★", "2"], ["★★★", "3"], ["★★★★", "4"]], :prompt => "▼　優先度を選ぶ"
           .col-12.col-center.text-center

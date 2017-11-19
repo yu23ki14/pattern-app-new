@@ -1,5 +1,6 @@
 class RecommendsController < ApplicationController
-  before_action :set_recommend, only: [:phase2, :phase3, :phase4, :create, :update, :recommend]
+  before_action :set_recommend, only: [:index, :phase2, :phase3, :phase4, :create, :update, :recommend]
+  before_action :set_result, only: [:index]
   
   def index
     @phase1 = Phase1.all
@@ -15,6 +16,7 @@ class RecommendsController < ApplicationController
   def update
     respond_to do |format|
       @recommend = @recommend.update(recommend_params)
+      format.html { redirect_to recommends_path}
       format.js
     end
   end
@@ -44,11 +46,17 @@ class RecommendsController < ApplicationController
   
   private
     def recommend_params
-      params.require(:recommend).permit(:user_id, :phase_1, :phase_2, :phase_3, :phase_4)
+      params.require(:recommend).permit(:user_id, :phase_1, :phase_2, :phase_3, :phase_4, :cat_code, :drop)
     end
     
     def set_recommend
-      @recommend = @user.recommends.last
+      @recommend = @user.recommends.where(drop: nil).last
     end
-  
+    
+    def set_result
+      if @recommend != nil
+        @result = Pattern.where(cat_code: @recommend.cat_code)
+      end
+    end
+    
 end

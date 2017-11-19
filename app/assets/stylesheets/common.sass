@@ -22,9 +22,6 @@ h1, h2, h3, h4, h5, h6
 a
   color: $brand-dark-gray
   text-decoration: none
-  &:hover, &:focus
-    color: $brand-gray
-    text-decoration: underline
   &.underline
     border-bottom: 1px solid $brand-gray
     padding-bottom: 3px
@@ -54,6 +51,9 @@ label
 .text-left
   text-align: left
   
+.text-right
+  text-align: right
+  
 .text-y-center
   vertical-align: middle
 
@@ -71,9 +71,6 @@ label
   color: $brand-very-light-gray
   
 .text-contrast
-  color: white
-  
-.text-pdp
   color: white
   
 @media (max-width: 767px)
@@ -101,6 +98,9 @@ label
 /* footer =============================================*/
 footer
   height: 100px
+body.welcome
+  footer
+    height: 0px
   
 /* bg =============================================*/
 .bg-lp
@@ -199,7 +199,6 @@ input[type="radio"]:checked
     border-bottom-color: $brand-dark-gray
   &.base
     border-bottom-color: $brand-theme
-    
 
 /* button ================================================== */
 
@@ -713,6 +712,8 @@ body.modal-open
     line-height: 55px
   a
     color: $brand-contrast
+    width: 100%
+    display: block
 .nav
   li
     transition-duration: .3s

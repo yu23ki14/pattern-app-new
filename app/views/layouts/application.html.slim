@@ -13,4 +13,5 @@ html
       h6.m-t-0.m-b-0
         = content_tag :div, value, class: "alert alert-#{key}"
     = yield
-    footer
+    -if user_signed_in?
+      footer

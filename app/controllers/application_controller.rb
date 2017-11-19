@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   
   private
     def backhome
-      if controller_name == "practices" || controller_name == "recommends"
+      if controller_name == "practices" || controller_name == "recommends" || controller_name == "static_pages"
         if !user_signed_in?
           redirect_to root_path, notice: 'ログインしてください。'
         end

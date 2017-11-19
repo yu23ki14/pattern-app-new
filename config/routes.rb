@@ -39,8 +39,8 @@ Rails.application.routes.draw do
   #static_pages route
   resources :static_pages, only: [:index] do
     collection do
-      get '/privacy_policy' => 'static_pages#privacy_policy'
-      get '/service_agreement' => 'static_pages#service_agreement'
+      #get '/privacy_policy' => 'static_pages#privacy_policy'
+      #get '/service_agreement' => 'static_pages#service_agreement'
       get '/vision' => 'static_pages#vision'
     end
   end

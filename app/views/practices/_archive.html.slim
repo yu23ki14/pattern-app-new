@@ -1,14 +1,16 @@
 .page-container
   -if user_signed_in?
-    - if @practices　!= nil
-      - @practices.each do |p|
-        .card.col-12.col-center.p-x-20.p-b-20.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
-          p.small.date
-            | ～#{(p[:created_at] + p[:limit]*86400).strftime("%Y年%m月%d日")}
-          h3.row-space-top-3 #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name]}
-          p #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
-          p #{p[:comment]}
-    - else
+    - @practices.each do |p|
+      .card.col-12.col-center.p-x-20.p-b-20.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
+        p.small.date
+          | ～#{(p[:created_at] + p[:limit]*86400).strftime("%Y年%m月%d日")}
+        h3.row-space-top-3 #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name]}
+        p #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
+        h5.row-space-top-1.m-b-0
+          |振り返りコメント:
+        p
+          |#{p[:comment]}
+    - if @practices.blank?
       h5 アーカイブされたパターンはありません。
   -else
     p ユーザー登録してください。

@@ -11,12 +11,13 @@
         //- if @minimum_password_length
           em
             | #{@minimum_password_length} characters minimum
-        = f.password_field :password, autocomplete: "off", class: "col-12 col-center", placeholder: "Password"
+        = f.password_field :password, autocomplete: "off", class: "col-12 col-center", placeholder: "Password 6characters minimum"
     
       .field.row-space-top-5
         = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center", placeholder: "Confirm Password"
     
       .actions.text-center.row-space-top-5
         = f.submit "Sign up", class: "button button-primary button-lg"
-
+    p.small.row-space-top-3
+      |*本アプリは井庭研究室の研究の一環で開発しているため、アンケートにご協力いただくためにメールをお送りすることがあります。また、開発・研究の目的で、利用状況等のデータを、個人情報を抜いた上で使用することがあります。以上をご了承いただいた上でSign Upをお願い致します。
     = render "devise/shared/links"

@@ -2,7 +2,15 @@
   .modal-container.col-11.col-center.p-y-30
     .close-modal
       i.fa.fa-times
-    .row-space-top-4.text-center
-      h4 #{@pattern.pattern_name}
+    .col-10.col-center.row-space-top-1
+      h4.text-center.row-space-4 #{@pattern.pattern_name}
+      h5.row-space-2 problem
       p #{@pattern.b_problem}
+      br
+      h5.row-space-2 solution
       p #{@pattern.b_solution}
+      
+      p.text-right.
+        =link_to "/patterns/#{@pattern.language_id}/#{@pattern.pattern_no}", class: "bottom-bordered"
+          |more 
+          i.fa.fa-plus
