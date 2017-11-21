@@ -23,18 +23,18 @@
       = image_tag "icons/icon-manabu", class: "avatar-image-md avatar-image no-border manabu-icon"
       .text-box.inline.box-shadow-primary
         h5.normal 前回探したパターンだよ。違うパターンを探すならページ一番下のボタンを押してね。
-    .col-11.col-center
+    .col-12.col-center
       - @result.each do |p|
         = link_to "/patterns/#{p.language_id}/#{p.pattern_no}"
           .col-12.col-center.recommended-pattern.row-space-4(class="#{Language.find_by(id: p.language_id)[:lg_code]}-border")
             p.small
               |#{Language.find_by(id: p.language_id)[:lg_name]} No.#{p.pattern_no}
-            h3 
+            h3.text-center.p-b-15
               |#{p.pattern_name}
             p #{p.context}
-            h4.text-center ▼この状況で
+            h5.text-center.p-y-5 ▼この状況で
             p #{p.b_problem}
-            h4.text-center ▼そこで
+            h5.text-center.p-y-5 ▼そこで
             p #{p.b_solution}
       = form_for @recommend do |f|
         .row
