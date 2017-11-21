@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       #get '/privacy_policy' => 'static_pages#privacy_policy'
       #get '/service_agreement' => 'static_pages#service_agreement'
       get '/vision' => 'static_pages#vision'
+      get '/tutorial' => 'static_pages#tutorial'
     end
   end
   

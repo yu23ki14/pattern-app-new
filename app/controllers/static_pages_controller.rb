@@ -5,4 +5,6 @@ class StaticPagesController < ApplicationController
   end
   def vision
   end
+  def tutorial
+  end
 end

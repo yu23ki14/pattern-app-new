@@ -8,8 +8,16 @@ body
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   -webkit-tap-highlight-color: rgba(0,0,0,0)
-  @media (min-width: 770px)
-    display: none
+  div
+    @media (min-width: 770px)
+      display: none
+  .pc-ng
+    display: block
+    div
+      @media (min-width: 770px)
+        display: block
+      @media (max-width: 770px)
+        display: none  
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   line-height: 1.1
