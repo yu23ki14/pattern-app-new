@@ -2,7 +2,7 @@ namespace :unicornctl do
   desc "Start unicorn for development env."
   task start: :environment do
     config = File.expand_path('config/unicorn.rb', Rails.root)
-    sh "unicorn_rails -c #{config} -E development -D"
+    sh "unicorn_rails -c #{config} -E production -D"
   end
 
   desc "Stop unicorn"
