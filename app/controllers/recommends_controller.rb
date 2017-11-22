@@ -55,6 +55,9 @@ class RecommendsController < ApplicationController
     
     def set_recommend
       @recommend = @user.recommends.where(drop: false).last
+      if @recommend == nil
+        Recommend.create(:user_id => current_user.id)
+      end
     end
     
     def set_result

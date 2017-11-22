@@ -7,8 +7,8 @@ $(document).on "turbolinks:load", ->
 
   $("#phase-1").on "click", ".submit", ->
     #$.post "/recommends/" + $(this).attr("value") + "/new"
+    
     $(".submit").prop("disabled", true)
-    $('.new_recommend').submit()
     $.ajax(
       type: "GET",
       url: "recommends/" + $(this).attr("value") + "/gophase2"
