@@ -49,6 +49,10 @@ Rails.application.routes.draw do
   
   #categories route
   resources :categories, only: [:index]
+  
+  #contact route
+  resources :contacts, only: [:index, :create]
+  
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
