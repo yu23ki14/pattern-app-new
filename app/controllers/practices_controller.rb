@@ -24,7 +24,6 @@ class PracticesController < ApplicationController
         if practice_params[:limit] != "" && practice_params[:priority] != ""
           @practice_form = Practice.new(practice_params)
           @practice_form.save
-          #@practice = Practice.create(practice_params)
           redirect_to "/patterns/" + practice_params[:language_id], notice: '追加しました！'
         else
           redirect_to "/patterns/" + practice_params[:language_id] + "/" + practice_params[:pattern_no], alert: '期限と優先度は必須です。'
@@ -37,7 +36,7 @@ class PracticesController < ApplicationController
   
   def archive
     respond_to do |format|
-      @practices = @practices.where.not(comment: nil).where(done: true).order("updated_at")
+      @practices = @practices.where.not(comment: nil).where(done: true).order("rate DESC")
       format.js
     end
   end
@@ -72,6 +71,6 @@ class PracticesController < ApplicationController
       params.require(:practice).permit(:user_id, :language_id, :pattern_no, :limit, :priority)
     end
     def practice_done_params
-      params.require(:practice).permit(:done, :comment)
+      params.require(:practice).permit(:done, :comment, :rate)
     end
 end
