@@ -2,6 +2,7 @@ $(document).on 'turbolinks:load', ->
   if $("body").hasClass("practices")
     $('.did').click ->
       $.post '/practices/' + $(this).attr('practice_id') + '/did'
+      $('#did-notification').delay(100).animate({'z-index': 1}, 1).animate({opacity: 1}, 200).delay(700).animate({opacity: 0}, 200).animate({'z-index': 0}, 1)
     $('#practicecontent').on 'click', '.did', ->
       $.post '/practices/' + $(this).attr('practice_id') + '/did'
       

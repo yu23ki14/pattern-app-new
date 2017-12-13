@@ -36,6 +36,9 @@
             p #{p.b_problem}
             h5.text-center.p-y-5 ▼そこで
             p #{p.b_solution}
+            .text-center.row-space-top-4
+              p.bottom-bordered.inline
+                |+ 詳しく見る
       = form_for @recommend do |f|
         .row
           = f.hidden_field :drop, :value => true
