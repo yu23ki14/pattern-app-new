@@ -15,6 +15,10 @@
               i.fa.fa-star.p-r-5
         p.row-space-top-1
           |#{p[:comment]}
+        p.text-right
+          =link_to "/patterns/#{p.language_id}/#{p.pattern_no}"
+            |+more
+            
     - if @practices.blank?
       h5 アーカイブされたパターンはありません。
   -else

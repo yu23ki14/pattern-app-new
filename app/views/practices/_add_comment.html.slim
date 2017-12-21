@@ -11,7 +11,7 @@
             p タップして実践を評価
             .required-container.range-group
               = f.range_field :rate, min: 1, max: 5, value: "", class: "input-range"
-            p.row-space-top-3.row-space-1 振り返りができるようにコメントを入力してください。
+            p.row-space-top-3.row-space-1 振り返りのコメントを入力してください。
             = f.hidden_field :done, :value => true
             = f.text_area :comment, placeholder: "コメントは必須です。", class: "col-12 col-center"
           .col-12.col-center.text-center
