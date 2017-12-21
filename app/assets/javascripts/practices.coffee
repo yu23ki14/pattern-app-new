@@ -2,6 +2,7 @@ $(document).on 'turbolinks:load', ->
   if $("body").hasClass("practices")
     $('.did').click ->
       $.post '/practices/' + $(this).attr('practice_id') + '/did'
+      $('#did-notification').delay(100).animate({'z-index': 1}, 1).animate({opacity: 1}, 200).delay(700).animate({opacity: 0}, 200).animate({'z-index': 0}, 1)
     $('#practicecontent').on 'click', '.did', ->
       $.post '/practices/' + $(this).attr('practice_id') + '/did'
       
@@ -13,6 +14,12 @@ $(document).on 'turbolinks:load', ->
         url: 'practices/' + $(this).attr('pid') + '/addcomment'
       ).done ->
         $('#add_comment').modal()
+        $('.range-group').each ->
+          i = 0
+          while i < 5
+            $(this).append '<a>'
+            i++
+          return
     
     $('#practicecontent').on 'submit', '.edit_practice', ->
       $.ajax
@@ -45,3 +52,14 @@ $(document).on 'turbolinks:load', ->
     
     $("li").click ->
       $('#practicecontent').css({opacity: '1'}).animate({opacity: '0'}, 300)
+      
+    $(document).on 'click', '.range-group>a',->
+      index = $(this).index()
+      $(this).siblings().removeClass 'on'
+      i = 0
+      while i < index
+        $(this).parent().find('a').eq(i).addClass 'on'
+        i++
+      $(this).parent().find('.input-range').attr 'value', index
+      return
+    return

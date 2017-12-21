@@ -38,6 +38,8 @@ gem 'by_star', :git => "git://github.com/radar/by_star"
 #use seed-fu as db seed
 gem 'seed-fu'
 
+gem 'google-analytics-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -54,6 +56,7 @@ end
 group :production do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'unicorn-rails'
+  
 end
 
 group :development do
