@@ -35,7 +35,7 @@
         | 実践する 
         i.fa.fa-pencil-square-o
   -if user_signed_in?
-    = render partial: "add_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no]}
+    = render partial: "add_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], path: @path[:controller]}
 .col-center.col-11{class = "border-#{@language[:lg_code]}"}
 br
 h4.text-center.row-space-2

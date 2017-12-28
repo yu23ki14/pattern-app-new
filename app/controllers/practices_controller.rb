@@ -24,7 +24,11 @@ class PracticesController < ApplicationController
         if practice_params[:limit] != "" && practice_params[:priority] != ""
           @practice_form = Practice.new(practice_params)
           @practice_form.save
-          redirect_to "/patterns/" + practice_params[:language_id], notice: '追加しました！'
+          if params[:path] == "recommends"
+            redirect_to recommends_path, notice: '追加しました！'
+          else
+            redirect_to "/patterns/" + practice_params[:language_id], notice: '追加しました！'
+          end
         else
           redirect_to "/patterns/" + practice_params[:language_id] + "/" + practice_params[:pattern_no], alert: '期限と優先度は必須です。'
         end  
