@@ -24,3 +24,4 @@
 //= require plugin
 //= require practices
 //= require recommends
+//= require projects

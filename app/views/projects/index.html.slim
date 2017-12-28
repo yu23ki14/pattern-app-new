@@ -1,0 +1,20 @@
+.page-container.row-space-top-2
+  = link_to practices_path
+    .card.p-y-30.p-l-20.flex-container
+      h2
+        |My List
+  - @projects.each do |p|
+    = link_to "projects/#{p.id}"
+      .card.p-y-20.p-l-20.row-space-top-2.required-container
+        h2 #{p.project_name}
+        p.row-space-top-1 プロジェクトID: #{p.project_id}
+        = link_to "projects/#{p.id}/edit", class: "edit text-contrast h2"
+          i.fa.fa-cog
+  = link_to new_project_path
+    .card.p-y-20.p-l-20.flex-container.new-project.row-space-top-2
+      h4.text-contrast
+        |+ 新しくプロジェクトを作る
+  = link_to join_projects_path
+    .card.p-y-20.p-l-20.flex-container.new-project.row-space-top-2
+      h4.text-contrast
+        |+ プロジェクトに参加する

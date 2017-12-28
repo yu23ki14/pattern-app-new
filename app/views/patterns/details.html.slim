@@ -18,8 +18,7 @@
       p.small #{@language.lg_name} No.#{@pattern.pattern_no}
       h2.m-t-5 #{@pattern.pattern_name}
       p.col-11.p-l-0.row-space-2 #{@pattern.summary}
-.row
-  .col-10{class = "border-#{@language[:lg_code]}"}
+.col-center.col-11{class = "border-#{@language[:lg_code]}"}
 .page-container.row-space-4
   .col-10.col-center
     p.row-space-top-3 #{@pattern.context}
@@ -31,16 +30,21 @@
     p.text-justify #{@pattern.consequence}
 -if @practice == nil
   -if user_signed_in?
-    .text-center.p-b-30
+    .text-center.p-b-20
       .button.button-primary.button-lg#js-trigger-add-practice
-        | 実践する 
+        | My Listに追加 
+        i.fa.fa-pencil-square-o
+    .text-center.p-b-30
+      .button.button-primary-outline.button-lg#js-trigger-add-project-practice
+        | プロジェクトに追加 
         i.fa.fa-pencil-square-o
   -if user_signed_in?
     = render partial: "add_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no]}
-.col-7.col-center.row-space-3
-  hr
+    = render partial: "add_project_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], projects: @projects}
+.col-center.col-11{class = "border-#{@language[:lg_code]}"}
+br
 h4.text-center.row-space-2
-  | おすすめのパターン
+  | このパターンと同じ特性のパターン
 .page-container
   - @related_patterns.each do |rp|
     = link_to "/patterns/#{rp.language_id}/#{rp.pattern_no}", class: "read-pattern",  lg: "#{rp[:lg_code]}", no: "#{rp[:pattern_no]}"

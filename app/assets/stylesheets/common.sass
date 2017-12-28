@@ -95,7 +95,9 @@ label
   p, .p
     font-size: 17px !important
     &.small
-      font-size: 11px !important
+      font-size: 13px !important
+    .small
+      font-size: 13px !important
 
 label
   transition-duration: .3s
@@ -184,6 +186,14 @@ input[type="radio"]:checked
     font-size: 22px
     font-family: 'fontAwesome'
     pointer-events: none
+    
+input, textarea
+  font-size: 17px
+  
+.text-box
+  height: 120px
+  &.large
+    height: 150px
     
 /* border ================================================== */
     
@@ -655,8 +665,6 @@ i
 body.modal-open
   overflow: hidden
   height: 100%
-  .modal
-    display: block
 .close-modal
   display: block
   position: fixed
@@ -737,12 +745,14 @@ body.modal-open
     li
       box-shadow: 0px 2px 8px 1.5px $brand-light-gray
       &:nth-child(1)
-        transform: translateY(-290px)
+        transform: translateY(-360px)
       &:nth-child(2)
-        transform: translateY(-220px)
+        transform: translateY(-290px)
       &:nth-child(3)
-        transform: translateY(-150px)
+        transform: translateY(-220px)
       &:nth-child(4)
+        transform: translateY(-150px)
+      &:nth-child(5)
         transform: translateY(-80px)
       
   #nav-open-btn

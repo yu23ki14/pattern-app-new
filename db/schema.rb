@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207023617) do
+ActiveRecord::Schema.define(version: 20171221155402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,14 +128,40 @@ ActiveRecord::Schema.define(version: 20171207023617) do
     t.index ["user_id"], name: "index_practices_on_user_id"
   end
 
+  create_table "project_members", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_members_on_project_id"
+    t.index ["user_id"], name: "index_project_members_on_user_id"
+  end
+
+  create_table "project_practices", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "language_id", null: false
+    t.integer "pattern_no", null: false
+    t.integer "did", default: 0
+    t.string "comment"
+    t.boolean "done"
+    t.integer "limit", null: false
+    t.integer "priority"
+    t.datetime "lastdate"
+    t.datetime "enddate"
+    t.integer "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_project_practices_on_language_id"
+    t.index ["project_id"], name: "index_project_practices_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "project_name"
     t.string "project_summary"
     t.string "project_id"
-    t.bigint "user_id"
+    t.string "project_color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "recommends", force: :cascade do |t|
@@ -170,4 +196,6 @@ ActiveRecord::Schema.define(version: 20171207023617) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "project_members", "projects"
+  add_foreign_key "project_members", "users"
 end

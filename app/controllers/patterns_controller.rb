@@ -21,6 +21,8 @@ class PatternsController < ApplicationController
       @favorite = @favorites.find_by(pattern_no: params[:pattern_no])
       @practice = @practices.where(done: nil).find_by(pattern_no: params[:pattern_no])
       @practice_form = Practice.new
+      @project_practice_form = ProjectPractice.new
+      @projects = @user.projects
     end
     @related_patterns = Pattern.where(cat_code_24: @pattern[:cat_code_24]).order("RANDOM()").limit(2)
   end

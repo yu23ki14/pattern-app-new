@@ -1,0 +1,9 @@
+- @project.each do |p|
+
+  p
+    |#{p.project_name}
+    
+  = form_for @join_project do |j|
+    = j.hidden_field :user_id, :value => current_user.id
+    = j.hidden_field :project_id, :value => p.id
+    = j.submit "参加する", class: "button button-primary"

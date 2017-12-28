@@ -1,0 +1,19 @@
+.page-container
+  -if user_signed_in?
+    - @practices.each do |p|
+      .card.col-12.col-center.p-x-20.p-b-20.row-space-2.required-container.js-trigger-add-comment{class = "pri-#{p[:priority]}-color" pid = "#{p[:id]}"}
+        p.small.date
+          | #{(p[:created_at]).strftime("%Y/%m/%d")}～#{(p[:created_at] + p[:limit]*86400).strftime("%Y/%m/%d")}
+        h3.row-space-top-3 
+          .p-l-40
+            | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name]}
+        .text-contrast.p-r-5.h3.inline.archive-icon
+          i.fa.fa-archive
+        p.p-l-40
+          | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
+        
+    - if @practices.blank?
+      h5 実践期間が終わったパターンはまだありません。
+  -else
+    p ユーザー登録してください。
+  #addcommentform

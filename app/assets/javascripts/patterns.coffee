@@ -3,6 +3,8 @@ $(document).on 'turbolinks:load', ->
     $.post '/patterns/' + $(this).attr('language_id') + '/' + $(this).attr('pattern_no') + '/fav'
   $('#js-trigger-add-practice').click ->
     $('#add-practice').modal()
+  $('#js-trigger-add-project-practice').click ->
+    $('#add-project-practice').modal()
   $(".alert").delay(1300).fadeOut("normal")
 
   if $("body").hasClass("languages")

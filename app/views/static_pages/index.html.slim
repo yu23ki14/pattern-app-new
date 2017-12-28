@@ -1,10 +1,14 @@
 .page-container.text-center.row-space-top-8
   = link_to vision_static_pages_path, class: "button button-primary button-lg row-space-top-3"
     |アプリ作成チームから
+  = link_to new_project_path, class: "button button-primary button-lg row-space-top-3"
+    |プロジェクトを作る
   //= link_to service_agreement_static_pages_path, class: "button button-outline button-lg row-space-top-3"
     |利用規約
   //= link_to privacy_policy_static_pages_path, class: "button button-outline button-lg row-space-top-3"
     |プライバシーポリシー
+  = link_to edit_user_registration_path, class: "button button-outline button-lg row-space-top-3"
+    |プロフィール
   = link_to tutorial_static_pages_path, class: "button button-outline button-lg row-space-top-3"
     |使い方
   = link_to contacts_path, class: "button button-outline button-lg row-space-top-3"

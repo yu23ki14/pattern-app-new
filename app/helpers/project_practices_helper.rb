@@ -1,0 +1,2 @@
+module ProjectPracticesHelper
+end

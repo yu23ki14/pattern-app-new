@@ -1,0 +1,27 @@
+.page-container.row-space-top-4
+  h3 新しくプロジェクトを作る
+  = form_for @project do |f|
+    .row
+      .col-10.col-center
+        = f.label :project_name
+          |プロジェクト名
+        = f.text_field :project_name, placeholder: "patternapp", class: "col-12 col-center"
+        
+        = f.label :project_name
+          p
+            |プロジェクトID 
+            span.small
+              |*半角英数のみ
+        = f.text_field :project_id, placeholder: "sfc", class: "col-12 col-center", onKeyup: "this.value=this.value.replace(/[^0-9, 'a-z', 'A-Z']+/,'')"
+        
+        = f.label :project_summary, "プロジェクトの説明"
+        = f.text_area :project_summary, class: "col-12 col-center text-box"
+        
+        
+        = f.label :project_color
+          |プロジェクトのテーマ色
+        .selectbox
+          = f.select :project_color, [["レッド", "red"], ["ブルー", "blue"], ["イエロー", "yellow"], ["グリーン", "green"], ["パープル", "purple"], ["ピンク", "pink"]], :prompt => "▼　色を選択する"
+      
+        .text-center.row-space-top-3
+          = f.submit "作成", class: "button button-primary"

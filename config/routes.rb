@@ -53,6 +53,23 @@ Rails.application.routes.draw do
   #contact route
   resources :contacts, only: [:index, :create]
   
+  #project route
+  resources :projects, only: [:index, :create, :new, :show, :edit, :destroy] do
+    collection do
+      get ':id/complete' => 'projects#complete'
+      get ':id/archive' => 'projects#archive'
+      get 'join' => 'projects#join'
+      get 'search' => 'projects#search'
+    end
+  end
+  
+  #project practice route
+  resources :project_practices, only: [:create]
+  
+  resources :project_members, only: [:create]
+  
+  
+  
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
