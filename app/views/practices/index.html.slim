@@ -4,7 +4,7 @@
     -if user_signed_in?
       - @now_practices.each do |p|
         
-        .card.col-12.col-center.p-x-20.p-b-20.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
+        .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
           p.small.date
             | #{(p.enddate).strftime("%Y/%m/%d")} まで
           
