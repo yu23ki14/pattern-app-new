@@ -2,6 +2,7 @@ class Practice < ApplicationRecord
   belongs_to :user
   belongs_to :pattern
   belongs_to :language
+  has_many :practice_comments
   
   before_create do
     self.enddate = Time.now + limit*86400

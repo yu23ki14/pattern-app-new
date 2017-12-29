@@ -33,14 +33,9 @@ body.practices
       display: none
   label
     padding: 0
-  .check-icon
+  .check-icon, .pencil-icon, .read-icon
     z-index: 1
-    position: absolute
-    top: 20%
-  .read-icon
-    z-index: 1
-    position: absolute
-    top: 55%
+    margin-left: 35px
   .archive-icon
     z-index: 1
     position: absolute
@@ -78,3 +73,15 @@ body.practices
     i
       font-size: 100px
       color: rgba(0,0,0,0.4)
+  #practice-comment
+    p
+      border-radius: 25px
+      border: 1px solid $brand-theme
+    .comment-body
+      height: 320px
+      overflow: auto
+    input[type="text"]
+      border: 0
+      font-size: 17px
+      border: solid 1px #ccc
+      border-radius: 20px

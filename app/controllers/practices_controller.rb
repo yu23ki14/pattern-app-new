@@ -60,6 +60,12 @@ class PracticesController < ApplicationController
     @pattern = @language.patterns.find_by(pattern_no: params[:pattern_no])
   end
   
+  def practice_comment
+    @practice = Practice.find(params[:id])
+    @comments = @practice.practice_comments.order(created_at: :desc)
+    @add_comment = PracticeComment.new
+  end
+  
   def update
     @practice = Practice.find(params[:id])
     @practice.update(practice_done_params)
