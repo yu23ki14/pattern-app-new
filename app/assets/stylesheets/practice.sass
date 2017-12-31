@@ -9,7 +9,7 @@ body.practices, body.projects.show
     min-height: 115px
     .date
       position: absolute
-      top: 6px
+      top: 10px
       right: 10px
   .pri-1-color
     background-color: $pri-1-color
@@ -35,14 +35,9 @@ body.practices, body.projects.show
       display: none
   label
     padding: 0
-  .check-icon
+  .check-icon, .pencil-icon, .read-icon
     z-index: 1
-    position: absolute
-    top: 20%
-  .read-icon
-    z-index: 1
-    position: absolute
-    top: 55%
+    margin-left: 35px
   .archive-icon
     z-index: 1
     position: absolute
@@ -80,3 +75,15 @@ body.practices, body.projects.show
     i
       font-size: 100px
       color: rgba(0,0,0,0.4)
+  #practice-comment
+    p
+      border-radius: 25px
+      border: 1px solid $brand-theme
+    .comment-body
+      height: 320px
+      overflow: auto
+    input[type="text"]
+      border: 0
+      font-size: 17px
+      border: solid 1px #ccc
+      border-radius: 20px

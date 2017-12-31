@@ -40,6 +40,13 @@ $(document).on 'turbolinks:load', ->
         url: 'practices/' + $(this).attr('language_id') + '/'+$(this).attr('pattern_no') + '/detail'
       ).done ->
         $('#pattern_detail').modal()
+        
+    $('#practicecontent').on 'click', '.js-trigger-practice-comment', ->
+      $.ajax(
+        type: 'GET',
+        url: 'practices/' + $(this).attr('practice_id') + '/practice_comment'
+      ).done ->
+        $('#practice-comment').modal()
       
     $('#active-list').click ->
       $("li").removeClass("active")

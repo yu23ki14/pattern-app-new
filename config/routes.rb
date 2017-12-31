@@ -18,10 +18,13 @@ Rails.application.routes.draw do
       get '/complete' => 'practices#complete'
       get '/:id/addcomment' => 'practices#addcomment'
       get '/:language_id/:pattern_no/detail' => 'practices#patterndetail'
+      get '/:id/practice_comment' => 'practices#practice_comment'
       get '/archive' => 'practices#archive'
       post '/:id/did' => 'practices#did'
     end
   end
+  
+  resources :practice_comments, only: [:create]
   
   #languages route
   resources :languages, only: [:index, :show]

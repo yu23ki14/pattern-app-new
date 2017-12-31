@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221155402) do
+ActiveRecord::Schema.define(version: 20171229023514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,14 @@ ActiveRecord::Schema.define(version: 20171221155402) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phase3_id"], name: "index_phase4s_on_phase3_id"
+  end
+
+  create_table "practice_comments", force: :cascade do |t|
+    t.bigint "practice_id"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["practice_id"], name: "index_practice_comments_on_practice_id"
   end
 
   create_table "practices", force: :cascade do |t|

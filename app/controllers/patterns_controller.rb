@@ -17,6 +17,7 @@ class PatternsController < ApplicationController
   def details
     @language = Language.find(params[:language_id])
     @pattern = @language.patterns.find_by(pattern_no: params[:pattern_no])
+    @path = Rails.application.routes.recognize_path(request.referer)
     if user_signed_in?
       @favorite = @favorites.find_by(pattern_no: params[:pattern_no])
       @practice = @practices.where(done: nil).find_by(pattern_no: params[:pattern_no])

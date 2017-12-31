@@ -4,7 +4,7 @@
       .card.col-12.col-center.p-x-20.p-b-20.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
         p.small.date
           | ～#{(p[:created_at] + p[:limit]*86400).strftime("%Y年%m月%d日")}
-        h3.row-space-top-3 #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name]}
+        h3.row-space-top-5 #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name]}
         p #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
         .row
           .col-8.bottom-bordered.row-space-1

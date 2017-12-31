@@ -6,6 +6,8 @@ $(document).on "turbolinks:load", ->
     $(".modal").modal("hide")
   $("#pattern-detail-container").on "click", ".close-modal", ->
     $(".modal").modal("hide")
+  $("#practice-comment-container").on "click", ".close-modal", ->
+    $(".modal").modal("hide")
     
   if $("body").hasClass("recommends")
     height = $(window).height()

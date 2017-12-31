@@ -7,6 +7,7 @@
         = f.hidden_field :user_id, :value => current_user.id
         = f.hidden_field :language_id, :value => language_id
         = f.hidden_field :pattern_no, :value => pattern_no
+        = hidden_field_tag :path, path
         .row.selectbox
           .col-10.col-center
             p.row-space-2   期間と優先度は必須です。
