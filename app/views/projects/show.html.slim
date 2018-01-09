@@ -1,4 +1,4 @@
-= render partial: "render/project_practice_nav", locals: {project_name: @project.project_name}
+= render partial: "render/project_practice_nav", locals: {project_name: @project.project_name, project_color: @project.project_color}
 #project-practicecontent
   .page-container
     -if user_signed_in?

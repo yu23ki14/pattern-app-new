@@ -1,6 +1,6 @@
 .practice-nav.row-space-3
-  p.p-l-10.p-y-5.bg-theme
-    = link_to projects_path
+  p.p-l-10.p-y-5.bg-theme{style="background-color: #{project_color}"}
+    = link_to projects_path, class: "text-contrast"
       | < #{project_name}
   ul.row.text-center.p-t-10
     = link_to project_path, remote: true

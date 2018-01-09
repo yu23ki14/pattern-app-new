@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:complete, :edit, :update, :destroy]
+  before_action :set_project, only: [:complete, :edit, :update, :destroy, :show]
   before_action :set_practices, only: [:show, :complete, :archive]
   
   def index

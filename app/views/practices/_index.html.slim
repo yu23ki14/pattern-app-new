@@ -1,65 +1,62 @@
 .page-container
-    -if user_signed_in?
-      - @now_practices.each do |p|
+  -if user_signed_in?
+    - @now_practices.each do |p|
+      
+      .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
+        p.small.date
+          | #{(p.enddate).strftime("%Y/%m/%d")} まで
         
-        .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
-          p.small.date
-            | #{(p.enddate).strftime("%Y/%m/%d")} まで
-          
-          h3.row-space-top-4.required-container
-            |#{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name]}
-          p.p-b-10.row-space-1.bottom-bordered
-            | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
-          
-          .text-right
-            .text-contrast.h3.inline.check-icon
-              .inline
-                - if p.lastdate + 43200 > Time.now
-                  = check_box_tag 'did'+p.id.to_s, '', true
-                  label.text-contrast.inline[for="did#{p.id}"]
-                    i.fa.fa-check
-                - else
-                  = check_box_tag 'did'+p.id.to_s, '', false, {:practice_id => p.id, :class => "did"}
-                  label.text-contrast.inline[for="did#{p.id}"]
-                    i.fa.fa-check
-            .text-contrast.h3.inline.pencil-icon.js-trigger-practice-comment{practice_id = "#{p.id}"}
-              i.fa.fa-pencil
+        h3.row-space-top-4.required-container
+          |#{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name]}
+        p.p-b-10.row-space-1.bottom-bordered
+          | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
+        
+        .text-right
+          .text-contrast.h3.inline.check-icon
+            .inline
+              = check_box_tag 'did'+p.id.to_s, '', false, {:practice_id => p.id, :class => "did"}
+              label.text-contrast.inline[for="did#{p.id}"]
+                i.fa.fa-check
                 span.p.p-l-5
-                  | #{p.practice_comments.length}
-            .text-contrast.h4.inline.read-icon.js-trigger-pattern-detail{language_id = "#{p.language_id}", pattern_no = "#{p.pattern_no}"}
-              i.fa.fa-file-text-o
-      
-      - if @now_practices.blank?
-        h4 実践リストは空です。
-        br
-        .col-11.col-center
-          h4.text-center 使い方
-          h5 step1
-          p
-            |メニューの
-            i.fa.fa-file-text-o.p-x-5
-            |からパターン一覧ページに入れます。そこで自分の実践したい、またはお気に入りのパターンを探してください。
-            br
-            i.fa.fa-comments-o.p-x-5
-            |ではまなぶくんが今のあなたに適したパターンを提案してくれます。ぜひご利用ください。
-            
-          h5.row-space-top-3 step2
-          p
-            |実践したいパターンが見つかったらパターン詳細ページにある
-            span.bg-theme.text-contrast.p-x-5 実践する
-            |ボタンを押します。
-            br
-            |意識的に実践する期間、実践する優先度の入力をすると実践リストに追加されます。
-          h5.row-space-top-3 step3
-          p
-            |実践期間中、実践した、または意識できたと思ったら
-            i.fa.fa-check.p-x-5
-            |を押します。
-            br
-            i.fa.fa-pencil.p-x-5
-            |からはパターンへのコメントを記入できます。
-            br
-            |期間終了後、終了リストに入ったパターンに振り返りのコメントを残してアーカイブしましょう。
-      
-    -else
-      p ユーザー登録してください。
+                  | #{p.did}
+          .text-contrast.h3.inline.pencil-icon.js-trigger-practice-comment{practice_id = "#{p.id}"}
+            i.fa.fa-pencil
+              span.p.p-l-5
+                | #{p.practice_comments.length}
+          .text-contrast.h4.inline.read-icon.js-trigger-pattern-detail{language_id = "#{p.language_id}", pattern_no = "#{p.pattern_no}"}
+            i.fa.fa-file-text-o
+    
+    - if @now_practices.blank?
+      h4 実践リストは空です。
+      br
+      .col-11.col-center
+        h4.text-center 使い方
+        h5 step1
+        p
+          |メニューの
+          i.fa.fa-file-text-o.p-x-5
+          |からパターン一覧ページに入れます。そこで自分の実践したい、またはお気に入りのパターンを探してください。
+          br
+          i.fa.fa-comments-o.p-x-5
+          |ではまなぶくんが今のあなたに適したパターンを提案してくれます。ぜひご利用ください。
+          
+        h5.row-space-top-3 step2
+        p
+          |実践したいパターンが見つかったらパターン詳細ページにある
+          span.bg-theme.text-contrast.p-x-5 実践する
+          |ボタンを押します。
+          br
+          |意識的に実践する期間、実践する優先度の入力をすると実践リストに追加されます。
+        h5.row-space-top-3 step3
+        p
+          |実践期間中、実践した、または意識できたと思ったら
+          i.fa.fa-check.p-x-5
+          |を押します。
+          br
+          i.fa.fa-pencil.p-x-5
+          |からはパターンへのコメントを記入できます。
+          br
+          |期間終了後、終了リストに入ったパターンに振り返りのコメントを残してアーカイブしましょう。
+    
+  -else
+    p ユーザー登録してください。

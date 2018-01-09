@@ -1,6 +1,9 @@
 .page-container.row-space-top-2
-  h3 プロジェクト設定
-  .col-10.col-center
+  
+  .col-11.col-center
+    = link_to projects_path
+      | < 戻る
+    h3 プロジェクト設定
     = form_for @project do |f|
       = f.label :project_name
         p
