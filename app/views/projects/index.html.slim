@@ -5,9 +5,9 @@
         |My List
   - @projects.each do |p|
     = link_to "projects/#{p.id}"
-      .card.p-y-20.p-l-20.row-space-top-2.required-container
-        h2 #{p.project_name}
-        p.row-space-top-1 プロジェクトID: #{p.project_id}
+      .card.p-y-20.p-l-20.row-space-top-2.required-container{style="background-color: #{p.project_color}"}
+        h2.text-contrast #{p.project_name}
+        p.row-space-top-1.text-contrast プロジェクトID: #{p.project_id}
         = link_to "projects/#{p.id}/edit", class: "edit text-contrast h2"
           i.fa.fa-cog
   = link_to new_project_path

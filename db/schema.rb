@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229023514) do
+ActiveRecord::Schema.define(version: 20180107022045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,16 @@ ActiveRecord::Schema.define(version: 20171229023514) do
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_project_members_on_project_id"
     t.index ["user_id"], name: "index_project_members_on_user_id"
+  end
+
+  create_table "project_practice_comments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "project_practice_id"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_practice_id"], name: "index_project_practice_comments_on_project_practice_id"
+    t.index ["user_id"], name: "index_project_practice_comments_on_user_id"
   end
 
   create_table "project_practices", force: :cascade do |t|

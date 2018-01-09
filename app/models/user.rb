@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :recommends
   has_many :project_members
   has_many :projects, through: :project_members
+  has_many :project_practice_comments
 end

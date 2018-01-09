@@ -1,9 +1,14 @@
-- @project.each do |p|
-
-  p
-    |#{p.project_name}
-    
-  = form_for @join_project do |j|
-    = j.hidden_field :user_id, :value => current_user.id
-    = j.hidden_field :project_id, :value => p.id
-    = j.submit "参加する", class: "button button-primary"
+.page-container
+  .col-10.col-center.row-space-top-2
+    - @project.each do |p|
+      p
+        |プロジェクト
+        span.strong
+          |「#{p.project_name}」
+        |に参加しますか？
+        
+      = form_for @join_project do |j|
+        = j.hidden_field :user_id, :value => current_user.id
+        = j.hidden_field :project_id, :value => p.id
+        .text-center.row-space-top-2
+          = j.submit "参加する", class: "button button-primary"

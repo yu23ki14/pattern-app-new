@@ -31,8 +31,6 @@ body.practices, body.projects.show
     font-size: 12px
   input[type="checkbox"]
     display: none
-    &:checked + label
-      display: none
   label
     padding: 0
   .check-icon, .pencil-icon, .read-icon
@@ -76,14 +74,11 @@ body.practices, body.projects.show
       font-size: 100px
       color: rgba(0,0,0,0.4)
   #practice-comment
-    p
+    .comment-container
       border-radius: 25px
       border: 1px solid $brand-theme
     .comment-body
       height: 320px
       overflow: auto
     input[type="text"]
-      border: 0
-      font-size: 17px
-      border: solid 1px #ccc
       border-radius: 20px

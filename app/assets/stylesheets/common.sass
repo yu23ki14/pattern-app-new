@@ -159,6 +159,9 @@ input[type="radio"]:checked
     text-align: center
     width: 1.25em
     color: $brand-theme
+
+input[type="submit"]
+  box-sizing: content-box
     
 .selectbox
   position: relative
@@ -175,7 +178,9 @@ input[type="radio"]:checked
     padding-bottom: 6px !important
     padding-left: 10px
     padding-right: 2em
-    border-radius: 0
+    border-radius: 2px
+    border: solid 1px $brand-very-light-gray
+    color: $brand-dark-gray
   select:after
     content: 'a'
     position: absolute
@@ -186,9 +191,13 @@ input[type="radio"]:checked
     font-size: 22px
     font-family: 'fontAwesome'
     pointer-events: none
-    
-input, textarea
+  
+input[type="text"], textarea, input[type="search"], .input
+  border: 0
   font-size: 17px
+  border: solid 1px $brand-very-light-gray
+  border-radius: 2px
+  color: $brand-dark-gray
   
 .text-box
   height: 120px
@@ -258,6 +267,10 @@ input, textarea
   &:hover
     color: $brand-contrast
     background-color: $brand-theme
+
+.button-danger
+  background-color: $brand-dark-gray
+  color: $brand-contrast
     
 /* spacing ================================================== */
 

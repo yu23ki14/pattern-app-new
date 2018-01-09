@@ -8,9 +8,13 @@
       .comment-body.row-space-2
         - @comments.each do |c|
           .comment-container.row-space-top-2
-            p.p-y-10.p-x-15
+            p.p-y-10.p-x-15.m-b-0 
+              span.h5.strong
+                |#{c.user.name}　
               |#{c.comment}
+            
       .comment-form
         = form_for @add_comment do |f|
-          = f.hidden_field :practice_id, :value => @practice.id
+          = f.hidden_field :user_id, :value => current_user.id
+          = f.hidden_field :project_practice_id, :value => @practice.id
           = f.text_field :comment, placeholder: "new comment...", class: "p-y-10 p-x-15 col-12 col-center row-space-1"

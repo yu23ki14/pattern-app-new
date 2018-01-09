@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   resources :contacts, only: [:index, :create]
   
   #project route
-  resources :projects, only: [:index, :create, :new, :show, :edit, :destroy] do
+  resources :projects, only: [:index, :create, :new, :show, :edit, :destroy, :update] do
     collection do
       get ':id/complete' => 'projects#complete'
       get ':id/archive' => 'projects#archive'
@@ -67,9 +67,17 @@ Rails.application.routes.draw do
   end
   
   #project practice route
-  resources :project_practices, only: [:create]
+  resources :project_practices, only: [:create, :update] do
+    collection do
+      post '/:id/did' => 'project_practices#did'
+      get '/:id/practice_comment' => 'project_practices#practice_comment'
+      get '/:id/addcomment' => 'project_practices#addcomment'
+    end
+  end
   
-  resources :project_members, only: [:create]
+  resources :project_practice_comments, only: [:create]
+  
+  resources :project_members, only: [:create, :destroy]
   
   
   

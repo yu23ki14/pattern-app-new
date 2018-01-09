@@ -47,8 +47,10 @@ class PracticesController < ApplicationController
   
   def did
     @practice = Practice.find(params[:id])
-    didcount = @practice[:did] + 1
-    @practice.update(did: didcount, lastdate: Time.now)
+    if @practice.lastdate+ 43200 < Time.now
+      didcount = @practice[:did] + 1
+      @practice.update(did: didcount, lastdate: Time.now)
+    end
   end
   
   def addcomment

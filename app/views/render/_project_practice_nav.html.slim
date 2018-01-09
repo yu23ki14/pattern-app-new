@@ -3,17 +3,17 @@
     = link_to projects_path
       | < #{project_name}
   ul.row.text-center.p-t-10
-    li.col-4#active-list.active
-      = link_to project_path, remote: true
+    = link_to project_path, remote: true
+      li.col-4#active-list.active
         .text-lead-en
           |実践リスト
     
-    li.col-4#complete-list
-      = link_to "#{params[:id]}/complete", remote: true
+    = link_to "#{params[:id]}/complete", remote: true
+      li.col-4#complete-list
         .text-lead-en
           |終了リスト
-      
-    li.col-4#archive-list
-      = link_to "#{params[:id]}/archive", remote: true
+    
+    = link_to "#{params[:id]}/archive", remote: true
+      li.col-4#archive-list
         .text-lead-en
           |アーカイブ

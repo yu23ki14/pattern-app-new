@@ -12,6 +12,13 @@
       this.parents("body").addClass("modal-open");
     },
     show : function() {
+      this.addClass("in");
+      this.attr('aria-hidden', 'false');
+      this.css('display', 'block');
+      if (this.children(".modal-backdrop").length == 0){
+        this.prepend('<div class="modal-backdrop in" style="height: 100%">');
+      }
+      this.parents("body").addClass("modal-open");
     },
     hide : function() {
       

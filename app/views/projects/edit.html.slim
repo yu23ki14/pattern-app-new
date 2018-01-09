@@ -1,0 +1,29 @@
+.page-container.row-space-top-2
+  h3 プロジェクト設定
+  .col-10.col-center
+    = form_for @project do |f|
+      = f.label :project_name
+        p
+          |プロジェクト名
+      = f.text_field :project_name, class: "col-12 col-center"
+      
+      = f.label :project_summary
+        p
+          |プロジェクトの説明
+      = f.text_area :project_summary, class: "col-12 col-center text-box"
+      
+      = f.label :project_color
+        p
+          |プロジェクトのテーマ色
+      .selectbox
+        = f.select :project_color, [["レッド", "#e25a58"], ["ブルー", "#296eec"], ["イエロー", "#dcbb41"], ["グリーン", "#4db141"], ["パープル", "#ca64d2"], ["ピンク", "#f57ca7"]], :prompt => "▼　色を選択する"
+      .text-center.row-space-top-3
+        = f.submit "更新", class: "button button-primary button-lg"
+      .text-center.row-space-top-3
+        = link_to "#exit_notification", data: { toggle: "modal" }, class: "button button-danger button-lg"
+          |プロジェクトから抜ける
+      .text-center.row-space-top-3
+        = link_to "#delete_notification", data: { toggle: "modal" }, class: "button button-danger button-lg"
+          |プロジェクトを削除
+= render "exit_notification", project_member: @project_member
+= render "delete_notification", project_id: @project.id

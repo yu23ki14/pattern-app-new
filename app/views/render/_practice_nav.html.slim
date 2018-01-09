@@ -3,18 +3,18 @@
     = link_to projects_path
       | < My List
   ul.row.text-center.p-t-10
-    li.col-4#active-list.active
-      = link_to practices_path, remote: true
+    = link_to practices_path, remote: true
+      li.col-4#active-list.active
         .text-lead-en
           |実践リスト
     
-    li.col-4#complete-list
-      = link_to complete_practices_path, remote: true
+    = link_to complete_practices_path, remote: true
+      li.col-4#complete-list
         .text-lead-en
           |終了リスト
       
-    li.col-4#archive-list
-      = link_to archive_practices_path, remote: true
+    = link_to archive_practices_path, remote: true
+      li.col-4#archive-list
         .text-lead-en
           |アーカイブ
 

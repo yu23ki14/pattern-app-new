@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [:complete, :edit, :update, :destroy]
   before_action :set_practices, only: [:show, :complete, :archive]
   
   def index
@@ -41,23 +42,33 @@ class ProjectsController < ApplicationController
   
   def join
     @q = Project.ransack(params[:q])
-    @project = @q.result(distinct: true)
   end
   
   def search
     @q = Project.ransack(params[:q])
     @project = @q.result(distinct: true)
     @join_project = ProjectMember.new
+    if @project.length == Project.all.length || @project.length == 0
+      redirect_to join_projects_path, notice: '検索に一致しませんでした。'
+    end
   end
   
   def edit
+    @project_member = @project.project_members.first
+  end
+  
+  def update
+    @project.update(project_params)
+    redirect_to edit_project_path, notice: '更新しました。'
   end
 
   def destroy
+    @project.destroy
+    redirect_to projects_path, notice: '削除しました。'
   end
 
   private
-    def set_projects
+    def set_project
       @project = Project.find(params[:id])
     end
     

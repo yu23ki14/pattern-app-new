@@ -34,13 +34,13 @@
       .button.button-primary.button-lg#js-trigger-add-practice
         | My Listに追加 
         i.fa.fa-pencil-square-o
-    .text-center.p-b-30
-      .button.button-primary-outline.button-lg#js-trigger-add-project-practice
-        | プロジェクトに追加 
-        i.fa.fa-pencil-square-o
-  -if user_signed_in?
-    = render partial: "add_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], path: @path[:controller]}
-    = render partial: "add_project_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], projects: @projects}
+.text-center.p-b-30
+  .button.button-primary-outline.button-lg#js-trigger-add-project-practice
+    | プロジェクトに追加 
+    i.fa.fa-pencil-square-o
+-if @practice == nil
+  = render partial: "add_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], path: @path[:controller]}
+= render partial: "add_project_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], projects: @projects}
 .col-center.col-11{class = "border-#{@language[:lg_code]}"}
 br
 h4.text-center.row-space-2
