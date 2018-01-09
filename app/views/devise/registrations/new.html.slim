@@ -3,18 +3,21 @@
     h2.row-space-top-4 Register
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = devise_error_messages!
+      
+      .field.row-space-top-5
+        = f.text_field :name, class: "col-12 col-center", placeholder: "ユーザー名"
     
       .field.row-space-top-5
-        = f.email_field :email, autofocus: true, class: "col-12 col-center", placeholder: "Email Address"
-    
+        = f.email_field :email, class: "col-12 col-center", placeholder: "メールアドレス"
+      
       .field.row-space-top-5
         //- if @minimum_password_length
           em
             | #{@minimum_password_length} characters minimum
-        = f.password_field :password, autocomplete: "off", class: "col-12 col-center", placeholder: "Password 6characters minimum"
+        = f.password_field :password, autocomplete: "off", class: "col-12 col-center", placeholder: "パスワード最低6桁"
     
       .field.row-space-top-5
-        = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center", placeholder: "Confirm Password"
+        = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center", placeholder: "パスワード確認用"
     
       .actions.text-center.row-space-top-5
         = f.submit "Sign up", class: "button button-primary button-lg"

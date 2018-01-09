@@ -1,5 +1,5 @@
 .page-container.row-space-top-4
-  .col-9.col-center
+  .col-11.col-center
     h3 ユーザー情報変更
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = devise_error_messages!
@@ -17,18 +17,18 @@
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         Currently waiting confirmation for: #{resource.unconfirmed_email}
     
-    
-    
-      = f.label :password
-        |新しいパスワード
-      = f.password_field :password, autocomplete: "off", class: "col-12 col-center"
-        -if @minimum_password_length
-          p #{@minimum_password_length} characters minimum
-    
-    
-      = f.label :password_confirmation
-        |新しいパスワード確認用
-      = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center"
+      
+      .password-container
+        = f.label :password
+          |新しいパスワード
+        = f.password_field :password, autocomplete: "off", class: "col-12 col-center"
+          -if @minimum_password_length
+            p #{@minimum_password_length} characters minimum
+      
+      
+        = f.label :password_confirmation
+          |新しいパスワード確認用
+        = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center"
     
     
       = f.label :current_password, class: "row-space-top-7"
@@ -38,8 +38,10 @@
       br
     
       .text-center.row-space-top-4
-        = f.submit "Update", class: "button button-primary"
+        = f.submit "Update", class: "button button-primary button-lg"
           |変更
+        = link_to "#", class: "js-trigger-edit-password button button-outline button-lg row-space-top-2"
+          |パスワードを変更する
 
 
 
