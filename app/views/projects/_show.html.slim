@@ -12,13 +12,10 @@
           | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
         
         .text-right
-          .text-contrast.h3.inline.check-icon
-            .inline
-              = check_box_tag 'did'+p.id.to_s, '', false, {:practice_id => p.id, :class => "did"}
-              label.text-contrast.inline[for="did#{p.id}"]
-                i.fa.fa-check
-                span.p.p-l-5
-                  | #{p.did}
+          .text-contrast.h3.inline.check-icon.did{practice_id = "#{p.id}"}
+            i.fa.fa-check
+              span.p.p-l-5
+                | #{p.did}
           .text-contrast.h3.inline.pencil-icon.js-trigger-project-practice-comment{practice_id = "#{p.id}"}
             i.fa.fa-pencil
               span.p.p-l-5
