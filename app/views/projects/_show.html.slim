@@ -12,7 +12,7 @@
           | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
         
         .text-right
-          .text-contrast.h3.inline.check-icon.did{practice_id = "#{p.id}"}
+          .text-contrast.h3.inline.check-icon.js-trigger-did{practice_id = "#{p.id}"}
             i.fa.fa-check
               span.p.p-l-5
                 | #{p.did}

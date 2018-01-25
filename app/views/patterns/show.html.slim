@@ -13,4 +13,4 @@ h4.p-l-5.p-y-20.m-t-0.m-b-0.lg-title(class = "bg-#{@language.lg_code}")
                 - if @favorites.find_by(pattern_no: p.pattern_no) != nil
                   i.fa.fa-heart.fav-icon-sm.card
               = image_tag "pattern_img/#{@language.lg_code}/#{p.pattern_no}.png", class: "col-12 col-center"
-            p.small.p-x-15.text-center #{p.summary}
+            p.small.p-x-15.text-center #{p.summary.truncate(30)}

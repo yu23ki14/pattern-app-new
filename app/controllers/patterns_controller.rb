@@ -11,7 +11,7 @@ class PatternsController < ApplicationController
 
   def show
     @language = Language.find(params[:language_id])
-    @patterns = @language.patterns
+    @patterns = @language.patterns.order("pattern_no")
   end
   
   def details
