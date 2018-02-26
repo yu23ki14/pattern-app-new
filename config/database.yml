@@ -8,8 +8,8 @@ default: &default
 
 development:
   <<: *default
-  database: patternapp
-  username: manabu
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABAEUSER_NAME"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -20,5 +20,5 @@ test:
 
 production:
   <<: *default
-  database: patternapp
-  username: manabu
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABAEUSER_NAME"] %>
