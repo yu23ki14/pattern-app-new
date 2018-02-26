@@ -1,0 +1,2 @@
+class ExchartLabel < ApplicationRecord
+end

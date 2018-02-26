@@ -8,7 +8,8 @@ default: &default
 
 development:
   <<: *default
-  database: patron_development
+  database: patternapp
+  username: manabu
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

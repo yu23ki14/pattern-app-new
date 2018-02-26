@@ -1,4 +1,5 @@
 $(document).on 'turbolinks:load', ->
+  
   if $("body").hasClass("projects")
     $('#project-practicecontent').on 'click', '.js-trigger-did', ->
       $.post '/project_practices/' + $(this).attr('practice_id') + '/did'

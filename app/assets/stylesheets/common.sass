@@ -1,5 +1,8 @@
 /* text ================================================== */
-
+html, body
+  position: relative
+  width: 100%
+  overflow-x: hidden
 body
   font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif
   line-height: 1.44
@@ -220,6 +223,14 @@ input[type="text"], textarea, input[type="search"], .input
   border-bottom: 1px solid $brand-gray
   &.dashed
     border-bottom: 1px dashed $brand-gray
+  &.darker
+    border-bottom-color: $brand-dark-gray
+  &.base
+    border-bottom-color: $brand-theme
+.bordered
+  border: 1px solid $brand-gray
+  &.dashed
+    border: 1px dashed $brand-gray
   &.darker
     border-bottom-color: $brand-dark-gray
   &.base

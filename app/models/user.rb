@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :project_members
   has_many :projects, through: :project_members
   has_many :project_practice_comments
+  has_many :excharts
 end

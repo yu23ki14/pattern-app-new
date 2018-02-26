@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180107022045) do
+ActiveRecord::Schema.define(version: 20180223052752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(version: 20180107022045) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "exchart_labels", force: :cascade do |t|
+    t.bigint "language_id"
+    t.text "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_exchart_labels_on_language_id"
+  end
+
+  create_table "excharts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "language_id"
+    t.jsonb "data1"
+    t.jsonb "data2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_excharts_on_language_id"
+    t.index ["user_id"], name: "index_excharts_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|

@@ -79,6 +79,8 @@ Rails.application.routes.draw do
   
   resources :project_members, only: [:create, :destroy]
   
+  resources :excharts, only: [:index, :new, :show, :create]
+  
   
   
   root 'welcome#index'

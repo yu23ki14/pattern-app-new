@@ -15,6 +15,12 @@
 //= require jquery.turbolinks
 //= require turbolinks
 
+//lib
+//= require lib/lazyload
+//= require lib/hammer
+//= require lib/jquery-hammer
+//= require lib/chart
+
 //modules
 //= require common
 //= require welcome
@@ -25,3 +31,4 @@
 //= require practices
 //= require recommends
 //= require projects
+//= require excharts

@@ -1,0 +1,53 @@
+body.excharts.new
+  overflow: hidden
+  min-width: 100%
+  max-width: 100%
+  #nav-container
+    display: none
+  .required-container
+    width: 100%
+    &:before
+      content: ""
+      display: block
+      padding-top: 110%
+  .card
+    background: white
+    border-radius: 10px
+    border: 1px solid rgba(0,0,0,.1)
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    transition: all 0.5s
+    .summary
+      height: 48px
+      overflow: auto
+    .solution
+      height: 96px
+      overflow: auto
+    &:first-of-type
+      box-shadow: 0px 0px 6px 1px rgba(0,0,0,.3)
+  input[type="submit"]
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    margin: auto
+    height: 35px
+    width: 40%
+    z-index: 1
+    display: none
+  .progressbar-outline
+    height: 24px
+    border-radius: 14px
+    box-sizing: content-box
+    padding: 0
+    .bar
+      background-color: $brand-theme
+      height: 24px
+      position: absolute
+      top: 0
+      left: 0
+      border-radius: 12px
+      min-width: 24px
