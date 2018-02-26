@@ -19,5 +19,5 @@ test:
 
 production:
   <<: *default
-  database: patternapp
-  username: manabu
+  database: ENV["DATABASE_NAME"]
+  username: ENV["DATABAEUSER_NAME"]
