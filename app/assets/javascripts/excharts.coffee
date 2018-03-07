@@ -62,7 +62,7 @@ $(document).on 'turbolinks:load', ->
     base()
     
   if $("body").hasClass("excharts show")
-    #console.log(gon.patterns)
+    patterns = gon.patterns
     ctx = document.getElementById("myChart").getContext("2d")
     
     #データの成形
@@ -142,7 +142,7 @@ $(document).on 'turbolinks:load', ->
           upperHalf = i < quarterLabelsCount or i > labelsCount - quarterLabelsCount
           exactQuarter = i == quarterLabelsCount or i == labelsCount - quarterLabelsCount
           width = ctx.measureText(@pointLabels[i]).width + 20
-          height = pointLabelFontSize + 10
+          height = pointLabelFontSize + 20
           x = undefined
           y = undefined
           if i == 0 or i == halfLabelsCount
@@ -167,8 +167,11 @@ $(document).on 'turbolinks:load', ->
       ), myChart.scale
       firstPoint = activePoints[0]
       if firstPoint != undefined
-        
-        alert firstPoint.index
+        $("#pattern_list").modal()
+        $(".js-place-pattern-list").empty()
+        for i in [1..3]
+          pattern = patterns[(firstPoint.index * 3) + i]
+          $(".js-place-pattern-list").append('<a href="/patterns/' + pattern.language_id + '/' + pattern.pattern_no + '"><p class="row-space-2">・' + pattern.pattern_name + '</p></a>')
       return
     
     $(document).on 'click', '.js-trigger-switch-proximal', ->
