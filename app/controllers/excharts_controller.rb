@@ -7,6 +7,12 @@ class ExchartsController < ApplicationController
     gon.data2 = data2
     label = ExchartLabel.find_by(language_id: 1).label
     gon.label = label
+    @patterns = Pattern.where(language_id: @exchart.language_id)
+    
+    current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
+    proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - current_pattern_no
+    @proximalpatterns = @patterns.where(pattern_no: proximal_pattern_no)
+    @currentpatterns = @patterns.where(pattern_no: current_pattern_no)
   end
   
   def new

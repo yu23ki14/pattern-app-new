@@ -1,1 +1,44 @@
-canvas#myChart[height="280"]
+div
+  h3.p-y-15.p-x-10.bg-theme.m-t-0.m-b-0.text-contrast
+    |最新の結果 
+    span.p.normal
+      | #{@exchart.created_at.strftime("%Y/%m/%d")}
+div
+  canvas#myChart[height="280"]
+div
+  ul.result-nav.row.text-center
+    li.js-trigger-switch-proximal.col-6.p-t-0
+      .nav-inner
+      p.small 実践したいパターン
+    li.js-trigger-switch-current.col-6.p-t-0.in-active
+      .nav-inner
+      p.small 実践しているパターン
+.page-container.row-space-top-2
+  
+  .proximal-patterns-container
+    - @proximalpatterns.each do |cp|
+      .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container.pri-1-color
+        h3.row-space-top-1.required-container
+          |#{cp.pattern_name}
+        p.p-b-10.row-space-1.bottom-bordered
+          | #{cp.summary}
+        
+        .text-right
+          .text-contrast.h3.inline.m-r-10.js-trigger-practice-comment{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
+            i.fa.fa-pencil
+          .text-contrast.h4.inline.m-l-10.js-trigger-pattern-detail{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
+            i.fa.fa-file-text-o
+  
+  .current-patterns-container
+    - @currentpatterns.each do |cp|
+      .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container.pri-2-color
+        h3.row-space-top-1.required-container
+          |#{cp.pattern_name}
+        p.p-b-10.row-space-1.bottom-bordered
+          | #{cp.summary}
+        
+        .text-right
+          .text-contrast.h3.inline.m-r-10.js-trigger-practice-comment{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
+            i.fa.fa-pencil
+          .text-contrast.h4.inline.m-l-10.js-trigger-pattern-detail{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
+            i.fa.fa-file-text-o

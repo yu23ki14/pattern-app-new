@@ -62,6 +62,7 @@ $(document).on 'turbolinks:load', ->
     base()
     
   if $("body").hasClass("excharts show")
+    #console.log(gon.patterns)
     ctx = document.getElementById("myChart").getContext("2d")
     
     #データの成形
@@ -166,5 +167,18 @@ $(document).on 'turbolinks:load', ->
       ), myChart.scale
       firstPoint = activePoints[0]
       if firstPoint != undefined
-        alert firstPoint.index + ': ' + firstPoint.label
+        
+        alert firstPoint.index
       return
+    
+    $(document).on 'click', '.js-trigger-switch-proximal', ->
+      $(this).removeClass("in-active")
+      $(".js-trigger-switch-current").addClass("in-active")
+      $(".proximal-patterns-container").css("display", "block")
+      $(".current-patterns-container").css("display", "none")
+    
+    $(document).on 'click', '.js-trigger-switch-current', ->
+      $(this).removeClass("in-active")
+      $(".js-trigger-switch-proximal").addClass("in-active")
+      $(".current-patterns-container").css("display", "block")
+      $(".proximal-patterns-container").css("display", "none")

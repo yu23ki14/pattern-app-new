@@ -41,4 +41,11 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.after_initialize do
+    Bullet.enable = true # Bulletプラグインを有効
+    Bullet.alert = true # JavaScriptでの通知
+    Bullet.bullet_logger = false # log/bullet.logへの出力
+    Bullet.console = false # ブラウザのコンソールログに記録
+    Bullet.rails_logger = false # Railsログに出力
+  end
 end

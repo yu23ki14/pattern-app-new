@@ -51,3 +51,42 @@ body.excharts.new
       left: 0
       border-radius: 12px
       min-width: 24px
+
+body.excharts.show
+  .result-nav
+    margin-top: -20px
+    border-bottom: 1px solid #D9D9D9
+    li
+      height: 70px
+      overflow: hidden
+      perspective: 500px
+      position: relative
+      display: inline-block
+      margin-top: -14px
+      z-index: 5
+      cursor: pointer
+      .nav-inner
+        margin: 0 auto
+        height: 130px
+        background: $brand-theme
+        transform: rotateX(55deg)
+        border-radius: 8px
+      p
+        display: block
+        position: absolute
+        right: 0
+        left: 0
+        bottom: 0
+        z-index: 3
+        text-decoration: none
+        padding: 5px 23px
+        line-height: 30px
+        color: $brand-contrast
+      &.in-active
+        .nav-inner
+          background: $brand-contrast
+          border: 1px solid #D9D9D9
+        p  
+          color: $brand-dark-gray
+  .current-patterns-container
+    display: none

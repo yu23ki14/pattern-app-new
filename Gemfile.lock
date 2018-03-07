@@ -54,6 +54,9 @@ GEM
     binding_of_caller (0.7.3)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
+    bullet (5.7.3)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11.0)
     byebug (9.1.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -61,7 +64,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.12.2)
+    coffee-script-source (1.8.0)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     crass (1.0.2)
@@ -216,6 +219,7 @@ GEM
     unicorn-rails (2.2.1)
       rack
       unicorn
+    uniform_notifier (1.11.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -231,12 +235,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bullet
   by_star!
   byebug
   coffee-rails (~> 4.2)
   devise
-  gon
   dotenv-rails
+  gon
   google-analytics-rails
   jbuilder (~> 2.0)
   jquery-rails
