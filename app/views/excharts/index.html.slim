@@ -9,5 +9,7 @@ div
     = link_to r
       .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container.pri-2-color
         p.small.date #{(r.created_at).strftime("%Y/%m/%d")}
-        h4.row-space-top-3 #{r.language.lg_name}
+        - if r.event.present?
+          p.row-space-top-3 #{r.event.event_name}
+        h4.row-space-top-1 #{r.language.lg_name}
 = render "select_mode"

@@ -1,6 +1,6 @@
 class ExchartsController < ApplicationController
   def index
-    @results = @user.excharts.includes(:language).order(created_at: "DESC")
+    @results = @user.excharts.includes(:language, :event).order(created_at: "DESC")
   end
   
   def show
