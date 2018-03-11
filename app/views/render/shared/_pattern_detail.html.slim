@@ -11,6 +11,11 @@
       p #{@pattern.b_solution}
       
       p.text-right.row-space-top-4
-        =link_to "/patterns/#{@pattern.language_id}/#{@pattern.pattern_no}", class: "bottom-bordered"
-          |more 
-          i.fa.fa-plus
+        - if controller_name == "excharts"
+          =link_to "/patterns/#{@pattern.language_id}/#{@pattern.pattern_no}?path_id=#{@path[:id]}", class: "bottom-bordered"
+            |more 
+            i.fa.fa-plus
+        - else
+          =link_to "/patterns/#{@pattern.language_id}/#{@pattern.pattern_no}", class: "bottom-bordered"
+            |more 
+            i.fa.fa-plus

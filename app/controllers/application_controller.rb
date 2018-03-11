@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
         @user = User.find(current_user.id)
       end
     end
-    
+
   protected
 
     def configure_permitted_parameters

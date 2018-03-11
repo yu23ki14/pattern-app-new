@@ -58,6 +58,7 @@ class ExchartsController < ApplicationController
   def patterndetail
     @language = Language.find(params[:language_id])
     @pattern = @language.patterns.find_by(pattern_no: params[:pattern_no])
+    @path = Rails.application.routes.recognize_path(request.referer)
   end
   
   private
