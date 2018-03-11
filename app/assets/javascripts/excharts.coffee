@@ -1,5 +1,18 @@
 $(document).on 'turbolinks:load', ->
+  if $("body").hasClass("index")
+    $(document).on 'click', '.js-trigger-modal-select-mode',->
+      $("#select_mode").modal()
+      return false
   if $("body").hasClass("new")
+    #ベース
+    setCardheight = ->
+      card_height = $(".js-swiping-card").height()
+      $(".card-stack").css("height", card_height + 15)
+    setTimeout ->
+      setCardheight()
+    , 50
+    
+    #フリックカード
     allcard = $(".card").length
     allcards = $(".card").length
     single_span = ($(".progressbar-outline").width() - 24) / allcards
@@ -20,30 +33,34 @@ $(document).on 'turbolinks:load', ->
       if direction == "right"
         $("#card" + allcard).css('transform', 'translate(105vw, 0) rotate(-5deg)')
         pattern_no = $("#card" + allcard).attr('pattern_no')
-        new_data1[pattern_no] = 1
-        $("#exchart_data1").val(JSON.stringify(new_data1))
-        new_data2[pattern_no] = 1
-        $("#exchart_data2").val(JSON.stringify(new_data2))
+        if pattern_no != undefined
+          new_data1[pattern_no] = 1
+          $("#exchart_data1").val(JSON.stringify(new_data1))
+          new_data2[pattern_no] = 1
+          $("#exchart_data2").val(JSON.stringify(new_data2))
       else if direction == "left"
         $("#card" + allcard).css('transform', 'translate(-105vw, 0) rotate(5deg)')
         pattern_no = $("#card" + allcard).attr('pattern_no')
-        new_data1[pattern_no] = 0
-        $("#exchart_data1").val(JSON.stringify(new_data1))
-        new_data2[pattern_no] = 0
-        $("#exchart_data2").val(JSON.stringify(new_data2))
+        if pattern_no != undefined
+          new_data1[pattern_no] = 0
+          $("#exchart_data1").val(JSON.stringify(new_data1))
+          new_data2[pattern_no] = 0
+          $("#exchart_data2").val(JSON.stringify(new_data2))
       else if direction == "up"
         $("#card" + allcard).css('transform', 'translate(0, -155vw) rotate(-5deg)')
         pattern_no = $("#card" + allcard).attr('pattern_no')
-        new_data1[pattern_no] = 0
-        $("#exchart_data1").val(JSON.stringify(new_data1))
-        new_data2[pattern_no] = 1
-        $("#exchart_data2").val(JSON.stringify(new_data2))
+        if pattern_no != undefined
+          new_data1[pattern_no] = 0
+          $("#exchart_data1").val(JSON.stringify(new_data1))
+          new_data2[pattern_no] = 1
+          $("#exchart_data2").val(JSON.stringify(new_data2))
       Bar_forwarding()
       allcard = allcard - 1
       if allcard != 0
         setNext(allcard)
         base()
       else
+        $(".flick-controller").css("display", "none")
         $("input[type='submit']").css("display", "block")
     
     base = ->
@@ -58,8 +75,28 @@ $(document).on 'turbolinks:load', ->
         roop("right")
       hammertime.on 'swipeup', ->
         roop("up")
-  
+        
+    $(document).on 'click', '.flick-button.left',->
+      roop("left")
+      return false
+    $(document).on 'click', '.flick-button.right',->
+      roop("right")
+      return false
+    $(document).on 'click', '.flick-button.up',->
+      roop("up")
+      return false
+      
     base()
+    
+    #1つ戻る
+    reverse = ->
+      if allcard < allcards
+        allcard += 1
+        $("#card" + allcard).css('transform', 'translate(0, 0) rotate(0)')
+        bar_width = bar_width - single_span
+        $(".js-trigger-bar").css("width", bar_width)
+    $(document).on 'click', '.flick-button.reverse',->
+      reverse()
     
   if $("body").hasClass("excharts show")
     patterns = gon.patterns
@@ -68,7 +105,7 @@ $(document).on 'turbolinks:load', ->
     #データの成形
     original_data1 = JSON.parse(gon.data1)
     original_data2 = JSON.parse(gon.data2)
-    data_length = Object.keys(original_data1).length
+    data_length = Object.keys(original_data1).length - 1
     data1 = []
     data2 = []
     
@@ -94,6 +131,7 @@ $(document).on 'turbolinks:load', ->
                   
               legend:
                 display: false
+              animation: false
               }
                 
     #チャート生成
@@ -185,3 +223,17 @@ $(document).on 'turbolinks:load', ->
       $(".js-trigger-switch-proximal").addClass("in-active")
       $(".current-patterns-container").css("display", "block")
       $(".proximal-patterns-container").css("display", "none")
+      
+    $(document).on 'click', '.js-trigger-pattern-detail', ->
+      $.ajax(
+        type: 'GET',
+        url: $(this).attr('language_id') + '/'+$(this).attr('pattern_no') + '/detail'
+      ).done ->
+        $('#pattern_detail').modal()
+    
+    $('.js-trigger-add-practice').click ->
+      language_id = $(this).attr("language_id")
+      pattern_no = $(this).attr("pattern_no")
+      $("#practice_language_id").val(language_id)
+      $("#practice_pattern_no").val(pattern_no)
+      $('#add-practice').modal()

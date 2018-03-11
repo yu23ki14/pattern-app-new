@@ -1,15 +1,16 @@
-#add-project-practice.modal
+#add-practice.modal
   .modal-container.col-11.col-center.p-y-30
     .close-modal
       i.fa.fa-times
     .row-space-top-4
-      = form_for @project_practice_form do |f|
+      = form_for @practice_form do |f|
+        = f.hidden_field :user_id, :value => current_user.id
         = f.hidden_field :language_id, :value => language_id
         = f.hidden_field :pattern_no, :value => pattern_no
+        = hidden_field_tag :path, path
         .row.selectbox
           .col-10.col-center
-            p.row-space-2.small   プロジェクト、期間、優先度は必須です。
-            = f.select :project_id, projects.all.map{|p| [p.project_name, p.id]}, :prompt => "▼　プロジェクトを選ぶ"
+            p.row-space-2   期間と優先度は必須です。
             = f.select :limit, [["１日", 1], ["７日間", 7], ["３０日間", 30], ["６０日間", 60], ["９０日間", 90], ["１２０日間", 120]], :prompt => "▼　期間を選ぶ"
             = f.select :priority, [["★", "1"], ["★★", "2"], ["★★★", "3"], ["★★★★", "4"]], :prompt => "▼　優先度を選ぶ"
           .col-12.col-center.text-center

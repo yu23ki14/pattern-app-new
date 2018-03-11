@@ -1,0 +1,9 @@
+.page-container
+  = link_to new_event_path
+    .card.bordered.row-space-top-2.p-x-10.p-y-10
+      h4 + 新規イベント
+  - @events.each do |e|
+    .card.bordered.row-space-top-2.p-x-10.p-y-10
+      p.small #{(e.limit).strftime("%Y/%m/%d %X")} まで
+      h4 イベント名: #{e.event_name}
+      h4 イベントコード: #{e.event_code}

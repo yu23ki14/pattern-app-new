@@ -1,18 +1,39 @@
 = form_for @exchart do |f|
   = f.hidden_field :user_id, value: current_user.id
-  = f.hidden_field :language_id, value: 1
+  = f.hidden_field :language_id, value: "#{@language_id}"
+  - if @event.present?
+    = f.hidden_field :event_id, value: "#{@event.id}"
   = f.hidden_field :data1
   = f.hidden_field :data2
   = f.submit "結果を見る", class: "button button-primary"
 
 .progressbar-outline.col-11.col-center.bordered.row-space-top-2.row-space-2
   .bar.js-trigger-bar
-.required-container
+.required-container.card-stack.row-space-1
   - @patterns.each_with_index do |p, i|
     .card.js-swiping-card.col-11.col-center[id="card#{i+1}", pattern_no="#{p.pattern_no}"]
       .col-11.col-center
         h4.text-center.row-space-3.row-space-top-3 #{p.pattern_name}
         p.summary.p-b-5 #{p.summary}
         .text-center
-          = image_tag "pattern_img/#{@language[:lg_code]}/#{p.pattern_no}.png", class: "col-7 col-center"
+          = image_tag "pattern_img/#{@language[:lg_code]}/#{p.pattern_no}.png", class: "col-6 col-center"
         p.solution.p-b-5 #{p.b_solution}
+        
+.row.text-center.flick-controller
+  .col-3
+    .col-12.col-center.flick-button.reverse.text-contrast.bg-gray
+      i.fa.fa-reply.row-space-top-1
+    p.small.p-t-5 １つ戻る
+  .col-3.h3
+    .col-12.col-center.flick-button.left.text-contrast.bg-theme
+      i.fa.fa-arrow-left.row-space-top-2
+    p.small.p-t-5 していない
+  .col-3.h3
+    .col-12.col-center.flick-button.up.text-contrast.bg-theme
+      i.fa.fa-arrow-up.row-space-top-2
+    p.small.p-t-5 したい
+  .col-3.h3
+    .col-12.col-center.flick-button.right.text-contrast.bg-theme
+      i.fa.fa-arrow-right.row-space-top-2
+    p.small.p-t-5 している
+  

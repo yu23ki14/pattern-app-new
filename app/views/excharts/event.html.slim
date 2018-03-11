@@ -1,0 +1,5 @@
+.page-container
+  = form_tag new_exchart_path, method: :get do
+    = text_field :event, :code
+    .text-center
+      = submit_tag "参加", class: "button button-primary"

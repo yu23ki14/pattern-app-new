@@ -1,3 +1,8 @@
+body.excharts.index
+  .modal
+    .menu
+      height: 400px
+      overflow: auto
 body.excharts.new
   overflow: hidden
   min-width: 100%
@@ -6,10 +11,6 @@ body.excharts.new
     display: none
   .required-container
     width: 100%
-    &:before
-      content: ""
-      display: block
-      padding-top: 110%
   .card
     background: white
     border-radius: 10px
@@ -19,6 +20,7 @@ body.excharts.new
     left: 0
     right: 0
     transition: all 0.5s
+    min-height: 390px
     .summary
       height: 48px
       overflow: auto
@@ -51,6 +53,15 @@ body.excharts.new
       left: 0
       border-radius: 12px
       min-width: 24px
+  .flick-button
+    width: 60px
+    height: 60px
+    border-radius: 30px
+    cursor: pointer
+    &.reverse
+      width: 35px
+      height: 35px
+      margin-top: 22px
 
 body.excharts.show
   .result-nav

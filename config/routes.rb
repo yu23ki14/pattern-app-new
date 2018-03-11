@@ -79,8 +79,14 @@ Rails.application.routes.draw do
   
   resources :project_members, only: [:create, :destroy]
   
-  resources :excharts, only: [:index, :new, :show, :create]
+  resources :events, only: [:new, :create, :index]
   
+  resources :excharts, only: [:index, :new, :show, :create] do
+    collection do
+      get 'event' => 'excharts#event'
+      get '/:language_id/:pattern_no/detail' => 'excharts#patterndetail'
+    end
+  end
   
   
   root 'welcome#index'

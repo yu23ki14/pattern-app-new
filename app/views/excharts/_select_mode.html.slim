@@ -1,0 +1,19 @@
+#select_mode.modal
+  .modal-container.col-11.col-center.p-y-30
+    .close-modal
+      i.fa.fa-times
+    .row-space-top-4
+      .col-12.col-center.menu
+        = link_to event_excharts_path
+          .card.pri-2-color.p-y-10.m-x-5.row-space-2
+            h4.p-x-10 イベント
+        = link_to new_exchart_path(language_id: 1)
+          .card.bg-lp.p-y-10.m-x-5.row-space-2
+            h4.p-x-10 ラーニング・パターン
+        //= link_to new_exchart_path(language_id: 2)
+          .card.bg-cp.p-y-10.m-x-5.row-space-2
+            h4.p-x-10 コラボレーション・パターン
+        = link_to new_exchart_path(language_id: 3)
+          .card.bg-pp.p-y-10.m-x-5.row-space-2
+            h4.p-x-10 プレゼンテーション・パターン
+        

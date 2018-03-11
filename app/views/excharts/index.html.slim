@@ -1,0 +1,13 @@
+div
+  h3.p-y-15.p-x-10.bg-theme.m-t-0.m-b-0.text-contrast
+    |チャート一覧
+.page-container.row-space-top-2
+  = link_to "#", class: "js-trigger-modal-select-mode"
+    .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container.bg-gray.text-contrast
+      h4 + チャートを生成する
+  - @results.each do |r|
+    = link_to r
+      .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container.pri-2-color
+        p.small.date #{(r.created_at).strftime("%Y/%m/%d")}
+        h4.row-space-top-3 #{r.language.lg_name}
+= render "select_mode"

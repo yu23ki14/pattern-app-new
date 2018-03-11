@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   end
   
   def show
-    @now_practices = @practices.after(Date.today, field: :enddate).order("enddate")
+    @now_practices = @practices.includes(:project_practice_comments).after(Date.today, field: :enddate).order("enddate")
   end
   
   def complete

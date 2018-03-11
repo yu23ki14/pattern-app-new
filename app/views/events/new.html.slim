@@ -1,0 +1,17 @@
+.page-container.text-lead-lg
+  = form_for @event do |f|
+    = f.hidden_field :user_id, value: current_user.id
+    p.row-space-top-3 イベント名:
+    = f.text_field :event_name
+    br
+    p.row-space-top-3 イベントコード（必須、半角英数）:
+    = f.text_field :event_code
+    br
+    p.row-space-top-3 ランゲージ
+    //= f.select :language_id, @languages.all.map{|p| [p.lg_name, p.id]}, :prompt => "ランゲージを選ぶ"
+    = f.select :language_id, [["ラーニング・パターン", 1], ["プレゼンテーション・パターン", 3]], :prompt => "ランゲージを選ぶ"
+    br
+    p.row-space-top-3 期限:
+    = f.datetime_select :limit
+    br
+    = f.submit "作成", class: "button button-primary row-space-top-3"
