@@ -99,6 +99,7 @@ $(document).on 'turbolinks:load', ->
       reverse()
     
   if $("body").hasClass("excharts show")
+    path_id = $(".title").attr("path_id")
     patterns = gon.patterns
     ctx = document.getElementById("myChart").getContext("2d")
     
@@ -209,7 +210,7 @@ $(document).on 'turbolinks:load', ->
         $(".js-place-pattern-list").empty()
         for i in [1..3]
           pattern = patterns[(firstPoint.index * 3) + i]
-          $(".js-place-pattern-list").append('<a href="/patterns/' + pattern.language_id + '/' + pattern.pattern_no + '"><p class="row-space-2">・' + pattern.pattern_name + '</p></a>')
+          $(".js-place-pattern-list").append('<a href="/patterns/' + pattern.language_id + '/' + pattern.pattern_no + '?path_id=' + path_id + '"><p class="row-space-2">・' + pattern.pattern_name + '</p></a>')
       return
     
     $(document).on 'click', '.js-trigger-switch-proximal', ->
@@ -230,6 +231,9 @@ $(document).on 'turbolinks:load', ->
         url: $(this).attr('language_id') + '/'+$(this).attr('pattern_no') + '/detail'
       ).done ->
         $('#pattern_detail').modal()
+        href = $('.js-link-to-pattern').attr("href")
+        href = href + "?path_id=" + path_id
+        $('#pattern_detail a').attr("href", href)
     
     $('.js-trigger-add-practice').click ->
       language_id = $(this).attr("language_id")
