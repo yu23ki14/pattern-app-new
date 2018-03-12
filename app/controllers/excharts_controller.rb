@@ -40,7 +40,7 @@ class ExchartsController < ApplicationController
     end
     @exchart = Exchart.new
     @patterns = Pattern.where(language_id: @language_id).order(pattern_no: "DESC")
-    @language = Language.find(1)
+    @language = Language.find(@language_id)
   end
   
   def create
