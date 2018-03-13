@@ -85,6 +85,7 @@ Rails.application.routes.draw do
     collection do
       get 'event' => 'excharts#event'
       get '/:language_id/:pattern_no/detail' => 'excharts#patterndetail'
+      get ':id/pdf' => 'excharts#pdf'
     end
   end
   

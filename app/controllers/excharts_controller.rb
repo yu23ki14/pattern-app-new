@@ -4,24 +4,41 @@ class ExchartsController < ApplicationController
   end
   
   def show
-    @exchart = Exchart.find(params[:id])
-    data1 = @exchart.data1
-    gon.data1 = data1
-    data2 = @exchart.data2
-    gon.data2 = data2
-    label = ExchartLabel.find_by(language_id: @exchart.language_id).label
-    gon.label = label
-    @language = @exchart.language
-    @patterns = Pattern.where(language_id: @exchart.language_id).order(:pattern_no)
-    gon.patterns = @patterns
-    ##以下jsで書き直したほうがよさげ
-    current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
-    proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - current_pattern_no
-    @proximalpatterns = @patterns.where(pattern_no: proximal_pattern_no)
-    @currentpatterns = @patterns.where(pattern_no: current_pattern_no)
-    ##ここまで
-    @practice_form = Practice.new
-    @path = request.path
+    respond_to do |format|
+      format.html do
+        @exchart = Exchart.find(params[:id])
+        data1 = @exchart.data1
+        gon.data1 = data1
+        data2 = @exchart.data2
+        gon.data2 = data2
+        label = ExchartLabel.find_by(language_id: @exchart.language_id).label
+        gon.label = label
+        @language = @exchart.language
+        @patterns = Pattern.where(language_id: @exchart.language_id).order(:pattern_no)
+        gon.patterns = @patterns
+        ##以下jsで書き直したほうがよさげ
+        current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
+        proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - current_pattern_no
+        @proximalpatterns = @patterns.where(pattern_no: proximal_pattern_no)
+        @currentpatterns = @patterns.where(pattern_no: current_pattern_no)
+        ##ここまで
+        @practice_form = Practice.new
+        @path = request.path
+      end
+      format.pdf do
+        @exchart = Exchart.find(params[:id])
+        @language = @exchart.language
+        @patterns = Pattern.where(language_id: @exchart.language_id).order(:pattern_no)
+        current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
+        proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - current_pattern_no
+        @proximalpatterns = @patterns.where(pattern_no: proximal_pattern_no)
+        @currentpatterns = @patterns.where(pattern_no: current_pattern_no)
+        render pdf: 'detail',                        # pdf ファイル名
+               encording: 'UTF-8',                   # 日本語を使う場合には指定する
+               layout: 'application_pdf.html',                   # レイアウトファイルの指定
+               show_as_html: params[:debug].present? # debug するか？
+      end
+    end
   end
   
   def new

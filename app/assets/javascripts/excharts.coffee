@@ -97,8 +97,9 @@ $(document).on 'turbolinks:load', ->
         $(".js-trigger-bar").css("width", bar_width)
     $(document).on 'click', '.flick-button.reverse',->
       reverse()
-    
+
   if $("body").hasClass("excharts show")
+    
     path_id = $(".title").attr("path_id")
     patterns = gon.patterns
     ctx = document.getElementById("myChart").getContext("2d")
@@ -133,6 +134,7 @@ $(document).on 'turbolinks:load', ->
               legend:
                 display: false
               animation: false
+              responsive: false
               }
                 
     #チャート生成
@@ -241,3 +243,65 @@ $(document).on 'turbolinks:load', ->
       $("#practice_language_id").val(language_id)
       $("#practice_pattern_no").val(pattern_no)
       $('#add-practice').modal()
+      
+      
+    #canvas画像化
+    saveCanvas = (saveType) ->
+      imageType = 'image/png'
+      fileName = 'sample.png'
+      if saveType == 'jpeg'
+        imageType = 'image/jpeg'
+        fileName = 'sample.jpg'
+      canvas = document.getElementById('myChart')
+      # base64エンコードされたデータを取得 「data:image/png;base64,iVBORw0k～」
+      base64 = canvas.toDataURL(imageType)
+      # base64データをblobに変換
+      blob = Base64toBlob(base64)
+      # blobデータをa要素を使ってダウンロード
+      saveBlob blob, fileName
+      return
+    
+    # Base64データをBlobデータに変換
+    
+    Base64toBlob = (base64) ->
+      # カンマで分割して以下のようにデータを分ける
+      # tmp[0] : データ形式（data:image/png;base64）
+      # tmp[1] : base64データ（iVBORw0k～）
+      tmp = base64.split(',')
+      # base64データの文字列をデコード
+      data = atob(tmp[1])
+      # tmp[0]の文字列（data:image/png;base64）からコンテンツタイプ（image/png）部分を取得
+      mime = tmp[0].split(':')[1].split(';')[0]
+      #  1文字ごとにUTF-16コードを表す 0から65535 の整数を取得
+      buf = new Uint8Array(data.length)
+      i = 0
+      while i < data.length
+        buf[i] = data.charCodeAt(i)
+        i++
+      # blobデータを作成
+      blob = new Blob([ buf ], type: mime)
+      blob
+    
+    # 画像のダウンロード
+    
+    saveBlob = (blob, fileName) ->
+      url = window.URL or window.webkitURL
+      # ダウンロード用のURL作成
+      dataUrl = url.createObjectURL(blob)
+      # イベント作成
+      event = document.createEvent('MouseEvents')
+      event.initMouseEvent 'click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null
+      # a要素を作成
+      a = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
+      # ダウンロード用のURLセット
+      a.href = dataUrl
+      # ファイル名セット
+      a.download = fileName
+      # イベントの発火
+      a.dispatchEvent event
+      return  
+    
+    $(document).on 'click', '.js-trigger-export-png',->
+      saveCanvas("png")
+    $(document).on 'click', '.js-trigger-export-jpg',->
+      saveCanvas("jpeg")

@@ -1,0 +1,8 @@
+.row-space-3.row-space-top-3
+  canvas#myChart[width="230" height="230"]
+.bg-theme
+  - @proximalpatterns.each do |p|
+    h4.title #{p.pattern_name}
+  
+- @currentpatterns.each do |p|
+  h4 #{p.pattern_name}
