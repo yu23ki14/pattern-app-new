@@ -6,6 +6,7 @@
     
 .row-space-3.row-space-top-3
   canvas#myChart[height="230"]
+
 .row-space-top-5
   ul.result-nav.row.text-center
     li.js-trigger-switch-proximal.col-6.p-t-0
@@ -47,7 +48,11 @@
             i.fa.fa-list-ul
           .text-contrast.h3.inline.m-l-10.js-trigger-pattern-detail{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
             i.fa.fa-file-text-o
+.page-container.text-right
+  = form_tag ('/excharts/1/pdf?format=pdf') do
+    = hidden_field :chart, :image
+    = submit_tag "PDFを表示", class: "button button-primary"
+
 = render "pattern_list"
 = render partial: "add_practice", locals: {path: @path}
 #pattern-detail-container
-//= render "/render/shared/pattern_detail"
