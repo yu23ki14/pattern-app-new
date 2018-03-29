@@ -25,6 +25,5 @@ doc/
 .DS_Store
 .idea
 .secret
-log
 .env
-/public/assets
+log/*
