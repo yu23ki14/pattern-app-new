@@ -24,6 +24,26 @@ class ExchartsController < ApplicationController
     @path = request.path
   end
   
+  def pdf
+    respond_to do |format|
+      format.pdf do
+        @chart = params[:chart][:image]
+        @exchart = Exchart.find(params[:id])
+        data1 = @exchart.data1
+        data2 = @exchart.data2
+        @language = @exchart.language
+        @patterns = Pattern.where(language_id: @exchart.language_id).order(:pattern_no)
+        @current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
+        @proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - @current_pattern_no
+        render pdf: 'dialogue_workshop_sheet',
+               encording: 'UTF-8',
+               layout: 'application_pdf.html',
+               orientation: 'Landscape',
+               show_as_html: params[:debug].present?
+      end
+    end
+  end
+  
   def new
     if params[:language_id].present? && params[:language_id] < "4"
       @language_id = params[:language_id]

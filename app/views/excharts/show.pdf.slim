@@ -1,0 +1,11 @@
+//.bg-theme
+    - @proximalpatterns.each do |p|
+      h4.title #{p.pattern_name}
+    
+  - @currentpatterns.each do |p|
+    h4 #{p.pattern_name}
+    
+- @patterns.each do |p|
+  h4.title #{p.pattern_name}
+  
+= wicked_pdf_image_tag @chart

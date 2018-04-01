@@ -49,6 +49,10 @@ gem 'google-analytics-rails'
 #use newrelic as service surveillance
 gem 'newrelic_rpm'
 
+#use wicked pdf as pdf export
+gem 'wkhtmltopdf-binary-11'
+gem 'wicked_pdf'
+
 #use dotenv as secret valiables
 gem 'dotenv-rails'
 

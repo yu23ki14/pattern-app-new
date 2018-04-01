@@ -241,3 +241,29 @@ $(document).on 'turbolinks:load', ->
       $("#practice_language_id").val(language_id)
       $("#practice_pattern_no").val(pattern_no)
       $('#add-practice').modal()
+      
+      
+    #canvas画像化
+    
+    
+    Base64toBlob = (base64) ->
+      tmp = base64.split(',')
+      data = atob(tmp[1])
+      mime = tmp[0].split(':')[1].split(';')[0]
+      buf = new Uint8Array(data.length)
+      i = 0
+      while i < data.length
+        buf[i] = data.charCodeAt(i)
+        i++
+      blob = new Blob([ buf ], type: mime)
+      blob
+      
+    imageType = 'image/png'
+    fileName = 'sample.png'
+    canvas = document.getElementById('myChart')
+    base64 = canvas.toDataURL(imageType)
+    blob = Base64toBlob(base64)
+    
+    $("#chart_image").val(base64)
+    
+    
