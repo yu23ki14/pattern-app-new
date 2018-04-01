@@ -93,6 +93,8 @@ body.excharts.show
         padding: 5px 23px
         line-height: 30px
         color: $brand-contrast
+        height: 30px
+        white-space: nowrap
       &.in-active
         .nav-inner
           background: $brand-contrast
@@ -104,3 +106,30 @@ body.excharts.show
       cursor: pointer
   .current-patterns-container
     display: none
+
+//pdf style
+.pdf-col-3
+  width: 23%
+  float: left
+.pdf-col-4
+  width: 32.3%
+  margin-left: 1%
+  float: left
+.chart-on-pdf
+  width: 230px
+  position: absolute
+  right: 0
+  top: 0
+.patterns-list-on-pdf
+  margin-top: 60px
+  p
+    &:last-of-type
+      margin-bottom: 0
+.explanation-on-pdf
+  margin-left: 60px
+.name-on-pdf
+  width: 350px
+  border-bottom: 1px dashed
+  position: absolute
+  left: 250px
+  top: 35px

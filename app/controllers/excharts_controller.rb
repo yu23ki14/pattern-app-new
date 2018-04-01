@@ -33,11 +33,9 @@ class ExchartsController < ApplicationController
         data2 = @exchart.data2
         @language = @exchart.language
         @patterns = Pattern.where(language_id: @exchart.language_id).order(:pattern_no)
-        current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
-        proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - current_pattern_no
-        @proximalpatterns = @patterns.where(pattern_no: proximal_pattern_no)
-        @currentpatterns = @patterns.where(pattern_no: current_pattern_no)
-        render pdf: 'detail',
+        @current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
+        @proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - @current_pattern_no
+        render pdf: 'dialogue_workshop_sheet',
                encording: 'UTF-8',
                layout: 'application_pdf.html',
                orientation: 'Landscape',
