@@ -32,9 +32,11 @@ class ExchartsController < ApplicationController
         data1 = @exchart.data1
         data2 = @exchart.data2
         @language = @exchart.language
-        @patterns = Pattern.where(language_id: @exchart.language_id).order(:pattern_no)
+        @core_pattern = Pattern.where(language_id: @exchart.language_id).find_by(pattern_no: 0)
+        @patterns = Pattern.where(language_id: @exchart.language_id).where.not(pattern_no: 0).order(:pattern_no)
         @current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
         @proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - @current_pattern_no
+        print @proximal_pattern_no
         render pdf: 'dialogue_workshop_sheet',
                encording: 'UTF-8',
                layout: 'application_pdf.html',

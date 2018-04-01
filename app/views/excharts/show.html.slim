@@ -49,7 +49,7 @@
           .text-contrast.h3.inline.m-l-10.js-trigger-pattern-detail{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
             i.fa.fa-file-text-o
 .page-container.text-right
-  = form_tag ('/excharts/1/pdf?format=pdf') do
+  = form_tag ("/excharts/" + "#{@exchart.id}" + "/pdf?format=pdf") do
     = hidden_field :chart, :image
     = submit_tag "PDFを表示", class: "button button-primary"
 
