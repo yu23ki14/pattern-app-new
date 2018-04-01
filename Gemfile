@@ -50,7 +50,7 @@ gem 'google-analytics-rails'
 gem 'newrelic_rpm'
 
 #use wicked pdf as pdf export
-gem 'wkhtmltopdf-binary-11'
+gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 
 #use dotenv as secret valiables
