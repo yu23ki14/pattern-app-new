@@ -4,6 +4,7 @@ $(document).on 'turbolinks:load', ->
       $("#select_mode").modal()
       return false
   if $("body").hasClass("new")
+    
     #ベース
     setCardheight = ->
       card_height = $(".js-swiping-card").height()
@@ -97,6 +98,11 @@ $(document).on 'turbolinks:load', ->
         $(".js-trigger-bar").css("width", bar_width)
     $(document).on 'click', '.flick-button.reverse',->
       reverse()
+      
+    setTimeout ->
+      window.onpopstate = ->
+        history.pushState()
+    , 1000
     
   if $("body").hasClass("excharts show")
     path_id = $(".title").attr("path_id")

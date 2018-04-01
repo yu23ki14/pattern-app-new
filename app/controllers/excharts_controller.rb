@@ -49,6 +49,9 @@ class ExchartsController < ApplicationController
   def new
     if params[:language_id].present? && params[:language_id] < "4"
       @language_id = params[:language_id]
+      @exchart = Exchart.new
+      @patterns = Pattern.where(language_id: @language_id).order(pattern_no: "DESC")
+      @language = Language.find(@language_id)
     elsif params[:event].present?
       event_code = params[:event][:code]
       @event = Event.find_by(event_code: event_code)
@@ -56,13 +59,14 @@ class ExchartsController < ApplicationController
         redirect_to excharts_path
       else
         @language_id = @event.language_id
+        @exchart = Exchart.new
+        @patterns = Pattern.where(language_id: @language_id).order(pattern_no: "DESC")
+        @language = Language.find(@language_id)
       end
     else
       redirect_to excharts_path
     end
-    @exchart = Exchart.new
-    @patterns = Pattern.where(language_id: @language_id).order(pattern_no: "DESC")
-    @language = Language.find(@language_id)
+    
   end
   
   def create
