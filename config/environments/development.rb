@@ -12,9 +12,6 @@ Rails.application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
-
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
   
   # action mailar
   config.action_mailer.default_url_options = {host: 'service-test-pl-yu23ki14.c9users.io', port: 3000}
@@ -38,6 +35,22 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+
+  #mailer
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    #:enable_starttls_auto => false,
+    :address => 'smtp.gmail.com',
+    #:address => 'localhost', for mailcatcher
+    :port => 587,
+    #:port => 1025, for mailcatcher
+    :domain => 'gmail.com',
+    :authentication => 'plain',
+    :user_name => ENV['MAILER_USER_ID'],
+    :password => ENV['MAILER_PASSWORD'],
+    :enable_starttls_auto => true
+  }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

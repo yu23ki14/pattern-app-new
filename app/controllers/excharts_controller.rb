@@ -27,6 +27,7 @@ class ExchartsController < ApplicationController
   def pdf
     respond_to do |format|
       format.pdf do
+        
         @chart = params[:chart][:image]
         @exchart = Exchart.find(params[:id])
         data1 = @exchart.data1
@@ -36,12 +37,17 @@ class ExchartsController < ApplicationController
         @patterns = Pattern.where(language_id: @exchart.language_id).where.not(pattern_no: 0).order(:pattern_no)
         @current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
         @proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - @current_pattern_no
-        print @proximal_pattern_no
         render pdf: 'dialogue_workshop_sheet',
                encording: 'UTF-8',
                layout: 'application_pdf.html',
                orientation: 'Landscape',
                show_as_html: params[:debug].present?
+        pdf = render_to_string pdf: "dialogue_workshop_sheet.pdf",
+              encoding: "UTF-8",
+              orientation: 'Landscape',
+              layout: "application_pdf.html",
+              template: "excharts/pdf.pdf.slim"
+        ExchartMailer.send_pdf(current_user, pdf).deliver
       end
     end
   end
