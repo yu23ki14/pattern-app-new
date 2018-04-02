@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       #get '/service_agreement' => 'static_pages#service_agreement'
       get '/vision' => 'static_pages#vision'
       get '/tutorial' => 'static_pages#tutorial'
+      get '/sendgrid' => 'static_pages#sendgrid'
     end
   end
   
