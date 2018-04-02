@@ -11,7 +11,4 @@ class StaticPagesController < ApplicationController
   
   def tutorial
   end
-  
-  def sendgrid
-  end
 end
