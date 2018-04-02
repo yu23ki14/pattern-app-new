@@ -43,5 +43,7 @@ $(document).on "turbolinks:load", ->
     
     $("li").click ->
       $('#practicecontent').css({opacity: '1'}).animate({opacity: '0'}, 300)
-    
-    
+  
+  #ローダー
+  $(document).on 'click', 'input[type="submit"]',->
+    $(".loading-modal").css("display", "block")

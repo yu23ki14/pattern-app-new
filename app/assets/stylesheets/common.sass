@@ -834,3 +834,44 @@ body.modal-open
     padding-bottom: 10px
   li.active
     border-bottom: 4px $brand-gray solid
+
+/*loading*************************/
+@-webkit-keyframes spin
+  0%
+    -webkit-transform: rotate(0deg)
+  100%
+    -webkit-transform: rotate(360deg)
+
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+.loading-modal
+  height: 100%
+  width: 100%
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 100
+  background: rgba(255, 255, 255, 0.8)
+  display: none
+  .spinner
+    -webkit-animation: spin 2s linear infinite
+    animation: spin 2s linear infinite
+    width: 70px
+    height: 70px
+    position: absolute
+    margin: auto
+    top: -110px
+    bottom: 0
+    left: 0
+    right: 0
+  .loader
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: 100

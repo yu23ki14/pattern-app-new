@@ -114,6 +114,7 @@ $(document).on 'turbolinks:load', ->
     , 1000
     
   if $("body").hasClass("excharts show")
+    
     path_id = $(".title").attr("path_id")
     patterns = gon.patterns
     ctx = document.getElementById("myChart").getContext("2d")

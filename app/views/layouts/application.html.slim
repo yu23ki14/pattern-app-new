@@ -18,3 +18,6 @@ html
     -if user_signed_in?
       footer
     = render "layouts/pc_ng"
+    .loading-modal
+      = image_tag "spinner.png", class: "spinner"
+      p.loader loading...
