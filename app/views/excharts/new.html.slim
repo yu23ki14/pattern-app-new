@@ -13,11 +13,13 @@
   - @patterns.each_with_index do |p, i|
     .card.js-swiping-card.col-11.col-center[id="card#{i+1}", pattern_no="#{p.pattern_no}"]
       .col-11.col-center
-        h4.text-center.row-space-3.row-space-top-3 #{p.pattern_name}
-        p.summary.p-b-5 #{p.summary}
+        h4.text-center.row-space-2.row-space-top-2 #{p.pattern_name}
+        .summary.p-b-5.flex-container
+          p #{p.summary}
         .text-center
           = image_tag "pattern_img/#{@language[:lg_code]}/#{p.pattern_no}.png", class: "col-6 col-center"
-        p.solution.p-b-5 #{p.b_solution}
+        .solution.p-b-5.flex-container
+          p #{p.b_solution}
         
 .row.text-center.flick-controller
   .col-3

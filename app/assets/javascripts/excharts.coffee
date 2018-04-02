@@ -3,7 +3,7 @@ $(document).on 'turbolinks:load', ->
     $(document).on 'click', '.js-trigger-modal-select-mode',->
       $("#select_mode").modal()
       return false
-  if $("body").hasClass("new")
+  if $("body").hasClass("excharts new")
     
     #ベース
     setCardheight = ->
@@ -14,14 +14,23 @@ $(document).on 'turbolinks:load', ->
     , 50
     
     #フリックカード
-    allcard = $(".card").length
+    if $("#exchart_data1").val() != ""
+      progress = Object.keys(JSON.parse($("#exchart_data1").val())).length
+    else
+      progress = 0
+    
+    allcard = $(".card").length - progress
     allcards = $(".card").length
     single_span = ($(".progressbar-outline").width() - 24) / allcards
     max_bar_width = $(".progressbar-outline").width() - 2
     bar_width = $(".js-trigger-bar").width()
     element = document.getElementById('card' + allcard)
-    new_data1 = {}
-    new_data2 = {}
+    if $("#exchart_data1").val() != ""
+      new_data1 = JSON.parse($("#exchart_data1").val())
+      new_data2 = JSON.parse($("#exchart_data2").val())
+    else
+      new_data1 = {}
+      new_data2 = {}
     
     setNext = (id) ->
       element = document.getElementById('card' + id)
