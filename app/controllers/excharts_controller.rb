@@ -47,6 +47,7 @@ class ExchartsController < ApplicationController
               layout: "application_pdf.html",
               template: "excharts/pdf.pdf.slim"
         ExchartMailer.send_pdf(current_user, pdf).deliver
+        redirect_to excharts_path, notice: 'メールでPDFを送りました。'
       end
     end
   end
