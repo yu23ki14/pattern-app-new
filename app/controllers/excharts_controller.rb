@@ -27,21 +27,20 @@ class ExchartsController < ApplicationController
   def pdf
     respond_to do |format|
       format.pdf do
-        
-        @chart = params[:chart][:image]
-        @exchart = Exchart.find(params[:id])
-        data1 = @exchart.data1
-        data2 = @exchart.data2
-        @language = @exchart.language
-        @core_pattern = Pattern.where(language_id: @exchart.language_id).find_by(pattern_no: 0)
-        @patterns = Pattern.where(language_id: @exchart.language_id).where.not(pattern_no: 0).order(:pattern_no)
-        @current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
-        @proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - @current_pattern_no
+        set_chart
         render pdf: 'dialogue_workshop_sheet',
                encording: 'UTF-8',
                layout: 'application_pdf.html',
                orientation: 'Landscape',
                show_as_html: params[:debug].present?
+      end
+    end
+  end
+  
+  def send_pdf
+    respond_to do |format|
+      format.pdf do
+        set_chart
         pdf = render_to_string pdf: "dialogue_workshop_sheet.pdf",
               encoding: "UTF-8",
               orientation: 'Landscape',
@@ -95,5 +94,17 @@ class ExchartsController < ApplicationController
   private
     def exchart_params
       params.require(:exchart).permit(:user_id, :language_id, :event_id, :data1, :data2)
+    end
+    
+    def set_chart
+      @chart = params[:chart][:image]
+      @exchart = Exchart.find(params[:id])
+      data1 = @exchart.data1
+      data2 = @exchart.data2
+      @language = @exchart.language
+      @core_pattern = Pattern.where(language_id: @exchart.language_id).find_by(pattern_no: 0)
+      @patterns = Pattern.where(language_id: @exchart.language_id).where.not(pattern_no: 0).order(:pattern_no)
+      @current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
+      @proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - @current_pattern_no
     end
 end

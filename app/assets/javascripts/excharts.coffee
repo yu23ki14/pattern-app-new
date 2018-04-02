@@ -270,6 +270,6 @@ $(document).on 'turbolinks:load', ->
     base64 = canvas.toDataURL(imageType)
     blob = Base64toBlob(base64)
     
-    $("#chart_image").val(base64)
+    $(".chart-image").val(base64)
     
     
