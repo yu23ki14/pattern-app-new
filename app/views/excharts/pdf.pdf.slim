@@ -7,18 +7,25 @@
     br
     |取り入れたいパターンにはパターン名の横に☆がついています。
   = image_tag @chart, class: "chart-on-pdf"
-  p.small.required-container.core-pattern-on-pdf
-    |#{@core_pattern.pattern_name}
-    - if @current_pattern_no.include?("0")
+  
+  - if @current_pattern_no.include?("0")
+    p.small.required-container.core-pattern-on-pdf.strong
+      |#{@core_pattern.pattern_name}
       span.decoration-on-pdf
         |○
-    - elsif @proximal_pattern_no.include?("0")
+  - elsif @proximal_pattern_no.include?("0")
+    p.small.required-container.core-pattern-on-pdf
+      |#{@core_pattern.pattern_name}
       span.decoration-on-pdf
-        |☆
+        |★
+  - else
+    p.small.required-container.core-pattern-on-pdf
+      |#{@core_pattern.pattern_name}
+      
   .row.patterns-list-on-pdf
     - @patterns.each do |p|
       - if @current_pattern_no.include?("#{p.pattern_no}")
-        p.small.pdf-col-4.row-space-3
+        p.small.pdf-col-4.row-space-3.strong
           | #{p.pattern_name}
           span.decoration-on-pdf
             |○
@@ -26,7 +33,7 @@
         p.small.pdf-col-4.row-space-3
           | #{p.pattern_name}
           span.decoration-on-pdf
-            |☆
+            |★
       - else
         p.small.pdf-col-4.row-space-3
           | #{p.pattern_name}

@@ -8,6 +8,19 @@ class EventsController < ApplicationController
     @languages = Language.all
   end
   
+  def show
+    
+    respond_to do |format|
+      format.html {}
+      format.csv {
+        @event = Event.find(params[:id])
+        @results = @event.excharts
+        filename = @event.event_name
+        headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
+      }
+    end
+  end
+  
   def create
     @event = Event.new(event_params)
     if @event.save

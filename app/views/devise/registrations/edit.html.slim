@@ -1,6 +1,7 @@
 .page-container.row-space-top-4
   .col-11.col-center
     h3 ユーザー情報変更
+    p user_id: #{current_user.id}
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = devise_error_messages!
     

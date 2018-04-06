@@ -7,3 +7,4 @@
       p.small #{(e.limit).strftime("%Y/%m/%d %X")} まで
       h4 イベント名: #{e.event_name}
       h4 イベントコード: #{e.event_code}
+      = link_to "結果のCSV出力", event_path(e, format: :csv), class: "button button-primary"

@@ -80,7 +80,7 @@ Rails.application.routes.draw do
   
   resources :project_members, only: [:create, :destroy]
   
-  resources :events, only: [:new, :create, :index]
+  resources :events, only: [:new, :create, :index, :show]
   
   resources :excharts, only: [:index, :new, :show, :create] do
     collection do
