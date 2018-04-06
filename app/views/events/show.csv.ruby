@@ -3,7 +3,7 @@ require 'csv'
 CSV.generate do |csv|
   length = JSON.parse(@results.last.data1).length - 1
   
-  csv_column_names = ["ID", "user_id"]
+  csv_column_names = ["ID", "user_id", "created_at"]
   
   for no in 0..length do
     csv_column_names.push("No#{no}")
@@ -15,7 +15,8 @@ CSV.generate do |csv|
     
     csv_column_values = [
       r.id,
-      r.user_id
+      r.user_id,
+      r.created_at
     ]
     
     for num in 0..length do
