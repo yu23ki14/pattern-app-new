@@ -9,13 +9,24 @@ class EventsController < ApplicationController
   end
   
   def show
-    
     respond_to do |format|
       format.html {}
       format.csv {
         @event = Event.find(params[:id])
         @results = @event.excharts
         filename = @event.event_name
+        headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
+      }
+    end
+  end
+  
+  def proximal
+    respond_to do |format|
+      format.html {}
+      format.csv {
+        @event = Event.find(params[:id])
+        @results = @event.excharts
+        filename = @event.event_name + "proximal"
         headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
       }
     end

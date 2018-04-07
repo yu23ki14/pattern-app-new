@@ -80,7 +80,11 @@ Rails.application.routes.draw do
   
   resources :project_members, only: [:create, :destroy]
   
-  resources :events, only: [:new, :create, :index, :show]
+  resources :events, only: [:new, :create, :index, :show] do
+    collection do
+      get ':id/proximal' => 'events#proximal'
+    end
+  end
   
   resources :excharts, only: [:index, :new, :show, :create] do
     collection do

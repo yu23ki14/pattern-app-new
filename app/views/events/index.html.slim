@@ -7,4 +7,6 @@
       p.small #{(e.limit).strftime("%Y/%m/%d %X")} まで
       h4 イベント名: #{e.event_name}
       h4 イベントコード: #{e.event_code}
-      = link_to "結果のCSV出力", event_path(e, format: :csv), class: "button button-primary"
+      = link_to "実践している結果", event_path(e, format: :csv), class: "button button-primary"
+      br
+      = link_to "実践したい結果", "/events/#{e.id}/proximal.csv", class: "button button-primary row-space-top-1"
