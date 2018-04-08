@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
     if Rails.env == 'production'
-      if current_user.id == 1 || current_user.id == 5 || current_user.id == 183
+      if current_user.id == 2 || current_user.id == 5 || current_user.id == 183
         @events = Event.all
       else
         @events = []
