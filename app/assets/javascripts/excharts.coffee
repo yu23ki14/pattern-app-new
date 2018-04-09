@@ -145,7 +145,8 @@ $(document).on 'turbolinks:load', ->
                   stepSize: 1
                   beginAtZero: true
                   display: false
-                  
+                  max: 3
+                  min: 0
               legend:
                 display: false
               animation: false
