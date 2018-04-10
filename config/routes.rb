@@ -96,6 +96,7 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :shuffles, only: [:index]
   
   root 'welcome#index'
 

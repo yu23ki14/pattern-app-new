@@ -32,3 +32,4 @@
 //= require recommends
 //= require projects
 //= require excharts
+//= require shuffles
