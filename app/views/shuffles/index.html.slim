@@ -2,13 +2,13 @@
   .page-container
     h3 シャッフル
     = link_to "?pattern=lp"
-      = image_tag "pattern_img/lp-card", class: "col-12 col-center"
+      = image_tag "pattern_img/lp-card.png", class: "col-12 col-center"
     = link_to "?pattern=cp"
-      = image_tag "pattern_img/cp-card", class: "col-12 col-center"
+      = image_tag "pattern_img/cp-card.png", class: "col-12 col-center"
     = link_to "?pattern=pp"
-      = image_tag "pattern_img/pp-card", class: "col-12 col-center"
+      = image_tag "pattern_img/pp-card.png", class: "col-12 col-center"
     = link_to "?pattern=pdp"
-      = image_tag "pattern_img/pdp-card", class: "col-12 col-center"
+      = image_tag "pattern_img/pdp-card.png", class: "col-12 col-center"
 - else
   .page-container.required-container.card-stack.p-t-10.flex-container
     = render "card"
