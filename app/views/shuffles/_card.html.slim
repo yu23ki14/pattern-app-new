@@ -1,9 +1,15 @@
-.card.p-y-10.p-x-15.col-12.col-center.text-center.flex-container
-  div
-    = link_to "#{request.url}", class: "button button-primary row-space-top-4"
-      |もう一度する。
-    = link_to shuffles_path, class: "button button-primary-outline row-space-top-2 row-space-4"
-      |ランゲージを選ぶ。
+.card.p-y-10.p-x-15.col-12.col-center.flex-container
+  p.strong.text-center.row-space-top-3 使い方
+  br
+  p
+    span.bg-theme.text-contrast
+      |ランダムで表示
+    |をタップするとパターンがランダムに表示されます。
+    br
+    |<前のパターンをタップするとこれまで出ている一つ前のパターンに戻ります。
+    br
+    |次のパターン>をタップすると一つ後のパターンにいきます。
+
 - @patterns.each do |p|
   .card.p-y-10.p-x-15.col-12.col-center
     h4.text-center #{p.pattern_name}
@@ -11,3 +17,10 @@
     .text-center
       = image_tag "pattern_img/#{params[:pattern]}/#{p.pattern_no}.png", class: "col-6 col-center"
     p.row-space-2 #{p.b_solution}
+
+.card.p-y-10.p-x-15.col-12.col-center.text-center.flex-container
+  div
+    = link_to "#{request.url}", class: "button button-primary row-space-top-4"
+      |もう一度する。
+    = link_to shuffles_path, class: "button button-primary-outline row-space-top-2 row-space-4"
+      |ランゲージを選ぶ。
