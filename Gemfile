@@ -56,6 +56,9 @@ gem 'wicked_pdf'
 #use dotenv as secret valiables
 gem 'dotenv-rails'
 
+#use alexa
+gem 'alexa_rubykit'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
