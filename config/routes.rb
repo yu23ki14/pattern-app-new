@@ -96,6 +96,8 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :alexa_talks, only: [:create]
+  
   
   root 'welcome#index'
 
