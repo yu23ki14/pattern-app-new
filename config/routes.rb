@@ -98,6 +98,7 @@ Rails.application.routes.draw do
   
   resources :alexa_talks, only: [:create]
   
+  resources :shuffles, only: [:index]
   
   root 'welcome#index'
 

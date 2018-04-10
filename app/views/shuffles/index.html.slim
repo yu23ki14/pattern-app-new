@@ -1,0 +1,24 @@
+- if params[:pattern] == nil
+  .page-container
+    h3 シャッフル
+    = link_to "?pattern=lp"
+      = image_tag "pattern_img/lp-card", class: "col-12 col-center"
+    = link_to "?pattern=cp"
+      = image_tag "pattern_img/cp-card", class: "col-12 col-center"
+    = link_to "?pattern=pp"
+      = image_tag "pattern_img/pp-card", class: "col-12 col-center"
+    = link_to "?pattern=pdp"
+      = image_tag "pattern_img/pdp-card", class: "col-12 col-center"
+- else
+  .page-container.required-container.card-stack.p-t-10.flex-container
+    = render "card"
+  .text-center
+    = link_to "#", class: "button button-primary js-trigger-show row-space-top-2"
+      |ランダムで表示
+  .row.p-t-5.p-b-5
+    .col-6
+      = link_to "#", class: "js-trigger-previous"
+        |< 前のパターン
+    .col-6.text-right
+      = link_to "#", class: "js-trigger-next"
+        |次のパターン >
