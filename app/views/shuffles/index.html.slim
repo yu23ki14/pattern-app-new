@@ -10,15 +10,16 @@
     = link_to "?pattern=pdp"
       = image_tag "pattern_img/pdp-card.png", class: "col-12 col-center"
 - else
-  .page-container.required-container.card-stack.p-t-10.flex-container
-    = render "card"
-  .text-center
-    = link_to "#", class: "button button-primary js-trigger-show row-space-top-2"
-      |ランダムで表示
-  .row.p-t-5.p-b-5
-    .col-6
-      = link_to "#", class: "js-trigger-previous"
-        |< 前のパターン
-    .col-6.text-right
-      = link_to "#", class: "js-trigger-next"
-        |次のパターン >
+  div
+    .page-container.required-container.card-stack.p-t-10.flex-container.row-space-2
+      = render "card"
+    .text-center
+      = link_to "#", class: "button button-primary js-trigger-show row-space-top-2"
+        |ランダムで表示
+    .row.p-t-5.p-b-5
+      .col-6
+        = link_to "#", class: "js-trigger-previous"
+          |< 前のパターン
+      .col-6.text-right
+        = link_to "#", class: "js-trigger-next"
+          |次のパターン >

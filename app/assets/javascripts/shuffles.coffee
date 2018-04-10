@@ -1,7 +1,7 @@
 $(document).on 'turbolinks:load', ->
   if $("body").hasClass("shuffles")
     setCardheight = ->
-      $(".card-stack").css("height", 370)
+      $(".card-stack").css("height", 375)
     setTimeout ->
       setCardheight()
     , 50
