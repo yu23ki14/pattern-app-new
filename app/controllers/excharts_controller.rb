@@ -77,10 +77,19 @@ class ExchartsController < ApplicationController
   
   def create
     @exchart = Exchart.new(exchart_params)
-    if @exchart.save
-      redirect_to @exchart
+    patterns_no = Pattern.where(language_id: exchart_params[:language_id]).length
+    if exchart_params[:data1] != ""
+      if JSON.parse(exchart_params[:data1]).length == patterns_no
+        if @exchart.save
+          redirect_to @exchart
+        else
+          redirect_to new_exchart_path
+        end
+      else
+        redirect_to new_exchart_path, alert: "データに誤りがあります。"
+      end
     else
-      redirect_to new_exchart_path
+      redirect_to new_exchart_path, alert: "データに誤りがあります。"
     end
   end
   
