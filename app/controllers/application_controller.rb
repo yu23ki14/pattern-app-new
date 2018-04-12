@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   
   private
     def backhome
-      if controller_name == "welcome" || controller_name == "registrations" || controller_name == "sessions" || controller_name == "alexa_talks"
+      if controller_name == "welcome" || controller_name == "registrations" || controller_name == "sessions" || controller_name == "alexa_talks" || controller_name == "patterns"
       else
         if !user_signed_in?
           redirect_to root_path, notice: 'ログインしてください。'
