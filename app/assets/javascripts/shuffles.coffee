@@ -31,3 +31,6 @@ $(document).on 'turbolinks:load', ->
         $(".card:nth-of-type(" + card + ")").css({"right" : "0", "left" : "0"})
         
       return false
+    
+    $('.fav').click ->
+      $.post '/patterns/' + $(this).attr('language_id') + '/' + $(this).attr('pattern_no') + '/fav'

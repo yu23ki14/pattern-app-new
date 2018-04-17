@@ -10,8 +10,17 @@
     br
     |次のパターン>をタップすると一つ後のパターンにいきます。
 
-- @patterns.each do |p|
-  .card.p-y-10.p-x-15.col-12.col-center
+- @patterns.each_with_index do |p, index|
+  .card.p-y-10.p-x-15.col-12.col-center.required-container
+    - if user_signed_in?
+      - if @favorites.find_by(pattern_no: p.pattern_no) != nil
+        = check_box_tag "fav#{index}", '', true, {:user_id => current_user.id, :language_id => params[:language_id], :pattern_no => params[:pattern_no], class: "fav"}
+        label.text-light.fav-icon-lg.inline{for="fav#{index}"}
+          i.fa.fa-heart.h3.p-l-10
+      - else
+        = check_box_tag "fav#{index}", '', false, {:user_id => current_user.id, :language_id => p.language_id, :pattern_no => p.pattern_no, class: "fav"}
+        label.text-light.fav-icon-lg.inline{for="fav#{index}"}
+          i.fa.fa-heart.h3.p-l-10
     h4.text-center #{p.pattern_name}
     p #{p.summary}
     .text-center
