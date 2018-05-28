@@ -1,0 +1,15 @@
+.row.text-center
+  - if action_name === "index"
+    .col-6.p-x-0.bottom-bordered.thick.base
+      = link_to excharts_path
+        |一覧
+    .col-6.p-x-0
+      = link_to compare_excharts_path
+        |比較
+  - if action_name === "compare"
+    .col-6.p-x-0
+      = link_to excharts_path
+        |一覧
+    .col-6.p-x-0.bottom-bordered.thick.base
+      = link_to compare_excharts_path
+        |比較

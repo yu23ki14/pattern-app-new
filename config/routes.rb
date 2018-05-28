@@ -93,6 +93,8 @@ Rails.application.routes.draw do
       get ':id/pdf' => 'excharts#pdf'
       post ':id/pdf' => 'excharts#pdf'
       post ':id/send_pdf' => 'excharts#send_pdf'
+      get 'compare' => 'excharts#compare'
+      get 'compare/result' => 'excharts#compare_result'
     end
   end
   
