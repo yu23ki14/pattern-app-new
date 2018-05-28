@@ -118,7 +118,7 @@ $(document).on 'turbolinks:load', ->
       data1_color = "rgba(243, 158, 155, 0.5)"
       data2_color = "rgba(243, 158, 155, 0.5)"
     else if $("body").hasClass("excharts compare_result")
-      data1_color = "rgba(255, 209, 0, .8)"
+      data1_color = "rgba(255, 209, 0, .85)"
       data2_color = "rgba(255, 209, 0, 0.35)"
     
     path_id = $(".title").attr("path_id")
@@ -129,17 +129,31 @@ $(document).on 'turbolinks:load', ->
     original_data1 = JSON.parse(gon.data1)
     original_data2 = JSON.parse(gon.data2)
     data_length = Object.keys(original_data1).length - 1
+    
+    if $("body").hasClass("excharts compare_result")
+      cleaned_data = {}
+      for i in [0..data_length] by 1
+        if original_data2[i] == 0 && original_data1[i] == 1
+          cleaned_data[i] = 1
+        else if original_data2[i] == 1
+          cleaned_data[i] = 1
+        else
+          cleaned_data[i] = 0
+      original_data2 = cleaned_data
+    
     data1 = []
     data2 = []
     
     console.log original_data1
     console.log original_data2
     
+    
     for i in [1..data_length] by 3
       d1 = original_data1[i] + original_data1[i+1] + original_data1[i+2]
       data1.push(d1)
       d2 = original_data2[i] + original_data2[i+1] + original_data2[i+2]
       data2.push(d2)
+    
     
     console.log data1
     console.log data2
@@ -181,7 +195,7 @@ $(document).on 'turbolinks:load', ->
           pointRadius:0
           pointHitRadius:20
           backgroundColor: data2_color
-          borderColor: data1_color
+          borderColor: data2_color
           borderWidth: 1
         } ]
       options: options)

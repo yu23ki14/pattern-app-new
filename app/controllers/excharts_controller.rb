@@ -130,11 +130,10 @@ class ExchartsController < ApplicationController
     @patterns = Pattern.where(language_id: @exchart_1.language_id).order(:pattern_no)
     gon.patterns = @patterns
     ##以下jsで書き直したほうがよさげ
-    all_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys()
-    current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
-    #proximal_pattern_no =  all_pattern_no - current_pattern_no
-    #@proximalpatterns = @patterns.where(pattern_no: proximal_pattern_no)
-    @currentpatterns = @patterns.where(pattern_no: current_pattern_no)
+    prev_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
+    new_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys()
+    all_pattern_no = prev_pattern_no + new_pattern_no
+    @currentpatterns = @patterns.where(pattern_no: new_pattern_no)
     @allpatterns = @patterns.where(pattern_no: all_pattern_no)
     ##ここまで
     @practice_form = Practice.new
