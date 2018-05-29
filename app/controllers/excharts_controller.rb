@@ -111,8 +111,8 @@ class ExchartsController < ApplicationController
   end
   
   def compare_result
-    @exchart_1 = Exchart.find(params[:compare][:chart_id_1])
-    @exchart_2 = Exchart.find(params[:compare][:chart_id_2])
+    @exchart_1 = Exchart.find(params[:chart_id_1])
+    @exchart_2 = Exchart.find(params[:chart_id_2])
     
     if @exchart_1.created_at > @exchart_2.created_at
       temp = @exchart_1

@@ -343,3 +343,11 @@ $(document).on 'turbolinks:load', ->
         $(".js-compare-submit").show()
       else
         $(".js-compare-submit").hide()
+        
+    $(document).on 'click', '.js-compare-submit', (e)->
+      e.preventDefault()
+      
+      id_1 = $("#compare_chart_id_1").val()
+      id_2 = $("#compare_chart_id_2").val()
+      
+      location.href = "compare/result?chart_id_1=" + id_1 + "&chart_id_2=" + id_2
