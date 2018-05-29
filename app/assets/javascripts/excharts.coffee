@@ -312,7 +312,7 @@ $(document).on 'turbolinks:load', ->
   if $("body").hasClass("excharts compare")
     array = []
     changed = false
-    $(document).on 'click', '.js-set-compare-result', (e)->
+    $('.js-set-compare-result').click (e)->
       e.preventDefault()
       if $(this).hasClass("selected")
         id = $(this).attr("chart_id")
@@ -344,7 +344,7 @@ $(document).on 'turbolinks:load', ->
       else
         $(".js-compare-submit").hide()
         
-    $(document).on 'click', '.js-compare-submit', (e)->
+    $('.js-compare-submit').click (e)->
       e.preventDefault()
       
       id_1 = $("#compare_chart_id_1").val()
