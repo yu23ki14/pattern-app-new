@@ -1,0 +1,34 @@
+div
+  h4.p-y-10.p-x-10.bg-theme.m-t-0.m-b-0.text-contrast
+    |チャート
+= render "chart_nav"
+.page-container.row-space-top-1
+  - if !@lg
+    div[data-turbolinks="false"]
+      = link_to compare_excharts_path(language_id: 1)
+        .card.bg-lp.p-y-10.m-x-5.row-space-2
+          h4.p-x-10 ラーニング・パターン
+    div[data-turbolinks="false"]
+      = link_to compare_excharts_path(language_id: 3)
+        .card.bg-pp.p-y-10.m-x-5.row-space-2
+          h4.p-x-10 プレゼンテーション・パターン
+  
+  - elsif @lg
+    .row-space-2
+      = link_to compare_excharts_path, class: "bottom-bordered"
+        | ＜ ランゲージ選択
+    h4 #{@language.lg_name}
+    p.row-space-3 比較する結果を２つ選んでください。
+    
+    - @results.each do |r|
+      = link_to "#", class: "js-set-compare-result required-container", chart_id: "#{r.id}", id: "card#{r.id}"
+        .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container.pri-2-color
+          h4 
+            |#{(r.created_at).strftime("%Y/%m/%d")} 
+            span.h5.normal
+              |#{((Time.current - r.created_at)/86400).floor}日前
+          .selected-wrapper.text-contrast.text-center.h3
+            i.fa.fa-check-circle-o.row-space-top-3
+    = hidden_field :compare, :chart_id_1, class: ""
+    = hidden_field :compare, :chart_id_2
+    = link_to "比較", "#", class: "button button-yellow button-lg js-compare-submit text-center"

@@ -83,6 +83,12 @@ label
   
 .text-contrast
   color: white !important
+
+.text-light-yellow
+  color: $yellow-1-color
+  
+.text-yellow
+  color: $yellow-3-color
   
 @media (max-width: 767px)
   h1, .h1
@@ -144,6 +150,10 @@ td
   background-color: $pri-3-color
 .pri-4-color
   background-color: $pri-4-color
+.bg-yellow-1
+  background-color: $yellow-1-color
+.bg-yellow-2
+  background-color: $yellow-2-color
 .bg-gray
   background-color: $brand-gray
   
@@ -247,6 +257,8 @@ input[type="text"], textarea, input[type="search"], .input
     border-bottom-color: $brand-dark-gray
   &.base
     border-bottom-color: $brand-theme
+  &.thick
+    border-width: 3px
 .bordered
   border: 1px solid $brand-gray
   &.dashed
@@ -255,6 +267,8 @@ input[type="text"], textarea, input[type="search"], .input
     border-bottom-color: $brand-dark-gray
   &.base
     border-bottom-color: $brand-theme
+  &.thick
+    border-width: 3px
 
 /* button ================================================== */
 
@@ -302,6 +316,10 @@ input[type="text"], textarea, input[type="search"], .input
 .button-danger
   background-color: $brand-dark-gray
   color: $brand-contrast
+  
+.button-yellow
+  background-color: $yellow-2-color
+  color: $brand-dark-gray
     
 /* spacing ================================================== */
 
@@ -663,9 +681,10 @@ input[type="text"], textarea, input[type="search"], .input
     width: 100%
 
 /* flexcontainer ================================================== */
-
 .box-shadow-primary
   box-shadow: 0px 0px 4px .5px $brand-light-gray
+  &.thick
+    box-shadow: 0px 0px 7px 2px $brand-light-gray
 
 /* card ================================================== */
 

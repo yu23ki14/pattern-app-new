@@ -101,6 +101,49 @@ class ExchartsController < ApplicationController
     @pattern = @language.patterns.find_by(pattern_no: params[:pattern_no])
   end
   
+  def compare
+    @lg = params[:language_id]
+    
+    if @lg != nil
+      @language = Language.find(params[:language_id])
+      @results = @user.excharts.where(language_id: @lg).order(created_at: "DESC")
+    end
+  end
+  
+  def compare_result
+    if !params[:chart_id_1]
+      redirect_to practices_path
+    else
+      @exchart_1 = Exchart.find(params[:chart_id_1])
+      @exchart_2 = Exchart.find(params[:chart_id_2])
+      
+      if @exchart_1.created_at > @exchart_2.created_at
+        temp = @exchart_1
+        @exchart_1 = @exchart_2
+        @exchart_2 = temp
+      end
+      
+      data1 = @exchart_1.data1
+      gon.data1 = data1
+      data2 = @exchart_2.data1
+      gon.data2 = data2
+      label = ExchartLabel.find_by(language_id: @exchart_1.language_id).label
+      gon.label = label
+      @language = @exchart_1.language
+      @patterns = Pattern.where(language_id: @exchart_1.language_id).order(:pattern_no)
+      gon.patterns = @patterns
+      ##以下jsで書き直したほうがよさげ
+      prev_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
+      new_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys()
+      all_pattern_no = prev_pattern_no + new_pattern_no
+      @currentpatterns = @patterns.where(pattern_no: new_pattern_no)
+      @allpatterns = @patterns.where(pattern_no: all_pattern_no)
+      ##ここまで
+      @practice_form = Practice.new
+      @path = request.path
+    end
+  end
+  
   private
     def exchart_params
       params.require(:exchart).permit(:user_id, :language_id, :event_id, :data1, :data2)

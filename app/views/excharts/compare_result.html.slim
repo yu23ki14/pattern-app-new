@@ -1,0 +1,68 @@
+.title.p-y-15.p-x-10{class="bg-#{@language.lg_code}"}
+  h4.m-t-0.m-b-0
+    |#{@language.lg_name} 
+
+.text-center
+  h5.p-b-10.bottom-bordered
+    |#{(@exchart_1.created_at).strftime("%Y/%m/%d")}
+    i.fa.fa-arrow-right.p-x-10
+    |#{(@exchart_2.created_at).strftime("%Y/%m/%d")}
+
+.page-container
+  .flex-container
+    i.fa.fa-circle.text-light-yellow.h3.p-r-5
+    span.small.p
+      |新しくできるようになった領域
+  .flex-container
+    i.fa.fa-circle.text-yellow.h3.p-r-5
+    span.small.p
+      |できていた領域
+    
+.row-space-3.row-space-top-3
+  canvas#myChart[height="230"]
+  
+.row-space-top-5
+  ul.result-nav.row.text-center
+    li.js-trigger-switch-proximal.col-6.p-t-0
+      .nav-inner
+      p.small 伸びたパターン
+    li.js-trigger-switch-current.col-6.p-t-0.in-active
+      .nav-inner
+      p.small できている全パターン
+.page-container.row-space-top-2
+  
+  .proximal-patterns-container
+    - @currentpatterns.each do |cp|
+      .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container.bg-yellow-1
+        p.small
+          |##{cp.pattern_no}
+        h3.m-t-5.required-container.row-space-1
+          |#{cp.pattern_name}
+        p.p-b-10.row-space-1.bottom-bordered
+          | #{cp.summary}
+        
+        .text-right
+          .text-contrast.h3.inline.m-r-10.js-trigger-add-practice{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
+            i.fa.fa-list-ul
+          .text-contrast.h3.inline.m-l-10.js-trigger-pattern-detail{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
+            i.fa.fa-file-text-o
+  
+  .current-patterns-container
+    - @allpatterns.each do |cp|
+      .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container.bg-yellow-2
+        p.small
+          |##{cp.pattern_no}
+        h3.m-t-5.required-container.row-space-1
+          |#{cp.pattern_name}
+        p.p-b-10.row-space-1.bottom-bordered
+          | #{cp.summary}
+        
+        .text-right
+          .text-contrast.h3.inline.m-r-10.js-trigger-add-practice{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
+            i.fa.fa-list-ul
+          .text-contrast.h3.inline.m-l-10.js-trigger-pattern-detail{language_id = "#{cp.language_id}", pattern_no = "#{cp.pattern_no}"}
+            i.fa.fa-file-text-o
+            
+= render "pattern_list"
+= render partial: "add_practice", locals: {path: @path}
+#pattern-detail-container

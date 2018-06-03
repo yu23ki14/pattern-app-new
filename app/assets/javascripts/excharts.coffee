@@ -113,7 +113,13 @@ $(document).on 'turbolinks:load', ->
         history.pushState()
     , 1000
     
-  if $("body").hasClass("excharts show")
+  if $("body").hasClass("excharts show") || $("body").hasClass("excharts compare_result")
+    if $("body").hasClass("excharts show")
+      data1_color = "rgba(243, 158, 155, 0.5)"
+      data2_color = "rgba(243, 158, 155, 0.5)"
+    else if $("body").hasClass("excharts compare_result")
+      data1_color = "rgba(255, 209, 0, .85)"
+      data2_color = "rgba(255, 209, 0, 0.35)"
     
     path_id = $(".title").attr("path_id")
     patterns = gon.patterns
@@ -123,14 +129,34 @@ $(document).on 'turbolinks:load', ->
     original_data1 = JSON.parse(gon.data1)
     original_data2 = JSON.parse(gon.data2)
     data_length = Object.keys(original_data1).length - 1
+    
+    if $("body").hasClass("excharts compare_result")
+      cleaned_data = {}
+      for i in [0..data_length] by 1
+        if original_data2[i] == 0 && original_data1[i] == 1
+          cleaned_data[i] = 1
+        else if original_data2[i] == 1
+          cleaned_data[i] = 1
+        else
+          cleaned_data[i] = 0
+      original_data2 = cleaned_data
+    
     data1 = []
     data2 = []
+    
+    console.log original_data1
+    console.log original_data2
+    
     
     for i in [1..data_length] by 3
       d1 = original_data1[i] + original_data1[i+1] + original_data1[i+2]
       data1.push(d1)
       d2 = original_data2[i] + original_data2[i+1] + original_data2[i+2]
       data2.push(d2)
+    
+    
+    console.log data1
+    console.log data2
       
     #ラベル
     label = gon.label.split(',')
@@ -161,15 +187,15 @@ $(document).on 'turbolinks:load', ->
           data: data1
           pointRadius:0
           pointHitRadius:20
-          backgroundColor: "rgba(243, 158, 155, 0.5)"
-          borderColor: "#F39E9B"
+          backgroundColor: data1_color
+          borderColor: data1_color
           borderWidth: 1
         },{
           data: data2
           pointRadius:0
           pointHitRadius:20
-          backgroundColor: "rgba(243, 158, 155, 0.5)"
-          borderColor: "#F39E9B"
+          backgroundColor: data2_color
+          borderColor: data2_color
           borderWidth: 1
         } ]
       options: options)
@@ -245,7 +271,7 @@ $(document).on 'turbolinks:load', ->
     $(document).on 'click', '.js-trigger-pattern-detail', ->
       $.ajax(
         type: 'GET',
-        url: $(this).attr('language_id') + '/'+$(this).attr('pattern_no') + '/detail'
+        url: '/excharts/' + $(this).attr('language_id') + '/'+$(this).attr('pattern_no') + '/detail'
       ).done ->
         $('#pattern_detail').modal()
         href = $('.js-link-to-pattern').attr("href")
@@ -283,4 +309,45 @@ $(document).on 'turbolinks:load', ->
     
     $(".chart-image").val(base64)
     
-    
+  if $("body").hasClass("excharts compare")
+    array = []
+    changed = false
+    $('.js-set-compare-result').click (e)->
+      e.preventDefault()
+      if $(this).hasClass("selected")
+        id = $(this).attr("chart_id")
+        if $("#compare_chart_id_1").val() == id
+          $("#compare_chart_id_1").val("")
+        else if $("#compare_chart_id_2").val() == id
+          $("#compare_chart_id_2").val("")
+        $(this).removeClass("selected")
+      else
+        id = $(this).attr("chart_id")
+        $(this).addClass("selected")
+        if $("#compare_chart_id_1").val() == ""
+          $("#compare_chart_id_1").val(id)
+        else if $("#compare_chart_id_2").val() != "" && changed == false
+          pre = $("#compare_chart_id_1").val()
+          $("#card"+pre).removeClass("selected")
+          $("#compare_chart_id_1").val(id)
+          changed = true
+        else if $("#compare_chart_id_2").val() != "" && changed == true
+          pre = $("#compare_chart_id_2").val()
+          $("#card"+pre).removeClass("selected")
+          $("#compare_chart_id_2").val(id)
+          changed = false
+        else
+          $("#compare_chart_id_2").val(id)
+      
+      if $("#compare_chart_id_1").val() != "" && $("#compare_chart_id_2").val() != ""
+        $(".js-compare-submit").show()
+      else
+        $(".js-compare-submit").hide()
+        
+    $('.js-compare-submit').click (e)->
+      e.preventDefault()
+      
+      id_1 = $("#compare_chart_id_1").val()
+      id_2 = $("#compare_chart_id_2").val()
+      
+      location.href = "compare/result?chart_id_1=" + id_1 + "&chart_id_2=" + id_2
