@@ -253,7 +253,7 @@ $(document).on 'turbolinks:load', ->
         $(".js-place-pattern-list").empty()
         for i in [1..3]
           pattern = patterns[(firstPoint.index * 3) + i]
-          $(".js-place-pattern-list").append('<a href="/patterns/' + pattern.language_id + '/' + pattern.pattern_no + '?path_id=' + path_id + '"><p class="row-space-2">・' + pattern.pattern_name + '</p></a>')
+          $(".js-place-pattern-list").append('<a href="/patterns/' + pattern.language_id + '/' + pattern.pattern_no + '?path_id=' + path_id + '"><p class="row-space-2">・' + pattern.pattern_name_ja + '</p></a>')
       return
     
     $(document).on 'click', '.js-trigger-switch-proximal', ->

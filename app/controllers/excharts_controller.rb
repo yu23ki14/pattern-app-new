@@ -13,7 +13,7 @@ class ExchartsController < ApplicationController
     gon.label = label
     @language = @exchart.language
     @patterns = Pattern.where(language_id: @exchart.language_id).order(:pattern_no)
-    gon.patterns = @patterns
+    gon.patterns = @patterns.order(:axis_no)
     ##以下jsで書き直したほうがよさげ
     current_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
     proximal_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys() - current_pattern_no
@@ -56,7 +56,7 @@ class ExchartsController < ApplicationController
     if params[:language_id].present? && params[:language_id] < "4"
       @language_id = params[:language_id]
       @exchart = Exchart.new
-      @patterns = Pattern.where(language_id: @language_id).order(pattern_no: "DESC")
+      @patterns = Pattern.where(language_id: @language_id).order(pattern_no: "DESC").order(:axis_no)
       @language = Language.find(@language_id)
     elsif params[:event].present?
       event_code = params[:event][:code]
