@@ -131,7 +131,7 @@ class ExchartsController < ApplicationController
       gon.label = label
       @language = @exchart_1.language
       @patterns = Pattern.where(language_id: @exchart_1.language_id).order(:pattern_no)
-      gon.patterns = @patterns
+      gon.patterns = @patterns.order(:axis_no)
       ##以下jsで書き直したほうがよさげ
       prev_pattern_no = JSON.parse(data1).select{|key,value| value > 0 }.keys()
       new_pattern_no = JSON.parse(data2).select{|key,value| value > 0 }.keys()
