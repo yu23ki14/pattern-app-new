@@ -8,9 +8,9 @@
         = f.hidden_field :pattern_no, :value => pattern_no
         .row.selectbox
           .col-10.col-center
-            p.row-space-2.small   プロジェクト、期間、優先度は必須です。
-            = f.select :project_id, projects.all.map{|p| [p.project_name, p.id]}, :prompt => "▼　プロジェクトを選ぶ"
-            = f.select :limit, [["１日", 1], ["７日間", 7], ["３０日間", 30], ["６０日間", 60], ["９０日間", 90], ["１２０日間", 120]], :prompt => "▼　期間を選ぶ"
-            = f.select :priority, [["★", "1"], ["★★", "2"], ["★★★", "3"], ["★★★★", "4"]], :prompt => "▼　優先度を選ぶ"
+            p.row-space-2.small #{t('add_project_list_validation')}
+            = f.select :project_id, projects.all.map{|p| [p.project_name, p.id]}, :prompt => "▼　#{t('select_project')}"
+            = f.select :limit, [["１日", 1], ["７日間", 7], ["３０日間", 30], ["６０日間", 60], ["９０日間", 90], ["１２０日間", 120]], :prompt => "▼　#{t('select_range')}"
+            = f.select :priority, [["★", "1"], ["★★", "2"], ["★★★", "3"], ["★★★★", "4"]], :prompt => "▼　#{t('select_priority')}"
           .col-12.col-center.text-center
-            = f.submit "追加する", class: "button button-primary"
+            = f.submit "#{t('add')}", class: "button button-primary"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426051149) do
+ActiveRecord::Schema.define(version: 20180603092045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,10 +75,11 @@ ActiveRecord::Schema.define(version: 20180426051149) do
   end
 
   create_table "languages", force: :cascade do |t|
-    t.string "lg_name"
+    t.string "lg_name_ja"
     t.string "lg_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "lg_name_en"
   end
 
   create_table "patterns", force: :cascade do |t|
@@ -86,16 +87,24 @@ ActiveRecord::Schema.define(version: 20180426051149) do
     t.string "cat_code"
     t.string "cat_code_24"
     t.integer "pattern_no"
-    t.string "pattern_name"
-    t.string "summary"
-    t.text "context"
-    t.string "b_problem"
-    t.text "problem"
-    t.string "b_solution"
-    t.text "solution"
-    t.text "consequence"
+    t.string "pattern_name_ja"
+    t.string "summary_ja"
+    t.text "context_ja"
+    t.string "b_problem_ja"
+    t.text "problem_ja"
+    t.string "b_solution_ja"
+    t.text "solution_ja"
+    t.text "consequence_ja"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pattern_name_en"
+    t.string "summary_en"
+    t.text "context_en"
+    t.string "b_problem_en"
+    t.text "problem_en"
+    t.string "b_solution_en"
+    t.text "solution_en"
+    t.text "consequence_en"
     t.index ["language_id"], name: "index_patterns_on_language_id"
   end
 

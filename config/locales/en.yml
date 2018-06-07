@@ -1,3 +1,25 @@
+en:
+  #基本
+  single_byte_chara: "*single-byte alphanumeric characters"
+  #プロジェクト系
+  join_project: "Join a project"
+  new_project: "Create a new project"
+  project_name: "Project name"
+  project_id: "Project ID"
+  project_summary: "Project description"
+  project_color: "Project color"
+  #フォーム系
+  create: "Create"
+  update: "Update"
+  #色
+  red: "red"
+  blue: "blue"
+  yellow: "yellow"
+  green: "green"
+  purple: "purple"
+  pink: "pink"
+  select_color: "▼ select color"
+
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -19,5 +41,3 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"

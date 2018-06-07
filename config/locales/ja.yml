@@ -1,0 +1,69 @@
+ja:
+  #基本
+  single_byte_chara: "*半角英数のみ"
+  back: "戻る"
+  please_sign_up: "ユーザー登録してください。"
+  pattern_language: "パターン・ランゲージ"
+  #パターン表示系
+  in_this_context: "その状況で"
+  therefore: "そこで"
+  consequently: "そうすると"
+  same_property_pattern: "同じ特性のパターン"
+  #パターンを実践リストに追加するフォーム系
+  add_my_list: "My Listに追加"
+  add_project_list: "プロジェクトに追加"
+  add_list_validation: "期間と優先度は必須です。"
+  add_project_list_validation: "プロジェクト、期間、優先度は必須です。"
+  select_range: "期間を選ぶ"
+  select_priority: "優先度を選ぶ"
+  select_project: "プロジェクトを選ぶ"
+  #実践リスト系
+  practice_list: "実践リスト"
+  ended_list: "終了リスト"
+  archive: "アーカイブ"
+  empty_practice_list: "実践リストは空です。"
+  empty_ended_list: "終了リストは空です。"
+  empty_archive: "アーカイブは空です。"
+  until_date: "%{date}まで"
+  reflection: "振り返り"
+  practice_comment: "コメント"
+  #実践リスト評価系
+  times_practiced: "期間中%{times}回実践出来ました！"
+  evaluate_practice: "タップして実践を評価"
+  input_reflection_comment: "振り返りのコメントを入力してください。"
+  reflection_comment_validation: "コメントは必須です。"
+  w/o_archive: "アーカイブせずに終了"
+  #プロジェクト系
+  join_project: "プロジェクトに参加する"
+  new_project: "新しくプロジェクトを作る"
+  setting_project: "プロジェクト設定"
+  serch_project: "プロジェクトを検索"
+  project_name: "プロジェクト名"
+  project_id: "プロジェクトID"
+  project_summary: "プロジェクトの説明"
+  project_color: "プロジェクトのテーマ色"
+  serch_project_description: "既にプロジェクトに入っている人に教えてもらったプロジェクトIDを入力してください。"
+  join_project?: "プロジェクト「%{project_name}」に参加しますか？"
+  join_project!: "参加する"
+  exit_project: "プロジェクトから抜ける"
+  destroy_project: "プロジェクトを削除"
+  #フォーム系
+  create: "作成"
+  update: "更新"
+  search: "検索"
+  add: "追加"
+  #色
+  red: "レッド"
+  blue: "ブルー"
+  yellow: "イエロー"
+  green: "グリーン"
+  purple: "パープル"
+  pink: "ピンク"
+  select_color: "▼ 色を選択する"
+  #使い方
+  how_to_use: "使い方"
+  
+#コントローラ別でかくサンプル
+#  projects:
+#    index:
+#      something: "something"

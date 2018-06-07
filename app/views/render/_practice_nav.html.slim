@@ -6,51 +6,14 @@
     = link_to practices_path, remote: true
       li.col-4#active-list.active
         .text-lead-en
-          |実践リスト
+          |#{t('practice_list')}
     
     = link_to complete_practices_path, remote: true
       li.col-4#complete-list
         .text-lead-en
-          |終了リスト
+          |#{t('ended_list')}
       
     = link_to archive_practices_path, remote: true
       li.col-4#archive-list
         .text-lead-en
-          |アーカイブ
-
-    // oldone
-      - if controller.action_name == "index"
-        li.col-4.active
-          = link_to practices_path, remote: true
-            .text-lead-en
-              |実践リスト
-      - else
-        li.col-4
-          = link_to practices_path, remote: true
-            .text-lead-en
-              |実践リスト
-      - if controller.action_name == "complete"
-        li.col-4.active
-          = link_to complete_practices_path
-            .text-lead-en
-              |終了リスト
-      - else
-        li.col-4.required-container
-          = link_to complete_practices_path, remote: true
-            .text-lead-en
-              |終了リスト 
-            - if end_num != 0
-              .notice-deco
-                |#{end_num}
-      
-      - if controller.action_name == "archive"
-        li.col-4.active
-          //= link_to archive_practices_path
-          = link_to archive_practices_path, remote: true
-            .text-lead-en
-              |アーカイブ
-      - else
-        li.col-4
-          = link_to archive_practices_path, remote: true
-            .text-lead-en
-              |アーカイブ
+          |#{t('archive')}

@@ -1,11 +1,5 @@
 .page-container{data-turbolinks="false"}
-  h3.p-l-5.row-space-1.row-space-top-4.row-space-3 パターン・ランゲージ
+  h3.p-l-5.row-space-1.row-space-top-4.row-space-3 #{t('pattern_language')}
   - @languages.each do |l|
     = link_to "patterns/#{l[:id]}", class: "language-card"
       = image_tag "pattern_img/#{l.lg_code}-card.png", class: "col-12 col-center"
-      //.col-6
-        .card1.box-shadow-primary{id = "#{l[:lg_code]}-color"}
-          h6.p-x-15.text-contrast.p-t-10
-            = simple_format(l[:lg_name])
-          .col-8.col-center
-            = image_tag "pattern_img/#{l.lg_code}/01.png", class: "col-12 col-center"
