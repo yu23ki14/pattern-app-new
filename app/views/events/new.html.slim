@@ -11,7 +11,7 @@
     //= f.select :language_id, @languages.all.map{|p| [p.lg_name, p.id]}, :prompt => "ランゲージを選ぶ"
     = f.select :language_id, [["ラーニング・パターン", 1], ["プレゼンテーション・パターン", 3]], :prompt => "ランゲージを選ぶ"
     br
-    p.row-space-top-3 期限:
-    = f.datetime_select :limit
+    //p.row-space-top-3 期限:
+    //= f.datetime_select :limit
     br
     = f.submit "作成", class: "button button-primary row-space-top-3"
