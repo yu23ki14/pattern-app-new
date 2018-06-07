@@ -1,34 +1,34 @@
 .page-container.row-space-top-2
-  h3 新しくプロジェクトを作る
+  h3 #{t('new_project')}
   = form_for @project do |f|
     .row
       .col-10.col-center
         = f.label :project_name
           p
-            |プロジェクト名
+            |#{t('project_name')}
         = f.text_field :project_name, placeholder: "patternapp", class: "col-12 col-center"
         
         = f.label :project_name
           p
-            |プロジェクトID 
+            |#{t('project_id')} 
             span.small
-              |*半角英数のみ
+              |#{t('single_byte_chara')}
         = f.text_field :project_id, placeholder: "sfc", class: "col-12 col-center", onKeyup: "this.value=this.value.replace(/[^0-9, 'a-z', 'A-Z']+/,'')"
         
         = f.label :project_summary
           p
-            |プロジェクトの説明
+            |#{t('project_summary')}
         = f.text_area :project_summary, class: "col-12 col-center text-box"
         
         
         = f.label :project_color
           p
-            |プロジェクトのテーマ色
+            |#{t('project_color')}
         .selectbox
-          = f.select :project_color, [["レッド", "#e25a58"], ["ブルー", "#296eec"], ["イエロー", "#dcbb41"], ["グリーン", "#4db141"], ["パープル", "#ca64d2"], ["ピンク", "#f57ca7"]], :prompt => "▼　色を選択する"
+          = f.select :project_color, [["#{t('red')}", "#e25a58"], ["#{t('blue')}", "#296eec"], ["#{t('yellow')}", "#dcbb41"], ["#{t('green')}", "#4db141"], ["#{t('purple')}", "#ca64d2"], ["#{t('pink')}", "#f57ca7"]], :prompt => "#{t('select_color')}"
       
         .text-center.row-space-top-3
-          = f.submit "作成", class: "button button-primary"
+          = f.submit "#{t('create')}", class: "button button-primary"
         .text-center.row-space-top-2
           = link_to join_projects_path, class: "p small bottom-bordered"
-            |プロジェクトに参加する
+            |#{t('join_project')}

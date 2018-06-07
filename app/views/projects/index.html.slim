@@ -7,14 +7,14 @@
     = link_to "projects/#{p.id}"
       .card.p-y-20.p-l-20.row-space-top-2.required-container{style="background-color: #{p.project_color}"}
         h2.text-contrast #{p.project_name}
-        p.row-space-top-1.text-contrast プロジェクトID: #{p.project_id}
+        p.row-space-top-1.text-contrast #{t('project_id')}: #{p.project_id}
         = link_to "projects/#{p.id}/edit", class: "edit text-contrast h2"
           i.fa.fa-cog
   = link_to new_project_path
     .card.p-y-20.p-l-20.flex-container.new-project.row-space-top-2
       h4.text-contrast
-        |+ 新しくプロジェクトを作る
+        |+ #{t('new_project')}
   = link_to join_projects_path
     .card.p-y-20.p-l-20.flex-container.new-project.row-space-top-2
       h4.text-contrast
-        |+ プロジェクトに参加する
+        |+ #{t('join_project')}

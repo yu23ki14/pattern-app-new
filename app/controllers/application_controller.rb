@@ -4,12 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_user
   before_action :backhome
+  before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   def after_sign_in_path_for(resource)
     practices_path
   end
-
   
   private
     def backhome
@@ -20,16 +20,23 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+    
     def set_user
       if user_signed_in?
         @user = User.find(current_user.id)
+      end
+    end
+    
+    def set_locale
+      if user_signed_in?
+        I18n.locale = @user.locale
       end
     end
 
   protected
 
     def configure_permitted_parameters
-      added_attrs = [ :name, :email, :password, :password_confirmation　]
+      added_attrs = [ :name, :locale, :email, :password, :password_confirmation　]
       devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
       devise_parameter_sanitizer.permit :account_update, keys: added_attrs
       devise_parameter_sanitizer.permit :sign_in, keys: added_attrs

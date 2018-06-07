@@ -13,7 +13,7 @@
           | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary]}
         
     - if @practices.blank?
-      h5 実践期間が終わったパターンはまだありません。
+      h5 #{t('empty_ended_list')}
   -else
-    p ユーザー登録してください。
+    p #{t('please_sign_up')}
   #addcommentform

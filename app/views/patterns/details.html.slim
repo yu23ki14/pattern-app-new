@@ -22,21 +22,22 @@
 .page-container.row-space-4
   .col-10.col-center
     p.row-space-top-3 #{@pattern.context}
-    h5.text-center.p-y-20 ▼ その状況で
+    h5.text-center.p-y-20 ▼ #{t('in_this_context')}
     p.text-justify #{@pattern.b_problem}
-    h5.text-center.p-y-20 ▼ そこで
+    //p.text-justify #{html_escape(@pattern.problem).gsub(/\r\n|\r|\\n/, "<br />").html_safe}
+    h5.text-center.p-y-20 ▼ #{t('therefore')}
     p.text-justify #{@pattern.b_solution}
-    h5.text-center.p-y-20 ▼ そうすると
+    h5.text-center.p-y-20 ▼ #{t('consequently')}
     p.text-justify #{@pattern.consequence}
 -if @practice == nil
   -if user_signed_in?
     .text-center.p-b-20
       .button.button-primary.button-lg#js-trigger-add-practice
-        | My Listに追加 
+        | #{t('add_my_list')} 
         i.fa.fa-pencil-square-o
 .text-center.p-b-30
   .button.button-primary-outline.button-lg#js-trigger-add-project-practice
-    | プロジェクトに追加 
+    | #{t('add_project_list')} 
     i.fa.fa-pencil-square-o
 -if @practice == nil
   = render partial: "add_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], path: @path[:controller]}
@@ -44,7 +45,7 @@
 .col-center.col-11{class = "border-#{@language[:lg_code]}"}
 br
 h4.text-center.row-space-2
-  | このパターンと同じ特性のパターン
+  | #{t('same_property_pattern')}
 .page-container
   - @related_patterns.each do |rp|
     = link_to "/patterns/#{rp.language_id}/#{rp.pattern_no}", class: "read-pattern",  lg: "#{rp[:lg_code]}", no: "#{rp[:pattern_no]}"
