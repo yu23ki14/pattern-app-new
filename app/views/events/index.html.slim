@@ -4,7 +4,7 @@
       h4 + 新規イベント
   - @events.each do |e|
     .card.bordered.row-space-top-2.p-x-10.p-y-10
-      p.small #{(e.limit).strftime("%Y/%m/%d %X")} まで
+      //p.small #{(e.limit).strftime("%Y/%m/%d %X")} まで
       h4 イベント名: #{e.event_name}
       h4 イベントコード: #{e.event_code}
       = link_to "実践している結果", event_path(e, format: :csv), class: "button button-primary"
