@@ -6,11 +6,11 @@
           | #{(p[:created_at]).strftime("%Y/%m/%d")}～#{(p[:created_at] + p[:limit]*86400).strftime("%Y/%m/%d")}
         h3.row-space-top-5
           .p-l-40
-            | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name_ja]}
+            | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no).pattern_name}
         .text-contrast.p-r-5.h3.inline.archive-icon
           i.fa.fa-archive
         p.p-l-40
-          | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary_ja]}
+          | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no).summary}
         
     - if @practices.blank?
       h5 #{t('empty_ended_list')}

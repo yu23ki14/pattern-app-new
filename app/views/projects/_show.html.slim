@@ -6,9 +6,9 @@
           | #{t('until_date', date: (p.enddate).strftime("%Y/%m/%d"))}
           
         h3.row-space-top-4.required-container
-          |#{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:pattern_name_ja]}
+          |#{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no).pattern_name}
         p.p-b-10.row-space-1.bottom-bordered
-          | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no)[:summary_ja]}
+          | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no).summary}
         
         .text-right
           .text-contrast.h3.inline.check-icon.js-trigger-did{practice_id = "#{p.id}"}
