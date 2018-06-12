@@ -43,7 +43,7 @@
     i.fa.fa-pencil-square-o
 -if @practice == nil
   = render partial: "add_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], path: @path[:controller]}
-= render partial: "add_project_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], projects: @projects}
+= render partial: "add_project_practice", locals: {language_id: params[:language_id], pattern_no: params[:pattern_no], projects: @projects, path: @path[:controller]}
 .col-center.col-11{class = "border-#{@language[:lg_code]}"}
 br
 h4.text-center.row-space-2

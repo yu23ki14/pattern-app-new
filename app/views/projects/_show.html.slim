@@ -7,9 +7,16 @@
           
         h3.row-space-top-4.required-container
           |#{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no).pattern_name}
-        p.p-b-10.row-space-1.bottom-bordered
+        p.p-b-10
           | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no).summary}
-        
+        - if p.action.present?
+          .top-bordered.dashed
+          p.row-space-2.row-space-top-2
+            span.strong
+              |具体的な行動
+            br
+            |#{p.action}
+        .bottom-bordered.row-space-1
         .text-right
           .text-contrast.h3.inline.check-icon.js-trigger-did{practice_id = "#{p.id}"}
             i.fa.fa-check

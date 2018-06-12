@@ -85,7 +85,7 @@ class PracticesController < ApplicationController
       end
     end
     def practice_params
-      params.require(:practice).permit(:user_id, :language_id, :pattern_no, :limit, :priority)
+      params.require(:practice).permit(:user_id, :language_id, :pattern_no, :limit, :priority, :action)
     end
     def practice_done_params
       params.require(:practice).permit(:done, :comment, :rate)

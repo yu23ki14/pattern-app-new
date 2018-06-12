@@ -47,7 +47,7 @@ class ProjectPracticesController < ApplicationController
     end
     
     def project_practice_params
-      params.require(:project_practice).permit(:project_id, :language_id, :pattern_no, :limit, :priority)
+      params.require(:project_practice).permit(:project_id, :language_id, :pattern_no, :limit, :priority, :action)
     end
     
     def practice_done_params
