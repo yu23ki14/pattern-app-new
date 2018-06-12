@@ -1,4 +1,4 @@
-body.registrations.new, body.sessions.new, body.registrations.edit, body.registrations.create
+body.registrations.new, body.sessions.new, body.registrations.edit, body.registrations.create, body.registrations.update, body.passwords
   input
     border-top: none
     border-left: none
@@ -13,8 +13,12 @@ body.registrations.new, body.sessions.new, body.registrations.edit, body.registr
       border: 1px solid $brand-gray
       border-radius: 2px
 
-body.registrations.edit
+body.registrations.edit, body.registrations.update, body.passwords
   .password-container
     display: none
     &.open
       display: block
+  .js-user-update
+    &[disabled="disabled"]
+      background-color: $brand-light-gray
+      color: $brand-very-light-gray

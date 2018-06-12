@@ -1,11 +1,10 @@
 div
-  h4.p-y-10.p-x-10.bg-theme.m-t-0.m-b-0.text-contrast
-    |チャート
+  h4.p-y-10.p-x-10.bg-theme.m-t-0.m-b-0.text-contrast #{t('chart_title')}
 = render "chart_nav"
 .page-container.row-space-top-2
   = link_to "#", class: "js-trigger-modal-select-mode"
     .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container.bg-gray.text-contrast
-      h4 + チャートを生成する
+      h4 + #{t('create_chart')}
   - @results.each do |r|
     div[data-turbolinks="false"]
       = link_to r

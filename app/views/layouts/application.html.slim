@@ -10,7 +10,7 @@ html
     link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
   -if user_signed_in?
     = render partial: 'render/header_nav'
-  body(class="#{controller.controller_name} #{controller.action_name}")
+  body(class="#{controller.controller_name} #{controller.action_name} #{I18n.locale}")
     - flash.each do |key, value|
       h6.m-t-0.m-b-0
         = content_tag :div, value, class: "alert alert-#{key}"

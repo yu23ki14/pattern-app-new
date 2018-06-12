@@ -2,14 +2,14 @@
   - if action_name === "index"
     .col-6.p-x-0.bottom-bordered.thick.base
       = link_to excharts_path
-        |一覧
+        |#{t('chart_list')}
     .col-6.p-x-0
       = link_to compare_excharts_path
-        |比較
+        |#{t('chart_compare')}
   - if action_name === "compare"
     .col-6.p-x-0
       = link_to excharts_path
-        |一覧
+        |#{t('chart_list')}
     .col-6.p-x-0.bottom-bordered.thick.base
       = link_to compare_excharts_path
-        |比較
+        |#{t('chart_compare')}

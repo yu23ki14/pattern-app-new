@@ -1,6 +1,7 @@
 class ExchartsController < ApplicationController
   def index
     @results = @user.excharts.includes(:language, :event).order(created_at: "DESC")
+    @languages = Language.all
   end
   
   def show
@@ -107,6 +108,8 @@ class ExchartsController < ApplicationController
     if @lg != nil
       @language = Language.find(params[:language_id])
       @results = @user.excharts.where(language_id: @lg).order(created_at: "DESC")
+    else
+      @languages = Language.all
     end
   end
   

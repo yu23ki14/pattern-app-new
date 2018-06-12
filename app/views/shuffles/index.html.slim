@@ -1,6 +1,6 @@
 - if params[:pattern] == nil
   .page-container
-    h3 シャッフル
+    h3 #{t('static_menu_shuffle')}
     = link_to "?pattern=lp"
       = image_tag "pattern_img/lp-card.png", class: "col-12 col-center"
     = link_to "?pattern=cp"
@@ -14,12 +14,12 @@
     .page-container.required-container.card-stack.p-t-10.flex-container.row-space-2
       = render "card"
     .text-center
-      = link_to "#", class: "button button-primary js-trigger-show row-space-top-2"
-        |ランダムで表示
+      = link_to "#", class: "button button-primary js-trigger-show row-space-top-3"
+        |#{t('shuffle_random')}
     .row.p-t-5.p-b-5
       .col-6
         = link_to "#", class: "js-trigger-previous"
-          |< 前のパターン
+          |< #{t('shuffle_prev_pattern')}
       .col-6.text-right
         = link_to "#", class: "js-trigger-next"
-          |次のパターン >
+          |#{t('shuffle_next_pattern')} >

@@ -1,0 +1,13 @@
+.page-container
+  h3 #{t('reset_password')}
+  
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    //= devise_error_messages!
+  
+    .col-10.col-center.row-space-top-6
+      = f.email_field :email, autofocus: true, class: "col-12 col-center", placeholder: "example@example.com"
+  
+    .text-center.row-space-top-3
+      = f.submit "#{t('send_mail')}", class: "button button-primary"
+  
+  = render "devise/shared/links"

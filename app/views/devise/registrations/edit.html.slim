@@ -1,22 +1,22 @@
 .page-container.row-space-top-4
   .col-11.col-center
-    h3 ユーザー情報変更
+    h3 #{t('static_menu_user_info')}
     p user_id: #{current_user.id}
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      = devise_error_messages!
+      //= devise_error_messages!
     
       = f.label :name
-        |名前
+        |#{t('name')}
       = f.text_field :name, class: "col-12 col-center"
     
       //= f.label :locale
-      //  |言語
+      //  |#{t('language')}
       //.selectbox.row
       //  .col-8.p-x-0
-      //    = f.select :locale, [["Japanese", "ja"], ["English", "en"]], :prompt => "言語"
+      //    = f.select :locale, [["Japanese", "ja"], ["English", "en"]], :prompt => "#{t('language')}"
     
       = f.label :email, class: "row-space-top-4"
-        |メールアドレス
+        |#{t('email')}
       = f.email_field :email, class: "col-12 col-center"
     
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -25,30 +25,32 @@
       
       .password-container
         = f.label :password, class: "row-space-top-4"
-          |新しいパスワード
-        = f.password_field :password, autocomplete: "off", class: "col-12 col-center"
-          -if @minimum_password_length
-            p #{@minimum_password_length} characters minimum
+          |#{t('new_password')}
+        = f.password_field :password, autocomplete: "off", class: "col-12 col-center", placeholder: "#{t('password_six_validate')}"
       
       
         = f.label :password_confirmation, class: "row-space-top-4"
-          |新しいパスワード確認用
+          |#{t('new_password_confirm')}
         = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center"
     
     
-      = f.label :current_password, class: "row-space-top-7"
-        |変更するために現在のパスワードを入力してください。
-      = f.password_field :current_password, autocomplete: "off", class: "col-12 col-center"
+      = f.label :current_password, class: "row-space-top-7 text-primary"
+        |*#{('input_current_password')}
+      = f.password_field :current_password, autocomplete: "off", class: "col-12 col-center js-current-password"
     
       br
     
       .text-center.row-space-top-4
-        = f.submit "Update", class: "button button-primary button-lg"
-          |変更
+        = f.submit "Update", class: "button button-primary button-lg js-user-update", disabled: "disabled"
+          |#{t('update')}
         = link_to "#", class: "js-trigger-edit-password button button-outline button-lg row-space-top-2"
-          |パスワードを変更する
-
-
+          |#{t('update_password')}
+          
+      p.small.row-space-top-3
+        |#{t('forgot_password_still_login')}
+      .text-center
+        = link_to destroy_user_session_path, class: "p small row-space-top-1 bottom-bordered"
+          |log out
 
 //<h3>Cancel my account</h3>
   

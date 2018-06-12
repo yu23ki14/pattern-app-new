@@ -6,14 +6,14 @@
       .col-12.col-center.menu
         = link_to event_excharts_path
           .card.pri-2-color.p-y-10.m-x-5.row-space-2
-            h4.p-x-10 イベント
+            h4.p-x-10 #{t('chart_event')}
         = link_to new_exchart_path(language_id: 1)
           .card.bg-lp.p-y-10.m-x-5.row-space-2
-            h4.p-x-10 ラーニング・パターン
+            h4.p-x-10 #{@languages.find(1).lg_name}
         = link_to new_exchart_path(language_id: 2)
           .card.bg-cp.p-y-10.m-x-5.row-space-2
-            h4.p-x-10 コラボレーション・パターン
+            h4.p-x-10 #{@languages.find(2).lg_name}
         = link_to new_exchart_path(language_id: 3)
           .card.bg-pp.p-y-10.m-x-5.row-space-2
-            h4.p-x-10 プレゼンテーション・パターン
+            h4.p-x-10 #{@languages.find(3).lg_name}
         

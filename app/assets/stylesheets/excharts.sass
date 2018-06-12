@@ -21,8 +21,9 @@ body.excharts.new
     right: 0
     transition: all 0.5s
     min-height: 390px
-    p
-      font-size: 16px
+    .name
+      height: 44px
+      overflow: auto
     .summary
       height: 72px
       overflow: auto
@@ -64,6 +65,11 @@ body.excharts.new
       width: 35px
       height: 35px
       margin-top: 12px
+
+body.en.excharts.new
+  p
+    @media (max-width: 375px)
+      font-size: 14px !important
 
 body.excharts.show, body.excharts.compare_result
   .result-nav

@@ -11,10 +11,10 @@
   ul.result-nav.row.text-center
     li.js-trigger-switch-proximal.col-6.p-t-0
       .nav-inner
-      p.small 実践したいパターン
+      p.small #{t('want_to_practice_pattern')}
     li.js-trigger-switch-current.col-6.p-t-0.in-active
       .nav-inner
-      p.small 実践しているパターン
+      p.small #{t('practicing_pattern')}
 .page-container.row-space-top-2
   
   .proximal-patterns-container
@@ -51,10 +51,10 @@
 .page-container.text-right
   = form_tag ("/excharts/" + "#{@exchart.id}" + "/pdf?format=pdf") do
     = hidden_field :chart, :image, class: "chart-image"
-    = submit_tag "PDFを表示", class: "button button-primary row-space-2"
+    = submit_tag "#{t('show_pdf')}", class: "button button-primary row-space-2"
   = form_tag ("/excharts/" + "#{@exchart.id}" + "/send_pdf?format=pdf") do
     = hidden_field :chart, :image, class: "chart-image"
-    = submit_tag "PDFをメールで受け取る", class: "button button-primary"
+    = submit_tag "#{t('get_pdf')}", class: "button button-primary"
 
 = render "pattern_list"
 = render partial: "add_practice", locals: {path: @path}

@@ -7,22 +7,22 @@ div
     div[data-turbolinks="false"]
       = link_to compare_excharts_path(language_id: 1)
         .card.bg-lp.p-y-10.m-x-5.row-space-2
-          h4.p-x-10 ラーニング・パターン
+          h4.p-x-10 #{@languages.find(1).lg_name}
     div[data-turbolinks="false"]
       = link_to compare_excharts_path(language_id: 2)
         .card.bg-cp.p-y-10.m-x-5.row-space-2
-          h4.p-x-10 コラボレーション・パターン
+          h4.p-x-10 #{@languages.find(2).lg_name}
     div[data-turbolinks="false"]
       = link_to compare_excharts_path(language_id: 3)
         .card.bg-pp.p-y-10.m-x-5.row-space-2
-          h4.p-x-10 プレゼンテーション・パターン
+          h4.p-x-10 #{@languages.find(3).lg_name}
   
   - elsif @lg
     .row-space-2
       = link_to compare_excharts_path, class: "bottom-bordered"
-        | ＜ ランゲージ選択
+        | ＜ #{t('select_pattern_language')}
     h4 #{@language.lg_name}
-    p.row-space-3 比較する結果を２つ選んでください。
+    p.row-space-3 #{t('chart_compare_description')}
     
     - @results.each do |r|
       = link_to "#", class: "js-set-compare-result required-container", chart_id: "#{r.id}", id: "card#{r.id}"
@@ -30,9 +30,9 @@ div
           h4 
             |#{(r.created_at).strftime("%Y/%m/%d")} 
             span.h5.normal
-              |#{((Time.current - r.created_at)/86400).floor}日前
+              |#{((Time.current - r.created_at)/86400).floor}#{t('days_ago')}
           .selected-wrapper.text-contrast.text-center.h3
             i.fa.fa-check-circle-o.row-space-top-3
     = hidden_field :compare, :chart_id_1, class: ""
     = hidden_field :compare, :chart_id_2
-    = link_to "比較", "#", class: "button button-yellow button-lg js-compare-submit text-center"
+    = link_to "#{t('chart_compare')}", "#", class: "button button-yellow button-lg js-compare-submit text-center"

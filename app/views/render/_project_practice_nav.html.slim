@@ -6,14 +6,14 @@
     = link_to project_path, remote: true
       li.col-4#active-list.active
         .text-lead-en
-          |実践リスト
+          |#{t('practice_list')}
     
     = link_to "#{params[:id]}/complete", remote: true
       li.col-4#complete-list
         .text-lead-en
-          |終了リスト
+          |#{t('ended_list')}
     
     = link_to "#{params[:id]}/archive", remote: true
       li.col-4#archive-list
         .text-lead-en
-          |アーカイブ
+          |#{t('archive')}

@@ -24,9 +24,11 @@
     p.row-space-top-3 #{@pattern.context}
     h5.text-center.p-y-20 ▼ #{t('in_this_context')}
     p.text-justify #{@pattern.b_problem}
-    //p.text-justify #{html_escape(@pattern.problem).gsub(/\r\n|\r|\\n/, "<br />").html_safe}
+    /p.text-justify #{html_escape(@pattern.problem).gsub(/\r\n|\r|\\n/, "<br />").html_safe}
     h5.text-center.p-y-20 ▼ #{t('therefore')}
     p.text-justify #{@pattern.b_solution}
+    /br
+    /p.text-justify #{@pattern.solution}
     h5.text-center.p-y-20 ▼ #{t('consequently')}
     p.text-justify #{@pattern.consequence}
 -if @practice == nil

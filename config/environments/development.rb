@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
   
   # action mailar
-  config.action_mailer.default_url_options = {host: 'service-test-pl-yu23ki14.c9users.io', port: 3000}
+  config.action_mailer.default_url_options = {host: 'service-test-pl-yu23ki14.c9users.io'}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

@@ -1,43 +1,119 @@
 en:
   #基本
-  single_byte_chara: "*single-byte alphanumeric characters"
+  single_byte_chara: "*半角英数のみ"
+  back: "戻る"
+  please_sign_up: "ユーザー登録してください。"
+  pattern_language: "パターン・ランゲージ"
+  select_pattern_language: "ランゲージ選択"
+  days_ago: "日前"
+  day: "日"
+  days: "日間"
+  name: "名前"
+  language: "言語"
+  email: "メールアドレス"
+  #パターン表示系
+  in_this_context: "その状況で"
+  therefore: "そこで"
+  consequently: "そうすると"
+  same_property_pattern: "同じ特性のパターン"
+  #パターンを実践リストに追加するフォーム系
+  add_my_list: "My Listに追加"
+  add_project_list: "プロジェクトに追加"
+  add_list_validation: "期間と優先度は必須です。"
+  add_project_list_validation: "プロジェクト、期間、優先度は必須です。"
+  select_range: "期間を選ぶ"
+  select_priority: "優先度を選ぶ"
+  select_project: "プロジェクトを選ぶ"
+  #実践リスト系
+  practice_list: "実践リスト"
+  ended_list: "終了リスト"
+  archive: "アーカイブ"
+  empty_practice_list: "実践リストは空です。"
+  empty_ended_list: "終了リストは空です。"
+  empty_archive: "アーカイブは空です。"
+  until_date: "%{date}まで"
+  reflection: "振り返り"
+  practice_comment: "コメント"
+  #実践リスト評価系
+  times_practiced: "期間中%{times}回実践出来ました！"
+  evaluate_practice: "タップして実践を評価"
+  input_reflection_comment: "振り返りのコメントを入力してください。"
+  reflection_comment_validation: "コメントは必須です。"
+  w/o_archive: "アーカイブせずに終了"
   #プロジェクト系
-  join_project: "Join a project"
-  new_project: "Create a new project"
-  project_name: "Project name"
-  project_id: "Project ID"
-  project_summary: "Project description"
-  project_color: "Project color"
+  join_project: "プロジェクトに参加する"
+  new_project: "プロジェクトを作る"
+  setting_project: "プロジェクト設定"
+  serch_project: "プロジェクトを検索"
+  project_name: "プロジェクト名"
+  project_id: "プロジェクトID"
+  project_summary: "プロジェクトの説明"
+  project_color: "プロジェクトのテーマ色"
+  serch_project_description: "既にプロジェクトに入っている人に教えてもらったプロジェクトIDを入力してください。"
+  join_project?: "プロジェクト「%{project_name}」に参加しますか？"
+  join_project!: "参加する"
+  exit_project: "プロジェクトから抜ける"
+  destroy_project: "プロジェクトを削除"
+  #経験チャート
+  chart_title: "チャート"
+  create_chart: "チャートを生成する"
+  chart_list: "一覧"
+  chart_event: "イベント"
+  want_to_practice_pattern: "実践したいパターン"
+  practicing_pattern: "実践しているパターン"
+  show_pdf: "PDFを表示"
+  get_pdf: "PDFをメールで受け取る"
+  #経験チャート比較
+  chart_compare: "比較"
+  chart_compare_description: "比較する結果を2つ選んでください。"
+  new_area: "新しくできるようになった領域"
+  prev_area: "できていた領域"
+  chart_extended_pattern: "伸びたパターン"
+  chart_all_pattern: "できている全パターン"
+  #レコメン系
+  recommend_talk_1: "こんにちは。<br>僕はまなぶ！あなたにピッタリなパターンを探すお手伝いをするよ。"
+  recommend_talk_2: "いくつか質問をするから答えてね。"
+  recommend_talk_3: "最近の気分はどう？"
+  recommend_talk_again: "前回探したパターンだよ。違うパターンを探すならページ一番下のボタンを押してね。"
+  recommend_again: "もう一度探す"
+  #シャッフル系
+  shuffle_title: "シャッフル"
+  shuffle_random: "ランダムで表示"
+  shuffle_prev_pattern: "前のパターン"
+  shuffle_next_pattern: "次のパターン"
+  #staticepage系
+  static_menu_message: "アプリ作成チームから"
+  static_menu_shuffle: "シャッフル"
+  static_menu_user_info: "ユーザー情報"
+  static_menu_contact: "お問い合わせ"
+  #お問合せ系
+  contact_title: "お問合せフォーム"
+  contact_description: "サービスへのご意見、ご要望、ご感想をお聞かせください。今後のサービス向上のために役立てさせていただきます。"
+  contact_content: "内容"
+  contact_validation: "内容は必須です"
   #フォーム系
-  create: "Create"
-  update: "Update"
+  create: "作成"
+  update: "更新"
+  search: "検索"
+  add: "追加"
+  send: "送信"
+  #アカウント設定系
+  have_account: "既にアカウントを持っていますか？"
+  reset_password: "パスワードをリセット"
+  send_mail: "メールを送る"
+  new_password: "新しいパスワード"
+  new_password_confirm: "新しいパスワード確認用"
+  password_six_validate: "パスワードは最低6桁です"
+  input_current_password: "変更するために現在のパスワードを入力してください。"
+  update_password: "パスワードを変更する"
+  forgot_password_still_login: "パスワードを忘れた方は一度ログアウトしてからパスワードを再設定してください。"
   #色
-  red: "red"
-  blue: "blue"
-  yellow: "yellow"
-  green: "green"
-  purple: "purple"
-  pink: "pink"
-  select_color: "▼ select color"
-
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
+  red: "レッド"
+  blue: "ブルー"
+  yellow: "イエロー"
+  green: "グリーン"
+  purple: "パープル"
+  pink: "ピンク"
+  select_color: "▼ 色を選択する"
+  #使い方
+  how_to_use: "使い方"

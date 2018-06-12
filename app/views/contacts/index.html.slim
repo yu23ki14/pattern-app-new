@@ -1,21 +1,21 @@
 .page-container
-  h3 お問い合わせフォーム
+  h3 #{t('contact_title')}
   = form_for @contact do |f|
     .row
       .col-10.col-center
-        h5 サービスへのご意見、ご要望、ご感想をお聞かせください。今後のサービス向上のために役立てさせていただきます。
+        h5 #{t('contact_description')}
         = f.label :name
-          |名前 
-        = f.text_field :name, placeholder: "山田太郎", class: "col-12 col-center"
+          |#{t('name')} 
+        = f.text_field :name, class: "col-12 col-center"
         
-        = f.label :email, "メールアドレス"
-        = f.text_field :email, placeholder: "pattern@app.com", class: "col-12 col-center"
+        = f.label :email, "#{t('email')}"
+        = f.text_field :email, placeholder: "example@example.com", class: "col-12 col-center"
         
         = f.label :message
-          |内容 
+          |#{t('contact_content')} 
           span.p.small
-            | *内容は必須です。
+            | *#{t('contact_validation')}
         = f.text_area :message, class: "col-12 col-center"
       
         .text-center.row-space-top-3
-          = f.submit "送信", class: "button button-primary"
+          = f.submit "#{t('send')}", class: "button button-primary"

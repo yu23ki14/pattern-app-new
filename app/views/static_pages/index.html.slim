@@ -1,19 +1,19 @@
-.page-container.text-center.row-space-top-8
+.page-container.text-center.row-space-top-2
   = link_to vision_static_pages_path, class: "button button-primary button-lg row-space-top-3"
-    |アプリ作成チームから
+    |#{t('static_menu_message')}
   = link_to new_project_path, class: "button button-primary button-lg row-space-top-3"
-    |プロジェクトを作る
+    |#{t('new_project')}
   = link_to shuffles_path, class: "button button-primary button-lg row-space-top-3"
-    |シャッフル
+    |#{t('static_menu_shuffle')}
   //= link_to service_agreement_static_pages_path, class: "button button-outline button-lg row-space-top-3"
     |利用規約
   //= link_to privacy_policy_static_pages_path, class: "button button-outline button-lg row-space-top-3"
     |プライバシーポリシー
   = link_to edit_user_registration_path, class: "button button-outline button-lg row-space-top-3"
-    |ユーザー情報
+    |#{t('static_menu_user_info')}
   = link_to tutorial_static_pages_path, class: "button button-outline button-lg row-space-top-3"
-    |使い方
+    |#{t('how_to_use')}
   = link_to contacts_path, class: "button button-outline button-lg row-space-top-3"
-    |お問い合わせ
+    |#{t('static_menu_contact')}
   = link_to destroy_user_session_path, class: "button button-outline button-lg row-space-top-3"
     |log out

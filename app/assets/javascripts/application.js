@@ -33,3 +33,4 @@
 //= require projects
 //= require excharts
 //= require shuffles
+//= require users

@@ -12,11 +12,11 @@
   .flex-container
     i.fa.fa-circle.text-light-yellow.h3.p-r-5
     span.small.p
-      |新しくできるようになった領域
+      |#{t('new_area')}
   .flex-container
     i.fa.fa-circle.text-yellow.h3.p-r-5
     span.small.p
-      |できていた領域
+      |#{t('prev_area')}
     
 .row-space-3.row-space-top-3
   canvas#myChart[height="230"]
@@ -25,10 +25,10 @@
   ul.result-nav.row.text-center
     li.js-trigger-switch-proximal.col-6.p-t-0
       .nav-inner
-      p.small 伸びたパターン
+      p.small #{t('chart_extended_pattern')}
     li.js-trigger-switch-current.col-6.p-t-0.in-active
       .nav-inner
-      p.small できている全パターン
+      p.small #{t('chart_all_pattern')}
 .page-container.row-space-top-2
   
   .proximal-patterns-container

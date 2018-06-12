@@ -1,14 +1,24 @@
 .card.p-y-10.p-x-15.col-12.col-center.box-shadow-primary
-  p.strong.text-center.row-space-top-3 使い方
+  h4.strong.text-center.row-space-top-5 #{t('how_to_use')}
   br
-  p
-    span.bg-theme.text-contrast
-      |ランダムで表示
-    |をタップするとパターンがランダムに表示されます。
-    br
-    |<前のパターンをタップするとこれまで出ている一つ前のパターンに戻ります。
-    br
-    |次のパターン>をタップすると一つ後のパターンにいきます。
+  - if current_user.locale == "ja"
+    p
+      span.bg-theme.text-contrast.p-x-5
+        |ランダムで表示
+      |をタップするとパターンがランダムに表示されます。
+      br
+      |<前のパターンをタップするとこれまで出ている一つ前のパターンに戻ります。
+      br
+      |次のパターン>をタップすると一つ後のパターンにいきます。
+  - else
+    p
+      span.bg-theme.text-contrast.p-x-5
+        |ランダムで表示
+      |をタップするとパターンがランダムに表示されます。
+      br
+      |<前のパターンをタップするとこれまで出ている一つ前のパターンに戻ります。
+      br
+      |次のパターン>をタップすると一つ後のパターンにいきます。
 
 - @patterns.each_with_index do |p, index|
   .card.p-y-10.p-x-15.col-12.col-center.required-container
@@ -21,7 +31,7 @@
         = check_box_tag "fav#{index}", '', false, {:user_id => current_user.id, :language_id => p.language_id, :pattern_no => p.pattern_no, class: "fav"}
         label.text-light.fav-icon-lg.inline{for="fav#{index}"}
           i.fa.fa-heart.h3.p-l-10
-    h4.text-center #{p.pattern_name}
+    h4.text-center.row-space-top-4 #{p.pattern_name}
     p #{p.summary}
     .text-center
       = image_tag "pattern_img/#{params[:pattern]}/#{p.pattern_no}.png", class: "col-6 col-center"
