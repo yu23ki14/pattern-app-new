@@ -56,6 +56,9 @@ gem 'wicked_pdf'
 #use dotenv as secret valiables
 gem 'dotenv-rails'
 
+#use whenever as crond
+gem 'whenever'
+
 #use alexa
 gem 'alexa_rubykit'
 

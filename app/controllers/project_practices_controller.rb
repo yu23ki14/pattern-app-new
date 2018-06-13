@@ -14,7 +14,7 @@ class ProjectPracticesController < ApplicationController
             redirect_to "/patterns/" + project_practice_params[:language_id], notice: '追加しました！'
           else
             redirect_to "/patterns/" + project_practice_params[:language_id] + "/" + project_practice_params[:pattern_no], alert: 'プロジェクト、期限、優先度は必須です。'
-          end  
+          end
         end
       else
         redirect_to "/patterns/" + project_practice_params[:language_id] + "/" + project_practice_params[:pattern_no], alert: 'プロジェクト、期限、優先度は必須です。'

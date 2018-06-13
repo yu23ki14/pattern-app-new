@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       get ':id/archive' => 'projects#archive'
       get 'join' => 'projects#join'
       get 'search' => 'projects#search'
+      get 'send_monday' => 'projects#send_monday'
     end
   end
   

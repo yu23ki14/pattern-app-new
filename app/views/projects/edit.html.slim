@@ -1,5 +1,5 @@
 .page-container.row-space-top-2
-  
+      
   = link_to projects_path
     | < #{t('back')}
   h3 #{t('setting_project')}
@@ -23,7 +23,14 @@
             |#{t('project_summary')}
         = f.text_area :project_summary, class: "col-12 col-center text-box"
         
-        
+        p
+          |リマインドメールを受け取る。
+          
+        = f.check_box :monday_remind
+        = f.label :monday_remind, class: "check_box row-space-top-1"
+          span.dammy
+            |test
+            
         = f.label :project_color
           p
             |#{t('project_color')}

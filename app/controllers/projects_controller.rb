@@ -55,6 +55,7 @@ class ProjectsController < ApplicationController
   
   def edit
     @project_member = @project.project_members.first
+    @projects = Project.where(monday_remind: true).includes(:project_practices)
   end
   
   def update
@@ -78,6 +79,6 @@ class ProjectsController < ApplicationController
     end
     
     def project_params
-      params.require(:project).permit(:project_name, :project_summary, :project_id, :project_color)
+      params.require(:project).permit(:project_name, :project_summary, :project_id, :project_color, :monday_remind)
     end
 end

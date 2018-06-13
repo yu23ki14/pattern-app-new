@@ -3,6 +3,8 @@ class Pattern < ApplicationRecord
   has_many :favorites
   has_many :practices
   
+  scope :this_pattern, -> (language_id, pattern_no) { where(language_id: language_id).find_by(pattern_no: pattern_no) }
+  
   def pattern_name
     self.send("pattern_name_#{I18n.locale}")
   end

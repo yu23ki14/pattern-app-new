@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'patternapp'
+  default from: "patternapp project team"
   layout 'mailer'
 end
 
