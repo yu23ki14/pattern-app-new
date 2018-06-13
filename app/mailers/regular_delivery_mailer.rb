@@ -5,13 +5,13 @@ class RegularDeliveryMailer < ApplicationMailer
   #
   #   en.regular_delivery_mailer.send_monday.subject
   #
-  def send_monday(project_member, project_practices)
+  def send_monday(project_member, project_practices, project)
     @project_practices = project_practices
     @project_member = project_member
-
+    @project = project
+    @url = "#{ENV["RAILS_ROOT"]}"
     mail to: @project_member.email,
-         subject: "パターン実践してますか？"
-    
-    #RegularDeliveryMailer.send_monday(current_user, @practices.where(done: nil)).deliver
+         subject: "今週意識するパターン"
+
   end
 end
