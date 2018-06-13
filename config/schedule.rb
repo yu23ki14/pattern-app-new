@@ -8,9 +8,9 @@
 set :output, "log/crontab.log"
 set :environment, ENV["RAILS_ENV"]
 
-every 2.minutes do
-  rake "monday_mail:send"
-end
+#every 2.minutes do
+#  rake "monday_mail:send"
+#end
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
