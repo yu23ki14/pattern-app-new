@@ -3,47 +3,12 @@
   = link_to projects_path
     | < #{t('back')}
   h3 #{t('setting_project')}
-  = form_for @project do |f|
-    .row
-      .col-10.col-center
-        = f.label :project_name
-          p
-            |#{t('project_name')}
-        = f.text_field :project_name, placeholder: "patternapp", class: "col-12 col-center"
-        
-        = f.label :project_name
-          p
-            |#{t('project_id')} 
-            span.small
-              |#{t('single_byte_chara')}
-        = f.text_field :project_id, placeholder: "sfc", class: "col-12 col-center", onKeyup: "this.value=this.value.replace(/[^0-9, 'a-z', 'A-Z']+/,'')"
-        
-        = f.label :project_summary
-          p
-            |#{t('project_summary')}
-        = f.text_area :project_summary, class: "col-12 col-center text-box"
-        
-        p
-          |リマインドメールを受け取る。
-          
-        = f.check_box :monday_remind
-        = f.label :monday_remind, class: "check_box row-space-top-1"
-          span.dammy
-            |test
-            
-        = f.label :project_color
-          p
-            |#{t('project_color')}
-        .selectbox
-          = f.select :project_color, [["#{t('red')}", "#e25a58"], ["#{t('blue')}", "#296eec"], ["#{t('yellow')}", "#dcbb41"], ["#{t('green')}", "#4db141"], ["#{t('purple')}", "#ca64d2"], ["#{t('pink')}", "#f57ca7"]], :prompt => "#{t('select_color')}"
-    
-    .text-center.row-space-top-3
-      = f.submit "#{t('update')}", class: "button button-primary button-lg"
-    .text-center.row-space-top-3
-      = link_to "#exit_notification", data: { toggle: "modal" }, class: "button button-danger button-lg"
-        |#{t('exit_project')}
-    .text-center.row-space-top-3
-      = link_to "#delete_notification", data: { toggle: "modal" }, class: "button button-danger button-lg"
-        |#{t('destroy_project')}
+  = render partial: "form", locals: {project: @project}
+  .text-center.row-space-top-3
+    = link_to "#exit_notification", data: { toggle: "modal" }, class: "button button-danger button-lg"
+      |#{t('exit_project')}
+  .text-center.row-space-top-3
+    = link_to "#delete_notification", data: { toggle: "modal" }, class: "button button-danger button-lg"
+      |#{t('destroy_project')}
 = render "exit_notification", project_member: @project_member
 = render "delete_notification", project_id: @project.id

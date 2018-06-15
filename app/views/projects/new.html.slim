@@ -1,34 +1,3 @@
 .page-container.row-space-top-2
   h3 #{t('new_project')}
-  = form_for @project do |f|
-    .row
-      .col-10.col-center
-        = f.label :project_name
-          p
-            |#{t('project_name')}
-        = f.text_field :project_name, placeholder: "patternapp", class: "col-12 col-center"
-        
-        = f.label :project_name
-          p
-            |#{t('project_id')} 
-            span.small
-              |#{t('single_byte_chara')}
-        = f.text_field :project_id, placeholder: "sfc", class: "col-12 col-center", onKeyup: "this.value=this.value.replace(/[^0-9, 'a-z', 'A-Z']+/,'')"
-        
-        = f.label :project_summary
-          p
-            |#{t('project_summary')}
-        = f.text_area :project_summary, class: "col-12 col-center text-box"
-        
-        
-        = f.label :project_color
-          p
-            |#{t('project_color')}
-        .selectbox
-          = f.select :project_color, [["#{t('red')}", "#e25a58"], ["#{t('blue')}", "#296eec"], ["#{t('yellow')}", "#dcbb41"], ["#{t('green')}", "#4db141"], ["#{t('purple')}", "#ca64d2"], ["#{t('pink')}", "#f57ca7"]], :prompt => "#{t('select_color')}"
-      
-        .text-center.row-space-top-3
-          = f.submit "#{t('create')}", class: "button button-primary"
-        .text-center.row-space-top-2
-          = link_to join_projects_path, class: "p small bottom-bordered"
-            |#{t('join_project')}
+  = render partial: "form", locals: {project: @project}
