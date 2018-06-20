@@ -19,6 +19,13 @@
       .field.row-space-top-5
         = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center", placeholder: "パスワード確認用"
     
+      p.row-space-top-4
+        |#{t('get_remind')}
+      = f.check_box :monday_remind
+      = f.label :monday_remind, class: "check_box row-space-top-1"
+        span.dammy
+          |test
+    
       .actions.text-center.row-space-top-5
         = f.submit "Sign up", class: "button button-primary button-lg"
     p.small.row-space-top-3

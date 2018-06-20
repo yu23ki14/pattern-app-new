@@ -18,6 +18,13 @@
       = f.label :email, class: "row-space-top-4"
         |#{t('email')}
       = f.email_field :email, class: "col-12 col-center"
+      
+      p.row-space-top-4
+        |#{t('get_remind')}
+      = f.check_box :monday_remind
+      = f.label :monday_remind, class: "check_box row-space-top-1"
+        span.dammy
+          |test
     
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         Currently waiting confirmation for: #{resource.unconfirmed_email}

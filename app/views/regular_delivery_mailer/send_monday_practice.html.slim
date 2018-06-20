@@ -1,0 +1,31 @@
+- if @practices.length > 0
+  p{style="margin-bottom: 35px"}
+    - if @user.name != ""
+      |#{@user.name}さんに、
+      br
+    |今週意識する#{@practices.length}パターンをお届けします。
+  
+  hr
+  - @practices.each do |practice|
+    - pattern = Pattern.this_pattern(practice.language_id, practice.pattern_no)
+    p{style="font-size: 20px; font-weight: bold"} #{pattern.pattern_name}
+    p{style="margin-bottom:10px"} #{pattern.summary}
+    - if practice.action.present?
+      p{style="border-top: 1px dashed; margin-top:10px; padding-top: 10px; margin-bottom: 5px;"} 具体的な行動
+      p{style="margin-top: 5px;"} #{practice.action}
+    hr{style="margin-top: 15px"}
+  
+- else
+  p{style="margin-bottom: 35px"}
+    |プロジェクトにパターンが登録されていません。
+    br
+    |以下のリンクから意識したいパターンを見つけて登録しましょう。
+
+  = link_to "#{@url}/languages"
+    |パターンページへ
+  br
+  = link_to "#{@url}/excharts"
+    |経験チャートページへ
+  br
+= link_to "#{@url}/practices"
+  |MyList へ

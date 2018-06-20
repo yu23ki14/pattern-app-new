@@ -107,6 +107,7 @@ en:
   input_current_password: "Input current password to update"
   update_password: "Update password"
   forgot_password_still_login: "If you forgot your password, please log out and reset your password."
+  get_remind: "Get monday remind mail"
   #色
   red: "Red"
   blue: "Blue"

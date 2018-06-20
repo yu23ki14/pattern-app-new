@@ -107,6 +107,7 @@ ja:
   input_current_password: "変更するために現在のパスワードを入力してください。"
   update_password: "パスワードを変更する"
   forgot_password_still_login: "パスワードを忘れた方は一度ログアウトしてからパスワードを再設定してください。"
+  get_remind: "リマインドメールを受け取る。"
   #色
   red: "レッド"
   blue: "ブルー"
