@@ -65,6 +65,11 @@ en:
   practicing_pattern: "Patterns you’re practicing"
   show_pdf: "Show PDF"
   get_pdf: "Receive PDF by email"
+  back_one: "Back one"
+  dont_practice: "don't practice"
+  want_practice: "want to practice"
+  doing_practice: "practicing"
+  input_eventcode: "Please input event code."
   #経験チャート比較
   chart_compare: "Compare"
   chart_compare_description: "Select two charts to compare"

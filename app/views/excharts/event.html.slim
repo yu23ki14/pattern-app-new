@@ -1,7 +1,7 @@
 .page-container.text-center.row-space-top-2
   .col-11.col-center
-    h5.text-left イベントコードを入力してください。
+    h5.text-left #{t('input_eventcode')}
     = form_tag new_exchart_path, method: :get do
       = text_field :event, :code, class: "col-12 col-center row-space-top-3"
       .text-center.row-space-top-3
-        = submit_tag "参加", class: "button button-primary"
+        = submit_tag "#{t('send')}", class: "button button-primary"

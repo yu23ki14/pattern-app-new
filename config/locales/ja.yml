@@ -65,6 +65,11 @@ ja:
   practicing_pattern: "実践しているパターン"
   show_pdf: "PDFを表示"
   get_pdf: "PDFをメールで受け取る"
+  back_one: "1つ戻る"
+  dont_practice: "していない"
+  want_practice: "したい"
+  doing_practice: "している"
+  input_eventcode: "イベントコードを入力してください。"
   #経験チャート比較
   chart_compare: "比較"
   chart_compare_description: "比較する結果を2つ選んでください。"
@@ -110,6 +115,7 @@ ja:
   update_password: "パスワードを変更する"
   forgot_password_still_login: "パスワードを忘れた方は一度ログアウトしてからパスワードを再設定してください。"
   get_monday_remind: "毎週月曜日にリマインドメールを受け取る。"
+  input_wrong_infomation: "入力した情報が間違っています。"
   #色
   red: "レッド"
   blue: "ブルー"
