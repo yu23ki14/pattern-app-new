@@ -5,29 +5,46 @@
       = devise_error_messages!
       
       .field.row-space-top-5
-        = f.text_field :name, class: "col-12 col-center", placeholder: "ユーザー名"
+        = f.text_field :name, class: "col-12 col-center", placeholder: "ユーザー名 : user name"
     
       .field.row-space-top-5
-        = f.email_field :email, class: "col-12 col-center", placeholder: "メールアドレス"
+        = f.email_field :email, class: "col-12 col-center", placeholder: "メールアドレス : mail address"
+      
+      = f.label :locale, class: "row-space-top-3"
+        |#{t('language')} : language
+      .selectbox.row
+        .col-8.p-x-0
+          = f.select :locale, [["Japanese", "ja"], ["English", "en"]], :prompt => "#{t('language')}"
+      
+      p.row-space-top-4
+        |#{t('get_monday_remind')}
+        br
+        |Get monday remind mail
+      = f.check_box :monday_remind
+      = f.label :monday_remind, class: "check_box row-space-top-1"
+        span.dammy
+          |test
       
       .field.row-space-top-5
         //- if @minimum_password_length
           em
             | #{@minimum_password_length} characters minimum
-        = f.password_field :password, autocomplete: "off", class: "col-12 col-center", placeholder: "パスワード最低6桁"
+        = f.password_field :password, autocomplete: "off", class: "col-12 col-center", placeholder: "パスワード最低6桁 : password minimum 6 chara"
     
       .field.row-space-top-5
-        = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center", placeholder: "パスワード確認用"
-    
-      p.row-space-top-4
-        |#{t('get_remind')}
-      = f.check_box :monday_remind
-      = f.label :monday_remind, class: "check_box row-space-top-1"
-        span.dammy
-          |test
+        = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center", placeholder: "パスワード確認用 : password confirmation"
     
       .actions.text-center.row-space-top-5
         = f.submit "Sign up", class: "button button-primary button-lg"
     p.small.row-space-top-3
       |*本アプリは井庭研究室の研究の一環で開発しているため、アンケートにご協力いただくためにメールをお送りすることがあります。また、開発・研究の目的で、利用状況等のデータを、個人情報を抜いた上で使用することがあります。以上をご了承いただいた上でSign Upをお願い致します。
+    p.small.row-space-top-2
+      |*Before signing up, we would like to inform you that this application is used as a part of research in Iba Lab.
+      br
+      |For further development in this study, we ask for your understanding on following terms:
+      br
+      |1. Questionnaire surveys will be sent on email address of your account
+      br
+      |2. Usage data of this application will be used for research without any of your personal information
+
     = render "devise/shared/links"

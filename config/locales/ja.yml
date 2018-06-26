@@ -24,6 +24,7 @@ ja:
   select_range: "期間を選ぶ"
   select_priority: "優先度を選ぶ"
   select_project: "プロジェクトを選ぶ"
+  can_edit_action: "具体的な行動が決まっていれば入力してください。後からでも入力できます。"
   #実践リスト系
   practice_list: "実践リスト"
   ended_list: "終了リスト"
@@ -34,6 +35,7 @@ ja:
   until_date: "%{date}まで"
   reflection: "振り返り"
   practice_comment: "コメント"
+  concrete_action: "具体的な行動"
   #実践リスト評価系
   times_practiced: "期間中%{times}回実践出来ました！"
   evaluate_practice: "タップして実践を評価"
@@ -107,7 +109,7 @@ ja:
   input_current_password: "変更するために現在のパスワードを入力してください。"
   update_password: "パスワードを変更する"
   forgot_password_still_login: "パスワードを忘れた方は一度ログアウトしてからパスワードを再設定してください。"
-  get_remind: "リマインドメールを受け取る。"
+  get_monday_remind: "毎週月曜日にリマインドメールを受け取る。"
   #色
   red: "レッド"
   blue: "ブルー"
@@ -118,7 +120,8 @@ ja:
   select_color: "▼ 色を選択する"
   #使い方
   how_to_use: "使い方"
-  
+  #メール系
+  patten_of_this_week: "今週意識するパターン"
 #コントローラ別でかくサンプル
 #  projects:
 #    index:

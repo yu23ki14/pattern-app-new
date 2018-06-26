@@ -1,7 +1,7 @@
-id,choices,response,nextquestion,phase1_id,phase
-1,発想を新しくしたい。,よし！,この中で一番してみたいことはある？,1,2
-2,先が見えなくて何をすればいいのかわからない。,よし！,この中で一番してみたいことはある？,1,2
-3,他の人と協力して良いものをつくる。,よし！,この中で実現したいことはある？,2,2
-4,専門性を身につける,よし！,この中で実現したいことはある？,2,2
-5,まずは自分が成長する,よし！,この中で実現したいことはある？,3,2
-6,最高のプロジェクトにする,よし！,この中で実現したいことはある？,3,2
+id,choices,response,nextquestion,phase1_id,phase,choices_en,response_en,nextquestion_en
+1,発想を新しくする。,よし！,この中で一番してみたいことはある？,1,2,Get new point of view.,OK!,Is there anything you want to do the best?
+2,先が見えなくて何をすればいいのかわからない。,よし！,この中で一番してみたいことはある？,1,2,Have no idea what to do...,OK!,Is there anything you want to do the best?
+3,他の人と協力して良いものをつくる。,よし！,この中で実現したいことはある？,2,2,Cooperate with someone to make something nice.,OK!,Is there anything you want to perform here?
+4,専門性を身につける,よし！,この中で実現したいことはある？,2,2,Obtain professionality,OK!,Is there anything you want to perform here?
+5,まずは自分が成長する,よし！,この中で実現したいことはある？,3,2,Focus on improving myself first,OK!,Is there anything you want to perform here?
+6,最高のプロジェクトにする,よし！,この中で実現したいことはある？,3,2,Make the project AMAZING!!,OK!,Is there anything you want to perform here?

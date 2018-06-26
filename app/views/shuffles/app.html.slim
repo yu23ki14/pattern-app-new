@@ -1,0 +1,13 @@
+.page-container.required-container.card-stack.p-t-10.flex-container.row-space-2
+  = render "card"
+.shuffle-controller
+  .text-center
+    = link_to "#", class: "button button-primary js-trigger-show row-space-top-3"
+      |#{t('shuffle_random')}
+  .row.p-t-5.p-b-5
+    .col-6
+      = link_to "#", class: "js-trigger-previous"
+        |< #{t('shuffle_prev_pattern')}
+    .col-6.text-right
+      = link_to "#", class: "js-trigger-next"
+        |#{t('shuffle_next_pattern')} >

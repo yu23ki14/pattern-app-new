@@ -6,18 +6,17 @@
     .row-space-8
       .text-center.row-space-8
         h4.inline
-          |パターン・ランゲージを
-          br
-          |もっと身近に。
+          |Pattern App
+        br
         h5.inline.text-sub
           |beta.ver
     - if !user_signed_in?
       .text-center.row-space-top-4
         = link_to "/users/sign_in", class: "button button-outline button-lg button-primary"
-          | ログイン
+          | log in
       .text-center.row-space-top-4
         = link_to "/users/sign_up", class: "button button-outline button-lg"
-          | 新規登録
+          | sign up
     
     - if user_signed_in?
       .text-center.row-space-top-4

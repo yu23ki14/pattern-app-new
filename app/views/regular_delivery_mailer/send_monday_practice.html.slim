@@ -1,9 +1,15 @@
 - if @practices.length > 0
   p{style="margin-bottom: 35px"}
     - if @user.name != ""
-      |#{@user.name}さんに、
+      - if @user.locale == "ja"
+        |#{@user.name}さんに、
+      - else
+        |Hi #{@user.name}!
       br
-    |今週意識する#{@practices.length}パターンをお届けします。
+    - if @user.locale == "ja"
+      |今週意識する#{@practices.length}パターンをお届けします。
+    - else
+      |今週意識する#{@practices.length}パターンをお届けします。
   
   hr
   - @practices.each do |practice|
@@ -16,16 +22,31 @@
     hr{style="margin-top: 15px"}
   
 - else
-  p{style="margin-bottom: 35px"}
-    |プロジェクトにパターンが登録されていません。
+  - if @user.locale == "ja"
+    p{style="margin-bottom: 35px"}
+      |実践リストにパターンが登録されていません。
+      br
+      |以下のリンクから意識したいパターンを見つけて登録しましょう。
+  
+    = link_to "#{@url}/languages"
+      |パターンページへ
     br
-    |以下のリンクから意識したいパターンを見つけて登録しましょう。
-
-  = link_to "#{@url}/languages"
-    |パターンページへ
-  br
-  = link_to "#{@url}/excharts"
-    |経験チャートページへ
-  br
+    = link_to "#{@url}/excharts"
+      |経験チャートページへ
+    br
+    
+  - else
+    p{style="margin-bottom: 35px"}
+      |There are no patterns on practice list.
+      br
+      |以下のリンクから意識したいパターンを見つけて登録しましょう。
+  
+    = link_to "#{@url}/languages"
+      |Go to Pattern page
+    br
+    = link_to "#{@url}/excharts"
+      |Go to Chart page
+    br
+    
 = link_to "#{@url}/practices"
-  |MyList へ
+  |MyList

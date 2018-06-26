@@ -1,5 +1,5 @@
 class ProjectPracticesController < ApplicationController
-  before_action :set_project_practice, only: [:did, :practice_comment, :addcomment, :update]
+  before_action :set_project_practice, only: [:did, :practice_comment, :addcomment, :update, :edit_practice]
 
   def create
     if user_signed_in?
@@ -41,6 +41,9 @@ class ProjectPracticesController < ApplicationController
     @practice.update(practice_done_params)
   end
   
+  def edit_practice
+  end
+  
   private
     def set_project_practice
       @practice = ProjectPractice.find(params[:id])
@@ -51,6 +54,6 @@ class ProjectPracticesController < ApplicationController
     end
     
     def practice_done_params
-      params.require(:project_practice).permit(:done, :comment, :rate)
+      params.require(:project_practice).permit(:done, :comment, :rate, :priority, :action)
     end
 end

@@ -1,28 +1,69 @@
 .col-11.col-center
   h4.text-center #{t('how_to_use')}
-  h5 step1
-  p
-    |メニューの
-    i.fa.fa-file-text-o.p-x-5
-    |からパターン一覧ページに入れます。そこで自分の実践したい、またはお気に入りのパターンを探してください。
-    br
-    i.fa.fa-comments-o.p-x-5
-    |ではまなぶくんが今のあなたに適したパターンを提案してくれます。ぜひご利用ください。
+  
+  - if current_user.locale == "ja"
+    h5.row-space-top-3 パターンを見つける
+    p
+      |メニューの
+      = image_tag "icons/rador-chart-gray.png", width: "17px", class: "p-x-5"
+      |からパターンの経験チャートページに入れます。経験チャートを生成して実践するとよいパターンを見つけましょう。
+      br
+      i.fa.fa-file-text-o.p-x-5
+      |からパターン一覧ページに入れます。そこで自分の実践したい、またはお気に入りのパターンを探せます。
+      br
+      i.fa.fa-comments-o.p-x-5
+      |ではまなぶくんが今のあなたに適したパターンを提案してくれます。
     
-  h5.row-space-top-3 step2
-  p
-    |実践したいパターンが見つかったらパターン詳細ページにある
-    span.bg-theme.text-contrast.p-x-5 実践する
-    |ボタンを押します。
-    br
-    |意識的に実践する期間、実践する優先度の入力をすると実践リストに追加されます。
-  h5.row-space-top-3 step3
-  p
-    |実践期間中、実践した、または意識できたと思ったら
-    i.fa.fa-check.p-x-5
-    |を押します。
-    br
-    i.fa.fa-pencil.p-x-5
-    |からはパターンへのコメントを記入できます。
-    br
-    |期間終了後、終了リストに入ったパターンに振り返りのコメントを残してアーカイブしましょう。
+    h5.row-space-top-6 パターンをリストに入れる
+    p
+      |実践したいパターンが見つかったらパターン詳細ページにある
+      span.bg-theme.text-contrast.p-x-5 実践する
+      |ボタンを押します。
+      br
+      |意識的に実践する期間、実践する優先度の入力をすると実践リストに追加されます。
+    
+    h5.row-space-top-6 パターンを実践する
+    p
+      |実践リストに登録したパターンで実践できたパターンの
+      i.fa.fa-check.p-x-5
+      |を押すとカウントされます。
+      br
+      i.fa.fa-pencil.p-x-5
+      |からはパターンへのコメントを記入できます。
+      br
+      |期間終了後、終了リストに入ったパターンに振り返りのコメントを残してアーカイブしましょう。
+  
+  - else
+    h5.row-space-top-3 Choose your pattern
+    p
+      |Go to ExperienceChart Page by clicking on
+      = image_tag "icons/rador-chart-gray.png", width: "17px", class: "p-x-5"
+      |on the menu bar. This chart will help you choose your patterns by reflecting your experience of pattern.
+      br
+      |Click
+      i.fa.fa-file-text-o.p-x-5
+      |to look at pattern library and pick your favorite patterns or patterns that you want to practice.       
+      br
+      |At
+      i.fa.fa-comments-o.p-x-5
+      |Manabu will help you find a pattern that best fits you.
+    
+    h5.row-space-top-6 Add your pattern to your list.
+    p
+      |After choosing your pattern, click 
+      span.bg-theme.text-contrast.p-x-5 #{t('add')}
+      |button on Pattern detail Page. 
+      br
+      |Select duration and priority levels in acting out each pattern.
+    
+    h5.row-space-top-6 Practice your pattern.
+    p
+      |Count each time you practiced by clicking
+      i.fa.fa-check.p-x-5
+      |on your pattern performing list. 
+      br
+      |From
+      i.fa.fa-pencil.p-x-5
+      |you can add comments and details on each pattern.
+      br
+      |When the duration for permanance ends, patterns will be added to Completed List. Before archiving the patterns, write down comments on each pattern to reflect your action.

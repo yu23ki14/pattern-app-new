@@ -1,4 +1,4 @@
-id,choices,response,nextquestion
-1,ちょっと停滞感があるなあ...,そうなんだね,じゃあ、それはどっちの気持ちに近い？
-2,このままいい感じに進みたい！,いいね！,じゃあ、この中でできそうなことはある？
-3,もっともっとよくなりたい！,その意気だ！,じゃあ、この中でしたいことはある？
+id,choices(user),response(manabu),nextquestion(manabu),choices(user)en,response(manabu)en,nextquestion(manabu)en
+1,ちょっと停滞感があるなあ...,そうなんだね,じゃあ、この中でできそうなことはある？,Not going so well...,Hmmm I see,"Then, is there anything you can do from here?"
+2,このままいい感じに進みたい！,いいね！,じゃあ、この中でできそうなことはある？,Want to keep up!,Nice!,"Then, is there anything you can do from here?"
+3,もっともっとよくなりたい！,その意気だ！,じゃあ、この中でしたいことはある？,Want to improve more!,Amazing!!!!,"Then, do you have anything you want to do from here?"

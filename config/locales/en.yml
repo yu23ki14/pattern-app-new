@@ -24,6 +24,7 @@ en:
   select_range: "Select period"
   select_priority: "Select priority level"
   select_project: "Select project"
+  can_edit_action: "If you have concrete action, please write here. You can edit later."
   #実践リスト系
   practice_list: "Practice List"
   ended_list: "Complete List"
@@ -34,6 +35,7 @@ en:
   until_date: "until %{date}"
   reflection: "Reflection"
   practice_comment: "Comments"
+  concrete_action: "Concrete actions"
   #実践リスト評価系
   times_practiced: "%{times} times practiced during the period"
   evaluate_practice: "Tap for evaluation"
@@ -107,7 +109,7 @@ en:
   input_current_password: "Input current password to update"
   update_password: "Update password"
   forgot_password_still_login: "If you forgot your password, please log out and reset your password."
-  get_remind: "Get monday remind mail"
+  get_monday_remind: "Get monday remind mail"
   #色
   red: "Red"
   blue: "Blue"
@@ -118,3 +120,5 @@ en:
   select_color: "▼ Select a color"
   #使い方
   how_to_use: "How to use"
+  #メール系
+  patten_of_this_week: "Patterns of this week"

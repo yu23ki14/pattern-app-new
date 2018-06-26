@@ -1,0 +1,13 @@
+#edit_practice.modal
+  .modal-container.col-11.col-center.p-y-30
+    .close-modal
+      i.fa.fa-times
+    .row-space-top-4
+      = form_for @practice do |f|
+        = hidden_field_tag 'template[name]', ''
+        .row.selectbox
+          .col-11.col-center
+            = f.select :priority, [["★", "1"], ["★★", "2"], ["★★★", "3"], ["★★★★", "4"]], :prompt => "▼　#{t('select_priority')}"
+            = f.text_area :action, class: "col-12 col-center text-box", placeholder: "#{t('can_edit_action')}"
+          .col-12.col-center.text-center
+            = f.submit "#{t('update')}", class: "button button-primary"

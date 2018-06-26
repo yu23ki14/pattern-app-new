@@ -1,31 +1,31 @@
-id,choices,response,nextquestion,phase3_id,context_id,phase
-1,創造的になれる環境をつくる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,9,9,4
-2,いい目標に向かう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,9,10,4
-3,風通しのいい組織をつくる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,9,11,4
-4,主体的に動いてもらう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,9,12,4
-5,覚えてもらう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,10,13,4
-6,理解してもらう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,10,14,4
-7,共感してもらう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,10,15,4
-8,説得する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,10,16,4
-9,本質を見る,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,11,17,4
-10,客観視する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,11,18,4
-11,ほかの人から学ぶ,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,11,19,4
-12,多面的に学ぶ,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,11,20,4
-13,継続する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,12,21,4
-14,モチベーションを保つ,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,12,22,4
-15,リスクを回避する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,12,23,4
-16,基本を身につける,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,12,24,4
-17,軸を持つ,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,13,25,4
-18,立ち位置を考える,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,13,26,4
-19,差異化する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,13,27,4
-20,学びを設計する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,14,28,4
-21,知識を広げる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,14,29,4
-22,視点を切り替える,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,14,30,4
-23,自信をつける,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,14,31,4
-24,自分ごと化する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,15,32,4
-25,世界観をつくる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,15,33,4
-26,楽しさを取り入れる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,15,34,4
-27,さらにクオリティをあげる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,15,35,4
-28,自分の持てる力を最大化する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,16,36,4
-29,チームの力を合わせて進める,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,16,37,4
-30,チーム内で共感を得ながら進める,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,16,38,4
+id,choices,response,nextquestion,phase3_id,context_id,phase,choices_en,response_en,nextquestion_en
+1,創造的になれる環境をつくる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,9,9,4,Create an environment for creative ideas.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+2,いい目標に向かう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,9,10,4,Try to achieve a goal.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+3,風通しのいい組織をつくる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,9,11,4,Create an open team.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+4,主体的に動いてもらう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,9,12,4,Create a team with independent and self-diciplined mind.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+5,覚えてもらう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,10,13,4,Let others remember my ideas.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+6,理解してもらう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,10,14,4,Have my ideas understood by others.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+7,共感してもらう,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,10,15,4,Have my ideas stir emotion and motivate others.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+8,説得する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,10,16,4,Pesuade others.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+9,本質を見る,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,11,17,4,Grasp the essence of the situation.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+10,客観視する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,11,18,4,Graps the situation from an objective view.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+11,ほかの人から学ぶ,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,11,19,4,Learn from others.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+12,多面的に学ぶ,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,11,20,4,Learn from various points.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+13,継続する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,12,21,4,Continue my action without giving up.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+14,モチベーションを保つ,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,12,22,4,Keep motivation high.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+15,リスクを回避する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,12,23,4,Avoid risks beforehand.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+16,基本を身につける,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,12,24,4,Know the basics.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+17,軸を持つ,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,13,25,4,Know my core value.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+18,立ち位置を考える,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,13,26,4,Know what my role is.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+19,差異化する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,13,27,4,Show individuality.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+20,学びを設計する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,14,28,4,Design my plans to learn.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+21,知識を広げる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,14,29,4,Enlargen my knowledge.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+22,視点を切り替える,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,14,30,4,Have a different point of view.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+23,自信をつける,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,14,31,4,Have more confidence.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+24,自分ごと化する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,15,32,4,Care others like my ownself.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+25,世界観をつくる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,15,33,4,Creat my way of viewing the world.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+26,楽しさを取り入れる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,15,34,4,Enjoy the work.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+27,さらにクオリティをあげる,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,15,35,4,Raise the quality.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+28,自分の持てる力を最大化する,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,16,36,4,To make best use of my strength.,Thanks for sharing your thoughts :),I found perfect patterns just for you!
+29,チームの力を合わせて進める,いろいろ教えてくれてありがとう。,君にぴったりのパターンを紹介するよ！,16,37,4,Cooperate for achievements.,Thanks for sharing your thoughts :),I'll show you perfect patterns for you!
+30,チーム内で共感を得ながら進める,いろいろ教えてくれてありがとう。,君にぴったりのパターンを見つけたよ！,16,38,4,Work and understand each other as a team.,Thanks for sharing your thoughts :),I found perfect patterns just for you!

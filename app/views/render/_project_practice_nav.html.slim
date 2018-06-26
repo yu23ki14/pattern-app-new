@@ -5,15 +5,15 @@
   ul.row.text-center.p-t-10
     = link_to project_path, remote: true
       li.col-4#active-list.active
-        .text-lead-en
+        h6.m-y-0.normal
           |#{t('practice_list')}
     
     = link_to "#{params[:id]}/complete", remote: true
       li.col-4#complete-list
-        .text-lead-en
+        h6.m-y-0.normal
           |#{t('ended_list')}
     
     = link_to "#{params[:id]}/archive", remote: true
       li.col-4#archive-list
-        .text-lead-en
+        h6.m-y-0.normal
           |#{t('archive')}

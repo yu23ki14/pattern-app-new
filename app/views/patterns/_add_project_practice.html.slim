@@ -16,6 +16,6 @@
             = f.select :project_id, projects.all.map{|p| [p.project_name, p.id]}, :prompt => "▼　#{t('select_project')}"
             = f.select :limit, [["１#{t('day')}", 1], ["７#{t('days')}", 7], ["３０#{t('days')}", 30], ["６０#{t('days')}", 60], ["９０#{t('days')}", 90], ["１２０#{t('days')}", 120]], :prompt => "▼　#{t('select_range')}"
             = f.select :priority, [["★", "1"], ["★★", "2"], ["★★★", "3"], ["★★★★", "4"]], :prompt => "▼　#{t('select_priority')}"
-            = f.text_area :action, class: "col-12 col-center text-box", placeholder: "具体的な行動が決まっていれば入力してください。後からでも入力できます。"
+            = f.text_area :action, class: "col-12 col-center text-box", placeholder: "#{t('can_edit_action')}"
           .col-12.col-center.text-center
             = f.submit "#{t('add')}", class: "button button-primary"

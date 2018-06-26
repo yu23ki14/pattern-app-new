@@ -9,18 +9,18 @@
         |#{t('name')}
       = f.text_field :name, class: "col-12 col-center"
     
-      //= f.label :locale
-      //  |#{t('language')}
-      //.selectbox.row
-      //  .col-8.p-x-0
-      //    = f.select :locale, [["Japanese", "ja"], ["English", "en"]], :prompt => "#{t('language')}"
+      = f.label :locale
+        |#{t('language')}
+      .selectbox.row
+        .col-8.p-x-0
+          = f.select :locale, [["Japanese", "ja"], ["English", "en"]], :prompt => "#{t('language')}"
     
       = f.label :email, class: "row-space-top-4"
         |#{t('email')}
       = f.email_field :email, class: "col-12 col-center"
       
       p.row-space-top-4
-        |#{t('get_remind')}
+        |#{t('get_monday_remind')}
       = f.check_box :monday_remind
       = f.label :monday_remind, class: "check_box row-space-top-1"
         span.dammy

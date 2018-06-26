@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620031701) do
+ActiveRecord::Schema.define(version: 20180626123255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +45,10 @@ ActiveRecord::Schema.define(version: 20180620031701) do
 
   create_table "exchart_labels", force: :cascade do |t|
     t.bigint "language_id"
-    t.text "label"
+    t.text "label_ja"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "label_en"
     t.index ["language_id"], name: "index_exchart_labels_on_language_id"
   end
 
@@ -110,47 +111,59 @@ ActiveRecord::Schema.define(version: 20180620031701) do
   end
 
   create_table "phase1s", force: :cascade do |t|
-    t.string "choices"
-    t.string "response"
-    t.string "nextquestion"
+    t.string "choices_ja"
+    t.string "response_ja"
+    t.string "nextquestion_ja"
     t.integer "context_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "choices_en"
+    t.string "response_en"
+    t.string "nextquestion_en"
   end
 
   create_table "phase2s", force: :cascade do |t|
-    t.string "choices"
-    t.string "response"
-    t.string "nextquestion"
+    t.string "choices_ja"
+    t.string "response_ja"
+    t.string "nextquestion_ja"
     t.bigint "phase1_id"
     t.integer "context_id"
     t.string "phase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "choices_en"
+    t.string "response_en"
+    t.string "nextquestion_en"
     t.index ["phase1_id"], name: "index_phase2s_on_phase1_id"
   end
 
   create_table "phase3s", force: :cascade do |t|
-    t.string "choices"
-    t.string "response"
-    t.string "nextquestion"
+    t.string "choices_ja"
+    t.string "response_ja"
+    t.string "nextquestion_ja"
     t.bigint "phase2_id"
     t.integer "context_id"
     t.string "phase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "choices_en"
+    t.string "response_en"
+    t.string "nextquestion_en"
     t.index ["phase2_id"], name: "index_phase3s_on_phase2_id"
   end
 
   create_table "phase4s", force: :cascade do |t|
-    t.string "choices"
-    t.string "response"
-    t.string "nextquestion"
+    t.string "choices_ja"
+    t.string "response_ja"
+    t.string "nextquestion_ja"
     t.bigint "phase3_id"
     t.integer "context_id"
     t.string "phase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "choices_en"
+    t.string "response_en"
+    t.string "nextquestion_en"
     t.index ["phase3_id"], name: "index_phase4s_on_phase3_id"
   end
 

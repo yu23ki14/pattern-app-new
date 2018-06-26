@@ -1,10 +1,15 @@
 class PracticesController < ApplicationController
   before_action :set_practices
+  before_action :set_practice, only: [:did, :practice_comment, :addcomment, :update, :edit_practice]
   
   def index
     if user_signed_in?
-      @now_practices = @practices.includes(:practice_comments).after(Date.today, field: :enddate).order("enddate")
-      @ended_practices = @practices.before(Date.today, field: :enddate)
+      respond_to do |format|
+        @now_practices = @practices.includes(:practice_comments).after(Date.today, field: :enddate).order("enddate")
+        @ended_practices = @practices.before(Date.today, field: :enddate)
+        format.html
+        format.js
+      end
     end
   end
   
@@ -50,8 +55,10 @@ class PracticesController < ApplicationController
     end
   end
   
+  def edit_practice
+  end
+  
   def did
-    @practice = Practice.find(params[:id])
     if @practice.lastdate+ 43200 < Time.now
       didcount = @practice[:did] + 1
       @practice.update(did: didcount, lastdate: Time.now)
@@ -59,7 +66,6 @@ class PracticesController < ApplicationController
   end
   
   def addcomment
-    @practice = Practice.find(params[:id])
   end
   
   def patterndetail
@@ -68,13 +74,11 @@ class PracticesController < ApplicationController
   end
   
   def practice_comment
-    @practice = Practice.find(params[:id])
     @comments = @practice.practice_comments.order(created_at: :desc)
     @add_comment = PracticeComment.new
   end
   
   def update
-    @practice = Practice.find(params[:id])
     @practice.update(practice_done_params)
   end
   
@@ -84,10 +88,15 @@ class PracticesController < ApplicationController
         @practices = @user.practices
       end
     end
+    
+    def set_practice
+      @practice = Practice.find(params[:id])
+    end
+    
     def practice_params
       params.require(:practice).permit(:user_id, :language_id, :pattern_no, :limit, :priority, :action)
     end
     def practice_done_params
-      params.require(:practice).permit(:done, :comment, :rate)
+      params.require(:practice).permit(:done, :comment, :rate, :priority, :action)
     end
 end

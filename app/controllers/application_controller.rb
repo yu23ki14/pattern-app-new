@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
     def set_locale
       if user_signed_in?
         I18n.locale = @user.locale
+        gon.locale = I18n.locale
       end
     end
 

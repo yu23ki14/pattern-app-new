@@ -1,4 +1,4 @@
-.card.p-y-10.p-x-15.col-12.col-center.box-shadow-primary
+.card.p-y-15.p-x-20.col-12.col-center.box-shadow-primary.visible
   h4.strong.text-center.row-space-top-5 #{t('how_to_use')}
   br
   - if current_user.locale == "ja"
@@ -11,17 +11,20 @@
       br
       |次のパターン>をタップすると一つ後のパターンにいきます。
   - else
-    p
-      span.bg-theme.text-contrast.p-x-5
-        |ランダムで表示
-      |をタップするとパターンがランダムに表示されます。
+    p.row-space-5
+      |Tap
+      span.bg-theme.text-contrast.p-x-5.m-x-5
+        |Show Randomly
+      |to randomly display patterns.
       br
-      |<前のパターンをタップするとこれまで出ている一つ前のパターンに戻ります。
       br
-      |次のパターン>をタップすると一つ後のパターンにいきます。
+      |Tap < Previous to go back to previous pattern.
+      br
+      br
+      |Tap Next > to go to next pattern.
 
 - @patterns.each_with_index do |p, index|
-  .card.p-y-10.p-x-15.col-12.col-center.required-container
+  .card.p-y-15.p-x-20.col-12.col-center.required-container
     - if user_signed_in?
       - if @favorites.find_by(pattern_no: p.pattern_no) != nil
         = check_box_tag "fav#{index}", '', true, {:user_id => current_user.id, :language_id => params[:language_id], :pattern_no => params[:pattern_no], class: "fav"}
@@ -37,9 +40,15 @@
       = image_tag "pattern_img/#{params[:pattern]}/#{p.pattern_no}.png", class: "col-6 col-center"
     p.row-space-2 #{p.b_solution}
 
-.card.p-y-10.p-x-15.col-12.col-center.text-center.flex-container.box-shadow-primary
+.card.p-y-15.p-x-20.col-12.col-center.text-center.flex-container.box-shadow-primary
   div
-    = link_to "#{request.url}", class: "button button-primary row-space-top-4"
-      |もう一度する。
-    = link_to shuffles_path, class: "button button-primary-outline row-space-top-2 row-space-4"
-      |ランゲージを選ぶ。
+    - if current_user.locale == "ja"
+      = link_to "#{request.url}", class: "button button-primary button-lg row-space-top-4"
+        |もう一度する。
+      = link_to shuffles_path, class: "button button-primary-outline button-lg row-space-top-2 row-space-4"
+        |ランゲージを選ぶ。
+    - else
+      = link_to "#{request.url}", class: "button button-primary button-lg row-space-top-4"
+        |Again
+      = link_to shuffles_path, class: "button button-primary-outline button-lg row-space-top-2 row-space-4"
+        |Select Language

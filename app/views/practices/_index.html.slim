@@ -2,10 +2,15 @@
   -if user_signed_in?
     - @now_practices.each do |p|
       .card.col-12.col-center.p-x-20.p-y-10.row-space-2.required-container{class = "pri-#{p[:priority]}-color"}
-        p.small.date
-          | #{t('until_date', date: (p.enddate).strftime("%Y/%m/%d"))}
-          
-        h3.row-space-top-4.required-container
+        .row
+          .col-7.p-x-0.p-y-0
+            p.small
+              | #{t('until_date', date: (p.enddate).strftime("%Y/%m/%d"))}
+          .col-5.p-x-0.p-y-0
+            .text-right
+              = link_to "#", class: "js-trigger-edit-practice", practice_id: "#{p.id}"
+                i.fa.fa-chevron-down.text-contrast
+        h3.row-space-top-1.required-container
           |#{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no).pattern_name}
         p.p-b-10
           | #{Pattern.where(language_id: p.language_id).find_by(pattern_no: p.pattern_no).summary}
@@ -13,23 +18,23 @@
           .top-bordered.dashed
           p.row-space-2.row-space-top-2
             span.strong
-              |具体的な行動
+              |#{t('concrete_action')}
             br
             |#{p.action}
         .bottom-bordered.row-space-1
         .text-right
-          .text-contrast.h3.inline.check-icon
+          .text-contrast.h5.inline.check-icon
             .inline
               = check_box_tag 'did'+p.id.to_s, '', false, {:practice_id => p.id, :class => "did"}
               label.text-contrast.inline[for="did#{p.id}"]
                 i.fa.fa-check
                 span.p.p-l-5
                   | #{p.did}
-          .text-contrast.h3.inline.pencil-icon.js-trigger-practice-comment{practice_id = "#{p.id}"}
+          .text-contrast.h5.inline.pencil-icon.js-trigger-practice-comment{practice_id = "#{p.id}"}
             i.fa.fa-pencil
               span.p.p-l-5
                 | #{p.practice_comments.length}
-          .text-contrast.h4.inline.read-icon.js-trigger-pattern-detail{language_id = "#{p.language_id}", pattern_no = "#{p.pattern_no}"}
+          .text-contrast.h5.inline.read-icon.js-trigger-pattern-detail{language_id = "#{p.language_id}", pattern_no = "#{p.pattern_no}"}
             i.fa.fa-file-text-o
     
     - if @now_practices.blank?
@@ -39,3 +44,5 @@
     
   -else
     p #{t('please_sign_up')}
+    
+#practice_edit_container

@@ -5,6 +5,7 @@
     
     .row-space-top-2
       = form_for practice do |f|
+        = hidden_field_tag 'template[name]', 'complete'
         .row.selectbox
           .col-10.col-center
             h4 #{t('times_practiced', times: @practice.did)}
@@ -18,5 +19,6 @@
             = f.submit "#{t('archive')}", class: "button button-primary"
       = form_for practice do |f|
         = f.hidden_field :done, :value => true
+        = hidden_field_tag 'template[name]', 'complete'
         .text-center.row-space-top-1
           = f.submit "#{t('w/o_archive')}", class: "p-y-5 p-x-10 bottom-bordered"

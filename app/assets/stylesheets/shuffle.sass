@@ -11,13 +11,15 @@ body.shuffles
       margin: 0 auto
       transition: all 0.5s
       top: -110%
-      height: 385px
+      opacity: 0
       &:first-of-type
-        top: 10px
+        top: 30px
       &.show
-        top: 10px
+        top: 30px
         &:last-of-type
           display: flex
+      &.visible
+        opacity: 1
       input[type="checkbox"]
         display: none
         &:checked + label
@@ -26,8 +28,7 @@ body.shuffles
         position: absolute
         top: 5px
         left: 5px
-          
-body.en.shuffles
-  p
-    @media (max-width: 375px)
-      font-size: 14px !important
+  .shuffle-controller
+    position: fixed
+    bottom: 60px
+    width: 100%

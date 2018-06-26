@@ -18,15 +18,26 @@ $(document).on 'turbolinks:load', ->
           return
     
     $('#practicecontent').on 'submit', '.edit_practice', ->
+      template = $('#template_name', this).val()
       $.ajax
         url: $(this).attr('action'),
         type: $(this).attr('method'),
         data: $(this).serialize()
         success: ->
           $('#add_comment').modal('hide')
+          $('#edit_practice').modal('hide')
           $.ajax
             type: 'GET',
-            url: 'practices/complete'
+            url: 'practices/' + template,
+            dataType: 'script'
+      return false
+      
+    $(document).on 'click', '.js-trigger-edit-practice', ->
+      $.ajax(
+        type: 'GET',
+        url: 'practices/' + $(this).attr('practice_id') + '/edit_practice'
+      ).done ->
+        $('#edit_practice').modal()
       return false
       
     $('#practicecontent').on 'click', '.js-trigger-pattern-detail', ->

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get '/:language_id/:pattern_no/detail' => 'practices#patterndetail'
       get '/:id/practice_comment' => 'practices#practice_comment'
       get '/archive' => 'practices#archive'
+      get '/:id/edit_practice' => 'practices#edit_practice'
       post '/:id/did' => 'practices#did'
     end
   end
@@ -74,6 +75,7 @@ Rails.application.routes.draw do
       post '/:id/did' => 'project_practices#did'
       get '/:id/practice_comment' => 'project_practices#practice_comment'
       get '/:id/addcomment' => 'project_practices#addcomment'
+      get '/:id/edit_practice' => 'project_practices#edit_practice'
     end
   end
   
@@ -101,7 +103,11 @@ Rails.application.routes.draw do
   
   resources :alexa_talks, only: [:create]
   
-  resources :shuffles, only: [:index]
+  resources :shuffles, only: [:index] do
+    collection do
+      get 'app' => 'shuffles#app'
+    end
+  end
   
   root 'welcome#index'
 
