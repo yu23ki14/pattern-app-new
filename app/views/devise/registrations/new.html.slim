@@ -17,7 +17,7 @@
           = f.select :locale, [["Japanese", "ja"], ["English", "en"]], :prompt => "#{t('language')}"
       
       p.row-space-top-4
-        |#{t('get_monday_remind')}
+        |毎週月曜日にリマインドメールをうけとる。
         br
         |Get monday remind mail
       = f.check_box :monday_remind
