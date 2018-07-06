@@ -1,6 +1,7 @@
 - if controller_name != 'sessions'
   .text-center.row-space-top-4
-    p #{t('have_account')}
+    //p #{t('have_account')}
+    p Do you have account already?
     = link_to "Log in", new_session_path(resource_name), class: "button row-space-top-2 button-outline"
 
 

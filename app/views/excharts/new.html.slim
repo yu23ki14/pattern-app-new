@@ -5,7 +5,7 @@
     = f.hidden_field :event_id, value: "#{@event.id}"
   = f.hidden_field :data1
   = f.hidden_field :data2
-  = f.submit "結果を見る", class: "button button-primary"
+  = f.submit "#{t('see_result')}", class: "button button-primary"
 
 .progressbar-outline.col-11.col-center.bordered.row-space-top-2.row-space-2
   .bar.js-trigger-bar
@@ -14,7 +14,7 @@
     .card.js-swiping-card.col-11.col-center[id="card#{i+1}", pattern_no="#{p.pattern_no}"]
       .col-11.col-center
         .name.row-space-2.row-space-top-2.flex-container
-          h4.col-center #{p.pattern_name}
+          h4.col-center.col-center #{p.pattern_name}
         .summary.p-b-5.flex-container
           p #{p.summary}
         .text-center
