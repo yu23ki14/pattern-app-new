@@ -6,7 +6,7 @@ class RegularDeliveryMailer < ApplicationMailer
   #   en.regular_delivery_mailer.send_monday.subject
   #
   def send_monday_project(project_member, project_practices, project)
-    I18n.locale = user.locale
+    I18n.locale = project_member.locale
     @project_practices = project_practices
     @project_member = project_member
     @project = project

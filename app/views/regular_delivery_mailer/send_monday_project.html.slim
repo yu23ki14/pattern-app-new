@@ -20,7 +20,7 @@
     hr{style="margin-top: 15px"}
 
 - else
-  - if @user.locale == "ja"
+  - if @project_member.locale == "ja"
     p{style="margin-bottom: 35px"}
       |プロジェクト実践リストにパターンが登録されていません。
       br
@@ -37,7 +37,7 @@
     p{style="margin-bottom: 35px"}
       |There are no patterns on project practice list.
       br
-      |以下のリンクから意識したいパターンを見つけて登録しましょう。
+      |Find your patterns from links below and put them in your to practice pattern list.
   
     = link_to "#{@url}/languages"
       |Go to Pattern page
