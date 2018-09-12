@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.3'
+gem 'rails', '5.2.1'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 gem 'pg', '0.21.0'
@@ -18,49 +18,49 @@ gem 'slim-rails'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-turbolinks'
+gem 'jquery-rails', '4.3.3'
+gem 'jquery-turbolinks', '2.1.0'
 # Use reactjs as the JavaScript library
 gem 'react-rails', '~> 2.2.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '5.2.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Use devise as login
-gem 'devise'
+gem 'devise', '4.5.0'
 
 #use by_star as picking record by date
 gem 'by_star', :git => "git://github.com/radar/by_star"
 
 #use gon as sender of valiables
-gem 'gon'
+gem 'gon', '6.2.1'
 
 #use seed-fu as db seed
-gem 'seed-fu'
+gem 'seed-fu', '2.3.9'
 
 #use ransack as serch
-gem 'ransack'
+gem 'ransack', '2.0.1'
 
-gem 'google-analytics-rails'
+gem 'google-analytics-rails', '1.1.1'
 
 #use newrelic as service surveillance
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', '5.4.0.347'
 
 #use wicked pdf as pdf export
-gem 'wkhtmltopdf-binary'
-gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary', '0.12.4'
+gem 'wicked_pdf', '1.1.0'
 
 #use dotenv as secret valiables
-gem 'dotenv-rails'
+gem 'dotenv-rails', '2.5.0'
 
 #use whenever as crond
-gem 'whenever'
+gem 'whenever', '0.10.0'
 
 #use alexa
-gem 'alexa_rubykit'
+#gem 'alexa_rubykit'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -77,7 +77,7 @@ end
 
 group :production do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'unicorn-rails'
+  gem 'unicorn-rails', '2.2.1'
   
 end
 
