@@ -1,11 +1,9 @@
 .required-container
-  h4 対話ワークショップ
-  h3 対話準備シート
+  h4 #{t('chart_pdf_title')}
+  h3 #{t('chart_pdf_subtitle')}
   p.name-on-pdf 名前
   p.small.row-space-top-4.explanation-on-pdf
-    |経験があるパターンにはパターン名の横に○が、
-    br
-    |取り入れたいパターンにはパターン名の横に☆がついています。
+    |#{t('chart_pdf_discription')}
   = image_tag @chart, class: "chart-on-pdf"
   
   //  - if @current_pattern_no.include?("0")
@@ -22,7 +20,7 @@
       p.small.required-container.core-pattern-on-pdf
         |#{@core_pattern.pattern_name}
       
-  .row.patterns-list-on-pdf
+  .row.patterns-list-on-pdf[class="#{I18n.locale}"]
     - @patterns.each do |p|
       - if @current_pattern_no.include?("#{p.pattern_no}")
         p.ex-small.pdf-col-6.strong

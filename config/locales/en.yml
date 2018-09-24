@@ -78,6 +78,10 @@ en:
   prev_area: "Area previously achieved"
   chart_extended_pattern: "Patterns Achieved"
   chart_all_pattern: "Patterns previously achieved"
+  #経験チャートPDF
+  chart_pdf_title: "Dialogue Workshop"
+  chart_pdf_subtitle: "Preparation sheet"
+  chart_pdf_discription: "Patterns you maked as already experienced are indicated by a circle next to the pattern name; patterns you wish to practice in the near future have a star."
   #レコメン系
   recommend_talk_1: "Hi! <br>I’m Manabu! I’m here to help you find perfect patterns just for you."
   recommend_talk_2: "I have few questions for you."

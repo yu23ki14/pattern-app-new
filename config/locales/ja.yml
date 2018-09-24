@@ -78,6 +78,10 @@ ja:
   prev_area: "できていた領域"
   chart_extended_pattern: "伸びたパターン"
   chart_all_pattern: "できている全パターン"
+  #経験チャートPDF
+  chart_pdf_title: "対話ワークショップ"
+  chart_pdf_subtitle: "対話準備シート"
+  chart_pdf_discription: "経験があるパターンにはパターン名の横に○が、<br>取り入れたいパターンにはパターン名の横に☆がついています。"
   #レコメン系
   recommend_talk_1: "こんにちは。<br>僕はまなぶ！あなたにピッタリなパターンを探すお手伝いをするよ。"
   recommend_talk_2: "いくつか質問をするから答えてね。"
