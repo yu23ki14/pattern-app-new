@@ -115,7 +115,7 @@ $(document).on 'turbolinks:load', ->
     
   if $("body").hasClass("excharts show") || $("body").hasClass("excharts compare_result")
     if $("body").hasClass("excharts show")
-      data1_color = "rgba(243, 158, 155, 0.5)"
+      data1_color = "rgba(243, 158, 155, 0.7)"
       data2_color = "rgba(243, 158, 155, 0.5)"
     else if $("body").hasClass("excharts compare_result")
       data1_color = "rgba(255, 209, 0, .85)"
