@@ -1,7 +1,14 @@
 .practice-nav.row-space-3
+  - if @user.locale == "ja"
+    .page-container
+      = link_to learning_styles_path
+        .card.pri-1-color.p-y-10.p-x-10.text-contrast.text-center.row-space-2.row-space-top-2
+          h4.strong 学習スタイル診断 ＞
+      
   p.p-l-10.p-y-5.bg-theme
     = link_to projects_path
       | < My List
+  
   ul.row.text-center.p-t-10
     = link_to practices_path, remote: true
       li.col-4#active-list.active

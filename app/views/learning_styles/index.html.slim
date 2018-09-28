@@ -1,0 +1,49 @@
+div
+  h4.p-y-10.p-x-10.bg-theme.m-t-0.m-b-0.text-contrast 学習スタイル診断
+.page-container.row-space-top-2
+  - if @temporary_saved_result.present?
+    p.strong.row-space-2 一時保存している診断
+    - @temporary_saved_result.each do |tsr|
+      .row-space-2.card.col-12.col-center.p-x-20.p-y-15.pri-2-color.flex-container.flex-space
+        p.p-x-0 #{(tsr.created_at).strftime("%Y/%m/%d")}
+        .p-y-5
+          = link_to edit_learning_style_path(tsr)
+            i.fa.fa-repeat.h4.p-r-5
+            p.inline.small 再開
+          p.inline.p-x-10 |
+          = link_to learning_style_path(tsr), :method => :delete
+            i.fa.fa-trash.h4.p-r-5
+            p.inline.small 削除
+    hr.row-space-top-4.row-space-4
+  
+  - if @learning_styles.present?
+    p.strong.row-space-2 過去の診断結果
+  - @learning_styles.each do |ls|
+    .row-space-2.card.col-12.col-center.p-x-20.p-y-15.pri-2-color.flex-container.flex-space
+      p.p-x-0 #{(ls.created_at).strftime("%Y/%m/%d")}
+      .p-y-5[data-turbolinks="false"]
+        = link_to ls
+          i.fa.fa-file-text-o.h5.p-r-5
+          p.inline.small 結果
+        p.inline.p-x-10 |
+        = link_to learning_style_path(ls), :method => :delete
+          i.fa.fa-trash.h4.p-r-5
+          p.inline.small 削除
+  
+  p
+    |人は日々、経験を通じて学びを得ています。人の学びは70%が経験によるものだと言われているほどです。この学びを次の行動に生かすようなプロセスを、デイビット・コルブは経験学習モデルとして理論化しました。
+  p.row-space-top-2
+    |経験学習モデルには、「具体的経験」「内省的省察」「抽象的概念化」「積極的実践」という大きく4つのプロセスがあります。
+  = image_tag "learning_style/ex_learning.png", class: "col-12 col-center"
+  
+  p
+    |これらのサイクルを繰り返し回していくことで、人は学習し成長することができます。それぞれのプロセスのなかにも緩やかな8つの段階があります。それらのバランスをとって学習することが良いとされています。
+  = image_tag "learning_style/learning_style.png", class: "col-12 col-center row-space-2 row-space-top-2"
+  
+  p あなたが経験学習のプロセスでどの点が得意なのかをチェックしてみましょう！
+  br
+  p 診断は４フェーズあり、質問数は140問で真面目にやると３０分ほどかかります。時間はかかりますが、意外と納得感がある結果が出るのでぜひやってみてください。フェーズ毎に一時保存ができるので、あとで途中から再開もできます。
+  
+  .text-center.row-space-top-3
+    = link_to new_learning_style_path, class: "button button-primary button-lg"
+      |診断する

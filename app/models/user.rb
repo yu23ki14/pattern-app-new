@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :project_practice_comments
   has_many :excharts
   has_many :events
+  has_many :learning_styles
 end

@@ -1,0 +1,19 @@
+.page-container.row-space-top-3
+  
+  - @patterns.each_with_index do |pattern, index|
+    .row-space-6.ls-questions[class="#{'lp' if index <= 39}#{'cp hide' if 40 <= index && index <= 73}#{'pp hide' if 74 <= index && index <= 107}#{'pdp hide' if 108 <= index && index <= 140}"]
+      p #{index + 1}, #{pattern.b_solution}
+      .text-center
+        .inline
+          form[id="#{pattern.language.lg_code}_#{pattern.pattern_no}" identifier="#{pattern.language_id}_#{pattern.pattern_no}_#{pattern.learning_style_identifier}"]
+            .flex-container.p-t-30.ls-select-container
+              input[type="radio" id="#{pattern.language.lg_code}_#{pattern.pattern_no}_1" name="patterns" value=-1]
+              label.ls-select.m-x-10.flex-container[for="#{pattern.language.lg_code}_#{pattern.pattern_no}_1"]
+              input[type="radio" id="#{pattern.language.lg_code}_#{pattern.pattern_no}_2" name="patterns" value=0]
+              label.ls-select.m-x-10.flex-container[for="#{pattern.language.lg_code}_#{pattern.pattern_no}_2"]
+              input[type="radio" id="#{pattern.language.lg_code}_#{pattern.pattern_no}_3" name="patterns" value=1]
+              label.ls-select.m-x-10.flex-container[for="#{pattern.language.lg_code}_#{pattern.pattern_no}_3"]
+  .text-center.row-space-top-5
+    = link_to "#", class: "button button-primary button-lg js-next-phase", disabled: "disabled"
+      |次の質問へいく
+  = render 'form', learning_style: @learning_style

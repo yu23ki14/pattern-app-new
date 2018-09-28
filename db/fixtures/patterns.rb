@@ -27,6 +27,7 @@ csv.each_with_index do |patterns, i|
   b_solution_en = patterns[19]
   solution_en = patterns[20]
   consequence_en = patterns[21]
+  learning_style_identifier = patterns[22]
 
   Pattern.seed do |s|
     s.id   = i
@@ -51,5 +52,6 @@ csv.each_with_index do |patterns, i|
     s.b_solution_en = b_solution_en
     s.solution_en = solution_en
     s.consequence_en = consequence_en
+    s.learning_style_identifier = learning_style_identifier
   end
 end

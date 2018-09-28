@@ -1,0 +1,6 @@
+= form_for learning_style do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :result
+  = f.hidden_field :finished
+  .text-center
+    = f.submit "#{t('save_temporarily')}", class: "button button-outline button-lg row-space-top-3", disabled: "disabled"

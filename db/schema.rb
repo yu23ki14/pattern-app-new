@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180626123255) do
+ActiveRecord::Schema.define(version: 2018_09_27_142604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,15 @@ ActiveRecord::Schema.define(version: 20180626123255) do
     t.string "lg_name_en"
   end
 
+  create_table "learning_styles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.jsonb "result"
+    t.boolean "finished", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_learning_styles_on_user_id"
+  end
+
   create_table "patterns", force: :cascade do |t|
     t.bigint "language_id"
     t.string "cat_code"
@@ -107,6 +116,7 @@ ActiveRecord::Schema.define(version: 20180626123255) do
     t.text "solution_en"
     t.text "consequence_en"
     t.integer "axis_no"
+    t.integer "learning_style_identifier"
     t.index ["language_id"], name: "index_patterns_on_language_id"
   end
 
@@ -189,10 +199,8 @@ ActiveRecord::Schema.define(version: 20180626123255) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rate"
-    t.bigint "pattern_id"
     t.text "action"
     t.index ["language_id"], name: "index_practices_on_language_id"
-    t.index ["pattern_id"], name: "index_practices_on_pattern_id"
     t.index ["user_id"], name: "index_practices_on_user_id"
   end
 
@@ -279,7 +287,6 @@ ActiveRecord::Schema.define(version: 20180626123255) do
   end
 
   add_foreign_key "excharts", "events"
-  add_foreign_key "practices", "patterns"
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "users"
 end

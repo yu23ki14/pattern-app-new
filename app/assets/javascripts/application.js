@@ -34,3 +34,4 @@
 //= require excharts
 //= require shuffles
 //= require users
+//= require learning_styles

@@ -61,7 +61,6 @@ ja:
   create_chart: "チャートを生成する"
   chart_list: "一覧"
   chart_event: "イベント"
-  see_result: "結果をみる"
   want_to_practice_pattern: "実践したいパターン"
   practicing_pattern: "実践しているパターン"
   show_pdf: "PDFを表示"
@@ -109,6 +108,8 @@ ja:
   search: "検索"
   add: "追加"
   send: "送信"
+  see_result: "結果をみる"
+  save_temporarily: "一時保存する"
   #アカウント設定系
   have_account: "既にアカウントを持っていますか？"
   reset_password: "パスワードをリセット"

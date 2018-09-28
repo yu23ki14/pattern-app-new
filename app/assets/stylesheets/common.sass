@@ -41,6 +41,7 @@ p
   word-break: break-word
 
 hr
+  border-width: 0
   border-top: 1px solid $brand-gray
   
 label
@@ -141,6 +142,9 @@ label
   
 .inline
   display: inline-block
+
+.hide
+  display: none !important
   
 /* footer =============================================*/
 footer
@@ -310,7 +314,7 @@ input[type="text"], textarea, input[type="search"], .input
 
 /* button ================================================== */
 
-.button
+.button, input[type="submit"].button, input[type="button"].button
   display: inline-block
   line-height: 24px
   padding: 10px 22px
@@ -327,37 +331,43 @@ input[type="text"], textarea, input[type="search"], .input
   &.button-fixed
     position: fixed
     bottom: 30px
-
-.button-lg
-  min-width: 200px
-
-.button-outline
-  color: $brand-gray
-  border-color: $brand-light-gray
-  &:hover
-    color: $brand-contrast
-
-.button-primary
-  color: $brand-contrast
-  border-color: #FA8072
-  background-color: #FF5A5F
-  &:hover
-    background-color: #FF5A54
-
-.button-primary-outline
-  color: $brand-theme
-  border-color: $brand-theme
-  &:hover
-    color: $brand-contrast
-    background-color: $brand-theme
-
-.button-danger
-  background-color: $brand-dark-gray
-  color: $brand-contrast
+  &.button-lg
+    min-width: 200px
   
-.button-yellow
-  background-color: $yellow-2-color
-  color: $brand-dark-gray
+  &.button-outline
+    color: $brand-gray
+    border-color: $brand-light-gray
+    &:hover
+      color: $brand-contrast
+  
+  &.button-primary
+    color: $brand-contrast
+    border-color: #FA8072
+    background-color: #FF5A5F
+    &:hover
+      background-color: #FF5A54
+  
+  &.button-primary-outline
+    color: $brand-theme
+    border-color: $brand-theme
+    &:hover
+      color: $brand-contrast
+      background-color: $brand-theme
+  
+  &.button-danger
+    background-color: $brand-dark-gray
+    color: $brand-contrast
+    
+  &.button-yellow
+    background-color: $yellow-2-color
+    color: $brand-dark-gray
+    
+  &[disabled="disabled"]
+    pointer-events: none
+    background-color: $brand-light-gray
+    border-color: $brand-light-gray
+    color: $brand-very-light-gray
+
     
 /* spacing ================================================== */
 
