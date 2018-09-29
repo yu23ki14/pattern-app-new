@@ -4,13 +4,13 @@ $(document).on 'turbolinks:load', ->
       result = JSON.parse($("#learning_style_result").val())
       if Object.keys(result).length == 40
         phase = 2
-        $(".").removeClass("hide")
+        $(".cp").removeClass("hide")
       if Object.keys(result).length == 74
         phase = 3
-        $(".lp").removeClass("hide")
+        $(".pp").removeClass("hide")
       if Object.keys(result).length == 108
         phase = 4
-        $(".pp").removeClass("hide")
+        $(".pdp").removeClass("hide")
         $("input[type='submit']").val("結果を見る").addClass("button-primary").removeClass("button-outline")
         $(".js-next-phase").addClass("hide")
     else
