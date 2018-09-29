@@ -1,7 +1,7 @@
 .page-container.row-space-top-3
   
   - @patterns.each_with_index do |pattern, index|
-    .row-space-6.ls-questions[class="#{'cp hide' if index <= 33}#{'pdp hide' if 34 <= index && index <= 65}#{'lp hide' if 66 <= index && index <= 105}#{'pp hide' if 106 <= index && index <= 140}"]
+    .row-space-6.ls-questions[class="#{'lp' if index <= 39}#{'cp hide' if 40 <= index && index <= 73}#{'pp hide' if 74 <= index && index <= 107}#{'pdp hide' if 108 <= index && index <= 140}"]
       p #{index + 1}, #{pattern.b_solution}
       .text-center
         .inline
