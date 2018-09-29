@@ -33,7 +33,7 @@ class LearningStylesController < ApplicationController
   end
   
   def edit
-    @patterns = Pattern.where(language_id: 1..4).includes(:language)
+    @patterns = Pattern.where(language_id: 1..4).includes(:language).order(:language_id,:pattern_no)
   end
   
   def update
