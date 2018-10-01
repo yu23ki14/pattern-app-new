@@ -21,7 +21,7 @@ class EventsController < ApplicationController
       format.html {}
       format.csv {
         @event = Event.find(params[:id])
-        @results = @event.excharts
+        @results = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
         filename = @event.event_name
         headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
       }
