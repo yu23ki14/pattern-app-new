@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
   
+  ###Sub Domain
+  
+  require Rails.root.join('lib', 'subdomain.rb')
+  
+  constraints(Subdomain) do
+    namespace :presentation, path: '/' do
+      root 'welcome#index'
+    end
+  end
+  
+  
+  ###Root Domain
+  
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
