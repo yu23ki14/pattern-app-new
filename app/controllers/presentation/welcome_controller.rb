@@ -4,8 +4,5 @@ class Presentation::WelcomeController < ApplicationController
   def index
   end
   
-  private
-  def set_subdomain
-    @subdomain = ActionDispatch::Http::URL.extract_subdomains(request.subdomain, 0).first
-  end
+  
 end
