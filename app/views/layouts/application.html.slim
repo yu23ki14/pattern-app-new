@@ -3,7 +3,10 @@ html
   head
     = render partial: 'layouts/meta_tags'
     = analytics_init if Rails.env.production?
-    = stylesheet_link_tag    'application', media: 'all'
+    - if @subdomain.blank?
+      = stylesheet_link_tag 'application', media: 'all'
+    - else
+      = stylesheet_link_tag 'pine_application', media: 'all'
     = include_gon
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -17,7 +20,8 @@ html
     = yield
     -if user_signed_in?
       footer
-    = render "layouts/pc_ng"
+    - if @subdomain.blank?
+      = render "layouts/pc_ng"
     .loading-modal
       = image_tag "spinner.png", class: "spinner"
       p.loader loading...

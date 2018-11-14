@@ -1,4 +1,4 @@
 $(document).on 'turbolinks:load', ->
   if $('body').hasClass('welcome')
     height = $(window).height()
-    $('.page-container').css('height', height + 'px')
+    $('.page-container').css('min-height', height + 'px')

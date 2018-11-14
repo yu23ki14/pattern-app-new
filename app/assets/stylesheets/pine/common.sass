@@ -1,0 +1,965 @@
+@import 'pine/color'
+
+/* text ================================================== */
+html, body
+  position: relative
+  width: 100%
+  overflow-x: hidden
+body
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif
+  line-height: 1.44
+  color: $brand-dark-gray
+  background: $brand-contrast
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  -webkit-tap-highlight-color: rgba(0,0,0,0)
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, .p
+  line-height: 1.3
+  
+h1, h2, h3, h4, h5, h6
+  margin-top: 10px
+  margin-bottom: 10px
+  font-weight: 700
+  
+a
+  color: $brand-dark-gray
+  text-decoration: none
+  &.underline
+    border-bottom: 1px solid $brand-gray
+    padding-bottom: 3px
+
+p
+  word-break: break-word
+
+hr
+  border-width: 0
+  border-top: 1px solid $brand-gray
+  
+label
+  display: block
+  padding-top: 9px
+  padding-bottom: 8px
+  margin-bottom: auto
+  font-weight: 400
+  
+.strong
+  font-weight: 700
+
+.normal
+  font-weight: 400
+  
+.text-center
+  text-align: center
+  
+.text-left
+  text-align: left
+  
+.text-right
+  text-align: right
+  
+.text-y-center
+  vertical-align: middle
+
+.text-justify
+  text-align: justify
+  text-justify: inter-ideograph
+  
+.text-primary
+  color: $brand-theme
+
+.text-sub
+  color: $brand-light-gray
+  
+.text-light
+  color: $brand-very-light-gray
+  
+.text-contrast
+  color: white !important
+
+.text-light-yellow
+  color: $yellow-1-color
+  
+.text-yellow
+  color: $yellow-3-color
+
+h1, .h1
+  font-size: 45px !important
+h2, .h2
+  font-size: 30px !important
+h3, .h3
+  font-size: 25px !important
+h4, .h4
+  font-size: 20px !important
+h5, .h5
+  font-size: 18px !important
+h6, .h6
+  font-size: 14px !important
+p, .p
+  font-size: 17px !important
+  &.small
+    font-size: 13px !important
+  &.ex-small
+    font-size: 11px !important
+  .small
+    font-size: 13px !important
+  .ex-small
+    font-size: 11px !important
+
+@media (max-width: 767px)
+  h1, .h1
+    font-size: 45px !important
+  h2, .h2
+    font-size: 30px !important
+  h3, .h3
+    font-size: 25px !important
+  h4, .h4
+    font-size: 20px !important
+  h5, .h5
+    font-size: 18px !important
+  h6, .h6
+    font-size: 14px !important
+  p, .p
+    font-size: 17px !important
+    &.small
+      font-size: 13px !important
+    &.ex-small
+      font-size: 11px !important
+    .small
+      font-size: 13px !important
+    .ex-small
+      font-size: 11px !important
+
+@media (max-width: 330px)
+  h1, .h1
+    font-size: 40px !important
+  h2, .h2
+    font-size: 25px !important
+  h3, .h3
+    font-size: 20px !important
+  h4, .h4
+    font-size: 18px !important
+  h5, .h5
+    font-size: 16px !important
+  p, .p
+    font-size: 14px !important
+    &.small
+      font-size: 12px !important
+    &.ex-small
+      font-size: 11px !important
+    .small
+      font-size: 12px !important
+    .ex-small
+      font-size: 11px !important
+
+label
+  transition-duration: .3s
+  
+.inline
+  display: inline-block
+
+.hide
+  display: none !important
+  
+/* footer =============================================*/
+footer
+  height: 100px
+body.welcome
+  footer
+    height: 0px
+    
+/* table =============================================*/
+th
+  border: solid 1px
+td
+  border: solid 1px
+  
+/* bg =============================================*/
+.bg-lp
+  background-color: $lp-color
+.bg-pdp
+  background-color: $pdp-color
+.bg-cp
+  background-color: $cp-color
+.bg-pp
+  background-color: $pp-color
+.bg-theme
+  background-color: $brand-theme
+.pri-1-color
+  background-color: $pri-1-color
+.pri-2-color
+  background-color: $pri-2-color
+.pri-3-color
+  background-color: $pri-3-color
+.pri-4-color
+  background-color: $pri-4-color
+.bg-yellow-1
+  background-color: $yellow-1-color
+.bg-yellow-2
+  background-color: $yellow-2-color
+.bg-gray
+  background-color: $brand-gray
+  
+/* input ================================================== */
+
+input[type="radio"], input[type="checkbox"], .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]
+  position: relative
+  -webkit-appearance: none
+  height: 1.5em
+  width: 1.5em
+  margin: 0 5px -0.5em 0
+  vertical-align: top
+
+.check_box
+  border: $brand-light-gray solid 1px
+  background-color: $brand-contrast
+  height: 25px
+  width: 25px
+  padding: 0
+  position: relative
+  border-radius: 3px
+  &:before
+    content: "\f00c"
+    font-family: 'FontAwesome'
+    position: absolute
+    font-size: 20px
+    left: 3px
+    top: -1px
+    text-align: center
+    color: $brand-theme
+    display: none
+  .dammy
+    display: none
+input[type="checkbox"]
+  display: none
+input[type="checkbox"]:checked
+  &:checked + label
+    &:before
+      display: block
+
+input[type="radio"]:checked
+  border-color: $brand-theme
+  &:before
+    content: "\f00c"
+    font-family: 'FontAwesome'
+    position: absolute
+    font-size: 1em
+    top: 2px
+    left: 1px
+    text-align: center
+    width: 1.25em
+    color: $brand-theme
+
+input[type="submit"]
+  box-sizing: content-box
+    
+.selectbox
+  position: relative
+  display: block
+  vertical-align: bottom
+  select
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    width: 100%
+    margin-bottom: 10px
+    font-size: 17px
+    padding-top: 6px !important
+    padding-bottom: 6px !important
+    padding-left: 10px
+    padding-right: 2em
+    border-radius: 2px
+    border: solid 1px $brand-very-light-gray
+    color: $brand-dark-gray
+  select:after
+    content: 'a'
+    position: absolute
+    top: 0
+    right: 10px
+    line-height: 32px
+    color: $brand-light-gray
+    font-size: 22px
+    font-family: 'fontAwesome'
+    pointer-events: none
+  
+input[type="text"], textarea, input[type="search"], .input
+  border: 0
+  font-size: 17px
+  border: solid 1px $brand-very-light-gray
+  border-radius: 2px
+  color: $brand-dark-gray
+  
+.text-box
+  height: 120px
+  &.large
+    height: 150px
+    
+/* border ================================================== */
+    
+.top-bordered
+  border-top: 1px solid $brand-gray
+  &.dashed
+    border-top: 1px dashed $brand-gray
+  &.darker
+    border-top-color: $brand-dark-gray
+  &.base
+    border-top-color: $brand-theme
+  &.thick
+    border-width: 3px
+.bottom-bordered
+  border-bottom: 1px solid $brand-gray
+  &.dashed
+    border-bottom: 1px dashed $brand-gray
+  &.darker
+    border-bottom-color: $brand-dark-gray
+  &.base
+    border-bottom-color: $brand-theme
+  &.thick
+    border-width: 3px
+.bordered
+  border: 1px solid $brand-gray
+  &.dashed
+    border: 1px dashed $brand-gray
+  &.darker
+    border-bottom-color: $brand-dark-gray
+  &.base
+    border-bottom-color: $brand-theme
+  &.thick
+    border-width: 3px
+
+/* button ================================================== */
+
+.button, input[type="submit"].button, input[type="button"].button
+  display: inline-block
+  line-height: 24px
+  padding: 10px 22px
+  color: $brand-gray
+  font-size: 18px
+  background-color: white
+  border-radius: 2px
+  border: 1px solid $brand-light-gray
+  transition: background-color .2s
+  cursor: pointer
+  &:hover
+    text-decoration: none
+    background-color: $brand-light-gray
+  &.button-fixed
+    position: fixed
+    bottom: 30px
+  &.button-lg
+    min-width: 200px
+  
+  &.button-outline
+    color: $brand-gray
+    border-color: $brand-light-gray
+    &:hover
+      color: $brand-contrast
+  
+  &.button-primary
+    color: $brand-contrast
+    border-color: #FA8072
+    background-color: #FF5A5F
+    &:hover
+      background-color: #FF5A54
+  
+  &.button-primary-outline
+    color: $brand-theme
+    border-color: $brand-theme
+    &:hover
+      color: $brand-contrast
+      background-color: $brand-theme
+  
+  &.button-danger
+    background-color: $brand-dark-gray
+    color: $brand-contrast
+    
+  &.button-yellow
+    background-color: $yellow-2-color
+    color: $brand-dark-gray
+    
+  &[disabled="disabled"]
+    pointer-events: none
+    background-color: $brand-light-gray
+    border-color: $brand-light-gray
+    color: $brand-very-light-gray
+
+    
+/* spacing ================================================== */
+
+.m-t-0
+  margin-top: 0 !important
+.m-b-0
+  margin-bottom: 0 !important
+.m-l-0
+  margin-left: 0 !important
+.m-r-0
+  margin-right: 0 !important
+.m-y-0
+  margin-top: 0 !important
+  margin-bottom: 0 !important
+.m-t-5
+  margin-top: 5px !important
+.m-b-5
+  margin-bottom: 5px !important
+.m-l-5
+  margin-left: 5px !important
+.m-r-5
+  margin-right: 5px !important
+.m-x-5
+  margin-left: 5px !important
+  margin-right: 5px !important
+.m-t-10
+  margin-top: 10px !important
+.m-l-10
+  margin-left: 10px !important
+.m-r-10
+  margin-right: 10px !important
+.m-x-10
+  margin-left: 10px !important
+  margin-right: 10px !important
+.p-t-0
+  padding-top: 0 !important
+.p-b-0
+  padding-bottom: 0 !important
+.p-l-0
+  padding-left: 0 !important
+.p-r-0
+  padding-right: 0 !important
+.p-x-0
+  padding-left: 0px !important
+  padding-right: 0px !important
+.p-y-0
+  padding-top: 0px !important
+  padding-bottom: 0px !important
+.p-t-5
+  padding-top: 5px !important
+.p-b-5
+  padding-bottom: 5px !important
+.p-l-5
+  padding-left: 5px !important
+.p-r-5
+  padding-right: 5px !important
+.p-x-5
+  padding-left: 5px !important
+  padding-right: 5px !important
+.p-y-5
+  padding-top: 5px !important
+  padding-bottom: 5px !important
+.p-t-10
+  padding-top: 10px !important
+.p-b-10
+  padding-bottom: 10px !important
+.p-l-10
+  padding-left: 10px !important
+.p-r-10
+  padding-right: 10px !important
+.p-x-10
+  padding-left: 10px !important
+  padding-right: 10px !important
+.p-y-10
+  padding-top: 10px !important
+  padding-bottom: 10px !important
+.p-t-15
+  padding-top: 15px !important
+.p-b-15
+  padding-bottom: 15px !important
+.p-l-15
+  padding-left: 15px !important
+.p-r-15
+  padding-right: 15px !important
+.p-x-15
+  padding-left: 15px !important
+  padding-right: 15px !important
+.p-y-15
+  padding-top: 15px !important
+  padding-bottom: 15px !important
+.p-t-20
+  padding-top: 20px !important
+.p-b-20
+  padding-bottom: 20px !important
+.p-l-20
+  padding-left: 20px !important
+.p-r-20
+  padding-right: 20px !important
+.p-x-20
+  padding-left: 20px !important
+  padding-right: 20px !important
+.p-y-20
+  padding-top: 20px !important
+  padding-bottom: 20px !important
+.p-t-30
+  padding-top: 30px !important
+.p-b-30
+  padding-bottom: 30px !important
+.p-l-30
+  padding-left: 30px !important
+.p-r-30
+  padding-right: 30px !important
+.p-x-30
+  padding-left: 30px !important
+  padding-right: 30px !important
+.p-y-30
+  padding-top: 30px !important
+  padding-bottom: 30px !important
+.p-t-40
+  padding-top: 40px !important
+.p-b-40
+  padding-bottom: 40px !important
+.p-l-40
+  padding-left: 40px !important
+.p-r-40
+  padding-right: 40px !important
+.p-x-40
+  padding-left: 40px !important
+  padding-right: 40px !important
+.p-y-40
+  padding-top: 40px !important
+  padding-bottom: 40px !important
+.row-space-1
+  margin-bottom: 6.25px
+.row-space-top-1
+  margin-top: 6.25px
+.row-space-2
+  margin-bottom: 12.5px
+.row-space-top-2
+  margin-top: 12.5px
+.row-space-3
+  margin-bottom: 18.75px
+.row-space-top-3
+  margin-top: 18.75px
+.row-space-4
+  margin-bottom: 25px
+.row-space-top-4
+  margin-top: 25px
+.row-space-5
+  margin-bottom: 31.25px
+.row-space-top-5
+  margin-top: 31.25px
+.row-space-6
+  margin-bottom: 37.5px
+.row-space-top-6
+  margin-top: 37.5px
+.row-space-7
+  margin-bottom: 43.75px
+.row-space-top-7
+  margin-top: 43.75px
+.row-space-8
+  margin-bottom: 50px
+.row-space-top-8
+  margin-top: 50px
+  
+/* row ================================================== */
+
+.row
+  margin: 0
+
+.row:before,.row:after
+  content: " "
+  display: table
+
+.row:after
+  clear: both
+  
+/* col ================================================== */
+
+.col-1,.col-sm-1,.col-md-1,.col-lg-1,.col-2,.col-sm-2,.col-md-2,.col-lg-2,.col-3,.col-sm-3,.col-md-3,.col-lg-3,.col-4,.col-sm-4,.col-md-4,.col-lg-4,.col-5,.col-sm-5,.col-md-5,.col-lg-5,.col-6,.col-sm-6,.col-md-6,.col-lg-6,.col-7,.col-sm-7,.col-md-7,.col-lg-7,.col-8,.col-sm-8,.col-md-8,.col-lg-8,.col-9,.col-sm-9,.col-md-9,.col-lg-9,.col-10,.col-sm-10,.col-md-10,.col-lg-10,.col-11,.col-sm-11,.col-md-11,.col-lg-11,.col-12,.col-sm-12,.col-md-12,.col-lg-12
+  position: relative
+  min-height: 1px
+  padding: 5px
+  box-sizing: border-box
+.col-offset-0
+  margin-left: auto
+.col-push-0
+  left: auto
+.col-pull-0
+  right: auto
+.col-1
+  width: 8.33333%
+  float: left
+.col-offset-1
+  margin-left: 8.33333%
+.col-push-1
+  left: 8.33333%
+.col-pull-1
+  right: 8.33333%
+.col-2
+  width: 16.66667%
+  float: left
+.col-offset-2
+  margin-left: 16.66667%
+.col-push-2
+  left: 16.66667%
+.col-pull-2
+  right: 16.66667%
+.col-3
+  width: 25%
+  float: left
+.col-offset-3
+  margin-left: 25%
+.col-push-3
+  left: 25%
+.col-pull-3
+  right: 25%
+.col-4
+  width: 33.33333%
+  float: left
+.col-offset-4
+  margin-left: 33.33333%
+.col-push-4
+  left: 33.33333%
+.col-pull-4
+  right: 33.33333%
+.col-5
+  width: 41.66667%
+  float: left
+.col-offset-5
+  margin-left: 41.66667%
+.col-push-5
+  left: 41.66667%
+.col-pull-5
+  right: 41.66667%
+.col-6
+  width: 50%
+  float: left
+.col-offset-6
+  margin-left: 50%
+.col-push-6
+  left: 50%
+.col-pull-6
+  right: 50%
+.col-7
+  width: 58.33333%
+  float: left
+.col-offset-7
+  margin-left: 58.33333%
+.col-push-7
+  left: 58.33333%
+.col-pull-7
+  right: 58.33333%
+.col-8
+  width: 66.66667%
+  float: left
+.col-offset-8
+  margin-left: 66.66667%
+.col-push-8
+  left: 66.66667%
+.col-pull-8
+  right: 66.66667%
+.col-9
+  width: 75%
+  float: left
+.col-offset-9
+  margin-left: 75%
+.col-push-9
+  left: 75%
+.col-pull-9
+  right: 75%
+.col-10
+  width: 83.33333%
+  float: left
+.col-offset-10
+  margin-left: 83.33333%
+.col-push-10
+  left: 83.33333%
+.col-pull-10
+  right: 83.33333%
+.col-11
+  width: 91.66667%
+  float: left
+.col-offset-11
+  margin-left: 91.66667%
+.col-push-11
+  left: 91.66667%
+.col-pull-11
+  right: 91.66667%
+.col-12
+  width: 100%
+  float: left
+.col-offset-12
+  margin-left: 100%
+.col-push-12
+  left: 100%
+.col-pull-12
+  right: 100%
+.col-center
+  float: none
+  margin-left: auto
+  margin-right: auto
+  
+/* page-container ================================================== */
+
+.page-container
+  width: auto
+  margin-left: auto
+  margin-right: auto
+  padding-left: 10px
+  padding-right: 10px
+  &:before, &:after
+    content: ''
+    display: table
+  &:after
+    clear: both
+.required-container
+  position: relative
+    
+/* avatar ================================================== */
+
+.avatar-image
+  display: inline-block
+  vertical-align: middle
+  border-radius: 100%
+  border: 3px solid $brand-theme
+  &.no-border
+    border: 0px
+.avatar-image-lg
+  width: 64px
+  height: 64px
+.avatar-image-md
+  width: 50px
+  height: 50px
+.avatar-image-sm
+  width: 28px
+  height: 28px
+.avatar-image-xs
+  width: 24px
+  height: 24px
+.avatar-image-cover
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  
+/* flexcontainer ================================================== */
+  
+.flex-container
+  display: flex
+  align-items: center
+  &.flex-end
+    justify-content: flex-end
+  &.flex-center
+    justify-content: center
+  &.flex-space
+    justify-content: space-between
+  &.flex-a-start
+    align-items: flex-start
+  &.flex-a-stretch
+    align-items: stretch
+  &.flex-full
+    width: 100%
+
+/* flexcontainer ================================================== */
+.box-shadow-primary
+  box-shadow: 0px 0px 4px .5px $brand-light-gray
+  &.thick
+    box-shadow: 0px 0px 7px 2px $brand-light-gray
+
+/* card ================================================== */
+
+.card1
+  border-radius: 10px
+  background: white
+  border: black solid 1px
+  
+body.languages
+  .card1
+    border: none
+
+.card
+  border-radius: 10px
+  .date
+    position: absolute
+    top: 10px
+    right: 10px
+  &.fake
+    opacity: 0
+  
+
+
+/* fav-heart-icon ================================================*/
+i
+  &.card
+    position: absolute
+    right: -15px
+    color: $pastel-red
+    
+/* modal ==========================*/
+.modal
+  display: none
+  height: 100%
+  width: 100%
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 100
+.modal-backdrop
+  height: 100%
+  width: 100%
+  background-color: rgba(0, 0, 0, .6)
+.modal-container
+  position: relative
+  background-color: $brand-contrast
+  top: -50%
+body.modal-open
+  overflow: hidden
+  height: 100%
+.close-modal
+  display: block
+  position: absolute
+  top: 10px
+  right: 10px
+  width: 24px
+  height: 24px
+  font-size: 24px
+  padding: 10px
+  text-align: 5px
+  line-height: 20px
+  &:hover
+    opacity: .75
+    
+/* alert =====================*/
+.alert
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  padding: 40px 20px
+  min-width: 200px
+  border-radius: 10px
+  z-index: 9999999
+  text-align: center
+.alert-notice
+  background-color: rgba(0, 0, 0, 0.6)
+  color: white
+.alert-alert
+  background-color: rgba(250, 0, 0, 0.8)
+  color: white
+
+/* patterns color =======================*/
+#lp-color
+  background: linear-gradient(#8FC31F, #13AE67)
+#cp-color
+  background: linear-gradient(#F39800, #F8B62D)
+#pdp-color
+  background: linear-gradient(#B5B5B6, #231815)
+#pp-color
+  background: linear-gradient(#2EA7E0, #00A0E9)  
+  
+/* cannot click =========================*/
+.disable
+  pointer-events: none
+  
+/* nav ================================================== */
+  
+.nav-btn
+  width: 55px
+  height: 55px
+  font-size: 25px
+  font-weight: bold
+  position: fixed
+  bottom: 10px
+  right: 10px
+  background-color: $nav-base
+  border-radius: 100%
+  z-index: 100
+  
+  i
+    line-height: 55px
+  a
+    color: $brand-contrast
+    width: 100%
+    display: block
+.nav
+  li
+    transition-duration: .3s
+    bottom: 10px
+    right: 10px
+    position: fixed
+    img
+      padding-top: 8px
+#nav-open-btn
+  box-shadow: 0px 2px 4px 1.5px $brand-light-gray
+#nav-close-btn
+  display: none
+  background-color: $brand-gray
+  box-shadow: 0px 2px 8px 1.5px $brand-light-gray
+.nav-open
+  .nav
+    li
+      box-shadow: 0px 2px 8px 1.5px $brand-light-gray
+      &:nth-child(1)
+        transform: translateY(-360px)
+      &:nth-child(2)
+        transform: translateY(-290px)
+      &:nth-child(3)
+        transform: translateY(-220px)
+      &:nth-child(4)
+        transform: translateY(-150px)
+      &:nth-child(5)
+        transform: translateY(-80px)
+      
+  #nav-open-btn
+    display: none
+  #nav-close-btn
+    display: block
+.sessions, .registrations, .passwords, .welcome, .shuffles.app
+  #nav-container
+    display: none
+
+.registrations.edit, .registrations.update
+  #nav-container
+    display: block
+
+.practice-nav
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 2
+  background-color: $brand-contrast
+  a
+    color: $brand-dark-gray
+    text-decoration: none
+  li
+    padding-bottom: 10px
+  li.active
+    border-bottom: 4px $brand-gray solid
+
+/*loading*************************/
+@-webkit-keyframes spin
+  0%
+    -webkit-transform: rotate(0deg)
+  100%
+    -webkit-transform: rotate(360deg)
+
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+.loading-modal
+  height: 100%
+  width: 100%
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 100
+  background: rgba(255, 255, 255, 0.8)
+  display: none
+  .spinner
+    -webkit-animation: spin 2s linear infinite
+    animation: spin 2s linear infinite
+    width: 70px
+    height: 70px
+    position: absolute
+    margin: auto
+    top: -110px
+    bottom: 0
+    left: 0
+    right: 0
+  .loader
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: 100
