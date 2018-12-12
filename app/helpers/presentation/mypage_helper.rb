@@ -1,0 +1,2 @@
+module Presentation::MypageHelper
+end

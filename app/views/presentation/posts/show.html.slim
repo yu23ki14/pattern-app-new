@@ -1,0 +1,73 @@
+.page-container.row-space-top-3
+  = link_to presentation_root_path, class: "h5 strong"
+    |< ホーム
+  .flex-container.post-wrapper.p-y-20.row-space-top-3.flex-wrap
+    .col-8.col-md-7.col-sm-12.post-article-content
+      h2.m-t-0 #{@post.title}
+      hr.row-space-4.col-8.m-l-0
+      - if @post.thumb_image.attached?
+        = image_tag @post.thumb_image, class: "col-7 col-md-8 col-sm-12 row-space-8"
+      = @post.content.html_safe
+    .col-lg-3.col-md-4.col-sm-12
+      .post-content-container
+        -if user_signed_in?
+          - if @post.user_id != current_user.id
+            = link_to "#", class: "button button-primary row-space-3"
+              |ストック
+          - else
+            = link_to edit_presentation_post_path, class: "button button-outline row-space-3"
+              |編集
+        
+        p.small.m-b-5
+          |出典: #{@post.reference}
+        p.small.m-b-5
+          |リンク: #{link_to "#{@post.link}"}
+        p.small 投稿日: #{(@post.created_at).strftime("%Y/%m/%d")}
+        
+        hr.row-space-top-3.row-space-3
+        
+        h4 パターン
+        ul.post-pattern-list
+          - @related_patterns.each do |rp|
+            li
+              = link_to "#"
+                p.inline
+                  |#{rp.pattern_name}
+        
+        hr.row-space-top-3.row-space-3
+        
+        h4 コメント
+        .js-post-comment-list
+          p.js-post-no-comment まだコメントはありません。
+        
+        - if user_signed_in?
+          = form_for @comment do |f|
+            .flex-container.row-space-top-2
+              = f.hidden_field :user_id, value: current_user.id
+              = f.hidden_field :post_id, value: @post.id
+              = f.text_field :comment, class: "col-9 p-x-5"
+              = f.submit "投稿", class: "button col-3 p small m-l-10"
+        
+  .row-space-top-4
+    .text-center
+      h4 関連する投稿
+    .post-container.masonry-container
+      - 10.times do
+        .col-3.col-lg-4.col-md-6.col-sm-12.post-content.masonry-content
+          .post-card.box-shadow-primary
+            .post-thumb.bg-img-cover[style="background-image: url('#{asset_path "sample_images/pink_cloth.jpg"}')"]
+            .m-x-10.p-b-10
+              h5
+                |test
+              .author.text-sub ダイアモンドオンライン
+              hr
+              .flex-container.flex-wrap
+                = link_to "#"
+                  .tag
+                    |メインメッセージ
+                = link_to "#"
+                  .tag
+                    |図の力
+                = link_to "#"
+                  .tag
+                    |細部へのこだわり

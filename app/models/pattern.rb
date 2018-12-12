@@ -2,6 +2,7 @@ class Pattern < ApplicationRecord
   belongs_to :language
   has_many :favorites
   has_many :practices
+  has_many :presentation_user_interests
   
   scope :this_pattern, -> (language_id, pattern_no) { where(language_id: language_id).find_by(pattern_no: pattern_no) }
   

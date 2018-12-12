@@ -1,0 +1,52 @@
+.content-viewer.modal.in[style="display: block"]
+  .modal-container.col-9[style="top: 0"]
+    .flex-container.inner-content
+      .col-9.inner-content.article-content
+        h3.row-space-3 title
+        = @content.html_safe
+      .col-3.inner-content
+        .close-modal
+          i.fa.fa-times
+        .content-container.row-space-top-4
+          h4 パターン
+          = link_to "#"
+            .tag.inline
+              |メインメッセージ
+          = link_to "#"
+            .tag.inline
+              |図の力
+          = link_to "#"
+            .tag.inline
+              |細部へのこだわり
+          
+          hr.row-space-top-3.row-space-3
+          
+          h4 コメント
+          p まだコメントはありません。
+          
+          = form_for :dammy do |f|
+            .flex-container.row-space-top-2
+              = f.text_field :dammy, class: "col-9"
+              = f.submit "投稿", class: "button col-3 p small m-l-10"
+          
+          hr.row-space-top-3.row-space-3
+          
+          h4 関連する投稿
+          .col-sm-12.post-content
+            .post-card.box-shadow-primary
+              .post-thumb.bg-img-cover[style="background-image: url('#{asset_path "sample_images/pink_cloth.jpg"}')"]
+              .m-x-10.p-b-10
+                h5
+                  |test
+                .author.text-sub ダイアモンドオンライン
+                hr
+                .flex-container.flex-wrap
+                  = link_to "#"
+                    .tag
+                      |メインメッセージ
+                  = link_to "#"
+                    .tag
+                      |図の力
+                  = link_to "#"
+                    .tag
+                      |細部へのこだわり

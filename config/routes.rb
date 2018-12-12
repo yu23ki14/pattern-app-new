@@ -7,9 +7,28 @@ Rails.application.routes.draw do
   constraints(Subdomain) do
     namespace :presentation, path: '/' do
       root 'welcome#index'
+      
+      resources :patterns, only: [:index, :show] do
+      end
+      
+      resources :mypage, only: [:index] do
+        collection do
+          get '/posts' => 'mypage#posts'
+          get '/patterns' => 'mypage#patterns'
+        end
+      end
+      
+      resources :posts, only: [:show, :new, :create, :index, :edit, :update] do
+        collection do
+          get '/get_web_reference' => 'posts#get_web_reference'
+        end
+      end
+      
+      resources :post_comments, only: [:create] do
+      end
+      
     end
   end
-  
   
   ###Root Domain
   

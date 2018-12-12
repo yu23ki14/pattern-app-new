@@ -94,6 +94,7 @@ GEM
       multi_json
       request_store (>= 1.0)
     google-analytics-rails (1.1.1)
+    guess_html_encoding (0.0.11)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -176,6 +177,9 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    ruby-readability (0.7.0)
+      guess_html_encoding (>= 0.0.4)
+      nokogiri (>= 1.6.0)
     sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -260,6 +264,7 @@ DEPENDENCIES
   rails (= 5.2.1)
   ransack (= 2.0.1)
   react-rails (~> 2.2.0)
+  ruby-readability
   sass-rails (~> 5.0.6)
   sdoc (~> 0.4.0)
   seed-fu (= 2.3.9)

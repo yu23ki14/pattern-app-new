@@ -6,14 +6,19 @@ html
     - if @subdomain.blank?
       = stylesheet_link_tag 'application', media: 'all'
     - else
-      = stylesheet_link_tag 'pine_application', media: 'all'
+      = stylesheet_link_tag 'presentation_application', media: 'all'
     = include_gon
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    - if @subdomain.blank?
+      = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    - else
+      = javascript_include_tag 'presentation_application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
-  -if user_signed_in?
+  -if user_signed_in? && @subdomain.blank?
     = render partial: 'render/header_nav'
   body(class="#{controller.controller_name} #{controller.action_name} #{I18n.locale}")
+    - if @subdomain.present?
+      = render 'presentation/shared/header'
     - flash.each do |key, value|
       h6.m-t-0.m-b-0
         = content_tag :div, value, class: "alert alert-#{key}"

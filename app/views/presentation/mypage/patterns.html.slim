@@ -1,0 +1,18 @@
+.page-container
+  = render "menu"
+  h2.row-space-top-4 パターン一覧
+  .flex-container.flex-wrap.masonry-container
+    - @patterns.each do |p|
+      = link_to presentation_pattern_path(id: p.pattern_no)
+        .col-3.col-md-4.col-sm-6.masonry-content.pattern-content
+          .pattern-card.box-shadow-primary
+            h5.text-center.row-space-top-4 #{p.pattern_name}
+            .flex-container.flex-center
+              .text-center.col-6
+                = image_tag "pattern_img/pp/#{p.pattern_no}.png", class: "col-12"
+            .flex-container.flex-center
+              .text-center.col-10  
+                p.row-space-4 #{p.b_solution}
+          = link_to "#"
+            h6.bg-pp.row-space-top-1.text-center.p-y-10.p-x-15.pattern-follow-button
+              |フォロー

@@ -5,7 +5,6 @@ $(document).on 'turbolinks:load', ->
     $('#add-practice').modal()
   $('#js-trigger-add-project-practice').click ->
     $('#add-project-practice').modal()
-  $(".alert").delay(1300).fadeOut("normal")
 
   if $("body").hasClass("languages")
     $('a').click ->

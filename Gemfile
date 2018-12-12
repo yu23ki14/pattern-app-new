@@ -59,6 +59,9 @@ gem 'dotenv-rails', '2.5.0'
 #use whenever as crond
 gem 'whenever', '0.10.0'
 
+#use ruby-readability for getting content from web
+gem "ruby-readability", :require => 'readability'
+
 #use alexa
 #gem 'alexa_rubykit'
 

@@ -5,17 +5,30 @@ class ApplicationController < ActionController::Base
   before_action :set_user
   before_action :backhome
   before_action :set_locale
+  before_action :set_subdomain
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   def after_sign_in_path_for(resource)
-    practices_path
+    if @subdomain.blank?
+      practices_path
+    else
+      presentation_root_path
+    end
   end
   
   private
-    def backhome
-      if controller_name == "welcome" || controller_name == "registrations" || controller_name == "sessions" || controller_name == "alexa_talks" || controller_name == "passwords"
+    def set_subdomain
+      if Rails.env.production?
+        @subdomain = ActionDispatch::Http::URL.extract_subdomains(request.host, 0).first
       else
-        if !user_signed_in?
+        @subdomain = ActionDispatch::Http::URL.extract_subdomains(request.subdomain, 0).first
+      end
+    end
+  
+    def backhome
+      if @subdomain.blank? || controller_name == "welcome" || controller_name == "registrations" || controller_name == "sessions" || controller_name == "alexa_talks" || controller_name == "passwords"
+      else
+        if !user_signed_in? 
           redirect_to root_path, notice: 'ログインしてください。'
         end
       end
@@ -31,15 +44,6 @@ class ApplicationController < ActionController::Base
       if user_signed_in?
         I18n.locale = @user.locale
         gon.locale = I18n.locale
-      end
-    end
-    
-  private
-    def set_subdomain
-      if Rails.env.production?
-        @subdomain = ActionDispatch::Http::URL.extract_subdomains(request.host, 0).first
-      else
-        @subdomain = ActionDispatch::Http::URL.extract_subdomains(request.subdomain, 0).first
       end
     end
 

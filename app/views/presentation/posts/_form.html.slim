@@ -1,0 +1,36 @@
+= form_for @post do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  .row-space-top-3
+    = link_to "#", class: "m-l-5 row-space-2 js-trigger-post-pattern-selector p inline post-pattern-selector p-y-5 p-x-15"
+      |関連パターンを選択
+    .flex-container.row-space-2
+      .post-related-pattern-list.js-post-related-pattern-list
+      = f.hidden_field :pattern
+    .col-12.row-space-2.post-thumb
+      = f.file_field :thumb_image, class: "hide"
+      = f.label :thumb_image, class: "flex-container flex-center flex-wrap js-thumb-image-label"
+        - if @post.thumb_image.attached?
+          = image_tag @post.thumb_image, class: "col-12"
+        - else
+          i.fa.fa-image.col-12.text-center
+          p.small.strong
+            |サムネイルを追加
+    .col-12.row-space-2.post-title
+      = f.text_field :title, placeholder: "タイトルを追加する", class: "col-12 p-y-5 p-x-5"
+    .col-12.row-space-2.post-reference[class="#{'hide' if (@post.reference.blank?)}"]
+      = f.text_field :reference, placeholder: "出典を追加する", class: "col-6 p-y-5 p-x-5"
+      .js-post-input-hide.inline.text-sub.p-l-10
+        i.fa.fa-times
+    .col-12.row-space-2.post-reference-store[class="#{'hide' if (@post.reference_store.blank?)}"]
+      = f.text_field :reference_store, placeholder: "amazonリンクなど入手情報を追加する", class: "col-6 p-y-5 p-x-5"
+      .js-post-input-hide.inline.text-sub.p-l-10
+        i.fa.fa-times
+    .col-12.row-space-5.post-link[class="#{'hide' if (@post.link.blank?)}"]
+      = f.text_field :link, placeholder: "リンクを追加する", class: "col-6 p-y-5 p-x-5"
+      .js-post-input-hide.inline.text-sub.p-l-10
+        i.fa.fa-times
+    .col-12.row-space-6.required-container
+      .post-content-preview.js-post-content-preview.p-x-5
+      = f.hidden_field :content
+    .text-center.row-space-7
+      = f.submit "#{'投稿' if (action_name == 'new')} #{'アップデート' if (action_name == 'edit')}", onsubmit:"setEditordata()", class: "button col-3 p button-primary-outline"

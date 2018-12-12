@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_27_142604) do
+ActiveRecord::Schema.define(version: 2018_12_12_063345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "cat_name"
@@ -202,6 +223,38 @@ ActiveRecord::Schema.define(version: 2018_09_27_142604) do
     t.text "action"
     t.index ["language_id"], name: "index_practices_on_language_id"
     t.index ["user_id"], name: "index_practices_on_user_id"
+  end
+
+  create_table "presentation_post_comments", force: :cascade do |t|
+    t.text "comment", null: false
+    t.bigint "presentation_post_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["presentation_post_id"], name: "index_presentation_post_comments_on_presentation_post_id"
+    t.index ["user_id"], name: "index_presentation_post_comments_on_user_id"
+  end
+
+  create_table "presentation_posts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.string "reference"
+    t.string "reference_store"
+    t.string "link"
+    t.text "content", null: false
+    t.jsonb "pattern", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_presentation_posts_on_user_id"
+  end
+
+  create_table "presentation_user_interests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "pattern_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pattern_id"], name: "index_presentation_user_interests_on_pattern_id"
+    t.index ["user_id"], name: "index_presentation_user_interests_on_user_id"
   end
 
   create_table "project_members", force: :cascade do |t|

@@ -1,0 +1,19 @@
+.nav-container.p-y-15
+  .text-right
+    .nav.inline.p-r-20
+      ul.flex-container.strong
+        li.h4.p-x-10
+          = link_to root_path
+            | ホーム
+        - if user_signed_in?
+          li.h4.p-x-10
+            = link_to presentation_mypage_index_path
+              | My page
+        - if user_signed_in?
+          li.h4.p-x-10
+            = link_to "#"
+              | 通知
+        - if !user_signed_in?
+          li.h4.p-x-10
+            = link_to new_user_session_path
+              |ログイン

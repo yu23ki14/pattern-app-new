@@ -1,0 +1,12 @@
+.related_pattern_selector_modal.modal
+  .modal-container.col-7.p-y-30
+    .close-modal
+      i.fa.fa-times
+    
+    .flex-container.flex-center
+      .col-11.row-space-top-3
+        .flex-container.flex-wrap
+          - patterns.each do |p|
+            .col-4
+              = link_to "#", class: "js-select-related-pattern", pattern_no: "#{p.pattern_no}"
+                |#{p.pattern_name}

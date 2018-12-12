@@ -1,0 +1,89 @@
+.bg-pp
+  .page-container.p-b-20
+    h2.row-space-top-4.row-space-2
+      |#{@pattern.pattern_name}
+    - if user_signed_in?
+      = link_to "#", class: "button button-primary"
+        |フォロー
+      h5.p-l-20.inline フォロワー : 2000
+.page-container
+  .flex-container.flex-wrap.flex-a-stretch.flex-around.row-space-top-6
+      .col-6
+        h3.m-t-0 人気の投稿
+        .flex-container.flex-wrap.masonry-container
+          - @posts.each do |p|
+            = link_to p
+              .col-6.post-content.masonry-content
+                .post-card.box-shadow-primary
+                  - pattern_no = JSON.parse(p.pattern)
+                  - if p.thumb_image.attached?
+                    .post-thumb.bg-img-cover[style="background-image: url('#{rails_blob_url p.thumb_image}')"]
+                  - else p.thumb_image.attached?
+                    - primary_pattern = pattern_no.first
+                    .post-thumb.bg-img-cover[style="background-image: url('#{asset_path "pattern_img/pp/#{primary_pattern}.png"}'); background-size: contain"]
+                  .m-x-10.p-b-10
+                    h5
+                      |#{p.title}
+                    - if p.reference.present?
+                      .author.text-sub 出典: #{p.reference}
+                    hr
+                    .flex-container.flex-wrap
+                      - patterns = @patterns.where(language_id: 3).where(pattern_no: pattern_no)
+                      - patterns.each do |pattern|
+                        = link_to "#"
+                          .tag
+                            |#{pattern.pattern_name}
+                          
+      .col-5.pattern-detail-container
+        h4.text-center.row-space-top-4 #{@pattern.pattern_name}
+        .flex-container.flex-center
+          .text-center.col-7.bg-contrast.row-space-3.row-space-top-3
+            = image_tag "pattern_img/pp/#{@pattern.pattern_no}.png", class: "col-9"
+        .flex-container.flex-center
+          .col-10  
+            p.row-space-2 #{@pattern.context}
+            p.row-space-2.text-center
+              |▼ その状況において
+            p.row-space-2
+              |#{@pattern.b_problem}
+              br
+              |#{@pattern.problem}
+            p.row-space-2.text-center
+              |▼ そこで
+            p.row-space-2
+              |#{@pattern.b_solution}
+              br
+              |#{@pattern.solution}
+            p.row-space-2.text-center
+              |▼ そうすると
+            p.row-space-2
+              |#{@pattern.consequence}
+  
+  hr.row-space-top-6
+              
+  h3.row-space-top-6.text-center
+    |#{@pattern.pattern_name}に関する投稿
+    
+  .post-container.row-space-top-3.masonry-container
+    - @posts.each do |p|
+      = link_to p
+        .col-3.col-lg-4.col-md-6.col-sm-12.post-content.masonry-content
+          .post-card.box-shadow-primary
+            - pattern_no = JSON.parse(p.pattern)
+            - if p.thumb_image.attached?
+              .post-thumb.bg-img-cover[style="background-image: url('#{rails_blob_url p.thumb_image}')"]
+            - else p.thumb_image.attached?
+              - primary_pattern = pattern_no.first
+              .post-thumb.bg-img-cover[style="background-image: url('#{asset_path "pattern_img/pp/#{primary_pattern}.png"}'); background-size: contain"]
+            .m-x-10.p-b-10
+              h5
+                |#{p.title}
+              - if p.reference.present?
+                .author.text-sub 出典: #{p.reference}
+              hr
+              .flex-container.flex-wrap
+                - patterns = @patterns.where(language_id: 3).where(pattern_no: pattern_no)
+                - patterns.each do |pattern|
+                  = link_to "#"
+                    .tag
+                      |#{pattern.pattern_name}

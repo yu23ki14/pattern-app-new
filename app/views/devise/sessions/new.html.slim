@@ -1,19 +1,6 @@
 .page-container
-  .col-11.col-center
-    h2.row-space-top-4 Log in
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .field.row-space-top-5
-        = f.email_field :email, autofocus: true, class: "col-12 col-center", placeholder: "Email Address"
-    
-      .field.row-space-top-5
-        = f.password_field :password, autocomplete: "off", class: "col-12 col-center", placeholder: "Password"
-    
-      //- if devise_mapping.rememberable?
-        .field.row-space-top-5
-          h5 アカウントを記憶させる。
-          = f.check_box :remember_me
-    
-      .actions.text-center.row-space-top-5
-        = f.submit "Log in", class: "button button-primary button-lg"
-    
-      = render "devise/shared/links"
+  - if @subdomain.present?
+    .flex-container.flex-center
+        = render "presentation"
+  - else
+    = render "main"

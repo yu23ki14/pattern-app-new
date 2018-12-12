@@ -47,6 +47,9 @@ $(document).on "turbolinks:load", ->
   #ローダー
   $(document).on 'click', 'input[type="submit"]',->
     $(".loading-modal").css("display", "block")
+  
+  #alert
+  $(".alert").delay(1300).fadeOut("normal")
 
   #bodyのmin-heightをwindowのサイズに
   $("body").css("min-height", $(window).innerHeight() + "px")

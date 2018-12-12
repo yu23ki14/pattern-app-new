@@ -20,6 +20,7 @@
 //= require lib/hammer
 //= require lib/jquery-hammer
 //= require lib/chart
+//= require lib/grid
 
 //modules
 //= require common
@@ -35,3 +36,7 @@
 //= require shuffles
 //= require users
 //= require learning_styles
+
+//= require presentation/common
+//= require presentation/welcome
+//= require presentation/post

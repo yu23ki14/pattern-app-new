@@ -1,0 +1,67 @@
+@import 'presentation/color'
+.posts.show, .posts.new, .posts.edit
+  background: rgba($brand-very-light-gray, .5)
+.post-wrapper
+  align-items: baseline
+  justify-content: space-evenly
+  background: $brand-contrast
+  border-radius: 5px
+.post-article-content
+  p
+    margin-bottom: 5px
+    font-size: 18px
+.post-content-container
+  input[type="submit"]
+    padding: 5.5px 2px
+.post-pattern-list
+  li
+    margin-bottom: 8px
+    padding: 5px 0
+  p
+    padding: 5px 10px
+    border: 1px solid $brand-gray
+.post-thumb
+  label
+    height: 100px
+    width: 200px
+    border-radius: 3px
+    background: $brand-very-light-gray
+    cursor: pointer
+    overflow: hidden
+  i
+    font-size: 60px
+.post-type-selector
+  a
+    margin: 0 10px
+
+.post-pattern-selector
+  border-radius: 30px
+  border: 1px solid $brand-gray
+
+.post-form-wrapper
+  border-radius: 5px
+  .post-title, .post-link, .post-reference, .post-reference-store
+    input
+      border: none
+      border-bottom: 1px solid $brand-gray
+      border-radius: 0
+    i
+      cursor: pointer
+  .post-title
+    input
+      font-size: 25px
+      font-weight: bold
+  .post-content-preview
+    outline-color: transparent
+
+.post-related-pattern-list
+  p
+    position: relative
+    &:before
+      content: "・"
+      position: absolute
+      left: -5px
+
+.related_pattern_selector_modal
+  .active
+    border-bottom: 3px solid rgba($brand-theme, .4)
