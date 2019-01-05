@@ -29,7 +29,8 @@
         p.row-space-2
           span.strong
             |リンク: 
-          |#{link_to "#{@post.link}"}
+          = link_to @post.link
+            |#{@post.link}
       - if @post.reference_store.present?
         p.row-space-2
           span.strong
