@@ -1,0 +1,27 @@
+@import 'presentation/color'
+.about-wrapper
+  background-image: image-url("materials/presentation_about.jpg")
+  background-size: 700px
+  h1
+    @media (min-width: 768px)
+      font-size: 70px
+  .about-feature
+    padding: 50px
+    margin-top: 50px
+    border: 10px solid $brand-theme
+    @media (max-width: 767px)
+      padding: 10px
+      margin-top: 30px
+    p
+      font-size: 17px
+  .button
+    padding: 10px 30px
+    font-size: 20px
+    border-radius: 23px
+    margin-top: 25px
+  .about-account-top
+    margin-left: 40px
+    @media (max-width: 767px)
+      margin: 0 auto
+  .about-account-bottom
+    margin-bottom: 100px

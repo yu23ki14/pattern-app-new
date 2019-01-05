@@ -1,6 +1,22 @@
 class Presentation::Post < ApplicationRecord
+    
     has_one_attached :thumb_image
     
-    belongs_to :user
-    has_many :presentation_post_comments
+    has_many :presentation_post_comments, class_name: "Presentation::PostComment",foreign_key: "presentation_post_id", dependent: :delete_all
+    has_many :presentation_stocks, class_name: "Presentation::Stock",foreign_key: "presentation_post_id", dependent: :delete_all
+    has_many :users, through: :presetation_stocks
+    has_many :presentation_post_pattern_relates, class_name: "Presentation::PostPatternRelate", foreign_key: "presentation_post_id", dependent: :delete_all
+    has_many :patterns, through: :presentation_post_pattern_relates
+    
+    validates :title, presence: true
+    validates :content, presence: true
+    
+    def related_posts
+        ids = []
+        patterns = self.patterns
+        patterns.each do |pattern|
+            ids += pattern.presentation_related_posts.pluck(:id)
+        end
+        return Presentation::Post.where(id: ids).with_attached_thumb_image.includes(:patterns)
+    end
 end

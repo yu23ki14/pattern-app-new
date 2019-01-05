@@ -59,8 +59,12 @@ gem 'dotenv-rails', '2.5.0'
 #use whenever as crond
 gem 'whenever', '0.10.0'
 
-#use ruby-readability for getting content from web
-gem "ruby-readability", :require => 'readability'
+#use kaminari for pagenation
+gem "kaminari", '1.1.1'
+
+#use minimagick for image processing
+gem 'mini_magick', '~> 4.8'
+gem 'image_processing', '~> 1.2'
 
 #use alexa
 #gem 'alexa_rubykit'
@@ -81,7 +85,7 @@ end
 group :production do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'unicorn-rails', '2.2.1'
-  
+  gem "aws-sdk-s3", require: false
 end
 
 group :development do

@@ -6,11 +6,13 @@ class Presentation::PatternsController < ApplicationController
   end
   
   def show
-    if params[:id].to_i > 33
-      redirect_to presentation_patterns_path
+    @pattern = @patterns.find(params[:id])
+    @posts = @pattern.presentation_related_posts.page(params[:page]).per(8).with_attached_thumb_image.includes(:patterns)
+    @popular_posts = @pattern.presentation_related_posts.limit(4).with_attached_thumb_image.includes(:patterns)
+    if user_signed_in?
+      @follow = Presentation::UserInterest.where(pattern_id: @pattern.id, user_id: current_user.id)
     end
-    @pattern = @patterns.find_by(pattern_no: params[:id])
-    @posts = Presentation::Post.all.with_attached_thumb_image
+    @followers = @pattern.presentation_followed_users
   end
   
   private

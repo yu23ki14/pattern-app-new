@@ -12,15 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.turbolinks
-//= require turbolinks
 
 //lib
-//= require lib/grid
 //= require presentation/lib/medium-editor
 //= require plugin
+//= require presentation/lib/image_loaded
+//= require lib/grid
+//= require presentation/lib/infinite-scroll
 
 //modules
 //= require presentation/common
 //= require presentation/welcome
 //= require presentation/post
+//= require presentation/pattern
+//= require presentation/users

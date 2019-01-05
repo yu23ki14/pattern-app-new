@@ -9,12 +9,12 @@
     .field.row-space-top-5
       = f.email_field :email, class: "col-12 col-center", placeholder: "E-mail address"
     
-    = f.label :locale, class: "row-space-top-3"
-      /|#{t('language')} : language
-      |Language
-    .selectbox.row
-      .col-8.p-x-0
-        = f.select :locale, [["Japanese", "ja"], ["English", "en"]], :prompt => "#{t('language')}"
+    //= f.label :locale, class: "row-space-top-3"
+    //  /|#{t('language')} : language
+    //  |Language
+    //.selectbox.row
+    //  .col-8.p-x-0
+    //    = f.select :locale, [["Japanese", "ja"], ["English", "en"]], :prompt => "#{t('language')}"
     
     .field.row-space-top-5
       //- if @minimum_password_length

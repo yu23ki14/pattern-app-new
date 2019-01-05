@@ -1,0 +1,6 @@
+.page-load-status[style="display: none"]
+  .loader-ellips.infinite-scroll-request
+    .text-center.row-space-3.row-space-top-2
+      = image_tag "spinner.png", class: "infinite-scroll-loader"
+
+= paginate posts

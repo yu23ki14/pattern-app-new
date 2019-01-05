@@ -1,15 +1,15 @@
-.page-container.row-space-top-3
-  h2 パターン一覧
+.page-container
+  h2.p-x-10 パターン一覧
   .flex-container.flex-wrap.masonry-container
     - @patterns.each do |p|
-      = link_to presentation_pattern_path(id: p.pattern_no)
-        .col-3.col-md-4.col-sm-6.masonry-content.pattern-content
+      = link_to presentation_pattern_path(id: p.id)
+        .col-3.col-md-4.col-sm-12.masonry-content.pattern-content
           .pattern-card.box-shadow-primary
             h5.text-center.row-space-top-4 #{p.pattern_name}
             .flex-container.flex-center
               .text-center.col-6
                 = image_tag "pattern_img/pp/#{p.pattern_no}.png", class: "col-12"
             .flex-container.flex-center
-              .text-center.col-10  
+              .col-10  
                 p.row-space-4 #{p.b_solution}
           

@@ -1,10 +1,13 @@
-.finder-nav.flex-container.flex-wrap.row-space-top-4
-  = link_to presentation_mypage_index_path, class: "finder-card p-x-10 p-y-10"
+.finder-nav.flex-container.flex-wrap.row-space-3.p-x-10
+  = link_to presentation_mypage_index_path, class: "finder-card p-x-10 p-y-10 m-t-5"
     h4.inline.m-y-0
-      |ストック
-  = link_to posts_presentation_mypage_index_path, class: "finder-card p-x-10 p-y-10"
+      |ストックした投稿
+  = link_to posts_presentation_mypage_index_path, class: "finder-card p-x-10 p-y-10 m-t-5"
     h4.inline.m-y-0
-      |投稿
-  = link_to patterns_presentation_mypage_index_path, class: "finder-card p-x-10 p-y-10"
+      |自分の投稿
+  = link_to patterns_presentation_mypage_index_path, class: "finder-card p-x-10 p-y-10 m-t-5"
     h4.inline.m-y-0
       |パターン
+  = link_to edit_user_registration_path, class: "finder-card p-x-10 p-y-10 m-t-5"
+    h4.inline.m-y-0
+      |設定

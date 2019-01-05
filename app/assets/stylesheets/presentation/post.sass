@@ -4,12 +4,14 @@
 .post-wrapper
   align-items: baseline
   justify-content: space-evenly
-  background: $brand-contrast
   border-radius: 5px
 .post-article-content
   p
     margin-bottom: 5px
     font-size: 18px
+.post-meta-info
+  @media (max-width: 767px)
+    margin-top: 15px
 .post-content-container
   input[type="submit"]
     padding: 5.5px 2px
@@ -53,6 +55,7 @@
       font-weight: bold
   .post-content-preview
     outline-color: transparent
+    outline-width: 0
 
 .post-related-pattern-list
   p
@@ -65,3 +68,7 @@
 .related_pattern_selector_modal
   .active
     border-bottom: 3px solid rgba($brand-theme, .4)
+    
+.post-comment-list
+  max-height: 200px
+  overflow: auto

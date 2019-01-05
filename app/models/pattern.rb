@@ -3,6 +3,10 @@ class Pattern < ApplicationRecord
   has_many :favorites
   has_many :practices
   has_many :presentation_user_interests
+  has_many :presentation_post_pattern_relate, class_name: "Presentation::PostPatternRelate", foreign_key: "pattern_id"
+  has_many :presentation_related_posts, through: :presentation_post_pattern_relate, class_name: "Presentation::Post", source: :presentation_post
+  has_many :presentation_user_interests, class_name: "Presentation::UserInterest", foreign_key: :pattern_id
+  has_many :presentation_followed_users, through: :presentation_user_interests, class_name: "Pattern", source: :user
   
   scope :this_pattern, -> (language_id, pattern_no) { where(language_id: language_id).find_by(pattern_no: pattern_no) }
   
@@ -37,4 +41,5 @@ class Pattern < ApplicationRecord
   def consequence
     self.send("consequence_#{I18n.locale}")
   end
+  
 end

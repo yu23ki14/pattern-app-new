@@ -1,17 +1,6 @@
 .page-container
-  h3 #{t('reset_password')}
-  
-  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-    = f.hidden_field :reset_password_token
-    
-    .col-10.col-center
-      = f.label :password, "#{t('new_password')}", class: "row-space-top-2"
-      = f.password_field :password, autofocus: true, autocomplete: "off", class: "col-12 col-center js-current-password", placeholder: "#{t('password_six_validate')}"
-    
-      = f.label :password_confirmation, "#{t('new_password_confirm')}", class: "row-space-top-4"
-      = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center js-current-password-confirm"
-    
-      .text-center
-        = f.submit "#{t('update')}", class: "button button-primary row-space-top-3 js-user-update", disabled: "disabled"
-  
-  = render "devise/shared/links"
+  - if @subdomain.present?
+    .flex-container.flex-center
+      = render "edit_presentation"
+  - else
+    = render "edit_main"

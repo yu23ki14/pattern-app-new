@@ -1,0 +1,39 @@
+.tutorial.modal
+  .modal-container.col-6.col-md-7.col-sm-12
+    .flex-center.flex-container.row-space-top-6
+      .tutorial-content.js-tutorial-content.col-9
+        h4.m-t-0 Presentation Pattern App とは
+        .js-tutorial-1
+          p.p-t-10
+            |プレゼンテーション・パターンアプリは「説得的・発見的・共感的」なプレゼンテーションをつくるための具体的なコツをまとめるためのキュレーションアプリです。
+          p.p-t-10
+            |プレゼンのコンセプトを考えるとき、資料をつくるとき、発表をするときなど様々な場面で使えるコツがたくさん集まっているので、あなたのプレゼンに新しいアイディアを取り込みたい時にぜひ覗いてみてください、きっと良いアイディアに出会えます。
+        .js-tutorial-2.hide
+          p.p-t-10
+            |このメディアではブログやSNSのタグのように、プレゼンテーション・パターンを使ってそれぞれの投稿が構造化されています。プレゼンテーション・パターンは慶應義塾大学井庭崇研究室が開発した創造的なプレゼンテーションをつくるための34のコツをパターン・ランゲージの手法でまとめたものです。
+          p.p-t-10
+            |それらを理解していなくても、このメディアにある投稿に触れていくことで徐々に理解できるので積極的に使ってみてください。
+        .js-tutorial-3.hide
+          p.p-t-10
+            |ログインすると投稿できるようになります。自分自身の経験やピンときた記事、動画など共有したいと思ったことは積極的に投稿してみてください。
+          p.p-t-10
+            |また、未来の自分のために発想の素材をストックするのもおすすめの使い方です。
+          .text-center.row-space-top-3
+            - if !user_signed_in?
+              .flex-container.flex-center
+                = link_to new_user_registration_path, class: "button button-primary m-x-5"
+                  |新規登録
+                
+                = link_to new_user_session_path, class: "button button-primary m-x-5"
+                  |ログイン
+            = link_to "#", class: "button button-outline modal-close row-space-top-2"
+              |閉じる
+    
+    .flex-center.flex-container.row-space-6
+      .tutorial-controller.flex-container.flex-around.row-space-top-4.col-7
+        =link_to "#", class: "js-tutorial-prev"
+          i.fa.fa-chevron-left
+        .tutorial-page.js-tutorial-page[current-page=1]
+          p 1/3
+        =link_to "#", class: "js-tutorial-next"
+          i.fa.fa-chevron-right

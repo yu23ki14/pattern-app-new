@@ -1,11 +1,15 @@
 class Presentation::PostsController < ApplicationController
   #before_action :set_subdomain
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   
   def show
-    @post = Presentation::Post.find(params[:id])
-    related_pattern_no = JSON.parse(@post.pattern)
-    @related_patterns = Pattern.where(language_id: 3).where(pattern_no: related_pattern_no)
     @comment = Presentation::PostComment.new
+    @comments = @post.presentation_post_comments.includes(:user).order(id: "DESC")
+    @related_patterns = @post.patterns
+    @related_posts = @post.related_posts.page(params[:page]).per(4)
+    if user_signed_in?
+      @stock = Presentation::Stock.where(presentation_post_id: @post.id, user_id: current_user.id)
+    end
   end
   
   def new
@@ -15,25 +19,56 @@ class Presentation::PostsController < ApplicationController
   
   def  create
     @post = Presentation::Post.new(presentation_post_params)
+    if params[:related_patterns].blank?
+      redirect_to new_presentation_post_path(@post), notice: "関連パターンは一つ以上登録してください。" and return
+    end
     if @post.save
-      redirect_to @post
+      patterns = JSON.parse(params[:related_patterns])
+      patterns.each do |pattern|
+        @related_pattern = Presentation::PostPatternRelate.new(presentation_post_id: @post.id, pattern_id: pattern)
+        if @related_pattern.save
+        else
+          @post.destroy
+          redirect_to new_presentation_post_path and return
+        end
+      end
+      redirect_to @post and return
     else
-      redirect_to new_presentation_post_path
+      redirect_to new_presentation_post_path and return
     end
   end
   
   def edit
-    @post = Presentation::Post.find(params[:id])
     gon.post_content = @post.content
     @patterns = Pattern.where(language_id: 3).order(:pattern_no)
+    @related_patterns = @post.patterns
   end
   
-  def  update
-    @post = Presentation::Post.find(params[:id])
+  def update
     if @post.update(presentation_post_params)
-      redirect_to @post
+      @post.presentation_post_pattern_relates.each do |related_pattern|
+        related_pattern.destroy
+      end
+      patterns = JSON.parse(params[:related_patterns])
+      patterns.each do |pattern|
+        @related_pattern = Presentation::PostPatternRelate.new(presentation_post_id: @post.id, pattern_id: pattern)
+        if @related_pattern.save
+        else
+          @post.destroy
+          redirect_to new_presentation_post_path and return
+        end
+      end
+      redirect_to @post and return
     else
-      redirect_to new_presentation_post_path
+      redirect_to new_presentation_post_path and return
+    end
+  end
+  
+  def destroy
+    if @post.destroy
+      redirect_to presentation_root_path, notice: "削除しました。"
+    else
+      redirect_to @post, notice: "削除できませんでした。もう一度試してください。"
     end
   end
   
@@ -47,10 +82,10 @@ class Presentation::PostsController < ApplicationController
   
   private
     def presentation_post_params
-      params.require(:presentation_post).permit(:user_id, :title, :reference_store, :reference, :link, :content, :pattern, :thumb_image)
+      params.require(:presentation_post).permit(:user_id, :title, :reference_store, :reference, :link, :content, :thumb_image)
     end
     
-    def presentation_post_comment_params
-      params.require(:presentation_post_comment).permit(:user_id, :comment, presentation_post_id)
+    def set_post
+      @post = Presentation::Post.find(params[:id])
     end
 end

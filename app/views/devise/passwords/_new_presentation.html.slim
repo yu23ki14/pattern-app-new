@@ -1,0 +1,14 @@
+.col-4.col-md-5.col-sm-11
+  h3 パスワードをリセット
+  p 登録しているメールアドレスを入力してください。
+  
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    //= devise_error_messages!
+  
+    .col-12.col-center.row-space-top-4
+      = f.email_field :email, autofocus: true, class: "col-12 col-center", placeholder: "example@example.com"
+  
+    .text-center.row-space-top-3
+      = f.submit "#{t('send_mail')}", class: "button button-primary"
+  
+  = render "devise/shared/links"

@@ -18,14 +18,19 @@ Rails.application.routes.draw do
         end
       end
       
-      resources :posts, only: [:show, :new, :create, :index, :edit, :update] do
+      resources :posts, only: [:show, :new, :create, :index, :edit, :update, :destroy] do
         collection do
           get '/get_web_reference' => 'posts#get_web_reference'
         end
       end
       
-      resources :post_comments, only: [:create] do
-      end
+      resources :post_comments, only: [:create, :destroy]
+      
+      resources :stocks, only: [:index]
+      
+      resources :user_interests, only: [:index]
+      
+      resources :about, only: [:index]
       
     end
   end

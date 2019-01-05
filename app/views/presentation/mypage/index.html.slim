@@ -1,28 +1,15 @@
 .page-container
-  = render "menu"
   
-  h2.row-space-top-4.row-space-1
-    |ストック一覧
+  = render "menu"
+
   .post-container.masonry-container
-    - @stocks.each do |p|
-      = link_to p
-        .col-3.col-lg-4.col-md-6.col-sm-12.post-content.masonry-content
-          .post-card.box-shadow-primary
-            - pattern_no = JSON.parse(p.pattern)
-            - if p.thumb_image.attached?
-              .post-thumb.bg-img-cover[style="background-image: url('#{rails_blob_url p.thumb_image}')"]
-            - else p.thumb_image.attached?
-              - primary_pattern = pattern_no.first
-              .post-thumb.bg-img-cover[style="background-image: url('#{asset_path "pattern_img/pp/#{primary_pattern}.png"}'); background-size: contain"]
-            .m-x-10.p-b-10
-              h5
-                |#{p.title}
-              - if p.reference.present?
-                .author.text-sub 出典: #{p.reference}
-              hr
-              .flex-container.flex-wrap
-                - patterns = @patterns.where(language_id: 3).where(pattern_no: pattern_no)
-                - patterns.each do |pattern|
-                  = link_to "#"
-                    .tag
-                      |#{pattern.pattern_name}
+    - if @stocks.present?
+      - @stocks.each do |p|
+        = link_to p
+          .col-3.col-lg-4.col-md-6.col-sm-12.post-content.masonry-content
+            = render "presentation/shared/post_card", post: p
+    - else
+      h4.row-space-top-1
+        |ストックした投稿はありません。
+  - if @stocks.present?
+    = render "presentation/shared/posts_paginate_loader", posts: @stocks

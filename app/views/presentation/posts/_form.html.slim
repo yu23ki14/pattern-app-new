@@ -5,7 +5,11 @@
       |関連パターンを選択
     .flex-container.row-space-2
       .post-related-pattern-list.js-post-related-pattern-list
-      = f.hidden_field :pattern
+        -if action_name == "edit"
+          -@related_patterns.each do |pattern|
+            p.inline.p-x-10[class="id-#{pattern.id}"]
+              |#{pattern.pattern_name}
+      = hidden_field_tag :related_patterns, "#{@related_patterns.present? ? @related_patterns.pluck(:id) : ''}"
     .col-12.row-space-2.post-thumb
       = f.file_field :thumb_image, class: "hide"
       = f.label :thumb_image, class: "flex-container flex-center flex-wrap js-thumb-image-label"
@@ -18,19 +22,23 @@
     .col-12.row-space-2.post-title
       = f.text_field :title, placeholder: "タイトルを追加する", class: "col-12 p-y-5 p-x-5"
     .col-12.row-space-2.post-reference[class="#{'hide' if (@post.reference.blank?)}"]
-      = f.text_field :reference, placeholder: "出典を追加する", class: "col-6 p-y-5 p-x-5"
+      = f.text_field :reference, placeholder: "出典を追加する", class: "col-6 col-sm-11 p-y-5 p-x-5"
       .js-post-input-hide.inline.text-sub.p-l-10
         i.fa.fa-times
     .col-12.row-space-2.post-reference-store[class="#{'hide' if (@post.reference_store.blank?)}"]
-      = f.text_field :reference_store, placeholder: "amazonリンクなど入手情報を追加する", class: "col-6 p-y-5 p-x-5"
+      = f.text_field :reference_store, placeholder: "amazonリンクなど入手情報を追加する", class: "col-6 col-sm-11 p-y-5 p-x-5"
       .js-post-input-hide.inline.text-sub.p-l-10
         i.fa.fa-times
     .col-12.row-space-5.post-link[class="#{'hide' if (@post.link.blank?)}"]
-      = f.text_field :link, placeholder: "リンクを追加する", class: "col-6 p-y-5 p-x-5"
+      = f.text_field :link, placeholder: "リンクを追加する", class: "col-6 col-sm-11 p-y-5 p-x-5"
       .js-post-input-hide.inline.text-sub.p-l-10
         i.fa.fa-times
     .col-12.row-space-6.required-container
       .post-content-preview.js-post-content-preview.p-x-5
       = f.hidden_field :content
     .text-center.row-space-7
-      = f.submit "#{'投稿' if (action_name == 'new')} #{'アップデート' if (action_name == 'edit')}", onsubmit:"setEditordata()", class: "button col-3 p button-primary-outline"
+      = f.submit "#{'投稿' if (action_name == 'new')} #{'アップデート' if (action_name == 'edit')}", class: "button col-3 p button-primary-outline"
+      - if action_name == "edit"
+        br
+        = link_to presentation_post_path(@post), method: :delete, class: "button button-outline row-space-top-3 col-3", data: {confirm: "本当に削除しますか？"}
+          |投稿を削除

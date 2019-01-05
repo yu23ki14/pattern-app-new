@@ -7,7 +7,6 @@ class CreatePresentationPosts < ActiveRecord::Migration[5.2]
       t.string :reference_store
       t.string :link
       t.text :content, null: false
-      t.jsonb :pattern, null: false
       
       t.timestamps
     end

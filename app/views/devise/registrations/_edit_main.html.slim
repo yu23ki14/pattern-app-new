@@ -1,0 +1,66 @@
+.row-space-top-4
+  .col-11.col-center
+    h3 #{t('static_menu_user_info')}
+    p user_id: #{current_user.id}
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = devise_error_messages!
+    
+      = f.label :name
+        |#{t('name')}
+      = f.text_field :name, class: "col-12 col-center"
+    
+      = f.label :locale
+        |#{t('language')}
+      .selectbox.row
+        .col-8.p-x-0
+          = f.select :locale, [["Japanese", "ja"], ["English", "en"]], :prompt => "#{t('language')}"
+    
+      = f.label :email, class: "row-space-top-4"
+        |#{t('email')}
+      = f.email_field :email, class: "col-12 col-center"
+      
+      p.row-space-top-4
+        |#{t('get_monday_remind')}
+      = f.check_box :monday_remind
+      = f.label :monday_remind, class: "check_box row-space-top-1"
+        span.dammy
+          |test
+    
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        Currently waiting confirmation for: #{resource.unconfirmed_email}
+    
+      
+      .password-container
+        = f.label :password, class: "row-space-top-4"
+          |#{t('new_password')}
+        = f.password_field :password, autocomplete: "off", class: "col-12 col-center", placeholder: "#{t('password_six_validate')}"
+      
+      
+        = f.label :password_confirmation, class: "row-space-top-4"
+          |#{t('new_password_confirm')}
+        = f.password_field :password_confirmation, autocomplete: "off", class: "col-12 col-center"
+    
+    
+      = f.label :current_password, class: "row-space-top-7 text-primary"
+        |*#{t('input_current_password')}
+      = f.password_field :current_password, autocomplete: "off", class: "col-12 col-center js-current-password"
+    
+      br
+    
+      .text-center.row-space-top-4
+        = f.submit "Update", class: "button button-primary button-lg js-user-update", disabled: "disabled"
+          |#{t('update')}
+        = link_to "#", class: "js-trigger-edit-password button button-outline button-lg row-space-top-2"
+          |#{t('update_password')}
+          
+      p.small.row-space-top-3
+        |#{t('forgot_password_still_login')}
+      .text-center
+        = link_to destroy_user_session_path, method: :delete, class: "p small row-space-top-1 bottom-bordered"
+          |log out
+
+//<h3>Cancel my account</h3>
+  
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  
+  <%= link_to "Back", :back %>

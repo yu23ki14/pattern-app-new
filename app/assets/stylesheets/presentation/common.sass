@@ -45,6 +45,8 @@ p
 hr
   border-width: 0
   border-top: 1px solid $brand-gray
+  &.thick
+    border-top: 10px solid $brand-gray
   
 label
   display: block
@@ -87,11 +89,8 @@ label
 .text-contrast
   color: white 
 
-.text-light-yellow
-  color: $yellow-1-color
-  
-.text-yellow
-  color: $yellow-3-color
+.text-link
+  text-decoration: underline
 
 h1, .h1
   font-size: 45px
@@ -165,12 +164,6 @@ p, .p
 label
   transition-duration: .3s
   
-.inline
-  display: inline-block
-
-.hide
-  display: none 
-  
 /* footer =============================================*/
 footer
   height: 100px
@@ -195,20 +188,8 @@ td
   background-color: $pp-color
 .bg-theme
   background-color: $brand-theme
-.pri-1-color
-  background-color: $pri-1-color
-.pri-2-color
-  background-color: $pri-2-color
-.pri-3-color
-  background-color: $pri-3-color
-.pri-4-color
-  background-color: $pri-4-color
 .bg-contrast
   background-color: $brand-contrast
-.bg-yellow-1
-  background-color: $yellow-1-color
-.bg-yellow-2
-  background-color: $yellow-2-color
 .bg-gray
   background-color: $brand-gray
   
@@ -327,6 +308,8 @@ input[type="text"], textarea, input[type="search"], .input, input[type="email"],
   border-radius: 2px
   color: $brand-dark-gray
   font-family : inherit
+  &.small
+    font-size: 14px
   
 .text-box
   height: 120px
@@ -396,10 +379,10 @@ input[type="text"], textarea, input[type="search"], .input, input[type="email"],
   
   &.button-primary
     color: $brand-contrast
-    border-color: #FA8072
-    background-color: #FF5A5F
+    border-color: $brand-theme
+    background-color: $brand-theme
     &:hover
-      background-color: #FF5A54
+      background-color: $brand-theme-hover
   
   &.button-primary-outline
     color: $brand-theme
@@ -412,16 +395,134 @@ input[type="text"], textarea, input[type="search"], .input, input[type="email"],
     background-color: $brand-dark-gray
     color: $brand-contrast
     
-  &.button-yellow
-    background-color: $yellow-2-color
-    color: $brand-dark-gray
     
   &[disabled="disabled"]
     pointer-events: none
     background-color: $brand-light-gray
     border-color: $brand-light-gray
     color: $brand-very-light-gray
+  
+/* row ================================================== */
 
+.row
+  margin: 0
+
+.row:before,.row:after
+  content: " "
+  display: table
+
+.row:after
+  clear: both
+  
+/* col ================================================== */
+
+.col-1,.col-sm-1,.col-md-1,.col-lg-1,.col-2,.col-sm-2,.col-md-2,.col-lg-2,.col-3,.col-sm-3,.col-md-3,.col-lg-3,.col-4,.col-sm-4,.col-md-4,.col-lg-4,.col-5,.col-sm-5,.col-md-5,.col-lg-5,.col-6,.col-sm-6,.col-md-6,.col-lg-6,.col-7,.col-sm-7,.col-md-7,.col-lg-7,.col-8,.col-sm-8,.col-md-8,.col-lg-8,.col-9,.col-sm-9,.col-md-9,.col-lg-9,.col-10,.col-sm-10,.col-md-10,.col-lg-10,.col-11,.col-sm-11,.col-md-11,.col-lg-11,.col-12,.col-sm-12,.col-md-12,.col-lg-12
+  position: relative
+  min-height: 1px
+  padding: 5px
+  box-sizing: border-box
+.col-1
+  width: 8.33333%
+.col-2
+  width: 16.66667%
+.col-3
+  width: 25%
+.col-4
+  width: 33.33333%
+.col-5
+  width: 41.66667%
+.col-6
+  width: 50%
+.col-7
+  width: 58.33333%
+.col-8
+  width: 66.66667%
+.col-9
+  width: 75%
+.col-10
+  width: 83.33333%
+.col-11
+  width: 91.66667%
+.col-12
+  width: 100%
+
+@media (max-width: 1200px)
+  .col-lg-1
+    width: 8.33333%
+  .col-lg-2
+    width: 16.66667%
+  .col-lg-3
+    width: 25%
+  .col-lg-4
+    width: 33.33333%
+  .col-lg-5
+    width: 41.66667%
+  .col-lg-6
+    width: 50%
+  .col-lg-7
+    width: 58.33333%
+  .col-lg-8
+    width: 66.66667%
+  .col-lg-9
+    width: 75%
+  .col-lg-10
+    width: 83.33333%
+  .col-lg-11
+    width: 91.66667%
+  .col-lg-12
+    width: 100%
+    
+@media (max-width: 990px)
+  .col-md-1
+    width: 8.33333%
+  .col-md-2
+    width: 16.66667%
+  .col-md-3
+    width: 25%
+  .col-md-4
+    width: 33.33333%
+  .col-md-5
+    width: 41.66667%
+  .col-md-6
+    width: 50%
+  .col-md-7
+    width: 58.33333%
+  .col-md-8
+    width: 66.66667%
+  .col-md-9
+    width: 75%
+  .col-md-10
+    width: 83.33333%
+  .col-md-11
+    width: 91.66667%
+  .col-md-12
+    width: 100%
+    
+@media (max-width: 767px)
+  .col-sm-1
+    width: 8.33333%
+  .col-sm-2
+    width: 16.66667%
+  .col-sm-3
+    width: 25%
+  .col-sm-4
+    width: 33.33333%
+  .col-sm-5
+    width: 41.66667%
+  .col-sm-6
+    width: 50%
+  .col-sm-7
+    width: 58.33333%
+  .col-sm-8
+    width: 66.66667%
+  .col-sm-9
+    width: 75%
+  .col-sm-10
+    width: 83.33333%
+  .col-sm-11
+    width: 91.66667%
+  .col-sm-12
+    width: 100%
     
 /* spacing ================================================== */
 
@@ -587,128 +688,6 @@ input[type="text"], textarea, input[type="search"], .input, input[type="email"],
 .row-space-top-8
   margin-top: 50px
   
-/* row ================================================== */
-
-.row
-  margin: 0
-
-.row:before,.row:after
-  content: " "
-  display: table
-
-.row:after
-  clear: both
-  
-/* col ================================================== */
-
-.col-1,.col-sm-1,.col-md-1,.col-lg-1,.col-2,.col-sm-2,.col-md-2,.col-lg-2,.col-3,.col-sm-3,.col-md-3,.col-lg-3,.col-4,.col-sm-4,.col-md-4,.col-lg-4,.col-5,.col-sm-5,.col-md-5,.col-lg-5,.col-6,.col-sm-6,.col-md-6,.col-lg-6,.col-7,.col-sm-7,.col-md-7,.col-lg-7,.col-8,.col-sm-8,.col-md-8,.col-lg-8,.col-9,.col-sm-9,.col-md-9,.col-lg-9,.col-10,.col-sm-10,.col-md-10,.col-lg-10,.col-11,.col-sm-11,.col-md-11,.col-lg-11,.col-12,.col-sm-12,.col-md-12,.col-lg-12
-  position: relative
-  min-height: 1px
-  padding: 5px
-  box-sizing: border-box
-.col-1
-  width: 8.33333%
-.col-2
-  width: 16.66667%
-.col-3
-  width: 25%
-.col-4
-  width: 33.33333%
-.col-5
-  width: 41.66667%
-.col-6
-  width: 50%
-.col-7
-  width: 58.33333%
-.col-8
-  width: 66.66667%
-.col-9
-  width: 75%
-.col-10
-  width: 83.33333%
-.col-11
-  width: 91.66667%
-.col-12
-  width: 100%
-
-@media (max-width: 1200px)
-  .col-lg-1
-    width: 8.33333%
-  .col-lg-2
-    width: 16.66667%
-  .col-lg-3
-    width: 25%
-  .col-lg-4
-    width: 33.33333%
-  .col-lg-5
-    width: 41.66667%
-  .col-lg-6
-    width: 50%
-  .col-lg-7
-    width: 58.33333%
-  .col-lg-8
-    width: 66.66667%
-  .col-lg-9
-    width: 75%
-  .col-lg-10
-    width: 83.33333%
-  .col-lg-11
-    width: 91.66667%
-  .col-lg-12
-    width: 100%
-    
-@media (max-width: 990px)
-  .col-md-1
-    width: 8.33333%
-  .col-md-2
-    width: 16.66667%
-  .col-md-3
-    width: 25%
-  .col-md-4
-    width: 33.33333%
-  .col-md-5
-    width: 41.66667%
-  .col-md-6
-    width: 50%
-  .col-md-7
-    width: 58.33333%
-  .col-md-8
-    width: 66.66667%
-  .col-md-9
-    width: 75%
-  .col-md-10
-    width: 83.33333%
-  .col-md-11
-    width: 91.66667%
-  .col-md-12
-    width: 100%
-    
-@media (max-width: 767px)
-  .col-sm-1
-    width: 8.33333%
-  .col-sm-2
-    width: 16.66667%
-  .col-sm-3
-    width: 25%
-  .col-sm-4
-    width: 33.33333%
-  .col-sm-5
-    width: 41.66667%
-  .col-sm-6
-    width: 50%
-  .col-sm-7
-    width: 58.33333%
-  .col-sm-8
-    width: 66.66667%
-  .col-sm-9
-    width: 75%
-  .col-sm-10
-    width: 83.33333%
-  .col-sm-11
-    width: 91.66667%
-  .col-sm-12
-    width: 100%
-  
 /* page-container ================================================== */
 
 .page-container
@@ -728,6 +707,8 @@ input[type="text"], textarea, input[type="search"], .input, input[type="email"],
     width: 750px
   @media (max-width: 767px)
     width: auto
+    padding-left: 0
+    padding-right: 0
   
 .required-container
   position: relative
@@ -779,6 +760,25 @@ input[type="text"], textarea, input[type="search"], .input, input[type="email"],
     align-items: stretch
   &.flex-full
     width: 100%
+    
+/* display ================================================== */
+    
+.inline
+  display: inline-block
+
+.hide
+  display: none
+
+.hide-pc
+  display: none
+  @media (max-width: 767px)
+    display: block
+    &.is-flex
+      display: flex
+
+.hide-sp
+  @media (max-width: 767px)
+    display: none
 
 /* box shadow ================================================== */
 .box-shadow-primary
@@ -790,6 +790,34 @@ input[type="text"], textarea, input[type="search"], .input, input[type="email"],
 .nav-container
   box-shadow: 0px 0px 4px .5px $brand-light-gray
   background: $brand-contrast
+  position: fixed
+  width: 100%
+  z-index: 1
+  transition: .2s ease-in-out
+  @media (max-width: 767px)
+    top: -185px
+    &.is-open
+      top: 0px
+  ul
+    position: relative
+    @media (max-width: 767px)
+      margin-bottom: 30px
+  li
+    border-radius: 3px
+    @media (max-width: 767px)
+      margin-bottom: 10px
+  .nav-humberger
+    border-radius: 100%
+    width: 60px
+    height: 60px
+    position: absolute
+    bottom: -82px
+    
+.nav-container-dammy
+  width: 100%
+  height: 75px
+  @media (max-width: 767px)
+    height: 80px
   
 /* card ============================================*/
 .post-content, .pattern-content
@@ -806,11 +834,11 @@ input[type="text"], textarea, input[type="search"], .input, input[type="email"],
   .post-thumb
     height: 150px
   .tag
-    border: .5px solid black
+    border: .5px solid $brand-light-gray
     border-radius: 2px
     padding: 2px 5px
     margin: 2px
-    font-size: 12px
+    font-size: 14px
     &:hover
       background: $brand-gray
       color: $brand-contrast
@@ -825,20 +853,31 @@ input[type="text"], textarea, input[type="search"], .input, input[type="email"],
   display: none
   height: 100%
   width: 100%
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
+  position: fixed
+  top: 0
+  left: 0
   z-index: 100
 .modal-backdrop
   height: 100%
   width: 100%
   background-color: rgba(0, 0, 0, .6)
+  @media (max-width: 767px)
+    background-color: $brand-contrast
 .modal-container
-  position: relative
+  position: absolute
   background-color: $brand-contrast
-  top: -50%
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
   margin: 0 auto
+  max-height: 90vh
+  overflow-y: auto
+  @media (max-width: 767px)
+    max-height: 100vh
+    top: 0
+    left: auto
+    transform: inherit
+    padding-bottom: 100px
 body.modal-open
   overflow: hidden
   height: 100%
@@ -912,23 +951,29 @@ body.modal-open
   z-index: 100
   background: rgba(255, 255, 255, 0.8)
   display: none
-  .spinner
-    -webkit-animation: spin 2s linear infinite
-    animation: spin 2s linear infinite
-    width: 70px
-    height: 70px
-    position: absolute
-    margin: auto
-    top: -110px
-    bottom: 0
-    left: 0
-    right: 0
-  .loader
-    position: fixed
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    z-index: 100
+.loading-spinner
+  -webkit-animation: spin 2s linear infinite
+  animation: spin 2s linear infinite
+  width: 70px
+  height: 70px
+  position: absolute
+  margin: auto
+  top: -110px
+  bottom: 0
+  left: 0
+  right: 0
+.loader-text
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 100
+  
+.infinite-scroll-loader
+  -webkit-animation: spin 2s linear infinite
+  animation: spin 2s linear infinite
+  width: 70px
+  height: 70px
 
 .finder-nav
   .finder-card

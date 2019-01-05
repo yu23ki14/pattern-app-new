@@ -1,0 +1,60 @@
+.about-wrapper
+  .page-container
+    .flex-container.flex-wrap
+      h1.p-x-10.inline
+        |Create a
+        br
+        |Creative
+        br
+        |Presentation
+        
+      .text-center.about-account-top
+        = link_to new_user_session_path, class: "button button-primary"
+          |ログイン・新規登録
+        br
+        = link_to presentation_root_path, class: "button button-primary-outline"
+          |ログインせずに利用
+        p.small.bg-contrast.m-t-5
+          |*後からでも登録できます。
+    
+    .bg-contrast.about-feature.flex-container.flex-wrap.flex-center.m-x-10
+      .col-11
+        h3
+          |プレゼンの
+          br.hide-pc
+          |アイディアボックス
+        p.p-t-10
+          |PresenBoxは「説得的・発見的・共感的」なプレゼンテーションをつくるための具体的なコツがまとめられているキュレーションメディアです。
+        p.p-t-10
+          |魅力的なプレゼンはコンセプト、資料、発表への姿勢などさまざまな要素によって成り立っています。あなたのプレゼンをより魅力的にしたいときや、新しいアイディアを取り込みたいときにぜひ覗いてみてください、きっと良いアイディアに出会えます。
+        
+      
+      .col-11.row-space-top-5
+        h3 
+          |アイディアを整理する
+          br.hide-pc
+          |新しい方法
+        p.p-t-10
+          |このメディアではブログやSNSのタグのように、それぞれの投稿がプレゼンテーション・パターンに紐づいています。プレゼンテーション・パターンは慶應義塾大学井庭崇研究室が開発した創造的なプレゼンテーションをつくるための34のコツをパターン・ランゲージという手法でまとめたものです。
+        p.p-t-10
+          |このメディアを使う中で徐々にその魅力を体感できるので積極的に使ってみてください。
+      
+      .col-11.row-space-top-5
+        h3 
+          |あなたのアイディアを
+          br.hide-pc
+          |シェア・ストック
+        p.p-t-10
+          |ログインすると投稿できるようになります。自分自身の経験だけでなく、ふと思い浮かんだアイディアや、参考にしたい記事、動画など積極的に投稿してみてください。
+        p.p-t-10
+          |気になったものを未来の自分のために発想の素材としてストックしましょう。
+    
+    - if !user_signed_in?
+      .text-center.about-account-bottom
+        = link_to new_user_session_path, class: "button button-primary"
+          |ログイン・新規登録
+        br
+        = link_to presentation_root_path, class: "button button-primary-outline"
+          |ログインせずに利用
+        p.small.bg-contrast.m-t-5
+          |*後からでも登録できます。

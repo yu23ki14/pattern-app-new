@@ -1,0 +1,19 @@
+.post-card.box-shadow-primary
+  - patterns = post.patterns
+  - if post.thumb_image.attached?
+    - image = post.thumb_image.variant(resize: "400x400>")
+    .post-thumb.bg-img-cover[style="background-image: url('#{rails_representation_url(image, only_path: true)}')"]
+  - else
+    - primary_pattern = patterns.first.pattern_no
+    .post-thumb.bg-img-cover[style="background-image: url('#{asset_path "pattern_img/pp/#{primary_pattern}.png"}'); background-size: contain"]
+  .m-x-10.p-b-10
+    h5
+      |#{post.title}
+    - if post.reference.present?
+      .author.text-sub 出典: #{post.reference}
+    hr
+    .flex-container.flex-wrap
+      - patterns.each do |pattern|
+        = link_to presentation_pattern_path(id: pattern.id)
+          .tag
+            |#{pattern.pattern_name}

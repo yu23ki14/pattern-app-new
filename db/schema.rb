@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_12_063345) do
+ActiveRecord::Schema.define(version: 2018_12_20_105505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,6 +235,15 @@ ActiveRecord::Schema.define(version: 2018_12_12_063345) do
     t.index ["user_id"], name: "index_presentation_post_comments_on_user_id"
   end
 
+  create_table "presentation_post_pattern_relates", force: :cascade do |t|
+    t.bigint "pattern_id"
+    t.bigint "presentation_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pattern_id"], name: "index_presentation_post_pattern_relates_on_pattern_id"
+    t.index ["presentation_post_id"], name: "index_presentation_post_pattern_relates_on_presentation_post_id"
+  end
+
   create_table "presentation_posts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
@@ -242,10 +251,18 @@ ActiveRecord::Schema.define(version: 2018_12_12_063345) do
     t.string "reference_store"
     t.string "link"
     t.text "content", null: false
-    t.jsonb "pattern", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_presentation_posts_on_user_id"
+  end
+
+  create_table "presentation_stocks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "presentation_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["presentation_post_id"], name: "index_presentation_stocks_on_presentation_post_id"
+    t.index ["user_id"], name: "index_presentation_stocks_on_user_id"
   end
 
   create_table "presentation_user_interests", force: :cascade do |t|
@@ -340,6 +357,10 @@ ActiveRecord::Schema.define(version: 2018_12_12_063345) do
   end
 
   add_foreign_key "excharts", "events"
+  add_foreign_key "presentation_post_pattern_relates", "patterns"
+  add_foreign_key "presentation_post_pattern_relates", "presentation_posts"
+  add_foreign_key "presentation_stocks", "presentation_posts"
+  add_foreign_key "presentation_stocks", "users"
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "users"
 end

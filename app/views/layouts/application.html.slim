@@ -11,7 +11,7 @@ html
     - if @subdomain.blank?
       = javascript_include_tag 'application', 'data-turbolinks-track' => true
     - else
-      = javascript_include_tag 'presentation_application', 'data-turbolinks-track' => true
+      = javascript_include_tag 'presentation_application'
     = csrf_meta_tags
     link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
   -if user_signed_in? && @subdomain.blank?
@@ -28,5 +28,5 @@ html
     - if @subdomain.blank?
       = render "layouts/pc_ng"
     .loading-modal
-      = image_tag "spinner.png", class: "spinner"
-      p.loader loading...
+      = image_tag "spinner.png", class: "loading-spinner"
+      p.loader-text loading...

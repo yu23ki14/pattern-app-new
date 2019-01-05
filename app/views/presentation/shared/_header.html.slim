@@ -1,19 +1,31 @@
-.nav-container.p-y-15
+.nav-container.p-y-10
   .text-right
-    .nav.inline.p-r-20
-      ul.flex-container.strong
-        li.h4.p-x-10
+    .nav.inline.p-x-20
+      ul.flex-container.strong.flex-wrap.flex-center
+        li.h5.p-x-10.text-center.col-sm-12
           = link_to root_path
             | ホーム
         - if user_signed_in?
-          li.h4.p-x-10
+          li.h5.p-x-10.text-center.col-sm-12
             = link_to presentation_mypage_index_path
               | My page
+        li.h5.text-center.col-sm-12[class="#{user_signed_in? ? 'p-l-10 p-r-15' : 'p-x-10'}"]
+          = link_to presentation_patterns_path
+            | パターンを見る
         - if user_signed_in?
-          li.h4.p-x-10
-            = link_to "#"
-              | 通知
+          li.h5.p-x-10.text-center.bg-theme.p-y-5
+            = link_to new_presentation_post_path, class: "text-contrast"
+              i.fa.fa-pencil.p-r-5
+              | 投稿する
         - if !user_signed_in?
-          li.h4.p-x-10
-            = link_to new_user_session_path
+          li.h5.p-l-10.p-r-15.text-center.col-sm-12
+            = link_to presentation_about_index_path
+              | PresenBoxとは
+        - if !user_signed_in?
+          li.h5.p-x-10.text-center.bg-theme.p-y-5
+            = link_to new_user_session_path, class: "text-contrast"
               |ログイン
+        
+        li.hide-pc.is-flex.js-nav-humberger.nav-humberger.bg-contrast.box-shadow-primary.flex-container.flex-center
+          i.fa.fa-bars.h4.text-primary[style="font-size: 25px"]
+.nav-container-dammy
