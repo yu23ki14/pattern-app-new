@@ -1,5 +1,5 @@
 .page-container
-  .post-type-selector.flex-container.row-space-top-3
+  //.post-type-selector.flex-container.row-space-top-3
     = link_to "#", class: "button js-trigger-web-reference-modal", referer: "web"
       |webの記事から引用
     = link_to "#", class: "button js-trigger-web-reference-modal", referer: "book"
@@ -10,6 +10,7 @@
   .post-form-wrapper.bg-contrast.flex-container.flex-center.row-space-top-5
     .col-8.col-md-10.col-sm-12
       = render "form"
-            
+  
+  = render "presentation/posts/modal/post_type_selector"
   = render "presentation/posts/modal/reference_form"
   = render "presentation/posts/modal/related_pattern_selector", patterns: @patterns

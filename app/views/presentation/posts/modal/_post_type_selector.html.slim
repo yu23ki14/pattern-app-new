@@ -1,0 +1,31 @@
+.post-type-selector-modal.modal
+  .modal-container.col-7.col-md-11.p-y-30.col-sm-12
+    //.close-modal
+      i.fa.fa-times
+    
+    .flex-container.flex-center
+      .col-10
+        h5.m-t-0 書き方を選んでください。
+        .flex-container.flex-around.text-center.flex-wrap
+          = link_to "#", class: "js-post-type-selector", referer: "free"
+            .avatar-image.flex-container.flex-center.text-primary
+              i.fa.fa-pencil
+            p.small.p-t-10.strong 自由に書く
+          = link_to "#", class: "js-post-type-selector", referer: "book"
+            .avatar-image.flex-container.flex-center.text-primary
+              i.fa.fa-book
+            p.small.p-t-10.strong 本から引用
+          = link_to "#", class: "js-post-type-selector", referer: "web"
+            .avatar-image.flex-container.flex-center.text-primary
+              i.fa.fa-list-alt
+            p.small.p-t-10.strong webから引用
+          = link_to "#", class: "js-post-type-selector", referer: "video"
+            .avatar-image.flex-container.flex-center.text-primary
+              i.fa.fa-youtube-play
+            p.small.p-t-10.strong 動画から引用
+          = link_to "#"
+            .avatar-image.flex-container.flex-center.text-primary
+              i.fa.fa-archive
+            p.small.p-t-10.strong 下書き
+            
+            

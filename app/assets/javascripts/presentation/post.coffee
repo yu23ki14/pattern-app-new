@@ -1,4 +1,21 @@
 $ ->
+  if $("body").hasClass("posts new")
+    $(".post-type-selector-modal").modal()
+    
+    $(document).on 'click', ".js-post-type-selector", ->
+      referer = $(this).attr("referer")
+      $(".post-type-selector-modal").modal("hide")
+      if referer == "web"
+        $(".post-reference-form-modal").modal()
+        $(".post-reference").removeClass("hide")
+        $(".post-link").removeClass("hide")
+      else if referer == "book"
+        $(".post-reference").removeClass("hide")
+        $(".post-reference-store").removeClass("hide")
+      else if referer == "free"
+        return
+      return false
+    
   if $("body").hasClass("posts edit") || $("body").hasClass("posts new")
     editor = new MediumEditor('.post-content-preview', {
         placeholder:
@@ -8,7 +25,7 @@ $ ->
     
     setInterval ->
       $("#presentation_post_content").val(editor.getContent())
-    , 500
+    , 100
     
     if $("body").hasClass("posts edit")
       post_content = gon.post_content
@@ -26,21 +43,6 @@ $ ->
         return false
   
   #editor.setContent('<p class="classy"><strong>Some Custom HTML</strong></p>')
-
-  $(document).on 'click', ".js-trigger-web-reference-modal", ->
-    referer = $(this).attr("referer")
-    if referer == "web"
-      $(".post-reference-form-modal").modal()
-      $(".post-reference").removeClass("hide")
-      $(".post-link").removeClass("hide")
-    else if referer == "book"
-      $(".post-reference").removeClass("hide")
-      $(".post-reference-store").removeClass("hide")
-    return false
-  
-  $(document).on 'click', ".js-post-input-hide", ->
-    $(this).parent().addClass("hide")
-    $(this).prev().val("")
     
   $(document).on 'click', ".js-get-reference-info", ->
     $(".loading-modal").css("display", "block")
@@ -84,7 +86,6 @@ $ ->
     $("#related_patterns").val(JSON.stringify(update_value))
   
   $('#presentation_post_thumb_image').change ->
-    console.log("tst")
     file = $(this).prop('files')[0]
     reader = new FileReader
     

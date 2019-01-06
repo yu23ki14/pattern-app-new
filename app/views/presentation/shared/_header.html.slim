@@ -1,5 +1,11 @@
+.logo.hide-pc
+  = link_to presentation_root_path
+    = image_tag "logo-sq.png"
 .nav-container.p-y-10
-  .text-right
+  .logo.hide-sp
+    = link_to presentation_root_path
+      = image_tag "logo.png"
+  .nav-list
     .nav.inline.p-x-20
       ul.flex-container.strong.flex-wrap.flex-center
         li.h5.p-x-10.text-center.col-sm-12

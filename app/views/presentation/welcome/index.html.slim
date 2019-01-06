@@ -2,7 +2,7 @@
   .page-container  
     .post-container.masonry-container#my-infinite-scrolling-list
       - @posts.each do |p|
-        .col-3.col-lg-4.col-md-6.col-sm-12.post-content.masonry-content
+        .col-3.col-lg-4.col-md-4.col-sm-12.post-content.masonry-content
           = link_to p
             = render "presentation/shared/post_card", post: p
     
