@@ -17,9 +17,14 @@
       - else
         h2.m-t-0 #{@post.title}
         hr.row-space-4.col-8.m-l-0
-      - if @post.thumb_image.attached?
-        - image = @post.thumb_image.variant(resize: "700x700>")
-        = image_tag image, class: "col-7 col-md-8 col-sm-12 row-space-8"
+        - if @post.thumb_image.attached?
+          - image = @post.thumb_image.variant(resize: "700x700>")
+          = image_tag image, class: "col-7 col-md-8 col-sm-12 row-space-8 p-x-0"
+      - if @post.video? && @post.link.include?("www.youtube.com")
+        - id = @post.link.split("?v=").last
+        .post-video-wrap.row-space-4
+          iframe src="https://www.youtube.com/embed/#{id}" frameborder="0" allowfullscreen
+      
       = @post.content.html_safe
     
     

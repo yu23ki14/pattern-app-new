@@ -20,7 +20,7 @@ $ ->
       else if referer == "video"
         $("#presentation_post_post_type").val("video")
         $(".post-link").removeClass("hide")
-        $(".post-link input").attr("placeholder", "リンクを追加する(Youtubeなど)")
+        $(".post-link input").attr("placeholder", "Youtubeリンクを追加")
       return false
     
   if $("body").hasClass("posts edit") || $("body").hasClass("posts new")
@@ -43,14 +43,14 @@ $ ->
       $("#presentation_post_state").val(state)
         
     $('#new_presentation_post, .edit_presentation_post').on 'submit', ->
-      if $("#presentation_post_state").val() == "1"
+      if $("#presentation_post_state").val() == "publish"
         if $("#related_patterns").val().length < 3
           alert "関連パターンは一つ以上登録してください。"
           return false
         else if $("#presentation_post_title").val().length < 1
           alert "タイトルは必須です。"
           return false
-      if $("#presentation_post_state").val() == "0"
+      if $("#presentation_post_state").val() == "draft"
         if $("#presentation_post_title").val().length < 1
           alert "タイトルは必須です。"
           return false
