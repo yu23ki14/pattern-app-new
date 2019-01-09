@@ -4,7 +4,7 @@ class Presentation::PostsController < ApplicationController
   
   def show
     @comment = Presentation::PostComment.new
-    if @post.state == 1
+    if @post.publish?
       @comments = @post.presentation_post_comments.includes(:user).order(id: "DESC")
       @related_patterns = @post.patterns
       @related_posts = @post.related_posts.page(params[:page]).per(4)
@@ -23,7 +23,7 @@ class Presentation::PostsController < ApplicationController
   
   def  create
     @post = Presentation::Post.new(presentation_post_params)
-    if @post.state == 1
+    if @post.state == "publish"
       if params[:related_patterns].blank?
         redirect_to new_presentation_post_path(@post), notice: "関連パターンは一つ以上登録してください。" and return
       end
@@ -41,7 +41,7 @@ class Presentation::PostsController < ApplicationController
       else
         redirect_to new_presentation_post_path and return
       end
-    elsif @post.state == 0
+    elsif @post.state == "draft"
       if @post.save
         redirect_to @post and return
       else
@@ -87,14 +87,14 @@ class Presentation::PostsController < ApplicationController
   def get_web_reference
     respond_to do |format|
       format.json {
-        render json: {reference: "test", title: "てすと", discription: "テストテスト", thumb: ActionController::Base.helpers.asset_path("post_draft")}, status: 200
+        render json: {reference: "test", title: "てすと", link: "テストテスト", thumb: ActionController::Base.helpers.asset_path("post_draft")}, status: 200
       }
     end
   end
   
   private
     def presentation_post_params
-      params.require(:presentation_post).permit(:user_id, :title, :reference, :link, :content, :thumb_image, :state, :post_type)
+      params.require(:presentation_post).permit(:user_id, :title, :reference, :link, :content, :thumb_image, :state, :post_type, :option)
     end
     
     def set_post

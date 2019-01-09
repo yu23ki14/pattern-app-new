@@ -9,10 +9,9 @@ class Presentation::Post < ApplicationRecord
     has_many :patterns, through: :presentation_post_pattern_relates
     
     validates :title, presence: true
-    validates :content, presence: true
     
     enum state: {draft: 0, publish: 1, illegal: 2}
-    enum post_type: {free: 0, book: 1, web: 2, movie: 3}
+    enum post_type: {free: 0, book: 1, web: 2, video: 3}
     
     def related_posts
         ids = []

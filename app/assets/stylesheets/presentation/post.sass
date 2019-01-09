@@ -2,7 +2,7 @@
 .posts.show, .posts.new, .posts.edit
   background: rgba($brand-very-light-gray, .5)
 .post-wrapper
-  align-items: baseline
+  align-items: normal
   justify-content: space-evenly
   border-radius: 5px
 .post-article-content
@@ -85,3 +85,14 @@
       font-size: 50px
   a
     margin: 25px 10px 0 10px
+
+.post-web-reference-panel
+  overflow: hidden
+  border-radius: 5px
+  .post-web-thumb
+    height: 250px
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+    @media (max-width: 767px)
+      height: 180px

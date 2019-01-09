@@ -1,12 +1,19 @@
 .post-card.box-shadow-primary
   - patterns = post.patterns
+  - if post.option.present?
+    - option = JSON.parse(post.option)
+  - else
+    - option = {}
+  
   - if post.thumb_image.attached?
     - image = post.thumb_image.variant(resize: "400x400>")
     .post-thumb.bg-img-cover[style="background-image: url('#{rails_representation_url(image, only_path: true)}')"]
+  - elsif post.web? && option["thumb"].present?
+    .post-thumb.bg-img-cover[style="background-image: url('#{option["thumb"]}')"]
   - elsif patterns.present?
     - primary_pattern = patterns.first.pattern_no
     .post-thumb.bg-img-cover[style="background-image: url('#{asset_path "pattern_img/pp/#{primary_pattern}.png"}'); background-size: contain"]
-  - elsif post.state == 0
+  - elsif post.draft?
     .post-thumb.bg-img-cover[style="background-image: url('#{asset_path "post_draft.jpg"}'); background-size: contain"]
   .m-x-10.p-b-10
     h5

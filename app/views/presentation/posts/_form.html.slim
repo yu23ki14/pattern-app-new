@@ -2,6 +2,7 @@
   = f.hidden_field :user_id, value: current_user.id
   = f.hidden_field :state
   = f.hidden_field :post_type
+  = f.hidden_field :option, value: '{"thumb": null}'
   .row-space-top-3
     = link_to "#", class: "m-l-5 row-space-2 js-trigger-post-pattern-selector p inline post-pattern-selector p-y-5 p-x-15"
       |関連パターンを選択
@@ -27,7 +28,6 @@
       = f.text_field :reference, placeholder: "出典を追加する", class: "col-6 col-sm-11 p-y-5 p-x-5"
     .col-12.row-space-5.post-link[class="#{'hide' if (@post.link.blank?)}"]
       = f.text_field :link, placeholder: "リンクを追加する", class: "col-6 col-sm-11 p-y-5 p-x-5"
-    = render "web_reference_card"
     .col-12.row-space-6.required-container
       .post-content-preview.js-post-content-preview.p-x-5
       = f.hidden_field :content

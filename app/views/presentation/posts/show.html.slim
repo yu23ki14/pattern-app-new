@@ -1,11 +1,22 @@
-- state = @post.state
+- option = JSON.parse(@post.option)
+
 .page-container
   .flex-container.post-wrapper.p-y-20.flex-wrap.p-x-10.bg-contrast
     .col-8.col-md-7.col-sm-12.post-article-content
-      - if state == 0
+      - if @post.draft?
         .p-y-5.p-x-10.bordered.inline.text-contrast.bg-gray.strong.row-space-2 下書き
-      h2.m-t-0 #{@post.title}
-      hr.row-space-4.col-8.m-l-0
+      - if @post.web?
+        .flex-container.flex-center
+          .post-web-reference-panel.bordered.col-12.p-x-0.p-y-0
+            - if option["thumb"].present?
+              .post-web-thumb[style="background-image: url('#{option["thumb"]}')"]
+            h3.p-x-10 #{@post.title}
+        .text-center.row-space-top-2.row-space-2
+          =link_to @post.link, class: "button button-outline", target: "blank"
+            |記事を読む
+      - else
+        h2.m-t-0 #{@post.title}
+        hr.row-space-4.col-8.m-l-0
       - if @post.thumb_image.attached?
         - image = @post.thumb_image.variant(resize: "700x700>")
         = image_tag image, class: "col-7 col-md-8 col-sm-12 row-space-8"
@@ -16,7 +27,7 @@
     .col-3.col-md-4.col-sm-12.post-meta-info
       hr.thick.hide-pc.row-space-4
       -if user_signed_in?
-        - if state == 1
+        - if @post.publish?
           = link_to "#", class: "button row-space-3 js-post-stock #{@stock.present? ? 'button-outline' : 'button-primary'}", user_id: "#{current_user.id}", post_id: "#{@post.id}", type: "#{@stock.present? ? 'delete' : 'create'}"
             |#{@stock.present? ? 'ストックから外す' : 'ストックする'}
         - if @post.user_id == current_user.id
@@ -63,7 +74,7 @@
         
         hr.row-space-top-3.row-space-3
       
-      - if state == 1
+      - if @post.publish?
         h4 コメント
         .js-post-comment-list.post-comment-list.p-l-10.p-r-5
           - if @comments.present?
