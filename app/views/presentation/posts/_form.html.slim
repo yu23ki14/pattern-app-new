@@ -1,5 +1,7 @@
 = form_for @post do |f|
   = f.hidden_field :user_id, value: current_user.id
+  = f.hidden_field :state
+  = f.hidden_field :post_type
   .row-space-top-3
     = link_to "#", class: "m-l-5 row-space-2 js-trigger-post-pattern-selector p inline post-pattern-selector p-y-5 p-x-15"
       |関連パターンを選択
@@ -23,16 +25,16 @@
       = f.text_field :title, placeholder: "タイトルを追加する", class: "col-12 p-y-5 p-x-5"
     .col-12.row-space-2.post-reference[class="#{'hide' if (@post.reference.blank?)}"]
       = f.text_field :reference, placeholder: "出典を追加する", class: "col-6 col-sm-11 p-y-5 p-x-5"
-    .col-12.row-space-2.post-reference-store[class="#{'hide' if (@post.reference_store.blank?)}"]
-      = f.text_field :reference_store, placeholder: "amazonリンクなど入手情報を追加する", class: "col-6 col-sm-11 p-y-5 p-x-5"
     .col-12.row-space-5.post-link[class="#{'hide' if (@post.link.blank?)}"]
       = f.text_field :link, placeholder: "リンクを追加する", class: "col-6 col-sm-11 p-y-5 p-x-5"
+    = render "web_reference_card"
     .col-12.row-space-6.required-container
       .post-content-preview.js-post-content-preview.p-x-5
       = f.hidden_field :content
     .text-center.row-space-7
-      = f.submit "#{'投稿' if (action_name == 'new')} #{'アップデート' if (action_name == 'edit')}", class: "button col-3 p button-primary-outline"
+      = f.submit "#{'投稿' if (action_name == 'new')} #{'アップデート' if (action_name == 'edit')}", class: "button col-3 col-sm-6 p button-primary m-x-10 row-space-top-3", state: "publish"
+      = f.submit "下書き", class: "button col-3 col-sm-6 p button-primary-outline m-x-10 row-space-top-3", state: "draft"
       - if action_name == "edit"
         br
-        = link_to presentation_post_path(@post), method: :delete, class: "button button-outline row-space-top-3 col-3", data: {confirm: "本当に削除しますか？"}
+        = link_to presentation_post_path(@post), method: :delete, class: "button button-outline row-space-top-3 col-3 col-sm-6", data: {confirm: "本当に削除しますか？"}
           |投稿を削除

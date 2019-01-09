@@ -4,11 +4,15 @@ class Presentation::PostsController < ApplicationController
   
   def show
     @comment = Presentation::PostComment.new
-    @comments = @post.presentation_post_comments.includes(:user).order(id: "DESC")
-    @related_patterns = @post.patterns
-    @related_posts = @post.related_posts.page(params[:page]).per(4)
-    if user_signed_in?
-      @stock = Presentation::Stock.where(presentation_post_id: @post.id, user_id: current_user.id)
+    if @post.state == 1
+      @comments = @post.presentation_post_comments.includes(:user).order(id: "DESC")
+      @related_patterns = @post.patterns
+      @related_posts = @post.related_posts.page(params[:page]).per(4)
+      if user_signed_in?
+        @stock = Presentation::Stock.where(presentation_post_id: @post.id, user_id: current_user.id)
+      end
+    elsif current_user.id != @post.user_id || !user_signed_in? && @post.state == 0
+      redirect_back(fallback_location: root_path, notice: "記事は存在しません。")
     end
   end
   
@@ -19,22 +23,30 @@ class Presentation::PostsController < ApplicationController
   
   def  create
     @post = Presentation::Post.new(presentation_post_params)
-    if params[:related_patterns].blank?
-      redirect_to new_presentation_post_path(@post), notice: "関連パターンは一つ以上登録してください。" and return
-    end
-    if @post.save
-      patterns = JSON.parse(params[:related_patterns])
-      patterns.each do |pattern|
-        @related_pattern = Presentation::PostPatternRelate.new(presentation_post_id: @post.id, pattern_id: pattern)
-        if @related_pattern.save
-        else
-          @post.destroy
-          redirect_to new_presentation_post_path and return
-        end
+    if @post.state == 1
+      if params[:related_patterns].blank?
+        redirect_to new_presentation_post_path(@post), notice: "関連パターンは一つ以上登録してください。" and return
       end
-      redirect_to @post and return
-    else
-      redirect_to new_presentation_post_path and return
+      if @post.save
+        patterns = JSON.parse(params[:related_patterns])
+        patterns.each do |pattern|
+          @related_pattern = Presentation::PostPatternRelate.new(presentation_post_id: @post.id, pattern_id: pattern)
+          if @related_pattern.save
+          else
+            @post.destroy
+            redirect_to new_presentation_post_path and return
+          end
+        end
+        redirect_to @post and return
+      else
+        redirect_to new_presentation_post_path and return
+      end
+    elsif @post.state == 0
+      if @post.save
+        redirect_to @post and return
+      else
+        redirect_to new_presentation_post_path and return
+      end
     end
   end
   
@@ -75,14 +87,14 @@ class Presentation::PostsController < ApplicationController
   def get_web_reference
     respond_to do |format|
       format.json {
-        render json: {test_data: "てすと"}, status: 200
+        render json: {reference: "test", title: "てすと", discription: "テストテスト", thumb: ActionController::Base.helpers.asset_path("post_draft")}, status: 200
       }
     end
   end
   
   private
     def presentation_post_params
-      params.require(:presentation_post).permit(:user_id, :title, :reference_store, :reference, :link, :content, :thumb_image)
+      params.require(:presentation_post).permit(:user_id, :title, :reference, :link, :content, :thumb_image, :state, :post_type)
     end
     
     def set_post

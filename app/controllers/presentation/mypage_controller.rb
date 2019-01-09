@@ -6,7 +6,11 @@ class Presentation::MypageController < ApplicationController
   end
   
   def posts
-    @posts = @user.presentation_posts.page(params[:page]).per(15).with_attached_thumb_image.includes(:patterns).order(created_at: "DESC")
+    if params[:state] == "draft"
+      @posts = @user.presentation_posts.draft.page(params[:page]).per(15).with_attached_thumb_image.includes(:patterns).order(created_at: "DESC")
+    else
+      @posts = @user.presentation_posts.publish.page(params[:page]).per(15).with_attached_thumb_image.includes(:patterns).order(created_at: "DESC")
+    end
   end
   
   def patterns

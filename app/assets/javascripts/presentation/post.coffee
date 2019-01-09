@@ -5,15 +5,19 @@ $ ->
     $(document).on 'click', ".js-post-type-selector", ->
       referer = $(this).attr("referer")
       $(".post-type-selector-modal").modal("hide")
-      if referer == "web"
+      if referer == "free"
+        $("#presentation_post_post_type").val(0)
+      else if referer == "book"
+        $("#presentation_post_post_type").val(1)
+        $(".post-reference").removeClass("hide")
+        $(".post-reference-store").removeClass("hide")
+      else if referer == "web"
+        $("#presentation_post_post_type").val(2)
         $(".post-reference-form-modal").modal()
         $(".post-reference").removeClass("hide")
         $(".post-link").removeClass("hide")
-      else if referer == "book"
-        $(".post-reference").removeClass("hide")
-        $(".post-reference-store").removeClass("hide")
-      else if referer == "free"
-        return
+      else if referer == "movie"
+        $("#presentation_post_post_type").val(3)
       return false
     
   if $("body").hasClass("posts edit") || $("body").hasClass("posts new")
@@ -30,28 +34,49 @@ $ ->
     if $("body").hasClass("posts edit")
       post_content = gon.post_content
       editor.setContent(post_content)
-      
+    
+    $("input[type='submit']").on 'click', ->
+      state = $(this).attr("state")
+      if state == "publish"
+        $("#presentation_post_state").val(1)
+      else if state == "draft"
+        $("#presentation_post_state").val(0)
+        
     $('#new_presentation_post, .edit_presentation_post').on 'submit', ->
-      if $("#related_patterns").val().length < 3
-        alert "関連パターンは一つ以上登録してください。"
-        return false
-      else if $("#presentation_post_title").val().length < 1
-        alert "タイトルは必須です。"
-        return false
-      else if $(".post-content-preview").text().length < 1
-        alert "本文は必須です。"
-        return false
+      if $("#presentation_post_state").val() == "1"
+        if $("#related_patterns").val().length < 3
+          alert "関連パターンは一つ以上登録してください。"
+          return false
+        else if $("#presentation_post_title").val().length < 1
+          alert "タイトルは必須です。"
+          return false
+        else if $(".post-content-preview").text().length < 1
+          alert "本文は必須です。"
+          return false
+      if $("#presentation_post_state").val() == "0"
+        if $("#presentation_post_title").val().length < 1
+          alert "タイトルは必須です。"
+          return false
+        else if $(".post-content-preview").text().length < 1
+          alert "本文は必須です。"
+          return false
   
   #editor.setContent('<p class="classy"><strong>Some Custom HTML</strong></p>')
     
   $(document).on 'click', ".js-get-reference-info", ->
     $(".loading-modal").css("display", "block")
     $.ajax
-      url: "posts/get_web_reference",
+      url: "/posts/get_web_reference",
       type: "get"
       success: (data)->
+        
         $(".loading-modal").css("display", "none")
-        editor.setContent(data["test_data"])
+        #$("#presentation_post_link").val(data[""])
+        $("#presentation_post_reference").val(data["reference"])
+        $(".post-web-reference-thumb").css("background-image", "url('" + data["thumb"] + "')")
+        $(".post-web-reference-card h4").text(data["title"])
+        $(".post-web-reference-card p").text(data["discription"])
+        $(".post-web-reference-card").removeClass("hide")
         $('.post-reference-form-modal').modal('hide')
     return false
     

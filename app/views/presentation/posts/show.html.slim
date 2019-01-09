@@ -1,6 +1,9 @@
+- state = @post.state
 .page-container
   .flex-container.post-wrapper.p-y-20.flex-wrap.p-x-10.bg-contrast
     .col-8.col-md-7.col-sm-12.post-article-content
+      - if state == 0
+        .p-y-5.p-x-10.bordered.inline.text-contrast.bg-gray.strong.row-space-2 下書き
       h2.m-t-0 #{@post.title}
       hr.row-space-4.col-8.m-l-0
       - if @post.thumb_image.attached?
@@ -13,8 +16,9 @@
     .col-3.col-md-4.col-sm-12.post-meta-info
       hr.thick.hide-pc.row-space-4
       -if user_signed_in?
-        = link_to "#", class: "button row-space-3 js-post-stock #{@stock.present? ? 'button-outline' : 'button-primary'}", user_id: "#{current_user.id}", post_id: "#{@post.id}", type: "#{@stock.present? ? 'delete' : 'create'}"
-          |#{@stock.present? ? 'ストックから外す' : 'ストックする'}
+        - if state == 1
+          = link_to "#", class: "button row-space-3 js-post-stock #{@stock.present? ? 'button-outline' : 'button-primary'}", user_id: "#{current_user.id}", post_id: "#{@post.id}", type: "#{@stock.present? ? 'delete' : 'create'}"
+            |#{@stock.present? ? 'ストックから外す' : 'ストックする'}
         - if @post.user_id == current_user.id
           br
           = link_to edit_presentation_post_path, class: "button button-outline row-space-3"
@@ -48,39 +52,42 @@
       
       hr.row-space-top-3.row-space-3
       
-      h4 投稿に紐づけられたパターン
-      ul.post-pattern-list
-        - @related_patterns.each do |rp|
-          li
-            = link_to presentation_pattern_path(id: rp.id)
-              p.inline
-                |#{rp.pattern_name}
-      
-      hr.row-space-top-3.row-space-3
-      
-      h4 コメント
-      .js-post-comment-list.post-comment-list.p-l-10.p-r-5
-        - if @comments.present?
-          - @comments.each do |c|
-            h5.m-b-0 #{c.user.name}
-            p.p-b-5.p-l-10 #{c.comment}
-        - else
-          p.js-post-no-comment まだコメントはありません。
+      -if @related_patterns.present?
+        h4 投稿に紐づけられたパターン
+        ul.post-pattern-list
+          - @related_patterns.each do |rp|
+            li
+              = link_to presentation_pattern_path(id: rp.id)
+                p.inline
+                  |#{rp.pattern_name}
         
-      - if user_signed_in?
-        = form_for @comment do |f|
-          .flex-container.row-space-top-2
-            = f.hidden_field :user_id, value: current_user.id
-            = f.hidden_field :presentation_post_id, value: @post.id
-            = f.text_field :comment, class: "col-9 p-x-5 small"
-            = f.submit "投稿", class: "button col-2 p small m-l-10", style: "padding: 4px 20px"
+        hr.row-space-top-3.row-space-3
+      
+      - if state == 1
+        h4 コメント
+        .js-post-comment-list.post-comment-list.p-l-10.p-r-5
+          - if @comments.present?
+            - @comments.each do |c|
+              h5.m-b-0 #{c.user.name}
+              p.p-b-5.p-l-10 #{c.comment}
+          - else
+            p.js-post-no-comment まだコメントはありません。
+          
+        - if user_signed_in?
+          = form_for @comment do |f|
+            .flex-container.row-space-top-2
+              = f.hidden_field :user_id, value: current_user.id
+              = f.hidden_field :presentation_post_id, value: @post.id
+              = f.text_field :comment, class: "col-9 p-x-5 small"
+              = f.submit "投稿", class: "button col-2 p small m-l-10", style: "padding: 4px 20px"
   
-  .row-space-top-4
-    .text-center
-      h4 関連する投稿
-    .post-container.masonry-container
-      - @related_posts.each do |p|
-        .col-3.col-lg-4.col-md-6.col-sm-12.post-content.masonry-content
-          = link_to p
-            = render "presentation/shared/post_card", post: p
-    = render "presentation/shared/posts_paginate_loader", posts: @related_posts
+  -if @related_posts.present?
+    .row-space-top-4
+      .text-center
+        h4 関連する投稿
+      .post-container.masonry-container
+        - @related_posts.each do |p|
+          .col-3.col-lg-4.col-md-6.col-sm-12.post-content.masonry-content
+            = link_to p
+              = render "presentation/shared/post_card", post: p
+      = render "presentation/shared/posts_paginate_loader", posts: @related_posts

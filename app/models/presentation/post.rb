@@ -11,6 +11,9 @@ class Presentation::Post < ApplicationRecord
     validates :title, presence: true
     validates :content, presence: true
     
+    enum state: {draft: 0, publish: 1, illegal: 2}
+    enum post_type: {free: 0, book: 1, web: 2, movie: 3}
+    
     def related_posts
         ids = []
         patterns = self.patterns
