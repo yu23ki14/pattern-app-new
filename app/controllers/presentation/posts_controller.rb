@@ -90,7 +90,7 @@ class Presentation::PostsController < ApplicationController
     data = `python3.6 /home/manabu/pytest/test1.py`
     
     title = data
-    #thumb = data["thumb"]
+    thumb = data
     
     respond_to do |format|
       format.json {
