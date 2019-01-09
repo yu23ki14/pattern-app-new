@@ -88,9 +88,9 @@ class Presentation::PostsController < ApplicationController
     link = params[:url]
     
     data = `python3.6 /home/manabu/pytest/test1.py`
-    p data
-    title = data["title"]
-    thumb = data["thumb"]
+    
+    title = data
+    #thumb = data["thumb"]
     
     respond_to do |format|
       format.json {
