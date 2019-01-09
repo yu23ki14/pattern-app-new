@@ -86,7 +86,7 @@ class Presentation::PostsController < ApplicationController
   
   def get_web_reference
     link = params[:url]
-    data = JSON.parse(`python3.6 /home/manabu/pytest/test1.py`)
+    data = `python3.6 /home/manabu/pytest/test1.py`
     title = data["title"]
     thumb = data["thumb"]
     
