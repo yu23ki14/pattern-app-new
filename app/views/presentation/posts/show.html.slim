@@ -7,12 +7,12 @@
         .p-y-5.p-x-10.bordered.inline.text-contrast.bg-gray.strong.row-space-2 下書き
       - if @post.web?
         .flex-container.flex-center
-          .post-web-reference-panel.bordered.col-12.p-x-0.p-y-0
+          .post-web-reference-panel.box-shadow-primary.col-12.p-x-0.p-y-0
             - if option["thumb"].present?
               .post-web-thumb[style="background-image: url('#{option["thumb"]}')"]
-            h3.p-x-10 #{@post.title}
+            h3.p-x-20.p-y-5 #{@post.title}
         .text-center.row-space-top-2.row-space-2
-          =link_to @post.link, class: "button button-outline", target: "blank"
+          =link_to @post.link, class: "button button-outline post-web-reference-button", target: "blank"
             |記事を読む
       - else
         h2.m-t-0 #{@post.title}

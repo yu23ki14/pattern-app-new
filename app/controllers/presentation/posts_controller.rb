@@ -85,9 +85,10 @@ class Presentation::PostsController < ApplicationController
   end
   
   def get_web_reference
+    title = `python3.6 /home/manabu/pytest/test1.py`
     respond_to do |format|
       format.json {
-        render json: {reference: "test", title: "てすと", link: "テストテスト", thumb: ActionController::Base.helpers.asset_path("post_draft")}, status: 200
+        render json: {reference: "test", title: title, link: "テストテスト", thumb: ActionController::Base.helpers.asset_path("post_draft")}, status: 200
       }
     end
   end
