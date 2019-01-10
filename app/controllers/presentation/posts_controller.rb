@@ -7,7 +7,7 @@ class Presentation::PostsController < ApplicationController
     if @post.publish?
       @comments = @post.presentation_post_comments.includes(:user).order(id: "DESC")
       @related_patterns = @post.patterns
-      @related_posts = @post.related_posts.page(params[:page]).per(4)
+      @related_posts = @post.related_posts.publish.page(params[:page]).per(4)
       if user_signed_in?
         @stock = Presentation::Stock.where(presentation_post_id: @post.id, user_id: current_user.id)
       end
