@@ -2,14 +2,17 @@
   = render "menu"
   hr.row-space-4
   .row-space-2
-    = link_to posts_presentation_mypage_index_path, class: "button button-primary m-x-10"
+    = link_to posts_presentation_mypage_index_path, class: "button m-x-10 #{params[:state] == 'draft' ? 'button-outline' : 'button-primary'}"
       |公開している投稿
-    = link_to posts_presentation_mypage_index_path(state: "draft"), class: "button button-outline m-x-10"
+    = link_to posts_presentation_mypage_index_path(state: "draft"), class: "button m-x-10 #{params[:state] == 'draft' ? 'button-primary' : 'button-outline'}"
       |下書き一覧
   .post-container.masonry-container
     - @posts.each do |p|
       = link_to p
         .col-3.col-lg-4.col-md-6.col-sm-12.post-content.masonry-content
           = render "presentation/shared/post_card", post: p
+    - if @posts.blank?
+      .col-12
+        h4 #{params[:state] == "draft" ? "下書きはありません。" : "公開している投稿はありません。"}
           
   = render "presentation/shared/posts_paginate_loader", posts: @posts
