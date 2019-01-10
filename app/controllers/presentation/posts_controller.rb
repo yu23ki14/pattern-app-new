@@ -87,10 +87,18 @@ class Presentation::PostsController < ApplicationController
   def get_web_reference
     link = params[:url]
     
-    data = `python3.6 /home/manabu/pytest/test1.py`
-    
-    title = data
-    thumb = data
+    if Rails.env.production?
+      data = `python3.6 /home/manabu/pytest/test1.py #{link}`
+      data = data.gsub(/\\u([\da-fA-F]{4})/) { [$1].pack('H*').unpack('n*').pack('U*') }
+      data = JSON.parse(data)
+      title = data[:title]
+      thumb = data[:thumb]
+    else
+      data = `python /home/ubuntu/pytest/test1.py`
+      data = JSON.parse(data)
+      title = data["title"]
+      thumb = data["thumb"]
+    end
     
     respond_to do |format|
       format.json {
