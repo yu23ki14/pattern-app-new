@@ -18,6 +18,14 @@
       = f.label :thumb_image, class: "flex-container flex-center flex-wrap js-thumb-image-label"
         - if @post.thumb_image.attached?
           = image_tag @post.thumb_image, class: "col-12"
+        - elsif @post.option.present?
+          - option = JSON.parse(@post.option)
+          - if option["thumb"].present?
+            = image_tag option["thumb"], class: "col-12"
+          - else
+            i.fa.fa-image.col-12.text-center
+            p.small.strong
+              |サムネイルを追加
         - else
           i.fa.fa-image.col-12.text-center
           p.small.strong

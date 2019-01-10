@@ -14,14 +14,18 @@
         .text-center.row-space-top-2.row-space-2
           =link_to @post.link, class: "button button-outline post-web-reference-button", target: "blank"
             |記事を読む
+        hr.row-space-4
       - else
         h2.m-t-0 #{@post.title}
         hr.row-space-4.col-8.m-l-0
         - if @post.thumb_image.attached?
           - image = @post.thumb_image.variant(resize: "700x700>")
           = image_tag image, class: "col-7 col-md-8 col-sm-12 row-space-8 p-x-0"
-      - if @post.video? && @post.link.include?("www.youtube.com")
-        - id = @post.link.split("?v=").last
+      - if @post.video?
+        - if @post.link.include?("www.youtube.com")
+          - id = @post.link.split("?v=").last
+        - elsif @post.link.include?("youtu.be")
+          - id = @post.link.split(".be/").last
         .post-video-wrap.row-space-4
           iframe src="https://www.youtube.com/embed/#{id}" frameborder="0" allowfullscreen
       
@@ -49,7 +53,7 @@
         p.row-space-2
           span.strong
             |リンク: 
-          = link_to @post.link
+          = link_to @post.link, target: "blank"
             |#{@post.link}
       - if @post.reference_store.present?
         p.row-space-2

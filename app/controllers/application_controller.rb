@@ -18,11 +18,6 @@ class ApplicationController < ActionController::Base
   
   private
     def set_subdomain
-      #if Rails.env.production?
-      #  @subdomain = ActionDispatch::Http::URL.extract_subdomains(request.host, 0).first
-      #else
-      #  @subdomain = ActionDispatch::Http::URL.extract_subdomains(request.subdomain, 0).first
-      #end
       if request.subdomain.blank?
         @subdomain = false
       else
