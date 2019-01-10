@@ -23,15 +23,15 @@ class Presentation::WelcomeController < ApplicationController
           recommended_post_ids = (recommended_post_ids - following_post_ids).shuffle
           
           post_ids = following_post_ids + recommended_post_ids
-          @result= Presentation::Post.where(id: post_ids).with_attached_thumb_image.includes(:patterns).sort_by{ |o| post_ids.index(o.id)}
+          @result= Presentation::Post.publish.where(id: post_ids).with_attached_thumb_image.includes(:patterns).sort_by{ |o| post_ids.index(o.id)}
           @posts = Kaminari.paginate_array(@result).page(params[:page]).per(15)
         else
           post_ids = recommended_post_ids.shuffle
-          @result= Presentation::Post.where(id: post_ids).with_attached_thumb_image.includes(:patterns).sort_by{ |o| post_ids.index(o.id)}
+          @result= Presentation::Post.publish.where(id: post_ids).with_attached_thumb_image.includes(:patterns).sort_by{ |o| post_ids.index(o.id)}
           @posts = Kaminari.paginate_array(@result).page(params[:page]).per(15)
         end
       else
-        @posts = Presentation::Post.with_attached_thumb_image.includes(:patterns).order('created_at DESC').page(params[:page]).per(15)
+        @posts = Presentation::Post.publish.with_attached_thumb_image.includes(:patterns).order('created_at DESC').page(params[:page]).per(15)
       end
     else
       cookies.permanent["visited"] = "t"

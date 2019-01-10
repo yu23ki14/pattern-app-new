@@ -7,8 +7,8 @@ class Presentation::PatternsController < ApplicationController
   
   def show
     @pattern = @patterns.find(params[:id])
-    @posts = @pattern.presentation_related_posts.page(params[:page]).per(8).with_attached_thumb_image.includes(:patterns)
-    @popular_posts = @pattern.presentation_related_posts.limit(4).with_attached_thumb_image.includes(:patterns)
+    @posts = @pattern.presentation_related_posts.publish.page(params[:page]).per(8).with_attached_thumb_image.includes(:patterns)
+    @popular_posts = @pattern.presentation_related_posts.publish.limit(4).with_attached_thumb_image.includes(:patterns)
     if user_signed_in?
       @follow = Presentation::UserInterest.where(pattern_id: @pattern.id, user_id: current_user.id)
     end
