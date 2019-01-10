@@ -97,11 +97,11 @@ class Presentation::PostsController < ApplicationController
     data = JSON.parse(data)
     title = data["title"]
     thumb = data["thumb"]
-    authors = data["author"]
+    author = data["author"]
     
     respond_to do |format|
       format.json {
-        render json: {reference: authors, title: title, link: link, thumb: thumb}, status: 200
+        render json: {reference: author, title: title, link: link, thumb: thumb}, status: 200
       }
     end
   end
