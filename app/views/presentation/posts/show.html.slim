@@ -1,4 +1,5 @@
-- option = JSON.parse(@post.option)
+- if @post.option.present?
+  - option = JSON.parse(@post.option)
 
 .page-container
   .flex-container.post-wrapper.p-y-20.flex-wrap.p-x-10.bg-contrast
