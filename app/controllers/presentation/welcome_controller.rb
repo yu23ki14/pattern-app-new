@@ -13,6 +13,7 @@ class Presentation::WelcomeController < ApplicationController
         last_post_id.times do |i|
           recommended_post_ids.push(i + 1)
         end
+        recommended_post_ids = recommended_post_ids.reverse!
         
         @following_patterns = @user.presentation_following_patterns
         if @following_patterns.present?
