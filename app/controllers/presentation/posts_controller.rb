@@ -23,30 +23,26 @@ class Presentation::PostsController < ApplicationController
   
   def  create
     @post = Presentation::Post.new(presentation_post_params)
-    if @post.state == "publish"
-      if params[:related_patterns].blank?
-        redirect_to new_presentation_post_path(@post), notice: "関連パターンは一つ以上登録してください。" and return
-      end
-      if @post.save
+    if params[:related_patterns].blank? && @post.state == "publish"
+      redirect_to new_presentation_post_path(@post), notice: "関連パターンは一つ以上登録してください。" and return
+    end
+    if @post.save
+      if params[:related_patterns].present?
         patterns = JSON.parse(params[:related_patterns])
         patterns.each do |pattern|
           @related_pattern = Presentation::PostPatternRelate.new(presentation_post_id: @post.id, pattern_id: pattern)
           if @related_pattern.save
+            redirect_to @post and return
           else
             @post.destroy
             redirect_to new_presentation_post_path and return
           end
         end
-        redirect_to @post and return
       else
-        redirect_to new_presentation_post_path and return
-      end
-    elsif @post.state == "draft"
-      if @post.save
         redirect_to @post and return
-      else
-        redirect_to new_presentation_post_path and return
       end
+    else
+      redirect_to new_presentation_post_path and return
     end
   end
   
