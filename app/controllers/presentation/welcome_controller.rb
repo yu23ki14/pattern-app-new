@@ -20,13 +20,13 @@ class Presentation::WelcomeController < ApplicationController
             following_post_ids += pattern.presentation_related_posts.pluck(:id)
           end
           following_post_ids = following_post_ids.sort.last(10).sort {|a, b| b <=> a }
-          recommended_post_ids = (recommended_post_ids - following_post_ids).shuffle
+          recommended_post_ids = (recommended_post_ids - following_post_ids)
           
           post_ids = following_post_ids + recommended_post_ids
           @result= Presentation::Post.publish.where(id: post_ids).with_attached_thumb_image.includes(:patterns).sort_by{ |o| post_ids.index(o.id)}
           @posts = Kaminari.paginate_array(@result).page(params[:page]).per(15)
         else
-          post_ids = recommended_post_ids.shuffle
+          post_ids = recommended_post_ids
           @result= Presentation::Post.publish.where(id: post_ids).with_attached_thumb_image.includes(:patterns).sort_by{ |o| post_ids.index(o.id)}
           @posts = Kaminari.paginate_array(@result).page(params[:page]).per(15)
         end
