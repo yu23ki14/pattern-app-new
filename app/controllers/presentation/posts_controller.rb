@@ -32,12 +32,13 @@ class Presentation::PostsController < ApplicationController
         patterns.each do |pattern|
           @related_pattern = Presentation::PostPatternRelate.new(presentation_post_id: @post.id, pattern_id: pattern)
           if @related_pattern.save
-            redirect_to @post and return
+            print "ok"
           else
             @post.destroy
             redirect_to new_presentation_post_path and return
           end
         end
+        redirect_to @post and return
       else
         redirect_to @post and return
       end
@@ -61,6 +62,7 @@ class Presentation::PostsController < ApplicationController
       patterns.each do |pattern|
         @related_pattern = Presentation::PostPatternRelate.new(presentation_post_id: @post.id, pattern_id: pattern)
         if @related_pattern.save
+          print "ok"
         else
           @post.destroy
           redirect_to new_presentation_post_path and return
