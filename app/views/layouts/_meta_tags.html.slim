@@ -5,11 +5,13 @@ link media='handheld' rel='alternate'
 meta name="viewport" content="width=device-width,initial-scale=1.0"
 - if @subdomain.present?
   title PresenBox
+  meta name="description" content="PresenBoxは「説得的・発見的・共感的」なプレゼンテーションをつくるための具体的なコツがまとめられているキュレーションメディアです。魅力的なプレゼンはコンセプト、資料、発表への姿勢などさまざまな要素によって成り立っています。あなたのプレゼンをより魅力的にしたいときや、新しいアイディアを取り込みたいときにぜひ覗いてみてください、きっと良いアイディアに出会えます。"
   = favicon_link_tag('logo-sq.png')
   = favicon_link_tag 'logo-sq.png', rel:'apple-touch-icon-precomposed', type:'image/png'
 
 - else
   title Pattern App
+  meta name="description" content="PatternAppはパターン・ランゲージを生活の一部にし、その実践を促すことを支援するウェブアプリケーションです。" 
   = favicon_link_tag('icons/icon-manabu.png')
   = favicon_link_tag 'apple-touch-icon.jpg', rel:'apple-touch-icon-precomposed', type:'image/png'
 
