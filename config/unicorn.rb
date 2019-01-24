@@ -1,8 +1,8 @@
-APP_PATH = "/home/manabu/patternapp"
+APP_PATH = ENV["APP_PATH"]
 
 worker_processes 3
 working_directory APP_PATH
-listen "/var/run/unicorn/unicorn.socket"
+listen ENV["UNICORN_SOCKET_PATH"]
 pid APP_PATH + "/tmp/pids/unicorn.pid"
 stderr_path APP_PATH + "/log/unicorn.log"
 stdout_path APP_PATH + "/log/unicorn.log"
