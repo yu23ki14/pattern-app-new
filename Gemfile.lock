@@ -85,7 +85,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.4)
+    concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.4)
     debug_inspector (0.0.3)
@@ -109,7 +109,7 @@ GEM
       multi_json
       request_store (>= 1.0)
     google-analytics-rails (1.1.1)
-    i18n (1.5.3)
+    i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.7.1)
       mini_magick (~> 4.0)
