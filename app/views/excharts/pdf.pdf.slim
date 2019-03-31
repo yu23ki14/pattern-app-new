@@ -23,15 +23,15 @@
   .row.patterns-list-on-pdf[class="#{I18n.locale}"]
     - @patterns.each do |p|
       - if @current_pattern_no.include?("#{p.pattern_no}")
-        p.small.pdf-col-6.strong
+        p.pdf-col-6.strong
           | #{p.pattern_name}
           span.decoration-on-pdf
             |○
       - elsif @proximal_pattern_no.include?("#{p.pattern_no}")
-        p.small.pdf-col-6
+        p.pdf-col-6
           | #{p.pattern_name}
           span.decoration-on-pdf
             |★
       - else
-        p.small.pdf-col-6
+        p.pdf-col-6
           | #{p.pattern_name}
