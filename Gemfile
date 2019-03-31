@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Use devise as login
-gem 'devise', '~> 4.5.0'
+gem 'devise', '~> 4.6.0'
 
 #use by_star as picking record by date
 gem 'by_star', :git => "git://github.com/radar/by_star"
