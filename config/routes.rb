@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   #patterns route
-  resources :patterns, only: [:index] do
+  resources :patterns do
     collection do
       get ':language_id' => 'patterns#show'
       get ':language_id/:pattern_no' => 'patterns#details'
