@@ -84,7 +84,8 @@ end
 
 group :production do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'unicorn-rails', '2.2.1'
+  #gem 'unicorn-rails', '2.2.1'
+  gem 'unicorn', '5.4.1'
   gem "aws-sdk-s3", require: false
 end
 
