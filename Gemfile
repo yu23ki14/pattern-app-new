@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 gem 'pg', '~> 0.21.0'
@@ -42,7 +42,7 @@ gem 'gon', '~> 6.2.1'
 gem 'seed-fu', '~> 2.3.9'
 
 #use ransack as serch
-gem 'ransack', '~> 2.0.1'
+gem 'ransack', '~> 2.1.1'
 
 gem 'google-analytics-rails', '~> 1.1.1'
 
