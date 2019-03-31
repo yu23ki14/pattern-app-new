@@ -3,7 +3,7 @@
   h3 #{t('chart_pdf_subtitle')}
   p.name-on-pdf 名前
   p.small.row-space-top-4.explanation-on-pdf
-    |#{t('chart_pdf_discription')}
+    |#{t('chart_pdf_discription').html_safe}
   = image_tag @chart, class: "chart-on-pdf"
   
   //  - if @current_pattern_no.include?("0")
@@ -23,15 +23,15 @@
   .row.patterns-list-on-pdf[class="#{I18n.locale}"]
     - @patterns.each do |p|
       - if @current_pattern_no.include?("#{p.pattern_no}")
-        p.ex-small.pdf-col-6.strong
+        p.small.pdf-col-6.strong
           | #{p.pattern_name}
           span.decoration-on-pdf
             |○
       - elsif @proximal_pattern_no.include?("#{p.pattern_no}")
-        p.ex-small.pdf-col-6
+        p.small.pdf-col-6
           | #{p.pattern_name}
           span.decoration-on-pdf
             |★
       - else
-        p.ex-small.pdf-col-6
+        p.small.pdf-col-6
           | #{p.pattern_name}
