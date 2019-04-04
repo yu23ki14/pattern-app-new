@@ -53,3 +53,13 @@ $(document).on "turbolinks:load", ->
 
   #bodyのmin-heightをwindowのサイズに
   $("body").css("min-height", $(window).innerHeight() + "px")
+  
+  $(window).on 'load scroll resize', ->
+    if $(".card1").length > 1
+      maxHeight = 0
+      $(".card1").each ->
+        if $(this).height() > maxHeight
+          maxHeight = $(this).height()
+        return
+      $(".card1").height maxHeight
+      return

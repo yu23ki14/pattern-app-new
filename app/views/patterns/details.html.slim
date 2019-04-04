@@ -58,4 +58,4 @@ h4.text-center.row-space-2
             .pattern-title-container.h6.small.strong.p-t-20.p-x-10.text-center #{rp.pattern_name}
             .col-8.col-center.required-container
               = image_tag "pattern_img/#{Language.find(rp.language_id).lg_code}/#{rp.pattern_no}.png", class: "col-12 col-center"
-            p.small.p-x-15.text-center.summary #{rp.summary}
+            p.small.p-x-15.p-b-15 #{rp.summary}
