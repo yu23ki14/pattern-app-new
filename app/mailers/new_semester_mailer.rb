@@ -3,6 +3,6 @@ class NewSemesterMailer < ApplicationMailer
     I18n.locale = "ja"
     @users_address = users_address
     @url = "#{ENV["RAILS_ROOT"]}"
-    mail(bcc: @users_address, subject: "井庭崇研究室PatternAppプロジェクトチームから新年度の学びデザインの提案")
+    mail(bcc: @users_address, subject: "１年経ってどれだけ学びの経験が増えたかをチェックしてみよう【ラーニング・パターンによる自己診断】")
   end
 end
