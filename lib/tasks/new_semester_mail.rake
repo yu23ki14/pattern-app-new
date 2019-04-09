@@ -9,8 +9,7 @@ namespace :new_semester_mail do
     x = vars.index.to_i * 50
     y = vars.index.to_i * 50 + 49
     users_address = User.where(id: users_id).pluck(:email)[x..y]
-    p users_address
-    #NewSemesterMailer.send_2018(users_address).deliver
+    NewSemesterMailer.send_2018(users_address).deliver
   end
   
 end
