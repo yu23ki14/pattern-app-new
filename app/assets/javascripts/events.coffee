@@ -52,7 +52,9 @@ $(document).on 'turbolinks:load', ->
         data_label_temp_single.data = value
         data_label_temp_single.label = label[index]
         data_label_temp.push(data_label_temp_single)
+      console.log data_label_temp
       data_label_temp = hashSort(data_label_temp, 'data', 'DESC')
+      console.log data_label_temp
       for value, index in data_label_temp
         data_temp.push(value.data)
         label_temp.push(value.label)
