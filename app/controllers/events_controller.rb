@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  
+  before_action :set_event, only: [:graph, :show, :proximal]
+  
   def index
     if Rails.env == 'production'
       if current_user.id == 2 || current_user.id == 5 || current_user.id == 183
@@ -16,11 +19,19 @@ class EventsController < ApplicationController
     @languages = Language.all
   end
   
+  def graph
+    @patterns = Pattern.where(language_id: @event.language_id).order("pattern_no")
+    gon.default_label = @patterns.pluck(:pattern_name_ja)
+    
+    excharts = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
+    gon.results = excharts.pluck(:data1)
+    gon.proximal_results = excharts.pluck(:data2)
+  end
+  
   def show
     respond_to do |format|
       format.html {}
       format.csv {
-        @event = Event.find(params[:id])
         @results = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
         filename = @event.event_name
         headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
@@ -32,7 +43,6 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html {}
       format.csv {
-        @event = Event.find(params[:id])
         @results = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
         filename = @event.event_name + "proximal"
         headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
@@ -52,5 +62,9 @@ class EventsController < ApplicationController
   private
     def event_params
       params.require(:event).permit(:user_id, :event_name, :language_id, :event_code, :other_details, :limit)
+    end
+    
+    def set_event
+      @event = Event.find(params[:id])
     end
 end

@@ -35,6 +35,7 @@
 //= require shuffles
 //= require users
 //= require learning_styles
+//= require events
 
 //= require presentation/common
 //= require presentation/welcome

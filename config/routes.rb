@@ -123,6 +123,7 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create, :index, :show] do
     collection do
       get ':id/proximal' => 'events#proximal'
+      get ':id/graph' => 'events#graph'
     end
   end
   
