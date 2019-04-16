@@ -26,22 +26,10 @@ $(document).on 'turbolinks:load', ->
           data[key] += value_single
       return data
     
-    hashSort = (hash, key, order) ->
-      if !order or order and !order.match(/^(ASC|DESC)$/i)
-        order = 'ASC'
-      if hash and key
-        hash.sort (a, b) ->
-          if order.match(/^ASC$/i)
-            if a[key].toString() > b[key].toString()
-              1
-            else
-              -1
-          else
-            if a[key].toString() < b[key].toString()
-              1
-            else
-              -1
-      return hash
+    hashSort = (array, order) ->
+      array.sort (a, b) ->
+        if a[order] > b[order] then -1 else 1
+      return array
       
     sort_data = (data, label) ->
       data_label_temp = []
@@ -52,9 +40,7 @@ $(document).on 'turbolinks:load', ->
         data_label_temp_single.data = value
         data_label_temp_single.label = label[index]
         data_label_temp.push(data_label_temp_single)
-      console.log data_label_temp
-      data_label_temp = hashSort(data_label_temp, 'data', 'DESC')
-      console.log data_label_temp
+      data_label_temp = hashSort(data_label_temp, "data")
       for value, index in data_label_temp
         data_temp.push(value.data)
         label_temp.push(value.label)
@@ -72,7 +58,7 @@ $(document).on 'turbolinks:load', ->
         data_label_temp_single.future_data = data_future[index]
         data_label_temp_single.label = label[index]
         data_label_temp.push(data_label_temp_single)
-      data_label_temp = hashSort(data_label_temp, order, 'DESC')
+      data_label_temp = hashSort(data_label_temp, order)
       for value, index in data_label_temp
         past_data_temp.push(value.past_data)
         future_data_temp.push(value.future_data)
