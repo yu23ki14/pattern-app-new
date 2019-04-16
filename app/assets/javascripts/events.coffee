@@ -215,3 +215,12 @@ $(document).on 'turbolinks:load', ->
         }]
       options: options
       )
+      
+    $(".js-graph-download").click ->
+      target = document.getElementById($(this).attr("canvas_id"))
+      filename = $(this).attr("canvas_id") + ".jpg"
+      link = document.createElement("a")
+      link.href = target.toDataURL()
+      link.download = filename
+      link.click()
+      

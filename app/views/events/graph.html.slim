@@ -1,22 +1,36 @@
 .page-container
   .row-space-top-4
     h1 実践したことがある:パターンNo順
-    canvas#past[width="1200", height="750"]
+    = link_to "javascript:void(0)", canvas_id: "past", class: "js-graph-download underline"
+      |画像ダウンロード
+    canvas#past.row-space-top-2[width="1200", height="750"]
   .row-space-top-4
     h1 実践したことがある:降順
+    = link_to "javascript:void(0)", canvas_id: "past-sorted", class: "js-graph-download underline"
+      |画像ダウンロード
     canvas#past-sorted[width="1200", height="750"]
   .row-space-top-4
     h1 これから実践したい:パターンNo順
+    = link_to "javascript:void(0)", canvas_id: "future", class: "js-graph-download underline"
+      |画像ダウンロード
     canvas#future[width="1200", height="750"]
   .row-space-top-4
     h1 これから実践したい:降順
+    = link_to "javascript:void(0)", canvas_id: "future-sorted", class: "js-graph-download underline"
+      |画像ダウンロード
     canvas#future-sorted[width="1200", height="750"]
   .row-space-top-4
     h1 統合:パターンNo順
+    = link_to "javascript:void(0)", canvas_id: "integrated", class: "js-graph-download underline"
+      |画像ダウンロード
     canvas#integrated[width="1200", height="750"]
   .row-space-top-4
     h1 統合:実践している降順
+    = link_to "javascript:void(0)", canvas_id: "integrated-sorted-past", class: "js-graph-download underline"
+      |画像ダウンロード
     canvas#integrated-sorted-past[width="1200", height="750"]
   .row-space-top-4
     h1 統合:実践したい降順
+    = link_to "javascript:void(0)", canvas_id: "integrated-sorted-future", class: "js-graph-download underline"
+      |画像ダウンロード
     canvas#integrated-sorted-future[width="1200", height="750"]
