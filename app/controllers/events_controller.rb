@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @patterns = Pattern.where(language_id: @event.language_id).order("pattern_no")
     gon.default_label = @patterns.pluck(:pattern_name_ja)
     
-    excharts = @event.excharts.order("created_at DESC")
+    excharts = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
     gon.results = excharts.pluck(:data1)
     gon.proximal_results = excharts.pluck(:data2)
   end
