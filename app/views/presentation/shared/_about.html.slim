@@ -8,14 +8,22 @@
         br
         |Presentation
         
-      .text-center.about-account-top
-        = link_to new_user_session_path, class: "button button-primary"
-          |ログイン・新規登録
-        br
-        = link_to presentation_root_path, class: "button button-primary-outline"
-          |ログインせずに利用
-        p.small.bg-contrast.m-t-5
-          |*後からでも登録できます。
+      - if user_signed_in?
+        .about-account-top
+          = link_to root_path, class: "button button-primary"
+            |アイディアを探す
+          br
+          = link_to new_presentation_post_path, class: "button button-primary"
+            |アイディアを投稿する
+      - else
+        .text-center.about-account-top
+          = link_to new_user_session_path, class: "button button-primary"
+            |ログイン・新規登録
+          br
+          = link_to presentation_root_path, class: "button button-primary-outline"
+            |ログインせずに利用
+          p.small.bg-contrast.m-t-5
+            |*後からでも登録できます。
     
     .bg-contrast.about-feature.flex-container.flex-wrap.flex-center.m-x-10
       .col-11
