@@ -4,8 +4,7 @@ meta charset='UTF-8'
 link media='handheld' rel='alternate'
 meta name="viewport" content="width=device-width,initial-scale=1.0"
 - if @subdomain.present?
-  title PresenBox
-  meta name="description" content="PresenBoxは「説得的・発見的・共感的」なプレゼンテーションをつくるための具体的なコツがまとめられているキュレーションメディアです。魅力的なプレゼンはコンセプト、資料、発表への姿勢などさまざまな要素によって成り立っています。あなたのプレゼンをより魅力的にしたいときや、新しいアイディアを取り込みたいときにぜひ覗いてみてください、きっと良いアイディアに出会えます。"
+  = display_meta_tags :charset => 'utf-8', :og => { :title => meta_page_title, :type => 'website', :url => request.url, image: {_: og_image, width: 600, height: 420}, :site_name => 'PresenBox', :description => meta_description }, :title => meta_page_title, :description => meta_description, :author => 'PresenBox', :format => {:detection  => 'telephone=no, address=no, email=no'}
   = favicon_link_tag('logo-sq.png')
   = favicon_link_tag 'logo-sq.png', rel:'apple-touch-icon-precomposed', type:'image/png'
 

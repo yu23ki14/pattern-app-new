@@ -66,6 +66,8 @@ gem "kaminari", '~> 1.1.1'
 gem 'mini_magick', '~> 4.8'
 gem 'image_processing', '~> 1.2'
 
+gem 'meta-tags', '~> 2.11.1'
+
 #use alexa
 #gem 'alexa_rubykit'
 
