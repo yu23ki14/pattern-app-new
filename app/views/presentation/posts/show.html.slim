@@ -1,3 +1,14 @@
+#fb-root
+javascript:
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js" 
+
 - if @post.option.present?
   - option = JSON.parse(@post.option)
 
@@ -115,14 +126,3 @@
             = link_to p
               = render "presentation/shared/post_card", post: p
       = render "presentation/shared/posts_paginate_loader", posts: @related_posts
-      
-#fb-root
-javascript:
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js" 
