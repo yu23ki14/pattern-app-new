@@ -82,8 +82,8 @@ script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
         |#{@post.presentation_stocks.length}人
       
       .row-space-top-1
-        .row-space-1.fb-share-button data-href="#{request.url}" data-layout="button"
-        br
+        .row-space-1
+          .fb-share-button data-href="#{request.url}" data-layout="button"
         a.twitter-share-button data-show-count="false" href="#{request.url}"  Tweet
       hr.row-space-top-3.row-space-3
       
