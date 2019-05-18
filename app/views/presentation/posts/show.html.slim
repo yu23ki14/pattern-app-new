@@ -33,7 +33,6 @@
       = @post.content.html_safe
     
     
-    
     .col-3.col-md-4.col-sm-12.post-meta-info
       hr.thick.hide-pc.row-space-4
       -if user_signed_in?
@@ -71,6 +70,10 @@
           |ストックした人数:   
         |#{@post.presentation_stocks.length}人
       
+      .row-space-top-1
+        .row-space-1.fb-share-button data-href="#{request.url}" data-layout="button"
+        br
+        a.twitter-share-button data-show-count="false" href="#{request.url}"  Tweet
       hr.row-space-top-3.row-space-3
       
       -if @related_patterns.present?
@@ -112,3 +115,14 @@
             = link_to p
               = render "presentation/shared/post_card", post: p
       = render "presentation/shared/posts_paginate_loader", posts: @related_posts
+      
+#fb-root
+javascript:
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js" 
