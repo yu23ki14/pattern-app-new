@@ -50,6 +50,36 @@ class EventsController < ApplicationController
     end
   end
   
+  def current_before
+    respond_to do |format|
+      format.html {}
+      format.csv {
+        results = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
+        users = results.pluck(:user_id)
+        results = Exchart.where(user_id: users).where("created_at > '2019-04-01'").order("created_at DESC").uniq{|result| result.user_id}
+        users = results.pluck(:user_id)
+        @results = Exchart.where(user_id: users).where("created_at < '2018-05-01'").order("created_at DESC").uniq{|result| result.user_id}
+        filename = @event.event_name + "current_before"
+        headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
+      }
+    end
+  end
+  
+  def proximal_before
+    respond_to do |format|
+      format.html {}
+      format.csv {
+        results = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
+        users = results.pluck(:user_id)
+        results = Exchart.where(user_id: users).where("created_at > '2019-04-01'").order("created_at DESC").uniq{|result| result.user_id}
+        users = results.pluck(:user_id)
+        @results = Exchart.where(user_id: users).where("created_at < '2018-05-01'").order("created_at DESC").uniq{|result| result.user_id}
+        filename = @event.event_name + "proximal_before"
+        headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
+      }
+    end
+  end
+  
   def current_after
     respond_to do |format|
       format.html {}

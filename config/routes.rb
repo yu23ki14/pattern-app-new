@@ -124,6 +124,8 @@ Rails.application.routes.draw do
     collection do
       get ':id/proximal' => 'events#proximal'
       get ':id/graph' => 'events#graph'
+      get ':id/current_before' => 'events#current_before'
+      get ':id/proximal_before' => 'events#proximal_before'
       get ':id/current_after' => 'events#current_after'
       get ':id/proximal_after' => 'events#proximal_after'
     end

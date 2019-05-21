@@ -11,6 +11,10 @@
       br
       = link_to "実践したい結果", "/events/#{e.id}/proximal.csv", class: "button button-primary row-space-top-1"
       br
+      = link_to "実践している結果before", "/events/#{e.id}/current_before.csv", class: "button button-primary row-space-top-1"
+      br
+      = link_to "実践したい結果before", "/events/#{e.id}/proximal_before.csv", class: "button button-primary row-space-top-1"
+      br
       = link_to "実践している結果after", "/events/#{e.id}/current_after.csv", class: "button button-primary row-space-top-1"
       br
       = link_to "実践したい結果after", "/events/#{e.id}/proximal_after.csv", class: "button button-primary row-space-top-1"
