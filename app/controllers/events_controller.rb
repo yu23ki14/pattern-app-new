@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   
-  before_action :set_event, only: [:graph, :show, :proximal, :current_after, :proximal_after]
+  before_action :set_event, only: [:graph, :show, :proximal, :current_after, :proximal_after, :current_before, :proximal_before]
   
   def index
     if Rails.env == 'production'
