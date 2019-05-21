@@ -40,5 +40,5 @@ $ ->
       scrollThreshold: 100
       status: ".page-load-status"
   
-  if gon.open_signup_modal == true && ( $("body").hasClass("posts") || $("body").hasClass("welcome") )
+  if gon.open_signup_modal == true && ( $("body").hasClass("posts") || $("body").hasClass("welcome") || $("body").hasClass("patterns") )
     $(".recommend-sign-up-modal").modal()
