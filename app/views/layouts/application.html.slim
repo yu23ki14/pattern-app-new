@@ -27,6 +27,8 @@ html
       footer
     - if @subdomain.blank?
       = render "layouts/pc_ng"
+    - else
+      = render "presentation/shared/modal/recommend_sign_up"
     .loading-modal
       = image_tag "spinner.png", class: "loading-spinner"
       p.loader-text loading...

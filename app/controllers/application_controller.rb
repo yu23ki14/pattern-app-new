@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :backhome
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :sign_up_modal
   
   def after_sign_in_path_for(resource)
     if @subdomain.blank?
@@ -45,6 +46,19 @@ class ApplicationController < ActionController::Base
       if user_signed_in?
         I18n.locale = @user.locale
         gon.locale = I18n.locale
+      end
+    end
+    
+    def sign_up_modal
+      if !user_signed_in? && @subdomain
+        visited_time = cookies["visit_time"].to_i
+        if visited_time > 4
+          gon.open_signup_modal = true
+        else
+          visited_time += 1
+          cookies.permanent["visit_time"] = visited_time
+          gon.open_signup_modal = false
+        end
       end
     end
 
