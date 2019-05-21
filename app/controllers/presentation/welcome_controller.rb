@@ -36,6 +36,9 @@ class Presentation::WelcomeController < ApplicationController
       end
     else
       cookies.permanent["visited"] = "t"
+      if user_signed_in?
+        current_user.update_attribute(:presentation, true)
+      end
     end
   end
 end
