@@ -10,3 +10,9 @@
       = link_to "実践している結果", event_path(e, format: :csv), class: "button button-primary"
       br
       = link_to "実践したい結果", "/events/#{e.id}/proximal.csv", class: "button button-primary row-space-top-1"
+      br
+      = link_to "実践している結果after", "/events/#{e.id}/current_after.csv", class: "button button-primary row-space-top-1"
+      br
+      = link_to "実践したい結果after", "/events/#{e.id}/proximal_after.csv", class: "button button-primary row-space-top-1"
+      br
+      = link_to "グラフ表示", "/events/#{e.id}/graph", class: "button button-primary row-space-top-1"

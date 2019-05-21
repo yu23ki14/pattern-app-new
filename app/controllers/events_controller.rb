@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   
-  before_action :set_event, only: [:graph, :show, :proximal]
+  before_action :set_event, only: [:graph, :show, :proximal, :current_after, :proximal_after]
   
   def index
     if Rails.env == 'production'
@@ -45,6 +45,32 @@ class EventsController < ApplicationController
       format.csv {
         @results = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
         filename = @event.event_name + "proximal"
+        headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
+      }
+    end
+  end
+  
+  def current_after
+    respond_to do |format|
+      format.html {}
+      format.csv {
+        results = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
+        users = results.pluck(:user_id)
+        @results = Exchart.where(user_id: users).where("created_at > '2019-04-01'").order("created_at DESC").uniq{|result| result.user_id}
+        filename = @event.event_name + "current_after"
+        headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
+      }
+    end
+  end
+  
+  def proximal_after
+    respond_to do |format|
+      format.html {}
+      format.csv {
+        results = @event.excharts.order("created_at DESC").uniq{|result| result.user_id}
+        users = results.pluck(:user_id)
+        @results = Exchart.where(user_id: users).where("created_at > '2019-04-01'").order("created_at DESC").uniq{|result| result.user_id}
+        filename = @event.event_name + "proximal_after"
         headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
       }
     end
