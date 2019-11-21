@@ -1,5 +1,10 @@
 .page-container{data-turbolinks="false"}
   h3.p-l-5.row-space-1.row-space-top-4.row-space-3 #{t('pattern_language')}
   - @languages.each do |l|
-    = link_to "patterns/#{l[:id]}", class: "language-card"
-      = image_tag "pattern_img/#{l.lg_code}-card.png", class: "col-12 col-center"
+    - if @user.locale == "en"
+      - if l.language_name_en.present?
+        = link_to "patterns/#{l[:id]}", class: "language-card"
+          = image_tag "pattern_img/#{l.lg_code}-card.png", class: "col-12 col-center"
+    - else
+      = link_to "patterns/#{l[:id]}", class: "language-card"
+        = image_tag "pattern_img/#{l.lg_code}-card.png", class: "col-12 col-center"
