@@ -25,7 +25,9 @@ class PatternsController < ApplicationController
       @project_practice_form = ProjectPractice.new
       @projects = @user.projects
     end
-    @related_patterns = Pattern.where(cat_code_24: @pattern[:cat_code_24]).order("RANDOM()").limit(2)
+    if @pattern.cat_code_24.present?
+      @related_patterns = Pattern.where(cat_code_24: @pattern[:cat_code_24]).order("RANDOM()").limit(2)
+    end
   end
   
   def fav
