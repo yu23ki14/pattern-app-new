@@ -60,7 +60,7 @@ gem 'dotenv-rails', '~> 2.5.0'
 gem 'whenever', '~> 0.10.0'
 
 #use kaminari for pagenation
-gem "kaminari", '~> 1.1.1'
+gem "kaminari", '~> 1.2.1'
 
 #use minimagick for image processing
 gem 'mini_magick', '~> 4.8'
