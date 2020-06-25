@@ -63,7 +63,7 @@ gem 'whenever', '~> 0.10.0'
 gem "kaminari", '~> 1.1.1'
 
 #use minimagick for image processing
-gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.9'
 gem 'image_processing', '~> 1.2'
 
 gem 'meta-tags', '~> 2.11.1'
